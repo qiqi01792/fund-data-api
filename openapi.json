@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://cdn.jsdelivr.net/gh/qiqi01792/fund-data-api@main"
+      "url": "https://qiqi01792.github.io/fund-data-api"
     }
   ],
   "paths": {
