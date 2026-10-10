@@ -1,0 +1,31 @@
+{
+  "schema": "fund-readonly-history-index/v1",
+  "readonly": true,
+  "generated_at": "2026-10-11 00:25:18",
+  "as_of_nav_date": "2026-10-09",
+  "fund_code": "006259",
+  "fund_name": "汇添富红利增长混合A",
+  "nav_type": "official",
+  "history_scope": "full_since_inception",
+  "total_records": 1785,
+  "page_size": 150,
+  "page_count": 12,
+  "first_nav_date": "2019-04-26",
+  "last_nav_date": "2026-10-09",
+  "records_order": "ascending_by_nav_date",
+  "page_urls": [
+    "/api/history/006259/page/1.json",
+    "/api/history/006259/page/2.json",
+    "/api/history/006259/page/3.json",
+    "/api/history/006259/page/4.json",
+    "/api/history/006259/page/5.json",
+    "/api/history/006259/page/6.json",
+    "/api/history/006259/page/7.json",
+    "/api/history/006259/page/8.json",
+    "/api/history/006259/page/9.json",
+    "/api/history/006259/page/10.json",
+    "/api/history/006259/page/11.json",
+    "/api/history/006259/page/12.json"
+  ],
+  "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤"
+}

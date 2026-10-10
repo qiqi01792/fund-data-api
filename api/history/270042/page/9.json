@@ -1,0 +1,775 @@
+{
+  "schema": "fund-readonly-history-page/v1",
+  "readonly": true,
+  "generated_at": "2026-10-11 00:25:18",
+  "fund_code": "270042",
+  "fund_name": "广发纳斯达克100ETF联接(QDII)A",
+  "nav_type": "official",
+  "history_scope": "full_since_inception",
+  "page": 9,
+  "page_size": 150,
+  "page_count": 23,
+  "total_records": 3405,
+  "record_count": 150,
+  "has_next": true,
+  "next_page_url": "/api/history/270042/page/10.json",
+  "prev_page_url": "/api/history/270042/page/8.json",
+  "query_start_date": "2012-08-15",
+  "query_end_date": "2026-10-08",
+  "page_start_date": "2017-08-24",
+  "page_end_date": "2018-04-13",
+  "records_order": "ascending_by_nav_date",
+  "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
+  "records": [
+    {
+      "nav_date": "2017-08-24",
+      "unit_nav": "1.7640",
+      "accumulated_nav": "2.0340"
+    },
+    {
+      "nav_date": "2017-08-25",
+      "unit_nav": "1.7620",
+      "accumulated_nav": "2.0320"
+    },
+    {
+      "nav_date": "2017-08-28",
+      "unit_nav": "1.7610",
+      "accumulated_nav": "2.0310"
+    },
+    {
+      "nav_date": "2017-08-29",
+      "unit_nav": "1.7670",
+      "accumulated_nav": "2.0370"
+    },
+    {
+      "nav_date": "2017-08-30",
+      "unit_nav": "1.7840",
+      "accumulated_nav": "2.0540"
+    },
+    {
+      "nav_date": "2017-08-31",
+      "unit_nav": "1.7990",
+      "accumulated_nav": "2.0690"
+    },
+    {
+      "nav_date": "2017-09-01",
+      "unit_nav": "1.7960",
+      "accumulated_nav": "2.0660"
+    },
+    {
+      "nav_date": "2017-09-05",
+      "unit_nav": "1.7640",
+      "accumulated_nav": "2.0340"
+    },
+    {
+      "nav_date": "2017-09-06",
+      "unit_nav": "1.7680",
+      "accumulated_nav": "2.0380"
+    },
+    {
+      "nav_date": "2017-09-07",
+      "unit_nav": "1.7710",
+      "accumulated_nav": "2.0410"
+    },
+    {
+      "nav_date": "2017-09-08",
+      "unit_nav": "1.7490",
+      "accumulated_nav": "2.0190"
+    },
+    {
+      "nav_date": "2017-09-11",
+      "unit_nav": "1.7680",
+      "accumulated_nav": "2.0380"
+    },
+    {
+      "nav_date": "2017-09-12",
+      "unit_nav": "1.7800",
+      "accumulated_nav": "2.0500"
+    },
+    {
+      "nav_date": "2017-09-13",
+      "unit_nav": "1.7850",
+      "accumulated_nav": "2.0550"
+    },
+    {
+      "nav_date": "2017-09-14",
+      "unit_nav": "1.7770",
+      "accumulated_nav": "2.0470"
+    },
+    {
+      "nav_date": "2017-09-15",
+      "unit_nav": "1.7810",
+      "accumulated_nav": "2.0510"
+    },
+    {
+      "nav_date": "2017-09-18",
+      "unit_nav": "1.7790",
+      "accumulated_nav": "2.0490"
+    },
+    {
+      "nav_date": "2017-09-19",
+      "unit_nav": "1.7850",
+      "accumulated_nav": "2.0550"
+    },
+    {
+      "nav_date": "2017-09-20",
+      "unit_nav": "1.7830",
+      "accumulated_nav": "2.0530"
+    },
+    {
+      "nav_date": "2017-09-21",
+      "unit_nav": "1.7770",
+      "accumulated_nav": "2.0470"
+    },
+    {
+      "nav_date": "2017-09-22",
+      "unit_nav": "1.7760",
+      "accumulated_nav": "2.0460"
+    },
+    {
+      "nav_date": "2017-09-25",
+      "unit_nav": "1.7590",
+      "accumulated_nav": "2.0290"
+    },
+    {
+      "nav_date": "2017-09-26",
+      "unit_nav": "1.7670",
+      "accumulated_nav": "2.0370"
+    },
+    {
+      "nav_date": "2017-09-27",
+      "unit_nav": "1.7860",
+      "accumulated_nav": "2.0560"
+    },
+    {
+      "nav_date": "2017-09-28",
+      "unit_nav": "1.7870",
+      "accumulated_nav": "2.0570"
+    },
+    {
+      "nav_date": "2017-09-29",
+      "unit_nav": "1.8030",
+      "accumulated_nav": "2.0730"
+    },
+    {
+      "nav_date": "2017-10-09",
+      "unit_nav": "1.8310",
+      "accumulated_nav": "2.1010"
+    },
+    {
+      "nav_date": "2017-10-10",
+      "unit_nav": "1.8270",
+      "accumulated_nav": "2.0970"
+    },
+    {
+      "nav_date": "2017-10-11",
+      "unit_nav": "1.8210",
+      "accumulated_nav": "2.0910"
+    },
+    {
+      "nav_date": "2017-10-12",
+      "unit_nav": "1.8160",
+      "accumulated_nav": "2.0860"
+    },
+    {
+      "nav_date": "2017-10-13",
+      "unit_nav": "1.8250",
+      "accumulated_nav": "2.0950"
+    },
+    {
+      "nav_date": "2017-10-16",
+      "unit_nav": "1.8310",
+      "accumulated_nav": "2.1010"
+    },
+    {
+      "nav_date": "2017-10-17",
+      "unit_nav": "1.8340",
+      "accumulated_nav": "2.1040"
+    },
+    {
+      "nav_date": "2017-10-18",
+      "unit_nav": "1.8340",
+      "accumulated_nav": "2.1040"
+    },
+    {
+      "nav_date": "2017-10-19",
+      "unit_nav": "1.8300",
+      "accumulated_nav": "2.1000"
+    },
+    {
+      "nav_date": "2017-10-20",
+      "unit_nav": "1.8350",
+      "accumulated_nav": "2.1050"
+    },
+    {
+      "nav_date": "2017-10-23",
+      "unit_nav": "1.8250",
+      "accumulated_nav": "2.0950"
+    },
+    {
+      "nav_date": "2017-10-24",
+      "unit_nav": "1.8310",
+      "accumulated_nav": "2.1010"
+    },
+    {
+      "nav_date": "2017-10-25",
+      "unit_nav": "1.8250",
+      "accumulated_nav": "2.0950"
+    },
+    {
+      "nav_date": "2017-10-26",
+      "unit_nav": "1.8190",
+      "accumulated_nav": "2.0890"
+    },
+    {
+      "nav_date": "2017-10-27",
+      "unit_nav": "1.8760",
+      "accumulated_nav": "2.1460"
+    },
+    {
+      "nav_date": "2017-10-30",
+      "unit_nav": "1.8800",
+      "accumulated_nav": "2.1500"
+    },
+    {
+      "nav_date": "2017-10-31",
+      "unit_nav": "1.8840",
+      "accumulated_nav": "2.1540"
+    },
+    {
+      "nav_date": "2017-11-01",
+      "unit_nav": "1.8810",
+      "accumulated_nav": "2.1510"
+    },
+    {
+      "nav_date": "2017-11-02",
+      "unit_nav": "1.8750",
+      "accumulated_nav": "2.1450"
+    },
+    {
+      "nav_date": "2017-11-03",
+      "unit_nav": "1.8890",
+      "accumulated_nav": "2.1590"
+    },
+    {
+      "nav_date": "2017-11-06",
+      "unit_nav": "1.8990",
+      "accumulated_nav": "2.1690"
+    },
+    {
+      "nav_date": "2017-11-07",
+      "unit_nav": "1.9000",
+      "accumulated_nav": "2.1700"
+    },
+    {
+      "nav_date": "2017-11-08",
+      "unit_nav": "1.9090",
+      "accumulated_nav": "2.1790"
+    },
+    {
+      "nav_date": "2017-11-09",
+      "unit_nav": "1.9000",
+      "accumulated_nav": "2.1700"
+    },
+    {
+      "nav_date": "2017-11-10",
+      "unit_nav": "1.8990",
+      "accumulated_nav": "2.1690"
+    },
+    {
+      "nav_date": "2017-11-13",
+      "unit_nav": "1.9030",
+      "accumulated_nav": "2.1730"
+    },
+    {
+      "nav_date": "2017-11-14",
+      "unit_nav": "1.8970",
+      "accumulated_nav": "2.1670"
+    },
+    {
+      "nav_date": "2017-11-15",
+      "unit_nav": "1.8840",
+      "accumulated_nav": "2.1540"
+    },
+    {
+      "nav_date": "2017-11-16",
+      "unit_nav": "1.9090",
+      "accumulated_nav": "2.1790"
+    },
+    {
+      "nav_date": "2017-11-17",
+      "unit_nav": "1.9010",
+      "accumulated_nav": "2.1710"
+    },
+    {
+      "nav_date": "2017-11-20",
+      "unit_nav": "1.9000",
+      "accumulated_nav": "2.1700"
+    },
+    {
+      "nav_date": "2017-11-21",
+      "unit_nav": "1.9220",
+      "accumulated_nav": "2.1920"
+    },
+    {
+      "nav_date": "2017-11-22",
+      "unit_nav": "1.9230",
+      "accumulated_nav": "2.1930"
+    },
+    {
+      "nav_date": "2017-11-24",
+      "unit_nav": "1.9160",
+      "accumulated_nav": "2.1860"
+    },
+    {
+      "nav_date": "2017-11-27",
+      "unit_nav": "1.9170",
+      "accumulated_nav": "2.1870"
+    },
+    {
+      "nav_date": "2017-11-28",
+      "unit_nav": "1.9230",
+      "accumulated_nav": "2.1930"
+    },
+    {
+      "nav_date": "2017-11-29",
+      "unit_nav": "1.8920",
+      "accumulated_nav": "2.1620"
+    },
+    {
+      "nav_date": "2017-11-30",
+      "unit_nav": "1.9080",
+      "accumulated_nav": "2.1780"
+    },
+    {
+      "nav_date": "2017-12-01",
+      "unit_nav": "1.9020",
+      "accumulated_nav": "2.1720"
+    },
+    {
+      "nav_date": "2017-12-04",
+      "unit_nav": "1.8820",
+      "accumulated_nav": "2.1520"
+    },
+    {
+      "nav_date": "2017-12-05",
+      "unit_nav": "1.8830",
+      "accumulated_nav": "2.1530"
+    },
+    {
+      "nav_date": "2017-12-06",
+      "unit_nav": "1.8920",
+      "accumulated_nav": "2.1620"
+    },
+    {
+      "nav_date": "2017-12-07",
+      "unit_nav": "1.8990",
+      "accumulated_nav": "2.1690"
+    },
+    {
+      "nav_date": "2017-12-08",
+      "unit_nav": "1.9070",
+      "accumulated_nav": "2.1770"
+    },
+    {
+      "nav_date": "2017-12-11",
+      "unit_nav": "1.9200",
+      "accumulated_nav": "2.1900"
+    },
+    {
+      "nav_date": "2017-12-12",
+      "unit_nav": "1.9170",
+      "accumulated_nav": "2.1870"
+    },
+    {
+      "nav_date": "2017-12-13",
+      "unit_nav": "1.9230",
+      "accumulated_nav": "2.1930"
+    },
+    {
+      "nav_date": "2017-12-14",
+      "unit_nav": "1.9150",
+      "accumulated_nav": "2.1850"
+    },
+    {
+      "nav_date": "2017-12-15",
+      "unit_nav": "1.9410",
+      "accumulated_nav": "2.2110"
+    },
+    {
+      "nav_date": "2017-12-18",
+      "unit_nav": "1.9560",
+      "accumulated_nav": "2.2260"
+    },
+    {
+      "nav_date": "2017-12-19",
+      "unit_nav": "1.9440",
+      "accumulated_nav": "2.2140"
+    },
+    {
+      "nav_date": "2017-12-20",
+      "unit_nav": "1.9410",
+      "accumulated_nav": "2.2110"
+    },
+    {
+      "nav_date": "2017-12-21",
+      "unit_nav": "1.9330",
+      "accumulated_nav": "2.2030"
+    },
+    {
+      "nav_date": "2017-12-22",
+      "unit_nav": "1.9310",
+      "accumulated_nav": "2.2010"
+    },
+    {
+      "nav_date": "2017-12-26",
+      "unit_nav": "1.9100",
+      "accumulated_nav": "2.1800"
+    },
+    {
+      "nav_date": "2017-12-27",
+      "unit_nav": "1.9100",
+      "accumulated_nav": "2.1800"
+    },
+    {
+      "nav_date": "2017-12-28",
+      "unit_nav": "1.9110",
+      "accumulated_nav": "2.1810"
+    },
+    {
+      "nav_date": "2017-12-29",
+      "unit_nav": "1.8930",
+      "accumulated_nav": "2.1630"
+    },
+    {
+      "nav_date": "2017-12-31",
+      "unit_nav": "1.8920",
+      "accumulated_nav": "2.1620"
+    },
+    {
+      "nav_date": "2018-01-02",
+      "unit_nav": "1.9210",
+      "accumulated_nav": "2.1910"
+    },
+    {
+      "nav_date": "2018-01-03",
+      "unit_nav": "1.9370",
+      "accumulated_nav": "2.2070"
+    },
+    {
+      "nav_date": "2018-01-04",
+      "unit_nav": "1.9440",
+      "accumulated_nav": "2.2140"
+    },
+    {
+      "nav_date": "2018-01-05",
+      "unit_nav": "1.9620",
+      "accumulated_nav": "2.2320"
+    },
+    {
+      "nav_date": "2018-01-08",
+      "unit_nav": "1.9660",
+      "accumulated_nav": "2.2360"
+    },
+    {
+      "nav_date": "2018-01-09",
+      "unit_nav": "1.9700",
+      "accumulated_nav": "2.2400"
+    },
+    {
+      "nav_date": "2018-01-10",
+      "unit_nav": "1.9730",
+      "accumulated_nav": "2.2430"
+    },
+    {
+      "nav_date": "2018-01-11",
+      "unit_nav": "1.9860",
+      "accumulated_nav": "2.2560"
+    },
+    {
+      "nav_date": "2018-01-12",
+      "unit_nav": "1.9950",
+      "accumulated_nav": "2.2650"
+    },
+    {
+      "nav_date": "2018-01-16",
+      "unit_nav": "1.9720",
+      "accumulated_nav": "2.2420"
+    },
+    {
+      "nav_date": "2018-01-17",
+      "unit_nav": "1.9930",
+      "accumulated_nav": "2.2630"
+    },
+    {
+      "nav_date": "2018-01-18",
+      "unit_nav": "1.9940",
+      "accumulated_nav": "2.2640"
+    },
+    {
+      "nav_date": "2018-01-19",
+      "unit_nav": "1.9950",
+      "accumulated_nav": "2.2650"
+    },
+    {
+      "nav_date": "2018-01-22",
+      "unit_nav": "2.0160",
+      "accumulated_nav": "2.2860"
+    },
+    {
+      "nav_date": "2018-01-23",
+      "unit_nav": "2.0290",
+      "accumulated_nav": "2.2990"
+    },
+    {
+      "nav_date": "2018-01-24",
+      "unit_nav": "2.0140",
+      "accumulated_nav": "2.2840"
+    },
+    {
+      "nav_date": "2018-01-25",
+      "unit_nav": "2.0070",
+      "accumulated_nav": "2.2770"
+    },
+    {
+      "nav_date": "2018-01-26",
+      "unit_nav": "2.0300",
+      "accumulated_nav": "2.3000"
+    },
+    {
+      "nav_date": "2018-01-29",
+      "unit_nav": "2.0150",
+      "accumulated_nav": "2.2850"
+    },
+    {
+      "nav_date": "2018-01-30",
+      "unit_nav": "2.0000",
+      "accumulated_nav": "2.2700"
+    },
+    {
+      "nav_date": "2018-01-31",
+      "unit_nav": "2.0060",
+      "accumulated_nav": "2.2760"
+    },
+    {
+      "nav_date": "2018-02-01",
+      "unit_nav": "1.9830",
+      "accumulated_nav": "2.2530"
+    },
+    {
+      "nav_date": "2018-02-02",
+      "unit_nav": "1.9390",
+      "accumulated_nav": "2.2090"
+    },
+    {
+      "nav_date": "2018-02-05",
+      "unit_nav": "1.8640",
+      "accumulated_nav": "2.1340"
+    },
+    {
+      "nav_date": "2018-02-06",
+      "unit_nav": "1.9180",
+      "accumulated_nav": "2.1880"
+    },
+    {
+      "nav_date": "2018-02-07",
+      "unit_nav": "1.8870",
+      "accumulated_nav": "2.1570"
+    },
+    {
+      "nav_date": "2018-02-08",
+      "unit_nav": "1.8060",
+      "accumulated_nav": "2.0760"
+    },
+    {
+      "nav_date": "2018-02-09",
+      "unit_nav": "1.8480",
+      "accumulated_nav": "2.1180"
+    },
+    {
+      "nav_date": "2018-02-12",
+      "unit_nav": "1.8750",
+      "accumulated_nav": "2.1450"
+    },
+    {
+      "nav_date": "2018-02-13",
+      "unit_nav": "1.8920",
+      "accumulated_nav": "2.1620"
+    },
+    {
+      "nav_date": "2018-02-14",
+      "unit_nav": "1.9370",
+      "accumulated_nav": "2.2070"
+    },
+    {
+      "nav_date": "2018-02-22",
+      "unit_nav": "1.9670",
+      "accumulated_nav": "2.2370"
+    },
+    {
+      "nav_date": "2018-02-23",
+      "unit_nav": "2.0070",
+      "accumulated_nav": "2.2770"
+    },
+    {
+      "nav_date": "2018-02-26",
+      "unit_nav": "2.0310",
+      "accumulated_nav": "2.3010"
+    },
+    {
+      "nav_date": "2018-02-27",
+      "unit_nav": "1.9980",
+      "accumulated_nav": "2.2680"
+    },
+    {
+      "nav_date": "2018-02-28",
+      "unit_nav": "1.9880",
+      "accumulated_nav": "2.2580"
+    },
+    {
+      "nav_date": "2018-03-01",
+      "unit_nav": "1.9580",
+      "accumulated_nav": "2.2280"
+    },
+    {
+      "nav_date": "2018-03-02",
+      "unit_nav": "1.9750",
+      "accumulated_nav": "2.2450"
+    },
+    {
+      "nav_date": "2018-03-05",
+      "unit_nav": "1.9990",
+      "accumulated_nav": "2.2690"
+    },
+    {
+      "nav_date": "2018-03-06",
+      "unit_nav": "2.0070",
+      "accumulated_nav": "2.2770"
+    },
+    {
+      "nav_date": "2018-03-07",
+      "unit_nav": "2.0090",
+      "accumulated_nav": "2.2790"
+    },
+    {
+      "nav_date": "2018-03-08",
+      "unit_nav": "2.0190",
+      "accumulated_nav": "2.2890"
+    },
+    {
+      "nav_date": "2018-03-09",
+      "unit_nav": "2.0660",
+      "accumulated_nav": "2.3360"
+    },
+    {
+      "nav_date": "2018-03-12",
+      "unit_nav": "2.0710",
+      "accumulated_nav": "2.3410"
+    },
+    {
+      "nav_date": "2018-03-13",
+      "unit_nav": "2.0430",
+      "accumulated_nav": "2.3130"
+    },
+    {
+      "nav_date": "2018-03-14",
+      "unit_nav": "2.0400",
+      "accumulated_nav": "2.3100"
+    },
+    {
+      "nav_date": "2018-03-15",
+      "unit_nav": "2.0360",
+      "accumulated_nav": "2.3060"
+    },
+    {
+      "nav_date": "2018-03-16",
+      "unit_nav": "2.0400",
+      "accumulated_nav": "2.3100"
+    },
+    {
+      "nav_date": "2018-03-19",
+      "unit_nav": "2.0010",
+      "accumulated_nav": "2.2710"
+    },
+    {
+      "nav_date": "2018-03-20",
+      "unit_nav": "2.0030",
+      "accumulated_nav": "2.2730"
+    },
+    {
+      "nav_date": "2018-03-21",
+      "unit_nav": "1.9990",
+      "accumulated_nav": "2.2690"
+    },
+    {
+      "nav_date": "2018-03-22",
+      "unit_nav": "1.9410",
+      "accumulated_nav": "2.2110"
+    },
+    {
+      "nav_date": "2018-03-23",
+      "unit_nav": "1.8960",
+      "accumulated_nav": "2.1660"
+    },
+    {
+      "nav_date": "2018-03-26",
+      "unit_nav": "1.9640",
+      "accumulated_nav": "2.2340"
+    },
+    {
+      "nav_date": "2018-03-27",
+      "unit_nav": "1.8870",
+      "accumulated_nav": "2.1570"
+    },
+    {
+      "nav_date": "2018-03-28",
+      "unit_nav": "1.8650",
+      "accumulated_nav": "2.1350"
+    },
+    {
+      "nav_date": "2018-03-29",
+      "unit_nav": "1.9070",
+      "accumulated_nav": "2.1770"
+    },
+    {
+      "nav_date": "2018-04-02",
+      "unit_nav": "1.8460",
+      "accumulated_nav": "2.1160"
+    },
+    {
+      "nav_date": "2018-04-03",
+      "unit_nav": "1.8690",
+      "accumulated_nav": "2.1390"
+    },
+    {
+      "nav_date": "2018-04-04",
+      "unit_nav": "1.9020",
+      "accumulated_nav": "2.1720"
+    },
+    {
+      "nav_date": "2018-04-09",
+      "unit_nav": "1.8820",
+      "accumulated_nav": "2.1520"
+    },
+    {
+      "nav_date": "2018-04-10",
+      "unit_nav": "1.9220",
+      "accumulated_nav": "2.1920"
+    },
+    {
+      "nav_date": "2018-04-11",
+      "unit_nav": "1.9080",
+      "accumulated_nav": "2.1780"
+    },
+    {
+      "nav_date": "2018-04-12",
+      "unit_nav": "1.9270",
+      "accumulated_nav": "2.1970"
+    },
+    {
+      "nav_date": "2018-04-13",
+      "unit_nav": "1.9200",
+      "accumulated_nav": "2.1900"
+    }
+  ]
+}
