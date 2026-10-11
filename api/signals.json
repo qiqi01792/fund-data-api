@@ -1,23 +1,24 @@
 {
   "schema": "fund_daily_signals/v3",
   "readonly": true,
-  "generated_at": "2026-10-11 19:42:51",
+  "generated_at": "2026-10-11 19:56:26",
   "as_of_nav_date": "2026-10-09",
   "rules_version": "V5.7+V5.8+V6.1",
   "daily_command": "按基金管理系统复盘",
   "purpose": "每日收盘后按 V5.7（方向/定投）+ V5.8（评级/补仓金额/资金池）+ V6.1（累计止盈）生成次日操作信号，供用户与 ChatGPT 做次日决策",
   "principle_v58": "分位决定价格，评级决定价值，组合决定金额；不因下跌买入，而因优秀资产进入低估区域买入",
   "principle_v61": "止盈按累计目标补差额：本次卖出 = 基准仓位 × 最新累计目标 － 累计已卖，75% 以上开始兑现利润，95% 以上保护绝大部分利润，创新高退出全部仓位",
-  "scope_note": "补仓金额按 V5.8 规则链计算（基础金额×评级修正×反弹修正×连跌修正，月度资金池 2000 元按优先级分配）；止盈按 V6.1 累计制计算，接口只输出比例（累计目标/本次新增卖出比例/剩余仓位），卖出金额由本地结合止盈启动基准仓位计算；评级为初评待用户确认，实际下单须用户确认后在蚂蚁财富执行",
+  "scope_note": "补仓金额按 V5.8 规则链计算（基础金额×评级修正×反弹修正×连跌修正，月度资金池 2000 元按优先级分配）；补仓须先过 V5.8 附则 A 双分位校验（历史分位 <50% 但近 6 个月分位 ≥60% 视为假低位，不补仓）；止盈按 V6.1 累计制计算，接口只输出比例（累计目标/本次新增卖出比例/剩余仓位），卖出金额由本地结合止盈启动基准仓位计算；评级为初评待用户确认，实际下单须用户确认后在蚂蚁财富执行",
   "basis": "historical_position = 成立以来单位净值区间位置 = (最新净值 - 历史最低) / (历史最高 - 历史最低)，V5.7 第二章口径",
   "not_investment_advice": "本文件为规则化计算结果，不构成投资建议；实际下单须由用户确认后在蚂蚁财富执行",
   "signal_counts": {
     "take_profit_candidate": 4,
-    "add_position_candidate": 3,
-    "hold": 14,
+    "add_position_candidate": 2,
+    "hold": 15,
     "unknown": 0,
     "take_profit_with_new_sell": 4,
-    "take_profit_already_satisfied": 0
+    "take_profit_already_satisfied": 0,
+    "blocked_by_six_month_check": 1
   },
   "sip_counts": {
     "paused_manual": 13,
@@ -25,6 +26,20 @@
     "investing": 4
   },
   "caliber_conflicts_count": 4,
+  "add_blocked_by_six_month": [
+    {
+      "fund_code": "100032",
+      "fund_name": "富国中证红利指数增强A",
+      "historical_position_pct": 5.91,
+      "six_month_position_pct": 67.5,
+      "block_at_pct": 60.0,
+      "rating": "B",
+      "quality_score": 7.0,
+      "add_base_tier": "5%~10% 极端区域",
+      "computed_add_amount": 300.0,
+      "reason": "历史分位 5.91% 处于5%~10%（大额补仓候选区，必须先做基金质量与风险复检），但近 6 个月分位 67.50% ≥ 60%：近期处于相对高位，历史低位失真，按 V5.8 附则 A 不补仓"
+    }
+  ],
   "take_profit_module_v61": {
     "rules_version": "V6.1",
     "basis": "历史位置分位 =（当前净值－历史最低净值）÷（历史最高净值－历史最低净值）×100%；使用成立以来最高/最低正式单位净值，禁止用近 6 个月位置或盘中估值代替",
@@ -169,23 +184,11 @@
     "total_budget": 2000.0,
     "used_recorded": 45.0,
     "remaining_before_today": 1955.0,
-    "allocated_today": 300.0,
-    "remaining_after_today": 1655.0,
+    "allocated_today": 0,
+    "remaining_after_today": 1955.0,
     "note": "used_recorded 来自持仓账本中当月 trade_type=手动补仓/主动补仓 的登记；实际是否扣款以用户确认为准"
   },
-  "add_allocation": [
-    {
-      "rank": 1,
-      "fund_code": "100032",
-      "fund_name": "富国中证红利指数增强A",
-      "rating": "B",
-      "quality_score": 7.0,
-      "historical_position_pct": 5.91,
-      "computed_amount": 300.0,
-      "allocated_amount": 300.0,
-      "amount_note": "基础 600 元（5%~10% 极端区域） × 评级B（允许补仓但金额减半，50%）"
-    }
-  ],
+  "add_allocation": [],
   "forbidden_add_list": [
     {
       "fund_code": "024412",
@@ -306,23 +309,6 @@
       "tp_status": "未启动",
       "tp_cumulative_target_pct": 0.0,
       "tp_new_sell_pct_of_base": 0.0
-    },
-    {
-      "fund_code": "100032",
-      "fund_name": "富国中证红利指数增强A",
-      "signal": "add_position",
-      "signal_label": "补仓候选",
-      "signal_tier": "5%~10%（大额补仓候选区，必须先做基金质量与风险复检）",
-      "historical_position_pct": 5.91,
-      "confidence": "low",
-      "sip_status": "paused_manual",
-      "rating": "B",
-      "quality_score": 7.0,
-      "add_final_amount": 300.0,
-      "add_allocated_amount": 300.0,
-      "tp_status": "未启动",
-      "tp_cumulative_target_pct": 0.0,
-      "tp_new_sell_pct_of_base": 0.0
     }
   ],
   "caliber_conflicts": [
@@ -398,6 +384,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 17.45,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -5.62,
       "rebound_from_recent_low_pct": 1.34,
@@ -466,6 +453,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 8.0,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -9.86,
       "rebound_from_recent_low_pct": 3.0,
@@ -537,6 +525,7 @@
         "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
       },
       "is_new_high": false,
+      "six_month_position_pct": 5.11,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -3.27,
       "rebound_from_recent_low_pct": 0.24,
@@ -608,6 +597,7 @@
         "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
       },
       "is_new_high": false,
+      "six_month_position_pct": 13.96,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": 0.23,
       "rebound_from_recent_low_pct": 0.24,
@@ -676,6 +666,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 61.16,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -2.65,
       "rebound_from_recent_low_pct": 1.17,
@@ -744,6 +735,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 20.97,
       "consecutive_fall_days": 3,
       "recent_1m_return_pct": -8.56,
       "rebound_from_recent_low_pct": 0.0,
@@ -812,6 +804,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 21.82,
       "consecutive_fall_days": 3,
       "recent_1m_return_pct": -5.22,
       "rebound_from_recent_low_pct": 0.0,
@@ -880,6 +873,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 10.76,
       "consecutive_fall_days": 3,
       "recent_1m_return_pct": -7.86,
       "rebound_from_recent_low_pct": 0.0,
@@ -951,6 +945,7 @@
         "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
       },
       "is_new_high": false,
+      "six_month_position_pct": 35.15,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -0.09,
       "rebound_from_recent_low_pct": 0.14,
@@ -1019,6 +1014,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 20.02,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": 0.76,
       "rebound_from_recent_low_pct": 2.66,
@@ -1087,6 +1083,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 4.52,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -7.93,
       "rebound_from_recent_low_pct": 1.3,
@@ -1155,6 +1152,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 45.87,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -5.54,
       "rebound_from_recent_low_pct": 1.16,
@@ -1223,6 +1221,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 11.25,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -6.25,
       "rebound_from_recent_low_pct": 1.05,
@@ -1291,6 +1290,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 4.48,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -7.94,
       "rebound_from_recent_low_pct": 1.29,
@@ -1359,6 +1359,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 26.11,
       "consecutive_fall_days": 3,
       "recent_1m_return_pct": -9.51,
       "rebound_from_recent_low_pct": 0.0,
@@ -1427,6 +1428,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 63.32,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -1.9,
       "rebound_from_recent_low_pct": 1.01,
@@ -1495,6 +1497,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 0.0,
       "consecutive_fall_days": 8,
       "recent_1m_return_pct": -7.52,
       "rebound_from_recent_low_pct": 0.0,
@@ -1563,6 +1566,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 1.81,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -7.05,
       "rebound_from_recent_low_pct": 0.77,
@@ -1579,7 +1583,7 @@
       "signal": "add_position",
       "signal_label": "补仓候选",
       "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
-      "signal_reason": "成立以来历史位置 1.81% 处于补仓分层区间：按 V5.7 第四章评估，V5.8 按评级修正金额（见 add_final_amount 与 add_amount_note）；补仓前须同时检查基金质量、回撤、行业重复度与可用资金；该基金处于 <5% 深跌特别档（用户 2026-10-11 新增），须做最严格复核",
+      "signal_reason": "成立以来历史位置 1.81%（近 6 个月位置 1.81%）处于补仓分层区间：按 V5.7 第四章评估，V5.8 按评级修正金额（见 add_final_amount 与 add_amount_note）；补仓前须同时检查基金质量、回撤、行业重复度与可用资金；该基金处于 <5% 深跌特别档（用户 2026-10-11 新增），须做最严格复核",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
@@ -1627,6 +1631,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 1.28,
       "consecutive_fall_days": 8,
       "recent_1m_return_pct": -7.26,
       "rebound_from_recent_low_pct": 0.0,
@@ -1643,7 +1648,7 @@
       "signal": "add_position",
       "signal_label": "补仓候选",
       "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
-      "signal_reason": "成立以来历史位置 0.89% 处于补仓分层区间：按 V5.7 第四章评估，V5.8 按评级修正金额（见 add_final_amount 与 add_amount_note）；补仓前须同时检查基金质量、回撤、行业重复度与可用资金；该基金处于 <5% 深跌特别档（用户 2026-10-11 新增），须做最严格复核",
+      "signal_reason": "成立以来历史位置 0.89%（近 6 个月位置 1.28%）处于补仓分层区间：按 V5.7 第四章评估，V5.8 按评级修正金额（见 add_final_amount 与 add_amount_note）；补仓前须同时检查基金质量、回撤、行业重复度与可用资金；该基金处于 <5% 深跌特别档（用户 2026-10-11 新增），须做最严格复核",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
@@ -1691,6 +1696,7 @@
         "note": "低位积累筹码，中位继续持有"
       },
       "is_new_high": false,
+      "six_month_position_pct": 67.5,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -0.61,
       "rebound_from_recent_low_pct": 2.52,
@@ -1704,10 +1710,10 @@
         "accumulated_nav_position_pct": 97.3,
         "divergence_pp": -91.39
       },
-      "signal": "add_position",
-      "signal_label": "补仓候选",
-      "signal_tier": "5%~10%（大额补仓候选区，必须先做基金质量与风险复检）",
-      "signal_reason": "成立以来历史位置 5.91% 处于补仓分层区间：按 V5.7 第四章评估，V5.8 按评级修正金额（见 add_final_amount 与 add_amount_note）；补仓前须同时检查基金质量、回撤、行业重复度与可用资金",
+      "signal": "hold",
+      "signal_label": "持有观察（双分位校验拦截）",
+      "signal_tier": "历史位置 5.91% 属补仓分层，但近 6 个月位置 67.50% ≥ 60%",
+      "signal_reason": "历史位置 5.91% 看似低位，但近 6 个月位置 67.50% 已处于近期区间偏高位：历史低位系分红/折算或久远高点造成的假低位（典型：100032 富国中证红利指数增强A），按 V5.8 附则 A 不主动补仓、不手工补仓，转持有观察；待近 6 个月位置回落至 60% 以下或评级上调后自动恢复候选资格",
       "confidence": "low",
       "confidence_note": "单位净值口径位置 5.91% 与累计净值口径 97.30% 相差 -91.4 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
       "next_up": {
@@ -1719,9 +1725,7 @@
         "at_pct": 5.0,
         "distance_pp": 0.91,
         "effect": "进入深跌特别档（<5% 极端超跌区，须最严格复核，金额待参数确认）"
-      },
-      "add_allocated_amount": 300.0,
-      "add_priority_rank": 1
+      }
     },
     {
       "fund_code": "270042",
@@ -1764,6 +1768,7 @@
         "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
       },
       "is_new_high": false,
+      "six_month_position_pct": 90.15,
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": 4.61,
       "rebound_from_recent_low_pct": 5.69,
