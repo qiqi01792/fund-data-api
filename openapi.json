@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "1.5.0",
-    "description": "21 只公募基金的公开行情数据与策略规则（只读）。仅含正式单位净值、计算校验数据与用户策略规则，不含任何持仓信息。"
+    "version": "1.6.0",
+    "description": "21 只公募基金的公开行情数据、定投启停状态与策略规则（只读）。仅含正式单位净值、计算校验数据、按 V5.7 规则计算的定投状态与用户策略规则，不含任何持仓信息。"
   },
   "servers": [
     {
@@ -259,6 +259,26 @@
                             "type": "string",
                             "description": "六个月净值区间位置，0~1"
                           },
+                          "sip_status": {
+                            "type": "string",
+                            "description": "定投启停状态：investing 定投中 / paused_by_rule 触发70%停止线 / buffer_watch 缓冲观察 / paused_manual 人工暂停 / unknown 分位缺失"
+                          },
+                          "sip_status_note": {
+                            "type": "string",
+                            "description": "定投状态判定说明（含触发分位与处置建议）"
+                          },
+                          "sip_weekly_amount": {
+                            "type": "string",
+                            "description": "定投计划单周金额（元，仅计划内基金，否则为空）"
+                          },
+                          "sip_mode": {
+                            "type": "string",
+                            "description": "定投模式（仅计划内基金）"
+                          },
+                          "sip_cycle": {
+                            "type": "string",
+                            "description": "定投周期（仅计划内基金）"
+                          },
                           "data_status": {
                             "type": "string",
                             "description": "数据核验状态：正常/待复核/异常"
@@ -494,6 +514,26 @@
                           "six_month_position": {
                             "type": "string",
                             "description": "六个月净值区间位置，0~1"
+                          },
+                          "sip_status": {
+                            "type": "string",
+                            "description": "定投启停状态：investing 定投中 / paused_by_rule 触发70%停止线 / buffer_watch 缓冲观察 / paused_manual 人工暂停 / unknown 分位缺失"
+                          },
+                          "sip_status_note": {
+                            "type": "string",
+                            "description": "定投状态判定说明（含触发分位与处置建议）"
+                          },
+                          "sip_weekly_amount": {
+                            "type": "string",
+                            "description": "定投计划单周金额（元，仅计划内基金，否则为空）"
+                          },
+                          "sip_mode": {
+                            "type": "string",
+                            "description": "定投模式（仅计划内基金）"
+                          },
+                          "sip_cycle": {
+                            "type": "string",
+                            "description": "定投周期（仅计划内基金）"
                           },
                           "data_status": {
                             "type": "string",
