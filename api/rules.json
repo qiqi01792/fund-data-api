@@ -1,7 +1,7 @@
 {
   "schema": "fund_rules/v1",
   "readonly": true,
-  "generated_at": "2026-10-11 18:09:09",
+  "generated_at": "2026-10-11 18:13:12",
   "rules_version": "V5.7",
   "source_of_truth": "WorkBuddy 本地正本（06_策略规则/基金管理系统总规则_V5.7.md）",
   "daily_command": "按基金管理系统复盘",
@@ -33,11 +33,20 @@
         "principle": "更严格评估风险，不因下跌自动加码"
       },
       {
-        "position": "<10%",
+        "position": "5%~10%",
         "rule": "大额补仓候选区",
         "principle": "必须先做基金质量和风险复检"
+      },
+      {
+        "position": "<5%",
+        "rule": "深跌特别档（用户 2026-10-11 新增）",
+        "principle": "极端超跌区，须最严格复核（质量/回撤/行业重复度/逻辑未破坏）；单次金额与是否允许加码待用户确认，未确认前只提示方向、不鼓励加码"
       }
     ],
+    "user_added_tiers": {
+      "date": "2026-10-11",
+      "note": "用户要求新增 5% 深跌档（原 V5.7 仅 <10% 一档），已纳入信号阶梯；对应金额规则待用户确认，不得编造"
+    },
     "consecutive_falling": {
       "max_mechanical_days": 3,
       "day4": "第4个连续下跌交易日：停止机械补仓，启动复检与分流",
