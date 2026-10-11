@@ -23,10 +23,11 @@ th{background:#f7f8fa;font-weight:500}
 <tr><td><code>/api/nav/&lt;基金代码&gt;.json</code></td><td>单只基金近 1 年每日净值序列（如 <code>/api/nav/000218.json</code>）</td></tr>
 <tr><td><code>/api/history/&lt;基金代码&gt;/index.json</code></td><td>单只基金<b>成立以来完整历史</b>的分页索引（总条数/总页数/首末日）</td></tr>
 <tr><td><code>/api/history/&lt;基金代码&gt;/page/&lt;n&gt;.json</code></td><td>完整历史第 n 页（每页 150 条，按日期升序，可无缝拼接）</td></tr>
-<tr><td><code>/api/rules.json</code></td><td><b>基金管理系统策略规则 V5.7 + V5.8 + V6.1</b>（核心阈值 + 定投计划 + 三份全文）</td></tr>
+<tr><td><code>/api/valuation.json</code></td><td><b>基金估值明细</b>（V6.2 第三维：估值状态 / PE / PB / 股息率 / PE·PB 历史分位 / 估值评分 / 基准指数与匹配质量）</td></tr>
+<tr><td><code>/api/rules.json</code></td><td><b>基金管理系统策略规则 V6.2</b>（唯一版本：核心阈值 + 定投计划 + 版本演进表 + 四份正本合并全文）</td></tr>
 <tr><td><code>/api/performance.json</code></td><td>21 只基金<b>多窗口业绩指标</b>（1m/3m/6m/1y/3y/5y/10y/成立以来 收益率、最大回撤、年化波动率）</td></tr>
-<tr><td><code>/api/signals.json</code></td><td><b>每日操作信号</b>（V5.7 方向 + V5.8 评级 A/B/C/D、补仓金额、2000 元资金池分配、禁止补仓列表 + <b>V6.1 累计止盈：累计目标/已卖/本次新增卖出比例/剩余仓位/是否创新高</b> + 定投启停 + 口径分歧警示）</td></tr>
-<tr><td><code>/openapi.json</code></td><td>ChatGPT 自定义 GPT Action 描述文件</td></tr>
+<tr><td><code>/api/signals.json</code></td><td><b>每日操作信号</b>（评级 A/B/C/D、补仓金额与 2000 元资金池分配、禁止补仓列表 + <b>V6.1 累计止盈</b> + <b>V6.2 三维估值决策：历史位置/近6月位置/估值三关过滤与综合评分</b> + 定投启停 + 口径分歧警示）</td></tr>
+<tr><td><code>/openapi.json</code></td><td>ChatGPT 自定义 GPT Action 描述文件（版本 2.2.0）</td></tr>
 </table>
 <h2>数据范围与限制</h2>
 <div class="note">
