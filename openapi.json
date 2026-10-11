@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "2.0.0",
-    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（V5.8 含评级与补仓金额、V6.1 累计止盈含卖出比例）、定投启停状态与策略规则 V5.7+V5.8+V6.1（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息（止盈卖出金额需结合本地基准仓位计算）。输出规范（V5.7 附则 B）：任何基金一律同时给出 6 位代码与中文全称，不得只报代码。"
+    "version": "2.2.0",
+    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（评级与补仓金额、累计止盈比例、三维估值决策）、定投启停状态与策略规则 V6.2（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息（止盈卖出金额需结合本地基准仓位计算）。输出规范：任何基金一律同时给出 6 位代码与中文全称，不得只报代码。规则对外只有一个总版本号 V6.2（V5.7/V5.8/V6.1 已归档为章节，勿引用旧版本号）。"
   },
   "servers": [
     {
@@ -14,8 +14,8 @@
     "/api/signals.json": {
       "get": {
         "operationId": "getDailySignals",
-        "summary": "获取每日操作信号（V5.7 方向 + V5.8 评级与补仓金额 + V6.1 累计止盈）",
-        "description": "每个交易日收盘后按 V5.7+V5.8+V6.1 计算 21 只基金的次日操作信号：止盈候选（历史位置≥75% 启动累计止盈，按 10/20/35/50/75/95/100% 累计目标补差额，输出本次新增卖出比例）、补仓候选（<50% 各档，含 V5.8 金额链与 2000 元资金池分配，须先过双分位校验）、持有观察；含 A/B/C/D 评级、禁止补仓列表、定投启停与口径分歧警示。止盈卖出金额 = 基准仓位×累计目标−已卖，基准仓位属持仓信息不在本接口。所有基金均同时给出代码与中文名称。",
+        "summary": "获取每日操作信号（V6.2：方向 + 评级补仓金额 + 累计止盈 + 三维估值决策）",
+        "description": "每日收盘后按总规则 V6.2 计算 21 只基金次日信号：止盈候选（≥75% 启动累计止盈，按累计目标补差额）、补仓候选（须先过三关：历史位置<35%、近6月<50%、估值≥7分，未过金额置0）、持有观察；含评级、资金池分配、定投启停与 V6.2 三维评分（历史40%+近6月30%+估值30%）及状态。所有基金均给代码+中文名。",
         "responses": {
           "200": {
             "description": "每日操作方向信号 JSON",
@@ -26,7 +26,7 @@
                   "properties": {
                     "schema": {
                       "type": "string",
-                      "description": "数据结构标识，固定 fund_daily_signals/v3"
+                      "description": "数据结构标识，固定 fund_daily_signals/v4"
                     },
                     "readonly": {
                       "type": "boolean",
@@ -42,7 +42,11 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "所用策略规则版本，当前 V5.7+V5.8+V6.1"
+                      "description": "所用规则总版本号（唯一，当前 V6.2）；V5.7/V5.8/V6.1 已归档为章节，勿引用旧版本号"
+                    },
+                    "version_note": {
+                      "type": "string",
+                      "description": "版本规范说明：只有一个总版本号，由 WorkBuddy 统一发号"
                     },
                     "daily_command": {
                       "type": "string",
@@ -59,6 +63,10 @@
                     "principle_v61": {
                       "type": "string",
                       "description": "V6.1 止盈原则：按累计目标补差额，75% 以上开始兑现利润，95% 以上保护绝大部分利润，创新高退出全部仓位"
+                    },
+                    "principle_v62": {
+                      "type": "string",
+                      "description": "V6.2 补仓原则：禁止看到历史位置低就自动补仓，必须历史位置+近6个月位置+估值三项综合判断"
                     },
                     "scope_note": {
                       "type": "string",
@@ -102,6 +110,17 @@
                     "forbidden_add_list": {
                       "type": "array",
                       "description": "V5.8 禁止/暂停补仓列表（分位虽低但评级 C/D，或连跌≥4 天转复检）",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "valuation_layer_v62": {
+                      "type": "object",
+                      "description": "V6.2 估值价值确认层汇总：三维权重与综合评分公式 / 三关阈值（历史<35%、近6月<50%、估值≥7分）/ 状态阈值 / 估值数据源与覆盖率 / blocked_by_gate 被三关拦截的基金 / case_study_fund 富国红利(100032)案例"
+                    },
+                    "add_blocked_by_valuation_gate": {
+                      "type": "array",
+                      "description": "V6.2 三关未通过而被拦截的补仓候选（含情况 A/B/C/D、综合评分、拦截前计算金额已置 0）",
                       "items": {
                         "type": "object"
                       }
@@ -277,6 +296,10 @@
                             "type": "boolean",
                             "description": "V6.1 六：当前正式净值 > 此前历史最高净值（截至上一交易日）；创新高则累计止盈目标置 100%，剩余 5% 全部卖出"
                           },
+                          "valuation_v62": {
+                            "type": "object",
+                            "description": "V6.2 三维决策层：historical_position_pct/historical_zone/historical_score、six_month_position_pct/six_month_zone/six_month_score、valuation_status/valuation_score（含 PE、PB、股息率与各自历史分位）、gates 三关通过情况、cases 情况 A/B/C/D、composite_score 综合评分（历史40%+近6月30%+估值30%）、status 状态（正常持有/观察/允许补仓/重点补仓/暂停补仓）、reason 原因、valuation_missing 估值是否缺失"
+                          },
                           "take_profit_v61": {
                             "type": "object",
                             "description": "V6.1 累计止盈模块（只含比例，不含任何持仓金额）：tp_status 止盈状态 / tier 档位 / cumulative_target_pct 累计止盈目标 / cumulative_sold_pct 累计已卖 / remaining_target_pct 卖出后剩余仓位 / new_sell_pct_of_base 本次新增卖出占基准仓位 / new_sell_pct_of_remaining 折算为当前剩余持仓卖出比例 / is_new_high / exec_style 执行风格 / base_position_registered 基准仓位是否已登记 / action 本次动作 / note 说明"
@@ -394,11 +417,83 @@
         }
       }
     },
+    "/api/valuation.json": {
+      "get": {
+        "operationId": "getFundValuations",
+        "summary": "获取 21 只基金估值明细（V6.2 第三维：估值价值确认）",
+        "description": "返回每只基金的估值状态、PE、PB、股息率、PE 历史分位、PB 历史分位、估值评分（0~10）、基准指数与匹配质量（exact 精确跟踪 / proxy 近似参考 / na 不适用 / pending 待登记），以及三维评分（历史位置 40% + 近 6 个月位置 30% + 估值 30%）、三关过滤结果与状态判定。债券/固收+/商品基金按规则不适用股票估值体系（na），数据源无对应指数的基金为 pending（估值缺失，第三关不通过）。股息率历史分位暂无数据源，留空待登记。所有基金均同时给出代码与中文名称。",
+        "responses": {
+          "200": {
+            "description": "基金估值明细 JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识，固定 fund_valuation/v1"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读接口，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "as_of_nav_date": {
+                      "type": "string",
+                      "description": "数据最新净值日期"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（唯一，当前 V6.2）"
+                    },
+                    "module": {
+                      "type": "string",
+                      "description": "所属模块：V6.2 第三维 估值价值确认"
+                    },
+                    "data_source": {
+                      "type": "string",
+                      "description": "估值数据来源与本地台账位置"
+                    },
+                    "field_note": {
+                      "type": "string",
+                      "description": "字段缺失说明（股息率历史分位暂无数据源，留空待登记）"
+                    },
+                    "match_levels": {
+                      "type": "object",
+                      "description": "匹配质量分级：exact 精确跟踪 / proxy 近似参考 / na 不适用 / pending 待登记"
+                    },
+                    "valuation_coverage": {
+                      "type": "object",
+                      "description": "各匹配级别的基金数量"
+                    },
+                    "fund_count": {
+                      "type": "integer",
+                      "description": "基金数量"
+                    },
+                    "funds": {
+                      "type": "array",
+                      "description": "逐基金估值明细：基金代码与中文名称、估值状态/来源/日期、PE、PB、股息率、PE 历史分位、PB 历史分位、估值评分、基准指数与匹配质量、三维评分与三关结果、综合评分与状态",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/rules.json": {
       "get": {
         "operationId": "getRules",
-        "summary": "获取基金管理系统策略规则（V5.7+V5.8+V6.1 正本）",
-        "description": "返回策略规则核心阈值（定投开关/V5.8 补仓金额与评级体系/V6.1 累计止盈阶梯与公式/连续下跌复检/复检评分分流）、当前定投计划、待确认参数清单与三份规则全文（full_text V5.7、full_text_v58 V5.8、full_text_v61 V6.1）。每次会话开始应先调用本接口获取最新规则；做止盈判断前必须读取 full_text_v61。",
+        "summary": "获取基金管理系统策略规则（V6.2 正本，唯一版本）",
+        "description": "返回策略规则核心阈值（定投开关/补仓金额与评级体系/累计止盈阶梯与公式/V6.2 三维估值决策与三关过滤/连续下跌复检/复检评分分流）、当前定投计划、待确认参数清单、版本演进表（version_history）与当前生效规则全文 full_text。重要：系统只有一个总版本号 V6.2，V5.7/V5.8/V6.1 已归档为章节，禁止引用旧版本号；full_text 是四份正本合并后的完整当前规则，每次会话开始应先调用本接口并通读 full_text。",
         "responses": {
           "200": {
             "description": "策略规则 JSON（含全文）",
@@ -409,7 +504,7 @@
                   "properties": {
                     "schema": {
                       "type": "string",
-                      "description": "数据结构标识，固定 fund_rules/v1"
+                      "description": "数据结构标识，固定 fund_rules/v2"
                     },
                     "readonly": {
                       "type": "boolean",
@@ -421,7 +516,18 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "规则版本，当前 V5.7+V5.8+V6.1"
+                      "description": "规则总版本号（唯一，当前 V6.2）。系统只有一个版本号，由 WorkBuddy 统一发号；V5.7/V5.8/V6.1 已归档为章节，请勿引用旧版本号"
+                    },
+                    "version_note": {
+                      "type": "string",
+                      "description": "版本规范说明：对外只有一个总版本号"
+                    },
+                    "version_history": {
+                      "type": "array",
+                      "description": "版本演进表（V5.7 → V5.8 → V6.1 → V6.2），仅供追溯，不用于判断",
+                      "items": {
+                        "type": "object"
+                      }
                     },
                     "source_of_truth": {
                       "type": "string",
@@ -456,15 +562,18 @@
                     },
                     "full_text": {
                       "type": "string",
-                      "description": "基金管理系统总规则 V5.7 全文（Markdown）"
+                      "description": "当前生效规则全文（Markdown）：由 V5.7 基础规则 + V5.8 主动补仓与评级 + V6.1 累计止盈 + V6.2 估值价值确认层按章节顺序合并而成，读这一份即可，开头含版本表"
                     },
-                    "full_text_v58": {
-                      "type": "string",
-                      "description": "基金管理系统总规则 V5.8（主动补仓模块 + 动态评级模块）全文（Markdown）"
+                    "rule_chapters": {
+                      "type": "array",
+                      "description": "分章节原文（V5.7/V5.8/V6.1/V6.2），用于按需精读某一章",
+                      "items": {
+                        "type": "object"
+                      }
                     },
-                    "full_text_v61": {
-                      "type": "string",
-                      "description": "基金管理系统总规则 V6.1（历史位置分位累计止盈规则，最终执行版）全文（Markdown）"
+                    "valuation_module_v62": {
+                      "type": "object",
+                      "description": "V6.2 估值价值确认层：三维权重（历史位置40%/近6月位置30%/估值30%）、评分分档、三关阈值（<35%/<50%/估值≥7分）、情况 A/B/C/D、状态阈值与估值评分公式"
                     }
                   }
                 }
