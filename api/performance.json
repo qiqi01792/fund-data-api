@@ -1,7 +1,7 @@
 {
   "schema": "fund-performance/v1",
   "readonly": true,
-  "generated_at": "2026-10-11 17:23:14",
+  "generated_at": "2026-10-11 17:39:54",
   "as_of_nav_date": "2026-10-09",
   "nav_basis": "优先累计净值（分红再投口径），缺失时回退单位净值；逐基金以 nav_basis_used 标注",
   "return_formula": "window_return_pct = (窗口末日调整净值 / 窗口首日调整净值 - 1) × 100",
