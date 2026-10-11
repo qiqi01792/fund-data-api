@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "1.6.1",
-    "description": "21 只公募基金的公开行情数据、定投启停状态与策略规则（只读）。仅含正式单位净值、计算校验数据、按 V5.7 规则计算的定投状态与用户策略规则，不含任何持仓信息。"
+    "version": "1.7.0",
+    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、定投启停状态与策略规则（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息。"
   },
   "servers": [
     {
@@ -11,6 +11,108 @@
     }
   ],
   "paths": {
+    "/api/performance.json": {
+      "get": {
+        "operationId": "getFundPerformance",
+        "summary": "获取全部基金多窗口业绩指标（阶段收益/最大回撤/年化波动率）",
+        "description": "返回 21 只基金在 1m/3m/6m/1y/3y/5y/10y/成立以来 各窗口的阶段收益率、年化收益率、最大回撤（含起止日期）、年化波动率与窗口记录数。基于成立以来完整净值计算，优先累计净值口径（分红再投）。适合评估基金历史表现与风险。",
+        "responses": {
+          "200": {
+            "description": "多窗口业绩指标 JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识，固定 fund-performance/v1"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读接口，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "as_of_nav_date": {
+                      "type": "string",
+                      "description": "数据最新净值日期"
+                    },
+                    "nav_basis": {
+                      "type": "string",
+                      "description": "净值口径说明（优先累计净值）"
+                    },
+                    "return_formula": {
+                      "type": "string",
+                      "description": "阶段收益率公式"
+                    },
+                    "max_drawdown_formula": {
+                      "type": "string",
+                      "description": "最大回撤公式"
+                    },
+                    "volatility_formula": {
+                      "type": "string",
+                      "description": "年化波动率公式"
+                    },
+                    "annualized_formula": {
+                      "type": "string",
+                      "description": "年化收益公式与适用条件"
+                    },
+                    "windows_defined": {
+                      "type": "object",
+                      "description": "窗口定义：各窗口对应的自然日回退天数"
+                    },
+                    "notes": {
+                      "type": "object",
+                      "description": "口径与使用限制说明（窗口回退/缺失日/分红基金/不含持仓）"
+                    },
+                    "funds": {
+                      "type": "array",
+                      "description": "逐基金多窗口业绩指标",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund_code": {
+                            "type": "string",
+                            "description": "基金代码"
+                          },
+                          "fund_name": {
+                            "type": "string",
+                            "description": "基金名称"
+                          },
+                          "nav_basis_used": {
+                            "type": "string",
+                            "description": "该基金使用的净值口径：accumulated_nav（累计净值，分红再投）或 unit_nav"
+                          },
+                          "history_start_date": {
+                            "type": "string",
+                            "description": "成立以来首条净值日期"
+                          },
+                          "history_end_date": {
+                            "type": "string",
+                            "description": "最新净值日期"
+                          },
+                          "records_total": {
+                            "type": "integer",
+                            "description": "成立以来净值记录总数"
+                          },
+                          "windows": {
+                            "type": "object",
+                            "description": "各窗口指标：1m/3m/6m/1y/3y/5y/10y/since_inception，每项含阶段收益率/年化/最大回撤及其起止日/年化波动率/记录数"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/rules.json": {
       "get": {
         "operationId": "getRules",
