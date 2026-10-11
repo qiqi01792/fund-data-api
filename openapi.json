@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "1.8.0",
-    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作方向信号、定投启停状态与策略规则（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息。"
+    "version": "1.9.0",
+    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（V5.8 含评级与补仓金额）、定投启停状态与策略规则 V5.7+V5.8（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息。"
   },
   "servers": [
     {
@@ -14,8 +14,8 @@
     "/api/signals.json": {
       "get": {
         "operationId": "getDailySignals",
-        "summary": "获取每日操作方向信号（按 V5.7 判定止盈候选/补仓候选/持有）",
-        "description": "每个交易日收盘后按 V5.7 规则计算 21 只基金的次日操作方向：止盈候选（历史位置≥75%/90%/95%）、补仓候选（历史位置<50% 各档）、持有观察；并给出上下一个会改变操作的阈值距离、定投启停状态与口径分歧警示。仅方向性信号，不含交易金额。适合每日复盘与次日决策。",
+        "summary": "获取每日操作信号（V5.7 方向 + V5.8 评级与补仓金额）",
+        "description": "每个交易日收盘后按 V5.7+V5.8 计算 21 只基金的次日操作信号：止盈候选（历史位置≥75%/90%/95%）、补仓候选（<50% 各档）、持有观察；含基金质量评分与 A/B/C/D 评级、补仓金额计算链（基础金额×评级×反弹×连跌修正）、2000 元月度资金池优先级分配、禁止补仓列表、定投启停状态与口径分歧警示。金额供执行参考，评级为初评待确认，下单须用户确认。适合每日复盘与次日决策。",
         "responses": {
           "200": {
             "description": "每日操作方向信号 JSON",
@@ -26,7 +26,7 @@
                   "properties": {
                     "schema": {
                       "type": "string",
-                      "description": "数据结构标识，固定 fund_daily_signals/v1"
+                      "description": "数据结构标识，固定 fund_daily_signals/v2"
                     },
                     "readonly": {
                       "type": "boolean",
@@ -42,7 +42,7 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "所用策略规则版本，当前 V5.7"
+                      "description": "所用策略规则版本，当前 V5.7+V5.8"
                     },
                     "daily_command": {
                       "type": "string",
@@ -52,9 +52,13 @@
                       "type": "string",
                       "description": "本接口用途说明"
                     },
+                    "principle_v58": {
+                      "type": "string",
+                      "description": "V5.8 核心原则：分位决定价格，评级决定价值，组合决定金额"
+                    },
                     "scope_note": {
                       "type": "string",
-                      "description": "范围说明：仅方向性信号，不含交易金额"
+                      "description": "范围说明：金额按 V5.8 规则链计算，评级为初评待确认，下单须用户确认"
                     },
                     "basis": {
                       "type": "string",
@@ -75,6 +79,24 @@
                     "caliber_conflicts_count": {
                       "type": "integer",
                       "description": "存在显著口径分歧的基金数量"
+                    },
+                    "monthly_budget": {
+                      "type": "object",
+                      "description": "V5.8 月度补仓资金池：{month, total_budget:2000, used_recorded, remaining_before_today, allocated_today, remaining_after_today}"
+                    },
+                    "add_allocation": {
+                      "type": "array",
+                      "description": "V5.8 资金池分配结果（按 评级>分位>近期跌幅>组合缺口 排序，含 computed_amount/allocated_amount）",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "forbidden_add_list": {
+                      "type": "array",
+                      "description": "V5.8 禁止/暂停补仓列表（分位虽低但评级 C/D，或连跌≥4 天转复检）",
+                      "items": {
+                        "type": "object"
+                      }
                     },
                     "priority_actions": {
                       "type": "array",
@@ -163,6 +185,70 @@
                           "data_status": {
                             "type": "string",
                             "description": "数据核验状态"
+                          },
+                          "fund_type": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金类型"
+                          },
+                          "industry": {
+                            "type": "string",
+                            "description": "V5.8 新增：所属行业/主题"
+                          },
+                          "quality_score": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金质量评分 0~10（当前为初评待用户确认）"
+                          },
+                          "rating": {
+                            "type": "string",
+                            "description": "V5.8 新增：评级 A/B/C/D"
+                          },
+                          "rating_status": {
+                            "type": "string",
+                            "description": "评级确认状态"
+                          },
+                          "score_breakdown": {
+                            "type": "object",
+                            "description": "V5.8 评分拆解：long_term/fund_quality/profitability/risk_control/portfolio_value，各 0~2 分"
+                          },
+                          "add_permission": {
+                            "type": "string",
+                            "description": "V5.8 补仓权限：允许正常补仓 / 减半 / 暂停 / 禁止"
+                          },
+                          "add_base_amount": {
+                            "type": "number",
+                            "description": "V5.8 基础补仓金额（元，按分位档：50/100/200/400/600/800；50%以上为 0）"
+                          },
+                          "add_base_tier": {
+                            "type": "string",
+                            "description": "V5.8 基础金额对应的分位档名称"
+                          },
+                          "add_final_amount": {
+                            "type": "number",
+                            "description": "V5.8 修正后补仓金额（基础×评级×反弹×连跌），未分配资金池前的计算值"
+                          },
+                          "add_amount_note": {
+                            "type": "string",
+                            "description": "金额计算链说明（各修正因子与依据）"
+                          },
+                          "add_allocated_amount": {
+                            "type": "number",
+                            "description": "V5.8 资金池分配后的实际建议金额（仅进入分配序列的 A/B 级补仓候选有值）"
+                          },
+                          "add_priority_rank": {
+                            "type": "integer",
+                            "description": "V5.8 多基金同时触发时的分配优先级（1=最高）"
+                          },
+                          "rebound_from_recent_low_pct": {
+                            "type": "number",
+                            "description": "距近期低点（20 交易日）的反弹幅度 %"
+                          },
+                          "consecutive_fall_days": {
+                            "type": "integer",
+                            "description": "连续下跌交易日数（按最新净值日向前数）"
+                          },
+                          "recent_1m_return_pct": {
+                            "type": "number",
+                            "description": "近约 1 个月（20 交易日）收益率 %，用于近期跌幅排序"
                           },
                           "caliber_check": {
                             "type": "object",
@@ -308,7 +394,7 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "规则版本，当前 V5.7"
+                      "description": "规则版本，当前 V5.7+V5.8"
                     },
                     "source_of_truth": {
                       "type": "string",
@@ -552,6 +638,26 @@
                           "sip_cycle": {
                             "type": "string",
                             "description": "定投周期（仅计划内基金）"
+                          },
+                          "fund_type": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金类型（股票/指数/混合/债券/商品/QDII）"
+                          },
+                          "industry": {
+                            "type": "string",
+                            "description": "V5.8 新增：所属行业/主题"
+                          },
+                          "quality_score": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金质量评分 0~10（5 维度各 0~2；当前为初评待用户确认）"
+                          },
+                          "rating": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金评级 A（8~10 核心资产）/B（6~7.9 观察配置）/C（4~5.9 谨慎持有）/D（<4 禁止补仓）"
+                          },
+                          "rating_status": {
+                            "type": "string",
+                            "description": "评级确认状态（如初评待用户确认）"
                           },
                           "data_status": {
                             "type": "string",
@@ -812,6 +918,26 @@
                           "sip_cycle": {
                             "type": "string",
                             "description": "定投周期（仅计划内基金）"
+                          },
+                          "fund_type": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金类型（股票/指数/混合/债券/商品/QDII）"
+                          },
+                          "industry": {
+                            "type": "string",
+                            "description": "V5.8 新增：所属行业/主题"
+                          },
+                          "quality_score": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金质量评分 0~10（5 维度各 0~2；当前为初评待用户确认）"
+                          },
+                          "rating": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金评级 A（8~10 核心资产）/B（6~7.9 观察配置）/C（4~5.9 谨慎持有）/D（<4 禁止补仓）"
+                          },
+                          "rating_status": {
+                            "type": "string",
+                            "description": "评级确认状态（如初评待用户确认）"
                           },
                           "data_status": {
                             "type": "string",
