@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "1.9.0",
-    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（V5.8 含评级与补仓金额）、定投启停状态与策略规则 V5.7+V5.8（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息。"
+    "version": "2.0.0",
+    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（V5.8 含评级与补仓金额、V6.1 累计止盈含卖出比例）、定投启停状态与策略规则 V5.7+V5.8+V6.1（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息（止盈卖出金额需结合本地基准仓位计算）。"
   },
   "servers": [
     {
@@ -14,8 +14,8 @@
     "/api/signals.json": {
       "get": {
         "operationId": "getDailySignals",
-        "summary": "获取每日操作信号（V5.7 方向 + V5.8 评级与补仓金额）",
-        "description": "每个交易日收盘后按 V5.7+V5.8 计算 21 只基金的次日操作信号：止盈候选（历史位置≥75%/90%/95%）、补仓候选（<50% 各档）、持有观察；含基金质量评分与 A/B/C/D 评级、补仓金额计算链（基础金额×评级×反弹×连跌修正）、2000 元月度资金池优先级分配、禁止补仓列表、定投启停状态与口径分歧警示。金额供执行参考，评级为初评待确认，下单须用户确认。适合每日复盘与次日决策。",
+        "summary": "获取每日操作信号（V5.7 方向 + V5.8 评级与补仓金额 + V6.1 累计止盈）",
+        "description": "每个交易日收盘后按 V5.7+V5.8+V6.1 计算 21 只基金的次日操作信号：止盈候选（历史位置≥75% 启动累计止盈，按 10/20/35/50/75/95/100% 累计目标补差额，输出本次新增卖出比例）、补仓候选（<50% 各档，含 V5.8 金额链与 2000 元资金池分配）、持有观察；含 A/B/C/D 评级、禁止补仓列表、定投启停与口径分歧警示。止盈卖出金额 = 基准仓位×累计目标−已卖，基准仓位属持仓信息不在本接口。",
         "responses": {
           "200": {
             "description": "每日操作方向信号 JSON",
@@ -26,7 +26,7 @@
                   "properties": {
                     "schema": {
                       "type": "string",
-                      "description": "数据结构标识，固定 fund_daily_signals/v2"
+                      "description": "数据结构标识，固定 fund_daily_signals/v3"
                     },
                     "readonly": {
                       "type": "boolean",
@@ -42,7 +42,7 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "所用策略规则版本，当前 V5.7+V5.8"
+                      "description": "所用策略规则版本，当前 V5.7+V5.8+V6.1"
                     },
                     "daily_command": {
                       "type": "string",
@@ -55,6 +55,10 @@
                     "principle_v58": {
                       "type": "string",
                       "description": "V5.8 核心原则：分位决定价格，评级决定价值，组合决定金额"
+                    },
+                    "principle_v61": {
+                      "type": "string",
+                      "description": "V6.1 止盈原则：按累计目标补差额，75% 以上开始兑现利润，95% 以上保护绝大部分利润，创新高退出全部仓位"
                     },
                     "scope_note": {
                       "type": "string",
@@ -79,6 +83,10 @@
                     "caliber_conflicts_count": {
                       "type": "integer",
                       "description": "存在显著口径分歧的基金数量"
+                    },
+                    "take_profit_module_v61": {
+                      "type": "object",
+                      "description": "V6.1 累计止盈模块：start_at_pct 启动线 / formula 本次卖出公式 / ladder 阶梯表（累计目标与本阶段新增卖出）/ proceeds_target 利润锁定池 / counts 统计 / profit_locking_actions 本次应卖出清单（含累计目标、已卖、本次新增卖出比例、剩余仓位、是否创新高、执行风格）"
                     },
                     "monthly_budget": {
                       "type": "object",
@@ -253,6 +261,14 @@
                           "caliber_check": {
                             "type": "object",
                             "description": "单位净值与累计净值口径的位置对比：{unit_nav_position_pct, accumulated_nav_position_pct, divergence_pp}，无数据则 null"
+                          },
+                          "is_new_high": {
+                            "type": "boolean",
+                            "description": "V6.1 六：当前正式净值 > 此前历史最高净值（截至上一交易日）；创新高则累计止盈目标置 100%，剩余 5% 全部卖出"
+                          },
+                          "take_profit_v61": {
+                            "type": "object",
+                            "description": "V6.1 累计止盈模块（只含比例，不含任何持仓金额）：tp_status 止盈状态 / tier 档位 / cumulative_target_pct 累计止盈目标 / cumulative_sold_pct 累计已卖 / remaining_target_pct 卖出后剩余仓位 / new_sell_pct_of_base 本次新增卖出占基准仓位 / new_sell_pct_of_remaining 折算为当前剩余持仓卖出比例 / is_new_high / exec_style 执行风格 / base_position_registered 基准仓位是否已登记 / action 本次动作 / note 说明"
                           }
                         }
                       }
@@ -370,8 +386,8 @@
     "/api/rules.json": {
       "get": {
         "operationId": "getRules",
-        "summary": "获取基金管理系统策略规则（V5.7 正本）",
-        "description": "返回策略规则核心阈值（定投开关/补仓分层/止盈触发/复检评分）、当前定投计划、待确认参数清单与规则全文。每次会话开始应先调用本接口获取最新规则。",
+        "summary": "获取基金管理系统策略规则（V5.7+V5.8+V6.1 正本）",
+        "description": "返回策略规则核心阈值（定投开关/V5.8 补仓金额与评级体系/V6.1 累计止盈阶梯与公式/连续下跌复检/复检评分分流）、当前定投计划、待确认参数清单与三份规则全文（full_text V5.7、full_text_v58 V5.8、full_text_v61 V6.1）。每次会话开始应先调用本接口获取最新规则；做止盈判断前必须读取 full_text_v61。",
         "responses": {
           "200": {
             "description": "策略规则 JSON（含全文）",
@@ -394,7 +410,7 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "规则版本，当前 V5.7+V5.8"
+                      "description": "规则版本，当前 V5.7+V5.8+V6.1"
                     },
                     "source_of_truth": {
                       "type": "string",
@@ -406,7 +422,7 @@
                     },
                     "core_thresholds": {
                       "type": "object",
-                      "description": "核心阈值：智能定投开关（70%停/65%复/65~70%缓冲）、手动补仓分层、连续下跌复检、止盈触发点（75%/90%/95%重复触发）、复检评分分流、新基金试投"
+                      "description": "核心阈值：智能定投开关（70%停/65%复/65~70%缓冲）、V5.8 主动补仓模块与评级体系、连续下跌复检、take_profit_v61 累计止盈模块（75%起按累计目标补差额：10/20/35/50/75/95/100%）、V5.7 止盈触发区间（75%/90%/95%）、复检评分分流、新基金试投"
                     },
                     "active_dca_plan": {
                       "type": "object",
@@ -430,6 +446,14 @@
                     "full_text": {
                       "type": "string",
                       "description": "基金管理系统总规则 V5.7 全文（Markdown）"
+                    },
+                    "full_text_v58": {
+                      "type": "string",
+                      "description": "基金管理系统总规则 V5.8（主动补仓模块 + 动态评级模块）全文（Markdown）"
+                    },
+                    "full_text_v61": {
+                      "type": "string",
+                      "description": "基金管理系统总规则 V6.1（历史位置分位累计止盈规则，最终执行版）全文（Markdown）"
                     }
                   }
                 }
@@ -558,6 +582,18 @@
                           "historical_low_date": {
                             "type": "string",
                             "description": "历史最低净值日期"
+                          },
+                          "previous_high_nav": {
+                            "type": "string",
+                            "description": "此前历史最高单位净值（截至上一交易日，不含最新净值日），V6.1 六用于创新高判定"
+                          },
+                          "previous_high_nav_date": {
+                            "type": "string",
+                            "description": "此前历史最高净值日期"
+                          },
+                          "is_new_high": {
+                            "type": "string",
+                            "description": "是否创新历史新高，true/false：当前正式净值 > 此前历史最高净值"
                           },
                           "six_month_start": {
                             "type": "string",
@@ -838,6 +874,18 @@
                           "historical_low_date": {
                             "type": "string",
                             "description": "历史最低净值日期"
+                          },
+                          "previous_high_nav": {
+                            "type": "string",
+                            "description": "此前历史最高单位净值（截至上一交易日，不含最新净值日），V6.1 六用于创新高判定"
+                          },
+                          "previous_high_nav_date": {
+                            "type": "string",
+                            "description": "此前历史最高净值日期"
+                          },
+                          "is_new_high": {
+                            "type": "string",
+                            "description": "是否创新历史新高，true/false：当前正式净值 > 此前历史最高净值"
                           },
                           "six_month_start": {
                             "type": "string",
