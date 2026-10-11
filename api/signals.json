@@ -1,7 +1,7 @@
 {
   "schema": "fund_daily_signals/v1",
   "readonly": true,
-  "generated_at": "2026-10-11 18:09:09",
+  "generated_at": "2026-10-11 18:13:12",
   "as_of_nav_date": "2026-10-09",
   "rules_version": "V5.7",
   "daily_command": "按基金管理系统复盘",
@@ -67,7 +67,7 @@
       "fund_name": "平安中证卫星产业指数C",
       "signal": "add_position",
       "signal_label": "补仓候选",
-      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
       "historical_position_pct": 0.89,
       "confidence": "high",
       "sip_status": "paused_manual"
@@ -77,7 +77,7 @@
       "fund_name": "华夏上证科创板人工智能ETF联接C",
       "signal": "add_position",
       "signal_label": "补仓候选",
-      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
       "historical_position_pct": 1.81,
       "confidence": "high",
       "sip_status": "paused_manual"
@@ -87,7 +87,7 @@
       "fund_name": "富国中证红利指数增强A",
       "signal": "add_position",
       "signal_label": "补仓候选",
-      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "signal_tier": "5%~10%（大额补仓候选区，必须先做基金质量与风险复检）",
       "historical_position_pct": 5.91,
       "confidence": "low",
       "sip_status": "paused_manual"
@@ -689,14 +689,14 @@
       },
       "signal": "add_position",
       "signal_label": "补仓候选",
-      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
-      "signal_reason": "成立以来历史位置 1.81% 处于补仓分层区间：按 V5.7 第四章评估，补仓前须同时检查基金质量、回撤、行业重复度与可用资金",
+      "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
+      "signal_reason": "成立以来历史位置 1.81% 处于补仓分层区间：按 V5.7 第四章评估，补仓前须同时检查基金质量、回撤、行业重复度与可用资金；该基金处于 <5% 深跌特别档（用户 2026-10-11 新增），须做最严格复核，单次金额与是否加码待参数确认",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
-        "at_pct": 10.0,
-        "distance_pp": 8.19,
-        "effect": "脱离大额补仓候选区，转入10%~20%档"
+        "at_pct": 5.0,
+        "distance_pp": 3.19,
+        "effect": "脱离极深跌区（<5%），转入5%~10%档"
       },
       "next_down": null
     },
@@ -717,14 +717,14 @@
       },
       "signal": "add_position",
       "signal_label": "补仓候选",
-      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
-      "signal_reason": "成立以来历史位置 0.89% 处于补仓分层区间：按 V5.7 第四章评估，补仓前须同时检查基金质量、回撤、行业重复度与可用资金",
+      "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
+      "signal_reason": "成立以来历史位置 0.89% 处于补仓分层区间：按 V5.7 第四章评估，补仓前须同时检查基金质量、回撤、行业重复度与可用资金；该基金处于 <5% 深跌特别档（用户 2026-10-11 新增），须做最严格复核，单次金额与是否加码待参数确认",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
-        "at_pct": 10.0,
-        "distance_pp": 9.11,
-        "effect": "脱离大额补仓候选区，转入10%~20%档"
+        "at_pct": 5.0,
+        "distance_pp": 4.11,
+        "effect": "脱离极深跌区（<5%），转入5%~10%档"
       },
       "next_down": null
     },
@@ -745,7 +745,7 @@
       },
       "signal": "add_position",
       "signal_label": "补仓候选",
-      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "signal_tier": "5%~10%（大额补仓候选区，必须先做基金质量与风险复检）",
       "signal_reason": "成立以来历史位置 5.91% 处于补仓分层区间：按 V5.7 第四章评估，补仓前须同时检查基金质量、回撤、行业重复度与可用资金",
       "confidence": "low",
       "confidence_note": "单位净值口径位置 5.91% 与累计净值口径 97.30% 相差 -91.4 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
@@ -754,7 +754,11 @@
         "distance_pp": 4.09,
         "effect": "脱离大额补仓候选区，转入10%~20%档"
       },
-      "next_down": null
+      "next_down": {
+        "at_pct": 5.0,
+        "distance_pp": 0.91,
+        "effect": "进入深跌特别档（<5% 极端超跌区，须最严格复核，金额待参数确认）"
+      }
     },
     {
       "fund_code": "270042",
