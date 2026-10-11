@@ -150,11 +150,11 @@
                           },
                           "next_up": {
                             "type": "object",
-                            "description": "向上一个会改变操作的阈值：{at_pct, distance_pp, effect}，无则 null"
+                            "description": "向上最近的下一个操作档位：{at_pct, distance_pp, effect}。阶梯含补仓分层（10%/20%/35%/50%）、定投启停（65%/70%）与止盈（75%/90%/95%）全档；处最高止盈档时为 null"
                           },
                           "next_down": {
                             "type": "object",
-                            "description": "向下一个会改变操作的阈值：{at_pct, distance_pp, effect}，无则 null"
+                            "description": "向下最近的下一个操作档位：{at_pct, distance_pp, effect}。阶梯含止盈回落（95%/90%/75%）、定投启停（70%/65%）与补仓分层（50%/35%/20%/10%）全档；处最低档时为 null"
                           },
                           "sip_status": {
                             "type": "string",
