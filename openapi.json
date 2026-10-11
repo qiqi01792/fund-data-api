@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "1.4.0",
-    "description": "21 只公募基金的公开行情数据（只读）。仅含正式单位净值与计算校验数据，不含任何持仓信息。"
+    "version": "1.5.0",
+    "description": "21 只公募基金的公开行情数据与策略规则（只读）。仅含正式单位净值、计算校验数据与用户策略规则，不含任何持仓信息。"
   },
   "servers": [
     {
@@ -11,6 +11,78 @@
     }
   ],
   "paths": {
+    "/api/rules.json": {
+      "get": {
+        "operationId": "getRules",
+        "summary": "获取基金管理系统策略规则（V5.7 正本）",
+        "description": "返回策略规则核心阈值（定投开关/补仓分层/止盈触发/复检评分）、当前定投计划、待确认参数清单与规则全文。每次会话开始应先调用本接口获取最新规则。",
+        "responses": {
+          "200": {
+            "description": "策略规则 JSON（含全文）",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识，固定 fund_rules/v1"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读接口，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则版本，当前 V5.7"
+                    },
+                    "source_of_truth": {
+                      "type": "string",
+                      "description": "规则正本位置说明（WorkBuddy 本地维护）"
+                    },
+                    "daily_command": {
+                      "type": "string",
+                      "description": "每日复盘口令：按基金管理系统复盘"
+                    },
+                    "core_thresholds": {
+                      "type": "object",
+                      "description": "核心阈值：智能定投开关（70%停/65%复/65~70%缓冲）、手动补仓分层、连续下跌复检、止盈触发点（75%/90%/95%重复触发）、复检评分分流、新基金试投"
+                    },
+                    "active_dca_plan": {
+                      "type": "object",
+                      "description": "当前定投计划：周期、周总额、8只基金明细（代码/名称/模式/金额）"
+                    },
+                    "paused_dca": {
+                      "type": "object",
+                      "description": "暂停定投说明与恢复规则"
+                    },
+                    "pending_confirmation": {
+                      "type": "array",
+                      "description": "尚待用户确认的参数清单（未确认项不得编造数值）",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "data_boundary": {
+                      "type": "object",
+                      "description": "数据边界说明（不含持仓金额等敏感信息）"
+                    },
+                    "full_text": {
+                      "type": "string",
+                      "description": "基金管理系统总规则 V5.7 全文（Markdown）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/fund_summary.json": {
       "get": {
         "operationId": "getFundSummary",
