@@ -1,7 +1,7 @@
 {
   "schema": "fund_rules/v1",
   "readonly": true,
-  "generated_at": "2026-10-11 17:23:14",
+  "generated_at": "2026-10-11 17:39:54",
   "rules_version": "V5.7",
   "source_of_truth": "WorkBuddy 本地正本（06_策略规则/基金管理系统总规则_V5.7.md）",
   "daily_command": "按基金管理系统复盘",
