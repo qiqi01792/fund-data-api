@@ -1,24 +1,27 @@
 {
-  "schema": "fund_daily_signals/v3",
+  "schema": "fund_daily_signals/v4",
   "readonly": true,
-  "generated_at": "2026-10-11 19:56:26",
+  "generated_at": "2026-10-11 21:03:03",
   "as_of_nav_date": "2026-10-09",
-  "rules_version": "V5.7+V5.8+V6.1",
+  "rules_version": "V6.2",
   "daily_command": "按基金管理系统复盘",
-  "purpose": "每日收盘后按 V5.7（方向/定投）+ V5.8（评级/补仓金额/资金池）+ V6.1（累计止盈）生成次日操作信号，供用户与 ChatGPT 做次日决策",
+  "purpose": "每日收盘后按 V6.2 总规则（含 V5.7 方向/定投、V5.8 评级与补仓金额、V6.1 累计止盈、V6.2 估值价值确认层）生成次日操作信号，供用户与 ChatGPT 做次日决策",
+  "version_note": "系统只有一个总版本号，由 WorkBuddy 统一发号；V5.7/V5.8/V6.1 已归档为章节，对外不再单列版本号，详见 rules.json 的 version_history",
   "principle_v58": "分位决定价格，评级决定价值，组合决定金额；不因下跌买入，而因优秀资产进入低估区域买入",
   "principle_v61": "止盈按累计目标补差额：本次卖出 = 基准仓位 × 最新累计目标 － 累计已卖，75% 以上开始兑现利润，95% 以上保护绝大部分利润，创新高退出全部仓位",
-  "scope_note": "补仓金额按 V5.8 规则链计算（基础金额×评级修正×反弹修正×连跌修正，月度资金池 2000 元按优先级分配）；补仓须先过 V5.8 附则 A 双分位校验（历史分位 <50% 但近 6 个月分位 ≥60% 视为假低位，不补仓）；止盈按 V6.1 累计制计算，接口只输出比例（累计目标/本次新增卖出比例/剩余仓位），卖出金额由本地结合止盈启动基准仓位计算；评级为初评待用户确认，实际下单须用户确认后在蚂蚁财富执行",
+  "principle_v62": "禁止看到历史位置低就自动补仓：必须历史位置 + 近 6 个月位置 + 估值三项综合判断，避免买在历史低位却买在短期高点，实现低估值、低位置、好节奏三者统一",
+  "scope_note": "补仓金额按 V5.8 规则链计算，但必须先过 V6.2 三关（历史位置 <35%、近 6 个月位置 <50%、估值评分 ≥7），未过者金额强制置 0 且不占用月度资金池；止盈按 V6.1 累计制计算，接口只输出比例（累计目标/本次新增卖出比例/剩余仓位）；评级为初评待用户确认，实际下单须用户确认后在蚂蚁财富执行",
   "basis": "historical_position = 成立以来单位净值区间位置 = (最新净值 - 历史最低) / (历史最高 - 历史最低)，V5.7 第二章口径",
   "not_investment_advice": "本文件为规则化计算结果，不构成投资建议；实际下单须由用户确认后在蚂蚁财富执行",
   "signal_counts": {
     "take_profit_candidate": 4,
-    "add_position_candidate": 2,
-    "hold": 15,
+    "add_position_candidate": 0,
+    "hold": 17,
     "unknown": 0,
     "take_profit_with_new_sell": 4,
     "take_profit_already_satisfied": 0,
-    "blocked_by_six_month_check": 1
+    "blocked_by_six_month_check": 1,
+    "blocked_by_valuation_gate": 3
   },
   "sip_counts": {
     "paused_manual": 13,
@@ -36,8 +39,59 @@
       "rating": "B",
       "quality_score": 7.0,
       "add_base_tier": "5%~10% 极端区域",
-      "computed_add_amount": 300.0,
+      "computed_add_amount": 600.0,
       "reason": "历史分位 5.91% 处于5%~10%（大额补仓候选区，必须先做基金质量与风险复检），但近 6 个月分位 67.50% ≥ 60%：近期处于相对高位，历史低位失真，按 V5.8 附则 A 不补仓"
+    }
+  ],
+  "add_blocked_by_valuation_gate": [
+    {
+      "fund_code": "024412",
+      "fund_name": "华夏上证科创板人工智能ETF联接C",
+      "cases": [
+        "C"
+      ],
+      "status": "观察",
+      "historical_position_pct": 1.81,
+      "six_month_position_pct": 1.81,
+      "valuation_status": "偏高",
+      "valuation_score": 2.1,
+      "composite_score": 6.63,
+      "computed_add_amount_before_gate": 0.0,
+      "add_amount_after_gate": 0.0,
+      "reason": "长期低位但估值评分 2.1 < 7：估值偏贵或基本面变化，不补仓"
+    },
+    {
+      "fund_code": "025491",
+      "fund_name": "平安中证卫星产业指数C",
+      "cases": [
+        "C"
+      ],
+      "status": "观察",
+      "historical_position_pct": 0.89,
+      "six_month_position_pct": 1.28,
+      "valuation_status": "合理",
+      "valuation_score": 6.5,
+      "composite_score": 7.95,
+      "computed_add_amount_before_gate": 0.0,
+      "add_amount_after_gate": 0.0,
+      "reason": "长期低位但估值评分 6.5 < 7：估值偏贵或基本面变化，不补仓"
+    },
+    {
+      "fund_code": "100032",
+      "fund_name": "富国中证红利指数增强A",
+      "cases": [
+        "B",
+        "C"
+      ],
+      "status": "观察",
+      "historical_position_pct": 5.91,
+      "six_month_position_pct": 67.5,
+      "valuation_status": "偏高",
+      "valuation_score": 3.3,
+      "composite_score": 5.79,
+      "computed_add_amount_before_gate": 300.0,
+      "add_amount_after_gate": 0.0,
+      "reason": "长期低位但近 6 个月位置 67.50% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.3 < 7：估值偏贵或基本面变化，不补仓"
     }
   ],
   "take_profit_module_v61": {
@@ -127,7 +181,7 @@
         "remaining_target_pct": 65.0,
         "is_new_high": false,
         "exec_style": "债券/固收+稳定器：不作为主要止盈对象",
-        "base_position_registered": false,
+        "base_position_registered": true,
         "action": "本次应卖出：基准仓位的 35.00%（折算当前剩余持仓的 35.00%）"
       },
       {
@@ -142,7 +196,7 @@
         "remaining_target_pct": 80.0,
         "is_new_high": false,
         "exec_style": "债券基金：稳定器 + 利润锁定池本身，不作为止盈对象（V6.1 九）",
-        "base_position_registered": false,
+        "base_position_registered": true,
         "action": "本次应卖出：基准仓位的 20.00%（折算当前剩余持仓的 20.00%）"
       },
       {
@@ -157,7 +211,7 @@
         "remaining_target_pct": 25.0,
         "is_new_high": false,
         "exec_style": "债券/固收+稳定器：不作为主要止盈对象",
-        "base_position_registered": false,
+        "base_position_registered": true,
         "action": "本次应卖出：基准仓位的 75.00%（折算当前剩余持仓的 75.00%）"
       },
       {
@@ -172,12 +226,117 @@
         "remaining_target_pct": 5.0,
         "is_new_high": false,
         "exec_style": "核心长期：允许稍慢止盈",
-        "base_position_registered": false,
+        "base_position_registered": true,
         "action": "本次应卖出：基准仓位的 95.00%（折算当前剩余持仓的 95.00%）"
       }
     ],
     "base_position_note": "止盈启动基准仓位与累计已卖比例属持仓信息，存于本地台账 02_基金状态台账/take_profit_state.csv，不在本接口传输；本接口只给比例，卖出金额须由本地结合基准仓位计算或由用户提供持仓后计算",
     "caliber_warning": "单位净值与累计净值口径分歧 ≥5pp 的基金（如 100032）标 confidence=low，禁止仅凭单位净值口径执行止盈"
+  },
+  "valuation_layer_v62": {
+    "module": "V6.2 双分位 + 估值价值确认层（补仓决策前置过滤）",
+    "weights": {
+      "historical_position": 0.4,
+      "six_month_position": 0.3,
+      "valuation": 0.3
+    },
+    "composite_formula": "综合评分 = 历史位置评分×40% + 近6个月位置评分×30% + 估值评分×30%",
+    "gates": {
+      "gate1": "历史位置 < 35%",
+      "gate2": "近 6 个月位置 < 50%（≥60% 时按 V5.8 附则 A 完全不补）",
+      "gate3": "估值评分 ≥ 7 分"
+    },
+    "status_thresholds": {
+      "focus_add_at": 8.0,
+      "pause_below": 5.5,
+      "note": "阈值待用户确认（V6.2 附则 A5）"
+    },
+    "valuation_data_source": "蛋卷指数估值接口（PE/PB/PE历史分位/PB历史分位/股息率），经 05_更新程序/fetch_valuation.py 抓取写入 02_基金状态台账/fund_valuation.csv",
+    "valuation_coverage": {
+      "na": 4,
+      "pending": 6,
+      "proxy": 9,
+      "exact": 2
+    },
+    "status_counts": {
+      "正常持有": 18,
+      "观察": 3
+    },
+    "blocked_by_gate": [
+      {
+        "fund_code": "024412",
+        "fund_name": "华夏上证科创板人工智能ETF联接C",
+        "cases": [
+          "C"
+        ],
+        "status": "观察",
+        "historical_position_pct": 1.81,
+        "six_month_position_pct": 1.81,
+        "valuation_status": "偏高",
+        "valuation_score": 2.1,
+        "composite_score": 6.63,
+        "computed_add_amount_before_gate": 0.0,
+        "add_amount_after_gate": 0.0,
+        "reason": "长期低位但估值评分 2.1 < 7：估值偏贵或基本面变化，不补仓"
+      },
+      {
+        "fund_code": "025491",
+        "fund_name": "平安中证卫星产业指数C",
+        "cases": [
+          "C"
+        ],
+        "status": "观察",
+        "historical_position_pct": 0.89,
+        "six_month_position_pct": 1.28,
+        "valuation_status": "合理",
+        "valuation_score": 6.5,
+        "composite_score": 7.95,
+        "computed_add_amount_before_gate": 0.0,
+        "add_amount_after_gate": 0.0,
+        "reason": "长期低位但估值评分 6.5 < 7：估值偏贵或基本面变化，不补仓"
+      },
+      {
+        "fund_code": "100032",
+        "fund_name": "富国中证红利指数增强A",
+        "cases": [
+          "B",
+          "C"
+        ],
+        "status": "观察",
+        "historical_position_pct": 5.91,
+        "six_month_position_pct": 67.5,
+        "valuation_status": "偏高",
+        "valuation_score": 3.3,
+        "composite_score": 5.79,
+        "computed_add_amount_before_gate": 300.0,
+        "add_amount_after_gate": 0.0,
+        "reason": "长期低位但近 6 个月位置 67.50% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.3 < 7：估值偏贵或基本面变化，不补仓"
+      }
+    ],
+    "case_study_fund": {
+      "fund_code": "100032",
+      "fund_name": "富国中证红利指数增强A",
+      "historical_position_pct": 5.91,
+      "historical_zone": "极低区域",
+      "six_month_position_pct": 67.5,
+      "six_month_zone": "近期偏高",
+      "valuation_status": "偏高",
+      "valuation_score": 3.3,
+      "pe": 8.742,
+      "pe_percentile": 0.8348,
+      "pb": 0.8621,
+      "dividend_yield": 0.0424,
+      "composite_score": 5.79,
+      "status": "观察",
+      "cases": [
+        "B",
+        "C"
+      ],
+      "action": "暂停主动补仓",
+      "wait_for": "近 6 个月位置下降至 50% 以下，或出现 10%~15% 回撤，或估值评分回到 7 分以上",
+      "note": "V6.2 八 案例：历史位置低但近期反弹 + 估值偏贵，禁止直接大额补仓，转价值观察仓"
+    },
+    "principle": "禁止看到历史位置低就自动补仓；三项综合判断，避免买在历史低位却买在短期高点"
   },
   "monthly_budget": {
     "month": "2026-10",
@@ -189,24 +348,7 @@
     "note": "used_recorded 来自持仓账本中当月 trade_type=手动补仓/主动补仓 的登记；实际是否扣款以用户确认为准"
   },
   "add_allocation": [],
-  "forbidden_add_list": [
-    {
-      "fund_code": "024412",
-      "fund_name": "华夏上证科创板人工智能ETF联接C",
-      "rating": "C",
-      "quality_score": 5.0,
-      "historical_position_pct": 1.81,
-      "reason": "评级 C 级（5.0 分）：暂停主动补仓（谨慎持有）；虽然分位 1.81% 处于＜5% 历史机会，但按 V5.8 不得主动补仓"
-    },
-    {
-      "fund_code": "025491",
-      "fund_name": "平安中证卫星产业指数C",
-      "rating": "C",
-      "quality_score": 4.0,
-      "historical_position_pct": 0.89,
-      "reason": "评级 C 级（4.0 分）：暂停主动补仓（谨慎持有）；虽然分位 0.89% 处于＜5% 历史机会，但按 V5.8 不得主动补仓"
-    }
-  ],
+  "forbidden_add_list": [],
   "priority_actions": [
     {
       "fund_code": "270042",
@@ -275,40 +417,6 @@
       "tp_status": "止盈阶段",
       "tp_cumulative_target_pct": 20.0,
       "tp_new_sell_pct_of_base": 20.0
-    },
-    {
-      "fund_code": "025491",
-      "fund_name": "平安中证卫星产业指数C",
-      "signal": "add_position",
-      "signal_label": "补仓候选",
-      "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
-      "historical_position_pct": 0.89,
-      "confidence": "high",
-      "sip_status": "paused_manual",
-      "rating": "C",
-      "quality_score": 4.0,
-      "add_final_amount": 0.0,
-      "add_allocated_amount": null,
-      "tp_status": "未启动",
-      "tp_cumulative_target_pct": 0.0,
-      "tp_new_sell_pct_of_base": 0.0
-    },
-    {
-      "fund_code": "024412",
-      "fund_name": "华夏上证科创板人工智能ETF联接C",
-      "signal": "add_position",
-      "signal_label": "补仓候选",
-      "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
-      "historical_position_pct": 1.81,
-      "confidence": "high",
-      "sip_status": "paused_manual",
-      "rating": "C",
-      "quality_score": 5.0,
-      "add_final_amount": 0.0,
-      "add_allocated_amount": null,
-      "tp_status": "未启动",
-      "tp_cumulative_target_pct": 0.0,
-      "tp_new_sell_pct_of_base": 0.0
     }
   ],
   "caliber_conflicts": [
@@ -385,6 +493,45 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 17.45,
+      "valuation_v62": {
+        "historical_position_pct": 65.29,
+        "historical_zone": "偏高区域",
+        "historical_score": 3.0,
+        "six_month_position_pct": 17.45,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "不适用",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "na",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 65.29
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 17.45
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（不适用估值体系）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 5.14,
+        "status": "正常持有",
+        "reason": "历史位置 65.29% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -5.62,
       "rebound_from_recent_low_pct": 1.34,
@@ -454,6 +601,43 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 8.0,
+      "valuation_v62": {
+        "historical_position_pct": 54.0,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 8.0,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "待登记",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "pending",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 54.0
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 8.0
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（待人工登记）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 6.29,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -9.86,
       "rebound_from_recent_low_pct": 3.0,
@@ -517,15 +701,54 @@
         "new_sell_pct_of_remaining": 35.0,
         "is_new_high": false,
         "exec_style": "债券/固收+稳定器：不作为主要止盈对象",
-        "base_position_registered": false,
-        "tp_start_date": "",
+        "base_position_registered": true,
+        "tp_start_date": "2026-10-11",
         "last_tp_time": "",
         "action": "本次应卖出：基准仓位的 35.00%（折算当前剩余持仓的 35.00%）",
-        "note": "本次卖出金额 = 止盈启动基准仓位 × 35.00% － 已卖金额（V6.1 四）；⚠ 台账未登记止盈启动基准仓位（tp_base_position 为空），本接口只给比例；若此前已卖出过部分，请先登记 cumulative_sold_pct，否则会重复卖出已完成的比例",
+        "note": "本次卖出金额 = 止盈启动基准仓位 × 35.00% － 已卖金额（V6.1 四）",
         "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
       },
       "is_new_high": false,
       "six_month_position_pct": 5.11,
+      "valuation_v62": {
+        "historical_position_pct": 86.88,
+        "historical_zone": "高位区域",
+        "historical_score": 1.0,
+        "six_month_position_pct": 5.11,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "不适用",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "na",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 86.88
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 5.11
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（不适用估值体系）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 4.0,
+        "status": "正常持有",
+        "reason": "历史位置 86.88% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -3.27,
       "rebound_from_recent_low_pct": 0.24,
@@ -589,15 +812,54 @@
         "new_sell_pct_of_remaining": 20.0,
         "is_new_high": false,
         "exec_style": "债券基金：稳定器 + 利润锁定池本身，不作为止盈对象（V6.1 九）",
-        "base_position_registered": false,
-        "tp_start_date": "",
+        "base_position_registered": true,
+        "tp_start_date": "2026-10-11",
         "last_tp_time": "",
         "action": "本次应卖出：基准仓位的 20.00%（折算当前剩余持仓的 20.00%）",
-        "note": "本次卖出金额 = 止盈启动基准仓位 × 20.00% － 已卖金额（V6.1 四）；本基金即利润锁定池本身，按 V6.1 九债券基金不作为主要止盈对象，卖出资金回投自身无实际意义，建议维持持有；⚠ 台账未登记止盈启动基准仓位（tp_base_position 为空），本接口只给比例；若此前已卖出过部分，请先登记 cumulative_sold_pct，否则会重复卖出已完成的比例",
+        "note": "本次卖出金额 = 止盈启动基准仓位 × 20.00% － 已卖金额（V6.1 四）；本基金即利润锁定池本身，按 V6.1 九债券基金不作为主要止盈对象，卖出资金回投自身无实际意义，建议维持持有",
         "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
       },
       "is_new_high": false,
       "six_month_position_pct": 13.96,
+      "valuation_v62": {
+        "historical_position_pct": 83.5,
+        "historical_zone": "高位区域",
+        "historical_score": 1.0,
+        "six_month_position_pct": 13.96,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "不适用",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "na",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 83.5
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 13.96
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（不适用估值体系）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 4.0,
+        "status": "正常持有",
+        "reason": "历史位置 83.50% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": 0.23,
       "rebound_from_recent_low_pct": 0.24,
@@ -667,6 +929,44 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 61.16,
+      "valuation_v62": {
+        "historical_position_pct": 72.61,
+        "historical_zone": "偏高区域",
+        "historical_score": 3.0,
+        "six_month_position_pct": 61.16,
+        "six_month_zone": "近期偏高",
+        "six_month_score": 4.0,
+        "valuation_status": "偏高",
+        "valuation_score": 3.3,
+        "benchmark_index_name": "中证红利",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 72.61
+          },
+          "gate2_six_month_not_high": {
+            "pass": false,
+            "threshold_pct": 50.0,
+            "actual_pct": 61.16
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 3.3
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 3.39,
+        "status": "正常持有",
+        "reason": "历史位置 72.61% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -2.65,
       "rebound_from_recent_low_pct": 1.17,
@@ -736,6 +1036,42 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 20.97,
+      "valuation_v62": {
+        "historical_position_pct": 54.8,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 20.97,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "偏高",
+        "valuation_score": 2.6,
+        "benchmark_index_name": "中证电子",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 54.8
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 20.97
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 2.6
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 5.18,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 3,
       "recent_1m_return_pct": -8.56,
       "rebound_from_recent_low_pct": 0.0,
@@ -805,6 +1141,44 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 21.82,
+      "valuation_v62": {
+        "historical_position_pct": 67.04,
+        "historical_zone": "偏高区域",
+        "historical_score": 3.0,
+        "six_month_position_pct": 21.82,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "偏高",
+        "valuation_score": 3.3,
+        "benchmark_index_name": "科技龙头",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 67.04
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 21.82
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 3.3
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 4.59,
+        "status": "正常持有",
+        "reason": "历史位置 67.04% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 3,
       "recent_1m_return_pct": -5.22,
       "rebound_from_recent_low_pct": 0.0,
@@ -874,6 +1248,42 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 10.76,
+      "valuation_v62": {
+        "historical_position_pct": 59.59,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 10.76,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "偏高",
+        "valuation_score": 2.5,
+        "benchmark_index_name": "5G通讯",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 59.59
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 10.76
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 2.5
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 5.15,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 3,
       "recent_1m_return_pct": -7.86,
       "rebound_from_recent_low_pct": 0.0,
@@ -937,15 +1347,54 @@
         "new_sell_pct_of_remaining": 75.0,
         "is_new_high": false,
         "exec_style": "债券/固收+稳定器：不作为主要止盈对象",
-        "base_position_registered": false,
-        "tp_start_date": "",
+        "base_position_registered": true,
+        "tp_start_date": "2026-10-11",
         "last_tp_time": "",
         "action": "本次应卖出：基准仓位的 75.00%（折算当前剩余持仓的 75.00%）",
-        "note": "本次卖出金额 = 止盈启动基准仓位 × 75.00% － 已卖金额（V6.1 四）；⚠ 台账未登记止盈启动基准仓位（tp_base_position 为空），本接口只给比例；若此前已卖出过部分，请先登记 cumulative_sold_pct，否则会重复卖出已完成的比例",
+        "note": "本次卖出金额 = 止盈启动基准仓位 × 75.00% － 已卖金额（V6.1 四）",
         "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
       },
       "is_new_high": false,
       "six_month_position_pct": 35.15,
+      "valuation_v62": {
+        "historical_position_pct": 94.01,
+        "historical_zone": "高位区域",
+        "historical_score": 1.0,
+        "six_month_position_pct": 35.15,
+        "six_month_zone": "正常",
+        "six_month_score": 6.0,
+        "valuation_status": "不适用",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "na",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 94.01
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 35.15
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（不适用估值体系）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 3.14,
+        "status": "正常持有",
+        "reason": "历史位置 94.01% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -0.09,
       "rebound_from_recent_low_pct": 0.14,
@@ -1015,6 +1464,43 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 20.02,
+      "valuation_v62": {
+        "historical_position_pct": 52.23,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 20.02,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "待登记",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "pending",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 52.23
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 20.02
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（待人工登记）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 6.29,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": 0.76,
       "rebound_from_recent_low_pct": 2.66,
@@ -1084,6 +1570,43 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 4.52,
+      "valuation_v62": {
+        "historical_position_pct": 63.98,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 4.52,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "待登记",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "pending",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 63.98
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 4.52
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（待人工登记）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 6.29,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -7.93,
       "rebound_from_recent_low_pct": 1.3,
@@ -1153,6 +1676,44 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 45.87,
+      "valuation_v62": {
+        "historical_position_pct": 69.85,
+        "historical_zone": "偏高区域",
+        "historical_score": 3.0,
+        "six_month_position_pct": 45.87,
+        "six_month_zone": "正常",
+        "six_month_score": 6.0,
+        "valuation_status": "偏高",
+        "valuation_score": 5.1,
+        "benchmark_index_name": "沪深300",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 69.85
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 45.87
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 5.1
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 4.53,
+        "status": "正常持有",
+        "reason": "历史位置 69.85% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -5.54,
       "rebound_from_recent_low_pct": 1.16,
@@ -1222,6 +1783,43 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 11.25,
+      "valuation_v62": {
+        "historical_position_pct": 50.27,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 11.25,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "待登记",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "pending",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 50.27
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 11.25
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（待人工登记）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 6.29,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -6.25,
       "rebound_from_recent_low_pct": 1.05,
@@ -1291,6 +1889,43 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 4.48,
+      "valuation_v62": {
+        "historical_position_pct": 63.24,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 4.48,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "待登记",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "pending",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 63.24
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 4.48
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（待人工登记）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 6.29,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -7.94,
       "rebound_from_recent_low_pct": 1.29,
@@ -1360,6 +1995,42 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 26.11,
+      "valuation_v62": {
+        "historical_position_pct": 57.05,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 26.11,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "偏高",
+        "valuation_score": 2.1,
+        "benchmark_index_name": "科创50",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 57.05
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 26.11
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 2.1
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 5.03,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 3,
       "recent_1m_return_pct": -9.51,
       "rebound_from_recent_low_pct": 0.0,
@@ -1429,6 +2100,44 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 63.32,
+      "valuation_v62": {
+        "historical_position_pct": 71.26,
+        "historical_zone": "偏高区域",
+        "historical_score": 3.0,
+        "six_month_position_pct": 63.32,
+        "six_month_zone": "近期偏高",
+        "six_month_score": 4.0,
+        "valuation_status": "偏高",
+        "valuation_score": 4.2,
+        "benchmark_index_name": "恒生指数",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 71.26
+          },
+          "gate2_six_month_not_high": {
+            "pass": false,
+            "threshold_pct": 50.0,
+            "actual_pct": 63.32
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 4.2
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 3.66,
+        "status": "正常持有",
+        "reason": "历史位置 71.26% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -1.9,
       "rebound_from_recent_low_pct": 1.01,
@@ -1498,6 +2207,43 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 0.0,
+      "valuation_v62": {
+        "historical_position_pct": 50.14,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 0.0,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "待登记",
+        "valuation_score": null,
+        "benchmark_index_name": "",
+        "match_level": "pending",
+        "valuation_missing": true,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 50.14
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 0.0
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": null,
+            "reason": "估值数据缺失（待人工登记）：数据源无对应指数或该类型不适用股票估值体系，按 V6.2 附则 A4 第三关不通过，不得仅凭位置分位补仓"
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [],
+        "composite_score": 6.29,
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 8,
       "recent_1m_return_pct": -7.52,
       "rebound_from_recent_low_pct": 0.0,
@@ -1567,6 +2313,44 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 1.81,
+      "valuation_v62": {
+        "historical_position_pct": 1.81,
+        "historical_zone": "极低区域",
+        "historical_score": 9.0,
+        "six_month_position_pct": 1.81,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "偏高",
+        "valuation_score": 2.1,
+        "benchmark_index_name": "科创50",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": true,
+            "threshold_pct": 35.0,
+            "actual_pct": 1.81
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 1.81
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 2.1
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "C"
+        ],
+        "composite_score": 6.63,
+        "status": "观察",
+        "reason": "长期低位但估值评分 2.1 < 7：估值偏贵或基本面变化，不补仓",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -7.05,
       "rebound_from_recent_low_pct": 0.77,
@@ -1574,16 +2358,16 @@
       "add_base_amount": 800.0,
       "add_base_tier": "＜5% 历史机会",
       "add_final_amount": 0.0,
-      "add_amount_note": "基础 800 元（＜5% 历史机会） × 评级C（暂停主动补仓（谨慎持有），0%）",
+      "add_amount_note": "V6.2 三关未通过：补仓金额强制置 0，不占用月度资金池",
       "caliber_check": {
         "unit_nav_position_pct": 1.81,
         "accumulated_nav_position_pct": 1.81,
         "divergence_pp": 0.0
       },
-      "signal": "add_position",
-      "signal_label": "补仓候选",
-      "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
-      "signal_reason": "成立以来历史位置 1.81%（近 6 个月位置 1.81%）处于补仓分层区间：按 V5.7 第四章评估，V5.8 按评级修正金额（见 add_final_amount 与 add_amount_note）；补仓前须同时检查基金质量、回撤、行业重复度与可用资金；该基金处于 <5% 深跌特别档（用户 2026-10-11 新增），须做最严格复核",
+      "signal": "hold",
+      "signal_label": "不补仓（估值偏贵或未确认）",
+      "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.63，状态「观察」",
+      "signal_reason": "V6.2 三维决策：历史位置 1.81%（极低区域，9 分）+ 近 6 个月位置 1.81%（近期低位，8.0 分）+ 估值 偏高（2.1 分）→ 综合评分 6.63，判定「观察」。长期低位但估值评分 2.1 < 7：估值偏贵或基本面变化，不补仓",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
@@ -1632,6 +2416,44 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 1.28,
+      "valuation_v62": {
+        "historical_position_pct": 0.89,
+        "historical_zone": "极低区域",
+        "historical_score": 9.0,
+        "six_month_position_pct": 1.28,
+        "six_month_zone": "近期低位",
+        "six_month_score": 8.0,
+        "valuation_status": "合理",
+        "valuation_score": 6.5,
+        "benchmark_index_name": "中证军工",
+        "match_level": "proxy",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": true,
+            "threshold_pct": 35.0,
+            "actual_pct": 0.89
+          },
+          "gate2_six_month_not_high": {
+            "pass": true,
+            "threshold_pct": 50.0,
+            "actual_pct": 1.28
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 6.5
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "C"
+        ],
+        "composite_score": 7.95,
+        "status": "观察",
+        "reason": "长期低位但估值评分 6.5 < 7：估值偏贵或基本面变化，不补仓",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 8,
       "recent_1m_return_pct": -7.26,
       "rebound_from_recent_low_pct": 0.0,
@@ -1639,16 +2461,16 @@
       "add_base_amount": 800.0,
       "add_base_tier": "＜5% 历史机会",
       "add_final_amount": 0.0,
-      "add_amount_note": "基础 800 元（＜5% 历史机会） × 评级C（暂停主动补仓（谨慎持有），0%） × 连跌修正 0%（连续下跌第 8 个交易日（>=4）：停止机械补仓，进入基金复检流程）",
+      "add_amount_note": "V6.2 三关未通过：补仓金额强制置 0，不占用月度资金池",
       "caliber_check": {
         "unit_nav_position_pct": 0.89,
         "accumulated_nav_position_pct": 0.89,
         "divergence_pp": -0.0
       },
-      "signal": "add_position",
-      "signal_label": "补仓候选",
-      "signal_tier": "<5%（深跌特别档：极端超跌区，须最严格复核；金额与是否加码待参数确认）",
-      "signal_reason": "成立以来历史位置 0.89%（近 6 个月位置 1.28%）处于补仓分层区间：按 V5.7 第四章评估，V5.8 按评级修正金额（见 add_final_amount 与 add_amount_note）；补仓前须同时检查基金质量、回撤、行业重复度与可用资金；该基金处于 <5% 深跌特别档（用户 2026-10-11 新增），须做最严格复核",
+      "signal": "hold",
+      "signal_label": "不补仓（估值偏贵或未确认）",
+      "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 7.95，状态「观察」",
+      "signal_reason": "V6.2 三维决策：历史位置 0.89%（极低区域，9 分）+ 近 6 个月位置 1.28%（近期低位，8.0 分）+ 估值 合理（6.5 分）→ 综合评分 7.95，判定「观察」。长期低位但估值评分 6.5 < 7：估值偏贵或基本面变化，不补仓",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
@@ -1697,14 +2519,53 @@
       },
       "is_new_high": false,
       "six_month_position_pct": 67.5,
+      "valuation_v62": {
+        "historical_position_pct": 5.91,
+        "historical_zone": "极低区域",
+        "historical_score": 9.0,
+        "six_month_position_pct": 67.5,
+        "six_month_zone": "近期偏高",
+        "six_month_score": 4.0,
+        "valuation_status": "偏高",
+        "valuation_score": 3.3,
+        "benchmark_index_name": "中证红利",
+        "match_level": "exact",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": true,
+            "threshold_pct": 35.0,
+            "actual_pct": 5.91
+          },
+          "gate2_six_month_not_high": {
+            "pass": false,
+            "threshold_pct": 50.0,
+            "actual_pct": 67.5
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 3.3
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "B",
+          "C"
+        ],
+        "composite_score": 5.79,
+        "status": "观察",
+        "reason": "长期低位但近 6 个月位置 67.50% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.3 < 7：估值偏贵或基本面变化，不补仓",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": -0.61,
       "rebound_from_recent_low_pct": 2.52,
       "recent_low_window_days": 20,
       "add_base_amount": 600.0,
       "add_base_tier": "5%~10% 极端区域",
-      "add_final_amount": 300.0,
-      "add_amount_note": "基础 600 元（5%~10% 极端区域） × 评级B（允许补仓但金额减半，50%）",
+      "add_final_amount": 0.0,
+      "add_amount_note": "V6.2 三关未通过：补仓金额强制置 0，不占用月度资金池",
       "caliber_check": {
         "unit_nav_position_pct": 5.91,
         "accumulated_nav_position_pct": 97.3,
@@ -1712,8 +2573,8 @@
       },
       "signal": "hold",
       "signal_label": "持有观察（双分位校验拦截）",
-      "signal_tier": "历史位置 5.91% 属补仓分层，但近 6 个月位置 67.50% ≥ 60%",
-      "signal_reason": "历史位置 5.91% 看似低位，但近 6 个月位置 67.50% 已处于近期区间偏高位：历史低位系分红/折算或久远高点造成的假低位（典型：100032 富国中证红利指数增强A），按 V5.8 附则 A 不主动补仓、不手工补仓，转持有观察；待近 6 个月位置回落至 60% 以下或评级上调后自动恢复候选资格",
+      "signal_tier": "V6.2 三关过滤未通过（B+C）：综合评分 5.79，状态「观察」",
+      "signal_reason": "V6.2 三维决策：历史位置 5.91%（极低区域，9 分）+ 近 6 个月位置 67.50%（近期偏高，4.0 分）+ 估值 偏高（3.3 分）→ 综合评分 5.79，判定「观察」。长期低位但近 6 个月位置 67.50% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.3 < 7：估值偏贵或基本面变化，不补仓",
       "confidence": "low",
       "confidence_note": "单位净值口径位置 5.91% 与累计净值口径 97.30% 相差 -91.4 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
       "next_up": {
@@ -1760,15 +2621,53 @@
         "new_sell_pct_of_remaining": 95.0,
         "is_new_high": false,
         "exec_style": "核心长期：允许稍慢止盈",
-        "base_position_registered": false,
-        "tp_start_date": "",
+        "base_position_registered": true,
+        "tp_start_date": "2026-10-11",
         "last_tp_time": "",
         "action": "本次应卖出：基准仓位的 95.00%（折算当前剩余持仓的 95.00%）",
-        "note": "本次卖出金额 = 止盈启动基准仓位 × 95.00% － 已卖金额（V6.1 四）；95% 区域保留 5% 观察仓防卖飞（V6.1 五）；⚠ 台账未登记止盈启动基准仓位（tp_base_position 为空），本接口只给比例；若此前已卖出过部分，请先登记 cumulative_sold_pct，否则会重复卖出已完成的比例",
+        "note": "本次卖出金额 = 止盈启动基准仓位 × 95.00% － 已卖金额（V6.1 四）；95% 区域保留 5% 观察仓防卖飞（V6.1 五）",
         "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
       },
       "is_new_high": false,
       "six_month_position_pct": 90.15,
+      "valuation_v62": {
+        "historical_position_pct": 98.01,
+        "historical_zone": "高位区域",
+        "historical_score": 1.0,
+        "six_month_position_pct": 90.15,
+        "six_month_zone": "近期上涨明显",
+        "six_month_score": 2.0,
+        "valuation_status": "偏高",
+        "valuation_score": 3.3,
+        "benchmark_index_name": "纳指100",
+        "match_level": "exact",
+        "valuation_missing": false,
+        "gates": {
+          "gate1_historical_low": {
+            "pass": false,
+            "threshold_pct": 35.0,
+            "actual_pct": 98.01
+          },
+          "gate2_six_month_not_high": {
+            "pass": false,
+            "threshold_pct": 50.0,
+            "actual_pct": 90.15
+          },
+          "gate3_valuation_ok": {
+            "pass": false,
+            "threshold_score": 7.0,
+            "actual_score": 3.3
+          }
+        },
+        "gates_all_passed": false,
+        "cases": [
+          "D"
+        ],
+        "composite_score": 1.99,
+        "status": "正常持有",
+        "reason": "历史位置 98.01% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "valuation_detail_endpoint": "/api/valuation.json"
+      },
       "consecutive_fall_days": 0,
       "recent_1m_return_pct": 4.61,
       "rebound_from_recent_low_pct": 5.69,
