@@ -1,0 +1,788 @@
+{
+  "schema": "fund_daily_signals/v1",
+  "readonly": true,
+  "generated_at": "2026-10-11 17:39:54",
+  "as_of_nav_date": "2026-10-09",
+  "rules_version": "V5.7",
+  "daily_command": "按基金管理系统复盘",
+  "purpose": "每日收盘后按 V5.7 生成次日操作方向信号（止盈/补仓/持有 + 定投启停），供用户与 ChatGPT 做次日决策",
+  "scope_note": "仅方向性信号：V5.7 止盈各档卖出比例与补仓各档金额尚未确认，本接口刻意不给金额，不得据此直接下单",
+  "basis": "historical_position = 成立以来单位净值区间位置 = (最新净值 - 历史最低) / (历史最高 - 历史最低)，V5.7 第二章口径",
+  "not_investment_advice": "本文件为规则化计算结果，不构成投资建议；实际下单须由用户确认后在蚂蚁财富执行",
+  "signal_counts": {
+    "take_profit_candidate": 4,
+    "add_position_candidate": 3,
+    "hold": 14,
+    "unknown": 0
+  },
+  "sip_counts": {
+    "paused_manual": 13,
+    "paused_confirmed": 4,
+    "investing": 4
+  },
+  "caliber_conflicts_count": 4,
+  "priority_actions": [
+    {
+      "fund_code": "270042",
+      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "历史位置 ≥95%（止盈第三档，重复触发）",
+      "historical_position_pct": 98.01,
+      "confidence": "high",
+      "sip_status": "paused_manual"
+    },
+    {
+      "fund_code": "010056",
+      "fund_name": "平安瑞兴1年持有期混合A",
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "历史位置 ≥90%（止盈第二档，重复触发）",
+      "historical_position_pct": 94.01,
+      "confidence": "high",
+      "sip_status": "paused_manual"
+    },
+    {
+      "fund_code": "005984",
+      "fund_name": "兴业聚华混合A",
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "历史位置 ≥75%（止盈第一档，重复触发）",
+      "historical_position_pct": 86.88,
+      "confidence": "high",
+      "sip_status": "paused_confirmed"
+    },
+    {
+      "fund_code": "006224",
+      "fund_name": "中银中债3-5年期农发行债券指数A",
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "历史位置 ≥75%（止盈第一档，重复触发）",
+      "historical_position_pct": 83.5,
+      "confidence": "low",
+      "sip_status": "paused_confirmed"
+    },
+    {
+      "fund_code": "025491",
+      "fund_name": "平安中证卫星产业指数C",
+      "signal": "add_position",
+      "signal_label": "补仓候选",
+      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "historical_position_pct": 0.89,
+      "confidence": "high",
+      "sip_status": "paused_manual"
+    },
+    {
+      "fund_code": "024412",
+      "fund_name": "华夏上证科创板人工智能ETF联接C",
+      "signal": "add_position",
+      "signal_label": "补仓候选",
+      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "historical_position_pct": 1.81,
+      "confidence": "high",
+      "sip_status": "paused_manual"
+    },
+    {
+      "fund_code": "100032",
+      "fund_name": "富国中证红利指数增强A",
+      "signal": "add_position",
+      "signal_label": "补仓候选",
+      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "historical_position_pct": 5.91,
+      "confidence": "low",
+      "sip_status": "paused_manual"
+    }
+  ],
+  "caliber_conflicts": [
+    {
+      "fund_code": "004433",
+      "fund_name": "南方有色金属ETF联接C",
+      "unit_nav_position_pct": 54.0,
+      "accumulated_nav_position_pct": 59.05,
+      "divergence_pp": -5.05,
+      "note": "口径分歧显著，操作前必须以累计净值口径人工复核"
+    },
+    {
+      "fund_code": "006224",
+      "fund_name": "中银中债3-5年期农发行债券指数A",
+      "unit_nav_position_pct": 83.5,
+      "accumulated_nav_position_pct": 99.9,
+      "divergence_pp": -16.4,
+      "note": "口径分歧显著，操作前必须以累计净值口径人工复核"
+    },
+    {
+      "fund_code": "022274",
+      "fund_name": "国泰港股红利ETF联接A",
+      "unit_nav_position_pct": 71.26,
+      "accumulated_nav_position_pct": 79.61,
+      "divergence_pp": -8.35,
+      "note": "口径分歧显著，操作前必须以累计净值口径人工复核"
+    },
+    {
+      "fund_code": "100032",
+      "fund_name": "富国中证红利指数增强A",
+      "unit_nav_position_pct": 5.91,
+      "accumulated_nav_position_pct": 97.3,
+      "divergence_pp": -91.39,
+      "note": "口径分歧显著，操作前必须以累计净值口径人工复核"
+    }
+  ],
+  "signals": [
+    {
+      "fund_code": "000218",
+      "fund_name": "国泰黄金ETF联接A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "3.2597",
+      "historical_position": "0.6529",
+      "historical_position_pct": 65.29,
+      "six_month_position": "0.1745",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 65.29,
+        "accumulated_nav_position_pct": 65.29,
+        "divergence_pp": -0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 65.29% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 9.71,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 15.29,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "004433",
+      "fund_name": "南方有色金属ETF联接C",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.5673",
+      "historical_position": "0.5400",
+      "historical_position_pct": 54.0,
+      "six_month_position": "0.0800",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 54.0,
+        "accumulated_nav_position_pct": 59.05,
+        "divergence_pp": -5.05
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 54.00% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "low",
+      "confidence_note": "单位净值口径位置 54.00% 与累计净值口径 59.05% 相差 -5.0 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 21.0,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 4.0,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "005984",
+      "fund_name": "兴业聚华混合A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.6883",
+      "historical_position": "0.8688",
+      "historical_position_pct": 86.88,
+      "six_month_position": "0.0511",
+      "sip_status": "paused_confirmed",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 86.88,
+        "accumulated_nav_position_pct": 87.98,
+        "divergence_pp": -1.1
+      },
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "历史位置 ≥75%（止盈第一档，重复触发）",
+      "signal_reason": "成立以来历史位置 86.88% 已进入止盈区间：按 V5.7 第六章触发分段止盈检查，止盈金额按当前剩余持仓计算，所得资金默认进入 006224 利润锁定池",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 90.0,
+        "distance_pp": 3.12,
+        "effect": "进入止盈第二档（≥90%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 36.88,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "006224",
+      "fund_name": "中银中债3-5年期农发行债券指数A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.1154",
+      "historical_position": "0.8350",
+      "historical_position_pct": 83.5,
+      "six_month_position": "0.1396",
+      "sip_status": "paused_confirmed",
+      "data_status": "待复核",
+      "caliber_check": {
+        "unit_nav_position_pct": 83.5,
+        "accumulated_nav_position_pct": 99.9,
+        "divergence_pp": -16.4
+      },
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "历史位置 ≥75%（止盈第一档，重复触发）",
+      "signal_reason": "成立以来历史位置 83.50% 已进入止盈区间：按 V5.7 第六章触发分段止盈检查，止盈金额按当前剩余持仓计算，所得资金默认进入 006224 利润锁定池",
+      "confidence": "low",
+      "confidence_note": "单位净值口径位置 83.50% 与累计净值口径 99.90% 相差 -16.4 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
+      "next_up": {
+        "at_pct": 90.0,
+        "distance_pp": 6.5,
+        "effect": "进入止盈第二档（≥90%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 33.5,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "006259",
+      "fund_name": "汇添富红利增长混合A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.8788",
+      "historical_position": "0.7261",
+      "historical_position_pct": 72.61,
+      "six_month_position": "0.6116",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 72.61,
+        "accumulated_nav_position_pct": 72.61,
+        "divergence_pp": 0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 72.61% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 2.39,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 22.61,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "007301",
+      "fund_name": "国联安中证全指半导体产品与设备ETF联接C",
+      "nav_date": "2026-10-09",
+      "latest_nav": "3.4931",
+      "historical_position": "0.5480",
+      "historical_position_pct": 54.8,
+      "six_month_position": "0.2097",
+      "sip_status": "investing",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 54.8,
+        "accumulated_nav_position_pct": 54.8,
+        "divergence_pp": 0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 54.80% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 20.2,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 4.8,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "007345",
+      "fund_name": "富国科技创新灵活配置混合",
+      "nav_date": "2026-10-09",
+      "latest_nav": "2.2090",
+      "historical_position": "0.6704",
+      "historical_position_pct": 67.04,
+      "six_month_position": "0.2182",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 67.04,
+        "accumulated_nav_position_pct": 67.04,
+        "divergence_pp": 0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 67.04% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 7.96,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 17.04,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "007817",
+      "fund_name": "国泰中证全指通信设备ETF联接A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "3.3936",
+      "historical_position": "0.5959",
+      "historical_position_pct": 59.59,
+      "six_month_position": "0.1076",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 59.59,
+        "accumulated_nav_position_pct": 59.59,
+        "divergence_pp": -0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 59.59% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 15.41,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 9.59,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "010056",
+      "fund_name": "平安瑞兴1年持有期混合A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.4045",
+      "historical_position": "0.9401",
+      "historical_position_pct": 94.01,
+      "six_month_position": "0.3515",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 94.01,
+        "accumulated_nav_position_pct": 94.01,
+        "divergence_pp": -0.0
+      },
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "历史位置 ≥90%（止盈第二档，重复触发）",
+      "signal_reason": "成立以来历史位置 94.01% 已进入止盈区间：按 V5.7 第六章触发分段止盈检查，止盈金额按当前剩余持仓计算，所得资金默认进入 006224 利润锁定池",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 95.0,
+        "distance_pp": 0.99,
+        "effect": "进入止盈第三档（≥95%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 44.01,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "017481",
+      "fund_name": "博时中证全指电力公用事业ETF联接A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.1809",
+      "historical_position": "0.5223",
+      "historical_position_pct": 52.23,
+      "six_month_position": "0.2002",
+      "sip_status": "investing",
+      "data_status": "待复核",
+      "caliber_check": {
+        "unit_nav_position_pct": 52.23,
+        "accumulated_nav_position_pct": 52.23,
+        "divergence_pp": -0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 52.23% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 22.77,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 2.23,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "017854",
+      "fund_name": "易方达云计算联接C",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.4448",
+      "historical_position": "0.6398",
+      "historical_position_pct": 63.98,
+      "six_month_position": "0.0452",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 63.98,
+        "accumulated_nav_position_pct": 63.98,
+        "divergence_pp": 0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 63.98% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 11.02,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 13.98,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "017999",
+      "fund_name": "中欧融恒平衡混合C",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.3954",
+      "historical_position": "0.6985",
+      "historical_position_pct": 69.85,
+      "six_month_position": "0.4587",
+      "sip_status": "paused_confirmed",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 69.85,
+        "accumulated_nav_position_pct": 72.68,
+        "divergence_pp": -2.83
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 69.85% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 5.15,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 19.85,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "018125",
+      "fund_name": "永赢先进制造智选混合C",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.7567",
+      "historical_position": "0.5027",
+      "historical_position_pct": 50.27,
+      "six_month_position": "0.1125",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 50.27,
+        "accumulated_nav_position_pct": 50.27,
+        "divergence_pp": -0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 50.27% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 24.73,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 0.27,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "019869",
+      "fund_name": "华夏云计算与大数据ETF联接C",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.5037",
+      "historical_position": "0.6324",
+      "historical_position_pct": 63.24,
+      "six_month_position": "0.0448",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 63.24,
+        "accumulated_nav_position_pct": 63.24,
+        "divergence_pp": -0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 63.24% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 11.76,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 13.24,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "020670",
+      "fund_name": "易方达上证科创板芯片ETF联接A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "3.1670",
+      "historical_position": "0.5705",
+      "historical_position_pct": 57.05,
+      "six_month_position": "0.2611",
+      "sip_status": "investing",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 57.05,
+        "accumulated_nav_position_pct": 57.05,
+        "divergence_pp": 0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 57.05% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 17.95,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 7.05,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "022274",
+      "fund_name": "国泰港股红利ETF联接A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.1558",
+      "historical_position": "0.7126",
+      "historical_position_pct": 71.26,
+      "six_month_position": "0.6332",
+      "sip_status": "paused_confirmed",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 71.26,
+        "accumulated_nav_position_pct": 79.61,
+        "divergence_pp": -8.35
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 71.26% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "low",
+      "confidence_note": "单位净值口径位置 71.26% 与累计净值口径 79.61% 相差 -8.3 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 3.74,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 21.26,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "023638",
+      "fund_name": "国泰A股电网设备ETF联接A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "1.5772",
+      "historical_position": "0.5014",
+      "historical_position_pct": 50.14,
+      "six_month_position": "0.0000",
+      "sip_status": "investing",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 50.14,
+        "accumulated_nav_position_pct": 50.14,
+        "divergence_pp": -0.0
+      },
+      "signal": "hold",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 50.14% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 24.86,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 0.14,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    },
+    {
+      "fund_code": "024412",
+      "fund_name": "华夏上证科创板人工智能ETF联接C",
+      "nav_date": "2026-10-09",
+      "latest_nav": "0.9173",
+      "historical_position": "0.0181",
+      "historical_position_pct": 1.81,
+      "six_month_position": "0.0181",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 1.81,
+        "accumulated_nav_position_pct": 1.81,
+        "divergence_pp": 0.0
+      },
+      "signal": "add_position",
+      "signal_label": "补仓候选",
+      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "signal_reason": "成立以来历史位置 1.81% 处于补仓分层区间：按 V5.7 第四章评估，补仓前须同时检查基金质量、回撤、行业重复度与可用资金",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 73.19,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": null
+    },
+    {
+      "fund_code": "025491",
+      "fund_name": "平安中证卫星产业指数C",
+      "nav_date": "2026-10-09",
+      "latest_nav": "0.8400",
+      "historical_position": "0.0089",
+      "historical_position_pct": 0.89,
+      "six_month_position": "0.0128",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 0.89,
+        "accumulated_nav_position_pct": 0.89,
+        "divergence_pp": -0.0
+      },
+      "signal": "add_position",
+      "signal_label": "补仓候选",
+      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "signal_reason": "成立以来历史位置 0.89% 处于补仓分层区间：按 V5.7 第四章评估，补仓前须同时检查基金质量、回撤、行业重复度与可用资金",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 74.11,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": null
+    },
+    {
+      "fund_code": "100032",
+      "fund_name": "富国中证红利指数增强A",
+      "nav_date": "2026-10-09",
+      "latest_nav": "0.9750",
+      "historical_position": "0.0591",
+      "historical_position_pct": 5.91,
+      "six_month_position": "0.6750",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 5.91,
+        "accumulated_nav_position_pct": 97.3,
+        "divergence_pp": -91.39
+      },
+      "signal": "add_position",
+      "signal_label": "补仓候选",
+      "signal_tier": "<10%（大额补仓候选区，必须先做基金质量与风险复检）",
+      "signal_reason": "成立以来历史位置 5.91% 处于补仓分层区间：按 V5.7 第四章评估，补仓前须同时检查基金质量、回撤、行业重复度与可用资金",
+      "confidence": "low",
+      "confidence_note": "单位净值口径位置 5.91% 与累计净值口径 97.30% 相差 -91.4 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
+      "next_up": {
+        "at_pct": 75.0,
+        "distance_pp": 69.09,
+        "effect": "进入止盈第一档（≥75%）"
+      },
+      "next_down": null
+    },
+    {
+      "fund_code": "270042",
+      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
+      "nav_date": "2026-10-08",
+      "latest_nav": "8.4400",
+      "historical_position": "0.9801",
+      "historical_position_pct": 98.01,
+      "six_month_position": "0.9015",
+      "sip_status": "paused_manual",
+      "data_status": "正常",
+      "caliber_check": {
+        "unit_nav_position_pct": 98.01,
+        "accumulated_nav_position_pct": 98.08,
+        "divergence_pp": -0.07
+      },
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "历史位置 ≥95%（止盈第三档，重复触发）",
+      "signal_reason": "成立以来历史位置 98.01% 已进入止盈区间：按 V5.7 第六章触发分段止盈检查，止盈金额按当前剩余持仓计算，所得资金默认进入 006224 利润锁定池",
+      "confidence": "high",
+      "confidence_note": "",
+      "next_up": null,
+      "next_down": {
+        "at_pct": 50.0,
+        "distance_pp": 48.01,
+        "effect": "进入补仓区（35%~50% 轻度主动布局）"
+      }
+    }
+  ]
+}
