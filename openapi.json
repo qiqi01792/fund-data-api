@@ -2,12 +2,12 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（评级与补仓金额、累计止盈比例、三维估值决策）、定投启停状态与策略规则 V6.3（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息（止盈卖出金额需结合本地基准仓位计算）。输出规范：任何基金一律同时给出 6 位代码与中文全称，不得只报代码。规则对外只有一个总版本号 V6.3（V5.7/V5.8/V6.1 已归档为章节，勿引用旧版本号）。"
   },
   "servers": [
     {
-      "url": "https://raw.githubusercontent.com/qiqi01792/fund-data-api/main"
+      "url": "https://fund-data-api.app.workbuddy.host"
     }
   ],
   "paths": {
@@ -484,11 +484,11 @@
     "/api/rules.json": {
       "get": {
         "operationId": "getRules",
-        "summary": "获取基金管理系统策略规则（V6.3 正本，唯一版本）",
-        "description": "返回策略规则核心阈值（定投开关/补仓金额与评级体系/累计止盈阶梯与公式/V6.2 三维估值决策与三关过滤/连续下跌复检/复检评分分流）、当前定投计划、待确认参数清单、版本演进表（version_history）与当前生效规则全文 full_text。重要：系统只有一个总版本号 V6.3，V5.7/V5.8/V6.1 已归档为章节，禁止引用旧版本号；full_text 是四份正本合并后的完整当前规则，每次会话开始应先调用本接口并通读 full_text。",
+        "summary": "获取基金管理系统策略规则（V6.3 正本，唯一版本；正文经分页端点提供）",
+        "description": "返回策略规则核心阈值（定投开关/补仓金额与评级体系/累计止盈阶梯与公式/V6.2 三维估值决策与三关过滤/连续下跌复检/复检评分分流）、当前定投计划、待确认参数清单、版本演进表（version_history），以及规则完整全文的分页索引 full_text_pages。重要：系统只有一个总版本号 V6.3，禁止引用旧版本号；日常决策用本接口即可，需要通读规则原文时先调 getRulesFullTextIndex 再逐页调 getRulesFullTextPage（正文一字不删）。日常更轻量的选择是 getRulesCore。",
         "responses": {
           "200": {
-            "description": "策略规则 JSON（含全文）",
+            "description": "策略规则 JSON（结构化核心 + 全文分页索引）",
             "content": {
               "application/json": {
                 "schema": {
@@ -552,20 +552,216 @@
                       "type": "object",
                       "description": "数据边界说明（不含持仓金额等敏感信息）"
                     },
-                    "full_text": {
-                      "type": "string",
-                      "description": "当前生效规则全文（Markdown）：由 V5.7 基础规则 + V5.8 主动补仓与评级 + V6.1 累计止盈 + V6.2 估值价值确认层按章节顺序合并而成，读这一份即可，开头含版本表"
-                    },
-                    "rule_chapters": {
-                      "type": "array",
-                      "description": "分章节原文（V5.7/V5.8/V6.1/V6.2），用于按需精读某一章",
-                      "items": {
-                        "type": "object"
-                      }
+                    "full_text_pages": {
+                      "type": "object",
+                      "description": "规则完整全文的分页索引：正文一字不删，改存放于 /api/rules_fulltext/page/{n}.json（原因是 ChatGPT 单响应约 100KB 上限）。含 total_pages、每页章节标题与字符数，按 page 1..N 顺序读取即为完整规则全文"
                     },
                     "valuation_module_v62": {
                       "type": "object",
                       "description": "V6.2 估值价值确认层：三维权重（历史位置40%/近6月位置30%/估值30%）、评分分档、三关阈值（<35%/<50%/估值≥7分）、情况 A/B/C/D、状态阈值与估值评分公式"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rules_core.json": {
+      "get": {
+        "operationId": "getRulesCore",
+        "summary": "获取策略规则结构化核心（轻量版，ChatGPT 日常入口）",
+        "description": "返回核心阈值（定投 70%停/65%复、V5.8 六档补仓金额表与评级修正、V6.1 七档累计止盈阶梯与公式、V6.2 三关过滤）、当前定投计划、暂停定投说明、待确认参数清单、V6.2 估值模块与规则全文分页索引。响应约 20KB，适合每次会话开始时调用。需要规则原文时按 full_text_pages 分页读取。",
+        "responses": {
+          "200": {
+            "description": "策略规则结构化核心 JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（rules_core / rules_fulltext 适用）"
+                    },
+                    "signals": {
+                      "type": "array",
+                      "description": "逐基金信号数组（signals_brief 适用），每项含 fund_code/fund_name 与决策字段",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "规则正文内容（rules_fulltext/page 适用，Markdown）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rules_fulltext/index.json": {
+      "get": {
+        "operationId": "getRulesFullTextIndex",
+        "summary": "获取规则完整全文的分页索引（正文一字不删）",
+        "description": "返回规则全文（V6.3 定稿，含 V5.7/V5.8/V6.1/V6.2 历史归档章节与 V6.3 新增章节）的总页数、总字符数与每页章节标题。按 page 1..total_pages 顺序调用 getRulesFullTextPage 即可拼出完整规则全文。",
+        "responses": {
+          "200": {
+            "description": "规则全文分页索引",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（rules_core / rules_fulltext 适用）"
+                    },
+                    "signals": {
+                      "type": "array",
+                      "description": "逐基金信号数组（signals_brief 适用），每项含 fund_code/fund_name 与决策字段",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "规则正文内容（rules_fulltext/page 适用，Markdown）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rules_fulltext/page/{page}.json": {
+      "get": {
+        "operationId": "getRulesFullTextPage",
+        "summary": "获取规则完整全文的指定一页",
+        "description": "按页返回规则原文（Markdown），正文与本地正本一字不差。页码从 1 开始，不超过索引中的 total_pages。每页远小于客户端响应上限。",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "description": "页码数字（文本形式），从 1 开始，不超过 getRulesFullTextIndex 返回的 total_pages",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "规则全文指定页",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（rules_core / rules_fulltext 适用）"
+                    },
+                    "signals": {
+                      "type": "array",
+                      "description": "逐基金信号数组（signals_brief 适用），每项含 fund_code/fund_name 与决策字段",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "规则正文内容（rules_fulltext/page 适用，Markdown）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/signals_brief.json": {
+      "get": {
+        "operationId": "getDailySignalsBrief",
+        "summary": "获取每日操作信号精简版（ChatGPT 日常首选入口，约为完整版 1/4 体积）",
+        "description": "返回与 getDailySignals 相同的 21 只基金次日信号，但剥离长文案：每只基金保留代码+中文名、最新净值与净值日、历史位置%/近6月位置%、信号方向与档位、信号原因、置信度、连跌天数、止盈状态（档位/累计目标/执行状态/动作建议/基准登记）、估值结论（状态/评分/理由/三关总结果）、定投启停；顶层保留信号统计、月度资金池结论、优先动作、口径分歧清单与公开通道边界说明。金额类字段公开通道一律不输出，止盈只给比例。完整版（含全部字段）请用 getDailySignals。",
+        "responses": {
+          "200": {
+            "description": "每日操作信号精简版 JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（rules_core / rules_fulltext 适用）"
+                    },
+                    "signals": {
+                      "type": "array",
+                      "description": "逐基金信号数组（signals_brief 适用），每项含 fund_code/fund_name 与决策字段",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "规则正文内容（rules_fulltext/page 适用，Markdown）"
                     }
                   }
                 }
