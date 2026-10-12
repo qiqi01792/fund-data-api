@@ -1,15 +1,12 @@
 {
   "schema": "fund_daily_signals/v4",
   "readonly": true,
-  "generated_at": "2026-10-12 18:28:30",
+  "generated_at": "2026-10-12 19:08:35",
   "as_of_nav_date": "2026-10-09",
   "rules_version": "V6.3",
   "daily_command": "按基金管理系统复盘",
   "purpose": "每日收盘后按 V6.3 总规则（含 V5.7 方向/定投、V5.8 评级与补仓金额、V6.1/第七章 累计止盈、V6.2 估值价值确认层、第八章 止盈决策强制流程）生成次日操作信号，供用户与 ChatGPT 做次日决策",
   "version_note": "系统只有一个总版本号，由 WorkBuddy 统一发号；V5.7/V5.8/V6.1 已归档为章节，对外不再单列版本号，详见 rules.json 的 version_history",
-  "principle_v58": "分位决定价格，评级决定价值，组合决定金额；不因下跌买入，而因优秀资产进入低估区域买入",
-  "principle_v61": "止盈按累计目标补差额：本次卖出 = 基准仓位 × 最新累计目标 － 累计已卖，75% 以上开始兑现利润，95% 以上保护绝大部分利润，创新高退出全部仓位",
-  "principle_v62": "禁止看到历史位置低就自动补仓：必须历史位置 + 近 6 个月位置 + 估值三项综合判断，避免买在历史低位却买在短期高点，实现低估值、低位置、好节奏三者统一",
   "scope_note": "补仓金额按 V5.8 规则链计算，但必须先过 V6.2 三关（历史位置 <35%、近 6 个月位置 <50%、估值评分 ≥7），未过者金额强制置 0 且不占用月度资金池；止盈按 V6.1 累计制计算，接口只输出比例（累计目标/本次新增卖出比例/剩余仓位）；评级为初评待用户确认，实际下单须用户确认后在蚂蚁财富执行",
   "public_channel_boundary": "2026-10-12 C2 决定：公开通道只输出结论，不输出账户相关金额。已移除 add_base_amount / add_final_amount / add_allocated_amount / computed_amount / allocated_amount 及月度资金池的已用、剩余、当日分配金额；保留历史位置、补仓档位（add_base_tier）、补仓资格、建议原因、是否超预算等结论性字段。这不修改 V5.8 补仓金额规则、2000 元月池或 V6.1 七档止盈目标——金额照旧计算，完整金额见本地清单 08_每日操作清单 与私有持仓通道 getHoldings。公开通道同时不输出任何持仓份额、成本、市值与收益。",
   "basis": "historical_position = 成立以来单位净值区间位置 = (最新净值 - 历史最低) / (历史最高 - 历史最低)，V5.7 第二章口径",
@@ -41,51 +38,6 @@
       "quality_score": 7.0,
       "add_base_tier": "5%~10% 极端区域",
       "reason": "历史分位 5.91% 处于5%~10%（大额补仓候选区，必须先做基金质量与风险复检），但近 6 个月分位 67.50% ≥ 60%：近期处于相对高位，历史低位失真，按 V5.8 附则 A 不补仓"
-    }
-  ],
-  "add_blocked_by_valuation_gate": [
-    {
-      "fund_code": "024412",
-      "fund_name": "华夏上证科创板人工智能ETF联接C",
-      "cases": [
-        "C"
-      ],
-      "status": "观察",
-      "historical_position_pct": 1.81,
-      "six_month_position_pct": 1.81,
-      "valuation_status": "偏高",
-      "valuation_score": 2.1,
-      "composite_score": 6.63,
-      "reason": "长期低位但估值评分 2.1 < 7：估值偏贵或基本面变化，不补仓"
-    },
-    {
-      "fund_code": "025491",
-      "fund_name": "平安中证卫星产业指数C",
-      "cases": [
-        "C"
-      ],
-      "status": "观察",
-      "historical_position_pct": 0.89,
-      "six_month_position_pct": 1.28,
-      "valuation_status": "合理",
-      "valuation_score": 6.5,
-      "composite_score": 7.95,
-      "reason": "长期低位但估值评分 6.5 < 7：估值偏贵或基本面变化，不补仓"
-    },
-    {
-      "fund_code": "100032",
-      "fund_name": "富国中证红利指数增强A",
-      "cases": [
-        "B",
-        "C"
-      ],
-      "status": "观察",
-      "historical_position_pct": 5.91,
-      "six_month_position_pct": 67.5,
-      "valuation_status": "偏高",
-      "valuation_score": 3.3,
-      "composite_score": 5.79,
-      "reason": "长期低位但近 6 个月位置 67.50% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.3 < 7：估值偏贵或基本面变化，不补仓"
     }
   ],
   "take_profit_module_v61": {
@@ -460,8 +412,7 @@
         "is_new_high": false,
         "exec_style": "商品基金：结合商品周期与历史极值执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 17.45,
@@ -509,7 +460,6 @@
       "rebound_from_recent_low_pct": 1.34,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 65.29,
         "accumulated_nav_position_pct": 65.29,
@@ -565,8 +515,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 8.0,
@@ -612,7 +561,6 @@
       "rebound_from_recent_low_pct": 3.0,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 54.0,
         "accumulated_nav_position_pct": 59.05,
@@ -671,9 +619,7 @@
         "tp_exec_status": "deferred_review",
         "tp_start_date": "2026-10-11",
         "last_tp_time": "",
-        "action": "本次应卖出：基准仓位的 35.00%（折算当前剩余持仓的 35.00%）",
-        "note": "本次卖出金额 = 止盈启动基准仓位 × 35.00% － 已卖金额（V6.1 四）",
-        "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
+        "action": "本次应卖出：基准仓位的 35.00%（折算当前剩余持仓的 35.00%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 5.11,
@@ -721,7 +667,6 @@
       "rebound_from_recent_low_pct": 0.24,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 86.88,
         "accumulated_nav_position_pct": 87.98,
@@ -780,9 +725,7 @@
         "tp_exec_status": "deferred_review",
         "tp_start_date": "2026-10-11",
         "last_tp_time": "",
-        "action": "本次应卖出：基准仓位的 20.00%（折算当前剩余持仓的 20.00%）",
-        "note": "本次卖出金额 = 止盈启动基准仓位 × 20.00% － 已卖金额（V6.1 四）；本基金即利润锁定池本身，按 V6.1 九债券基金不作为主要止盈对象，卖出资金回投自身无实际意义，建议维持持有",
-        "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
+        "action": "本次应卖出：基准仓位的 20.00%（折算当前剩余持仓的 20.00%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 13.96,
@@ -830,7 +773,6 @@
       "rebound_from_recent_low_pct": 0.24,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 83.5,
         "accumulated_nav_position_pct": 99.9,
@@ -886,8 +828,7 @@
         "is_new_high": false,
         "exec_style": "核心长期：允许稍慢止盈",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 61.16,
@@ -934,7 +875,6 @@
       "rebound_from_recent_low_pct": 1.17,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 72.61,
         "accumulated_nav_position_pct": 72.61,
@@ -990,8 +930,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 20.97,
@@ -1036,7 +975,6 @@
       "rebound_from_recent_low_pct": 0.0,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 54.8,
         "accumulated_nav_position_pct": 54.8,
@@ -1092,8 +1030,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 21.82,
@@ -1140,7 +1077,6 @@
       "rebound_from_recent_low_pct": 0.0,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 67.04,
         "accumulated_nav_position_pct": 67.04,
@@ -1196,8 +1132,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 10.76,
@@ -1242,7 +1177,6 @@
       "rebound_from_recent_low_pct": 0.0,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 59.59,
         "accumulated_nav_position_pct": 59.59,
@@ -1301,9 +1235,7 @@
         "tp_exec_status": "triggered_pending_decision",
         "tp_start_date": "2026-10-11",
         "last_tp_time": "",
-        "action": "本次应卖出：基准仓位的 75.00%（折算当前剩余持仓的 75.00%）",
-        "note": "本次卖出金额 = 止盈启动基准仓位 × 75.00% － 已卖金额（V6.1 四）",
-        "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
+        "action": "本次应卖出：基准仓位的 75.00%（折算当前剩余持仓的 75.00%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 35.15,
@@ -1351,7 +1283,6 @@
       "rebound_from_recent_low_pct": 0.14,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 94.01,
         "accumulated_nav_position_pct": 94.01,
@@ -1407,8 +1338,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 20.02,
@@ -1454,7 +1384,6 @@
       "rebound_from_recent_low_pct": 2.66,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 52.23,
         "accumulated_nav_position_pct": 52.23,
@@ -1510,8 +1439,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 4.52,
@@ -1557,7 +1485,6 @@
       "rebound_from_recent_low_pct": 1.3,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 63.98,
         "accumulated_nav_position_pct": 63.98,
@@ -1613,8 +1540,7 @@
         "is_new_high": false,
         "exec_style": "核心长期：允许稍慢止盈",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 45.87,
@@ -1661,7 +1587,6 @@
       "rebound_from_recent_low_pct": 1.16,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 69.85,
         "accumulated_nav_position_pct": 72.68,
@@ -1717,8 +1642,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 11.25,
@@ -1764,7 +1688,6 @@
       "rebound_from_recent_low_pct": 1.05,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 50.27,
         "accumulated_nav_position_pct": 50.27,
@@ -1820,8 +1743,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 4.48,
@@ -1867,7 +1789,6 @@
       "rebound_from_recent_low_pct": 1.29,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 63.24,
         "accumulated_nav_position_pct": 63.24,
@@ -1923,8 +1844,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 26.11,
@@ -1969,7 +1889,6 @@
       "rebound_from_recent_low_pct": 0.0,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 57.05,
         "accumulated_nav_position_pct": 57.05,
@@ -2025,8 +1944,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 63.32,
@@ -2073,7 +1991,6 @@
       "rebound_from_recent_low_pct": 1.01,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 71.26,
         "accumulated_nav_position_pct": 79.61,
@@ -2129,8 +2046,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 0.0,
@@ -2176,7 +2092,6 @@
       "rebound_from_recent_low_pct": 0.0,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 50.14,
         "accumulated_nav_position_pct": 50.14,
@@ -2232,8 +2147,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 1.81,
@@ -2280,7 +2194,6 @@
       "rebound_from_recent_low_pct": 0.77,
       "recent_low_window_days": 20,
       "add_base_tier": "＜5% 历史机会",
-      "add_amount_note": "V6.2 三关未通过：补仓金额强制置 0，不占用月度资金池",
       "caliber_check": {
         "unit_nav_position_pct": 1.81,
         "accumulated_nav_position_pct": 1.81,
@@ -2332,8 +2245,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 1.28,
@@ -2380,7 +2292,6 @@
       "rebound_from_recent_low_pct": 0.0,
       "recent_low_window_days": 20,
       "add_base_tier": "＜5% 历史机会",
-      "add_amount_note": "V6.2 三关未通过：补仓金额强制置 0，不占用月度资金池",
       "caliber_check": {
         "unit_nav_position_pct": 0.89,
         "accumulated_nav_position_pct": 0.89,
@@ -2432,8 +2343,7 @@
         "is_new_high": false,
         "exec_style": "高波动行业：严格执行",
         "base_position_registered": false,
-        "action": "不启动止盈（历史位置 < 75%）",
-        "note": "低位积累筹码，中位继续持有"
+        "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
       "six_month_position_pct": 67.5,
@@ -2481,7 +2391,6 @@
       "rebound_from_recent_low_pct": 2.52,
       "recent_low_window_days": 20,
       "add_base_tier": "5%~10% 极端区域",
-      "add_amount_note": "V6.2 三关未通过：补仓金额强制置 0，不占用月度资金池",
       "caliber_check": {
         "unit_nav_position_pct": 5.91,
         "accumulated_nav_position_pct": 97.3,
@@ -2540,9 +2449,7 @@
         "tp_exec_status": "verification_required",
         "tp_start_date": "2026-10-11",
         "last_tp_time": "2026-10-12",
-        "action": "本次不新增卖出：已完成比例已达/超过当前累计目标 95.00%，按 V6.1 七不重复卖",
-        "note": "累计已卖超过当前目标（可能分位回落或已手动卖出）：不再卖出，等分位继续上行补足目标",
-        "proceeds_target": "006224 中银中债3-5年期农发行债券指数A（利润锁定池（降低波动/保存利润/熊市补仓资金/等待下一轮机会））"
+        "action": "本次不新增卖出：已完成比例已达/超过当前累计目标 95.00%，按 V6.1 七不重复卖"
       },
       "is_new_high": false,
       "six_month_position_pct": 90.15,
@@ -2589,7 +2496,6 @@
       "rebound_from_recent_low_pct": 5.69,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
-      "add_amount_note": "补仓金额按 V5.8 六档金额表 × 评级修正 × 反弹修正 × 连跌修正计算；具体金额属账户资金安排，仅本地清单与私有通道输出（2026-10-12 C2 公开通道边界）",
       "caliber_check": {
         "unit_nav_position_pct": 98.01,
         "accumulated_nav_position_pct": 98.08,
@@ -2608,5 +2514,6 @@
         "effect": "回落至止盈第二档区间"
       }
     }
-  ]
+  ],
+  "signal_slim_note": "本文件已瘦身（2026-10-12）：逐基金长文案（止盈 note/资金去向/补仓金额说明）已删除，决策字段全部保留；ChatGPT 请优先调用 /api/signals_brief.json。"
 }
