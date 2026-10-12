@@ -1,21 +1,28 @@
 {
   "schema": "rules_fulltext_index/v1",
   "readonly": true,
-  "generated_at": "2026-10-12 19:13:55",
+  "generated_at": "2026-10-12 19:41:06",
   "rules_version": "V6.3",
-  "total_pages": 2,
+  "total_pages": 3,
   "total_chars": 41009,
   "source": "WorkBuddy 本地正本：06_策略规则/基金管理系统总规则_V6.3.md（合并定稿，唯一来源）+ 版本说明.md",
   "pages": [
     {
       "page": 1,
       "chapter": "全文头部（版本表与说明）",
-      "chars": 34606,
+      "chars": 18087,
       "start_char": 0,
-      "end_char": 34606
+      "end_char": 18087
     },
     {
       "page": 2,
+      "chapter": "全文头部（版本表与说明）",
+      "chars": 16518,
+      "start_char": 18088,
+      "end_char": 34606
+    },
+    {
+      "page": 3,
       "chapter": "章节间衔接部分",
       "chars": 6402,
       "start_char": 34607,
