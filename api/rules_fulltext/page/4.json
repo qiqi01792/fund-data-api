@@ -1,0 +1,8 @@
+{
+  "schema": "deprecated_placeholder/v1",
+  "deprecated": true,
+  "page": 4,
+  "note": "本页已废弃（原 2026-10-12 早期按章节切分的分页残留）。规则全文已于 2026-10-12 19:40 改为按 full_text 逐行重新切分，当前总页数请以 /api/rules_fulltext/index.json 的 total_pages 为准（当前 3 页）。本文件仅为覆盖历史残留、防止误读，不属于规则正文，请勿用于拼接规则全文。",
+  "superseded_at": "2026-10-12 19:40",
+  "read_instead": "/api/rules_fulltext/index.json"
+}
