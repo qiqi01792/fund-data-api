@@ -1,0 +1,958 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "基金数据只读接口（ChatGPT 专用精简版）",
+    "version": "2.4.0",
+    "description": "本文件是 ChatGPT 专用精简 schema，只暴露 9 个安全端点；完整版（13 个端点，含全部接口）见 /openapi.json，供网页版与其他消费者使用。已从本文件物理移除的端点：getFundNavSeriesAll（响应约 839KB，必超单响应上限）、getDailySignals（约 94KB，贴线）、getRules（与 rules_core/分页重复）、getFundValuations（估值结论已在 getDailySignalsBrief 内）。【建议调用顺序】①每次会话开始：getRulesCore（约 20KB，核心阈值与待确认参数）→ getDailySignalsBrief（约 41KB，21 只基金次日信号与档位）；②需要规则原文：getRulesFullTextIndex → 按 total_pages 逐页 getRulesFullTextPage（正文一字不差）；③需要净值/分位：getFundSummary；④需要成立以来历史：getFundHistoryIndex → getFundHistoryPage；⑤需要近 1 年序列：getFundNavSeriesByCode；⑥需要多窗口业绩：getFundPerformance。【硬约束】本接口只读，不含任何持仓金额/份额/成本；止盈只给比例，卖出金额须结合私有持仓接口。任何基金一律同时给出 6 位代码与中文全称。规则只有一个总版本号 V6.3。"
+  },
+  "servers": [
+    {
+      "url": "https://fund-data-api.app.workbuddy.host"
+    }
+  ],
+  "paths": {
+    "/api/performance.json": {
+      "get": {
+        "operationId": "getFundPerformance",
+        "summary": "获取全部基金多窗口业绩指标（阶段收益/最大回撤/年化波动率）",
+        "description": "返回 21 只基金在 1m/3m/6m/1y/3y/5y/10y/成立以来 各窗口的阶段收益率、年化收益率、最大回撤（含起止日期）、年化波动率与窗口记录数。基于成立以来完整净值计算，优先累计净值口径（分红再投）。适合评估基金历史表现与风险。",
+        "responses": {
+          "200": {
+            "description": "多窗口业绩指标 JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识，固定 fund-performance/v1"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读接口，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "as_of_nav_date": {
+                      "type": "string",
+                      "description": "数据最新净值日期"
+                    },
+                    "nav_basis": {
+                      "type": "string",
+                      "description": "净值口径说明（优先累计净值）"
+                    },
+                    "return_formula": {
+                      "type": "string",
+                      "description": "阶段收益率公式"
+                    },
+                    "max_drawdown_formula": {
+                      "type": "string",
+                      "description": "最大回撤公式"
+                    },
+                    "volatility_formula": {
+                      "type": "string",
+                      "description": "年化波动率公式"
+                    },
+                    "annualized_formula": {
+                      "type": "string",
+                      "description": "年化收益公式与适用条件"
+                    },
+                    "windows_defined": {
+                      "type": "object",
+                      "description": "窗口定义：各窗口对应的自然日回退天数"
+                    },
+                    "notes": {
+                      "type": "object",
+                      "description": "口径与使用限制说明（窗口回退/缺失日/分红基金/不含持仓）"
+                    },
+                    "funds": {
+                      "type": "array",
+                      "description": "逐基金多窗口业绩指标",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund_code": {
+                            "type": "string",
+                            "description": "基金代码"
+                          },
+                          "fund_name": {
+                            "type": "string",
+                            "description": "基金名称"
+                          },
+                          "nav_basis_used": {
+                            "type": "string",
+                            "description": "该基金使用的净值口径：accumulated_nav（累计净值，分红再投）或 unit_nav"
+                          },
+                          "history_start_date": {
+                            "type": "string",
+                            "description": "成立以来首条净值日期"
+                          },
+                          "history_end_date": {
+                            "type": "string",
+                            "description": "最新净值日期"
+                          },
+                          "records_total": {
+                            "type": "integer",
+                            "description": "成立以来净值记录总数"
+                          },
+                          "windows": {
+                            "type": "object",
+                            "description": "各窗口指标：1m/3m/6m/1y/3y/5y/10y/since_inception，每项含阶段收益率/年化/最大回撤及其起止日/年化波动率/记录数"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rules_core.json": {
+      "get": {
+        "operationId": "getRulesCore",
+        "summary": "获取策略规则结构化核心（轻量版，ChatGPT 日常入口）",
+        "description": "返回核心阈值（定投 70%停/65%复、V5.8 六档补仓金额表与评级修正、V6.1 七档累计止盈阶梯与公式、V6.2 三关过滤）、当前定投计划、暂停定投说明、待确认参数清单、V6.2 估值模块与规则全文分页索引。响应约 20KB，适合每次会话开始时调用。需要规则原文时按 full_text_pages 分页读取。",
+        "responses": {
+          "200": {
+            "description": "策略规则结构化核心 JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（rules_core / rules_fulltext 适用）"
+                    },
+                    "signals": {
+                      "type": "array",
+                      "description": "逐基金信号数组（signals_brief 适用），每项含 fund_code/fund_name 与决策字段",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "规则正文内容（rules_fulltext/page 适用，Markdown）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rules_fulltext/index.json": {
+      "get": {
+        "operationId": "getRulesFullTextIndex",
+        "summary": "获取规则完整全文的分页索引（正文一字不删）",
+        "description": "返回规则全文（V6.3 定稿，含 V5.7/V5.8/V6.1/V6.2 历史归档章节与 V6.3 新增章节）的总页数、总字符数与每页章节标题。按 page 1..total_pages 顺序调用 getRulesFullTextPage 即可拼出完整规则全文。",
+        "responses": {
+          "200": {
+            "description": "规则全文分页索引",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（rules_core / rules_fulltext 适用）"
+                    },
+                    "signals": {
+                      "type": "array",
+                      "description": "逐基金信号数组（signals_brief 适用），每项含 fund_code/fund_name 与决策字段",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "规则正文内容（rules_fulltext/page 适用，Markdown）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rules_fulltext/page/{page}.json": {
+      "get": {
+        "operationId": "getRulesFullTextPage",
+        "summary": "获取规则完整全文的指定一页",
+        "description": "按页返回规则原文（Markdown），正文与本地正本一字不差。页码从 1 开始，不超过索引中的 total_pages。每页远小于客户端响应上限。",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "description": "页码数字（文本形式），从 1 开始，不超过 getRulesFullTextIndex 返回的 total_pages",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "规则全文指定页",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（rules_core / rules_fulltext 适用）"
+                    },
+                    "signals": {
+                      "type": "array",
+                      "description": "逐基金信号数组（signals_brief 适用），每项含 fund_code/fund_name 与决策字段",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "规则正文内容（rules_fulltext/page 适用，Markdown）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/signals_brief.json": {
+      "get": {
+        "operationId": "getDailySignalsBrief",
+        "summary": "获取每日操作信号精简版（ChatGPT 日常首选入口，约为完整版 1/4 体积）",
+        "description": "返回与 getDailySignals 相同的 21 只基金次日信号，但剥离长文案：每只基金保留代码+中文名、最新净值与净值日、历史位置%/近6月位置%、信号方向与档位、信号原因、置信度、连跌天数、止盈状态（档位/累计目标/执行状态/动作建议/基准登记）、估值结论（状态/评分/理由/三关总结果）、定投启停；顶层保留信号统计、月度资金池结论、优先动作、口径分歧清单与公开通道边界说明。金额类字段公开通道一律不输出，止盈只给比例。完整版（含全部字段）请用 getDailySignals。",
+        "responses": {
+          "200": {
+            "description": "每日操作信号精简版 JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "rules_version": {
+                      "type": "string",
+                      "description": "规则总版本号（rules_core / rules_fulltext 适用）"
+                    },
+                    "signals": {
+                      "type": "array",
+                      "description": "逐基金信号数组（signals_brief 适用），每项含 fund_code/fund_name 与决策字段",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "规则正文内容（rules_fulltext/page 适用，Markdown）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/fund_summary.json": {
+      "get": {
+        "operationId": "getFundSummary",
+        "summary": "获取全部基金汇总数据（最新净值、历史与近六个月高低点、近期低点、区间位置、异常记录）",
+        "description": "返回 21 只基金的汇总字段、分位计算公式、数据限制说明与异常记录。不含逐日净值序列。",
+        "responses": {
+          "200": {
+            "description": "JSON 汇总数据",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读接口，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "snapshot_date": {
+                      "type": "string",
+                      "description": "快照生成日期"
+                    },
+                    "as_of_nav_date": {
+                      "type": "string",
+                      "description": "数据实际最新净值日期"
+                    },
+                    "has_new_nav_on_snapshot_date": {
+                      "type": "boolean",
+                      "description": "快照日当天是否已有新净值"
+                    },
+                    "fund_count": {
+                      "type": "integer",
+                      "description": "基金数量"
+                    },
+                    "nav_scope": {
+                      "type": "string",
+                      "description": "对外净值序列范围，固定 near_1y（近 1 年）"
+                    },
+                    "nav_series_days": {
+                      "type": "integer",
+                      "description": "对外净值序列窗口天数"
+                    },
+                    "data_source": {
+                      "type": "string",
+                      "description": "数据来源"
+                    },
+                    "nav_policy": {
+                      "type": "string",
+                      "description": "净值口径说明"
+                    },
+                    "formulas": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "分位计算公式（键为字段名，值为公式文本）"
+                    },
+                    "limitations": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "数据范围与使用限制说明"
+                    },
+                    "fields": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "字段含义字典"
+                    },
+                    "funds": {
+                      "type": "array",
+                      "description": "基金汇总列表",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund_code": {
+                            "type": "string",
+                            "description": "基金代码（文本，保留前导零）"
+                          },
+                          "fund_name": {
+                            "type": "string",
+                            "description": "基金中文名称"
+                          },
+                          "nav_date": {
+                            "type": "string",
+                            "description": "最新正式净值日期，格式 yyyy-mm-dd"
+                          },
+                          "latest_nav": {
+                            "type": "string",
+                            "description": "最新正式单位净值（字符串形式的数字）"
+                          },
+                          "nav_type": {
+                            "type": "string",
+                            "description": "净值类型，固定为 official"
+                          },
+                          "historical_high": {
+                            "type": "string",
+                            "description": "成立以来历史最高单位净值"
+                          },
+                          "historical_high_date": {
+                            "type": "string",
+                            "description": "历史最高净值日期"
+                          },
+                          "historical_low": {
+                            "type": "string",
+                            "description": "成立以来历史最低单位净值"
+                          },
+                          "historical_low_date": {
+                            "type": "string",
+                            "description": "历史最低净值日期"
+                          },
+                          "previous_high_nav": {
+                            "type": "string",
+                            "description": "此前历史最高单位净值（截至上一交易日，不含最新净值日），V6.1 六用于创新高判定"
+                          },
+                          "previous_high_nav_date": {
+                            "type": "string",
+                            "description": "此前历史最高净值日期"
+                          },
+                          "is_new_high": {
+                            "type": "string",
+                            "description": "是否创新历史新高，true/false：当前正式净值 > 此前历史最高净值"
+                          },
+                          "six_month_start": {
+                            "type": "string",
+                            "description": "近六个月窗口起始日"
+                          },
+                          "six_month_end": {
+                            "type": "string",
+                            "description": "近六个月窗口结束日"
+                          },
+                          "six_month_high": {
+                            "type": "string",
+                            "description": "近六个月窗口内最高单位净值"
+                          },
+                          "six_month_high_date": {
+                            "type": "string",
+                            "description": "窗口内最高净值日期"
+                          },
+                          "six_month_low": {
+                            "type": "string",
+                            "description": "近六个月窗口内最低单位净值"
+                          },
+                          "six_month_low_date": {
+                            "type": "string",
+                            "description": "窗口内最低净值日期"
+                          },
+                          "recent_low": {
+                            "type": "string",
+                            "description": "近期低点净值（最近 20 个交易日最低正式净值）"
+                          },
+                          "recent_low_date": {
+                            "type": "string",
+                            "description": "近期低点出现日期"
+                          },
+                          "recent_low_window_days": {
+                            "type": "integer",
+                            "description": "近期低点所用交易日数 N"
+                          },
+                          "history_start_date": {
+                            "type": "string",
+                            "description": "该基金历史记录起始日期"
+                          },
+                          "history_end_date": {
+                            "type": "string",
+                            "description": "该基金历史记录结束日期"
+                          },
+                          "history_count": {
+                            "type": "integer",
+                            "description": "该基金历史记录条数（成立以来口径）"
+                          },
+                          "historical_position": {
+                            "type": "string",
+                            "description": "历史净值区间位置，0~1，基于成立以来全历史"
+                          },
+                          "six_month_position": {
+                            "type": "string",
+                            "description": "六个月净值区间位置，0~1"
+                          },
+                          "sip_status": {
+                            "type": "string",
+                            "description": "定投启停状态：investing 定投中 / paused_by_rule 触发70%停止线(未确认执行) / paused_confirmed 用户已在蚂蚁财富执行暂停 / buffer_watch 缓冲观察 / paused_manual 人工暂停 / unknown 分位缺失"
+                          },
+                          "sip_status_note": {
+                            "type": "string",
+                            "description": "定投状态判定说明（含触发分位与处置建议）"
+                          },
+                          "sip_actual_since": {
+                            "type": "string",
+                            "description": "用户实际执行暂停的日期（仅 paused_confirmed）"
+                          },
+                          "sip_weekly_amount": {
+                            "type": "string",
+                            "description": "定投计划单周金额（元，仅计划内基金，否则为空）"
+                          },
+                          "sip_mode": {
+                            "type": "string",
+                            "description": "定投模式（仅计划内基金）"
+                          },
+                          "sip_cycle": {
+                            "type": "string",
+                            "description": "定投周期（仅计划内基金）"
+                          },
+                          "fund_type": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金类型（股票/指数/混合/债券/商品/QDII）"
+                          },
+                          "industry": {
+                            "type": "string",
+                            "description": "V5.8 新增：所属行业/主题"
+                          },
+                          "quality_score": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金质量评分 0~10（5 维度各 0~2；当前为初评待用户确认）"
+                          },
+                          "rating": {
+                            "type": "string",
+                            "description": "V5.8 新增：基金评级 A（8~10 核心资产）/B（6~7.9 观察配置）/C（4~5.9 谨慎持有）/D（<4 禁止补仓）"
+                          },
+                          "rating_status": {
+                            "type": "string",
+                            "description": "评级确认状态（如初评待用户确认）"
+                          },
+                          "data_status": {
+                            "type": "string",
+                            "description": "数据核验状态：正常/待复核/异常"
+                          },
+                          "update_time": {
+                            "type": "string",
+                            "description": "本条数据更新时间"
+                          }
+                        }
+                      }
+                    },
+                    "check_log": {
+                      "type": "array",
+                      "description": "异常检查记录",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "check_time": {
+                            "type": "string",
+                            "description": "检查时间"
+                          },
+                          "fund_code": {
+                            "type": "string",
+                            "description": "基金代码"
+                          },
+                          "fund_name": {
+                            "type": "string",
+                            "description": "基金名称"
+                          },
+                          "check_type": {
+                            "type": "string",
+                            "description": "异常类型"
+                          },
+                          "nav_date": {
+                            "type": "string",
+                            "description": "相关净值日期"
+                          },
+                          "severity": {
+                            "type": "string",
+                            "description": "严重程度"
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "处理状态"
+                          },
+                          "detail": {
+                            "type": "string",
+                            "description": "异常详情与处理结果"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/nav/{fund_code}.json": {
+      "get": {
+        "operationId": "getFundNavSeriesByCode",
+        "summary": "获取单只基金近 1 年每日净值序列",
+        "description": "按基金代码取该基金近 1 年逐日正式单位净值。此接口响应体积小，适合逐只查询。",
+        "parameters": [
+          {
+            "name": "fund_code",
+            "in": "path",
+            "required": true,
+            "description": "6 位基金代码（文本，保留前导零），例如 000218",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "单只基金近 1 年净值序列",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读接口，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "as_of_nav_date": {
+                      "type": "string",
+                      "description": "数据实际最新净值日期"
+                    },
+                    "fund_code": {
+                      "type": "string",
+                      "description": "基金代码"
+                    },
+                    "fund_name": {
+                      "type": "string",
+                      "description": "基金名称"
+                    },
+                    "nav_type": {
+                      "type": "string",
+                      "description": "净值类型，固定 official"
+                    },
+                    "nav_scope": {
+                      "type": "string",
+                      "description": "净值序列范围，固定 near_1y（近 1 年）"
+                    },
+                    "window_start": {
+                      "type": "string",
+                      "description": "序列窗口起始日"
+                    },
+                    "window_end": {
+                      "type": "string",
+                      "description": "序列窗口结束日"
+                    },
+                    "count": {
+                      "type": "integer",
+                      "description": "序列条数"
+                    },
+                    "nav_series": {
+                      "type": "array",
+                      "description": "该基金近 1 年逐日正式单位净值",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund_code": {
+                            "type": "string",
+                            "description": "基金代码"
+                          },
+                          "fund_name": {
+                            "type": "string",
+                            "description": "基金名称"
+                          },
+                          "nav_date": {
+                            "type": "string",
+                            "description": "净值日期 yyyy-mm-dd"
+                          },
+                          "unit_nav": {
+                            "type": "string",
+                            "description": "当日正式单位净值（字符串形式的数字）"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/history/{fund_code}/index.json": {
+      "get": {
+        "operationId": "getFundHistoryIndex",
+        "summary": "获取单只基金成立以来完整历史的分页索引",
+        "description": "返回该基金全历史的总记录数、总页数、每页大小与首末日期。读取完整历史前先调本接口，再逐页调用 getFundHistoryPage。",
+        "parameters": [
+          {
+            "name": "fund_code",
+            "in": "path",
+            "required": true,
+            "description": "6 位基金代码（文本，保留前导零），例如 007345",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "单只基金全历史分页索引",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读接口，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "as_of_nav_date": {
+                      "type": "string",
+                      "description": "数据实际最新净值日期"
+                    },
+                    "fund_code": {
+                      "type": "string",
+                      "description": "基金代码"
+                    },
+                    "fund_name": {
+                      "type": "string",
+                      "description": "基金名称"
+                    },
+                    "nav_type": {
+                      "type": "string",
+                      "description": "净值类型，固定 official"
+                    },
+                    "history_scope": {
+                      "type": "string",
+                      "description": "历史范围，固定 full_since_inception（成立以来）"
+                    },
+                    "total_records": {
+                      "type": "integer",
+                      "description": "成立以来完整历史总记录数"
+                    },
+                    "page_size": {
+                      "type": "integer",
+                      "description": "每页记录数，固定 150"
+                    },
+                    "page_count": {
+                      "type": "integer",
+                      "description": "总页数"
+                    },
+                    "first_nav_date": {
+                      "type": "string",
+                      "description": "首条净值日期"
+                    },
+                    "last_nav_date": {
+                      "type": "string",
+                      "description": "末条净值日期"
+                    },
+                    "records_order": {
+                      "type": "string",
+                      "description": "记录排序，固定 ascending_by_nav_date"
+                    },
+                    "page_urls": {
+                      "type": "array",
+                      "description": "全部分页的相对地址",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "date_filter_note": {
+                      "type": "string",
+                      "description": "日期过滤说明（客户端进行）"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/history/{fund_code}/page/{page}.json": {
+      "get": {
+        "operationId": "getFundHistoryPage",
+        "summary": "获取单只基金成立以来完整历史的指定一页（每页 150 条）",
+        "description": "按页返回该基金成立以来逐日正式单位净值与累计净值，按日期升序。页码从 1 开始，逐页递增直到 has_next=false 即可拼出完整历史。响应约 2 万字符，适合逐页读取。",
+        "parameters": [
+          {
+            "name": "fund_code",
+            "in": "path",
+            "required": true,
+            "description": "6 位基金代码（文本，保留前导零），例如 007345",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "description": "页码数字（文本形式），从 1 开始，不超过该基金的 page_count",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "单只基金全历史的指定页",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "type": "string",
+                      "description": "数据结构标识"
+                    },
+                    "readonly": {
+                      "type": "boolean",
+                      "description": "是否只读接口，固定 true"
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "description": "接口生成时间"
+                    },
+                    "fund_code": {
+                      "type": "string",
+                      "description": "基金代码"
+                    },
+                    "fund_name": {
+                      "type": "string",
+                      "description": "基金名称"
+                    },
+                    "nav_type": {
+                      "type": "string",
+                      "description": "净值类型，固定 official"
+                    },
+                    "history_scope": {
+                      "type": "string",
+                      "description": "历史范围，固定 full_since_inception（成立以来）"
+                    },
+                    "page": {
+                      "type": "integer",
+                      "description": "当前页码，从 1 开始"
+                    },
+                    "page_size": {
+                      "type": "integer",
+                      "description": "每页记录数，固定 150"
+                    },
+                    "page_count": {
+                      "type": "integer",
+                      "description": "总页数"
+                    },
+                    "total_records": {
+                      "type": "integer",
+                      "description": "成立以来完整历史总记录数"
+                    },
+                    "record_count": {
+                      "type": "integer",
+                      "description": "本页记录数"
+                    },
+                    "has_next": {
+                      "type": "boolean",
+                      "description": "是否还有下一页"
+                    },
+                    "next_page_url": {
+                      "type": "string",
+                      "description": "下一页相对地址，无下一页时为空字符串"
+                    },
+                    "prev_page_url": {
+                      "type": "string",
+                      "description": "上一页相对地址，第一页时为空字符串"
+                    },
+                    "query_start_date": {
+                      "type": "string",
+                      "description": "本次查询覆盖的起始日期（完整历史首日）"
+                    },
+                    "query_end_date": {
+                      "type": "string",
+                      "description": "本次查询覆盖的结束日期（完整历史末日）"
+                    },
+                    "page_start_date": {
+                      "type": "string",
+                      "description": "本页首条净值日期"
+                    },
+                    "page_end_date": {
+                      "type": "string",
+                      "description": "本页末条净值日期"
+                    },
+                    "records_order": {
+                      "type": "string",
+                      "description": "记录排序，固定 ascending_by_nav_date"
+                    },
+                    "date_filter_note": {
+                      "type": "string",
+                      "description": "日期过滤说明（客户端进行）"
+                    },
+                    "records": {
+                      "type": "array",
+                      "description": "本页正式单位净值记录（按日期升序）",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nav_date": {
+                            "type": "string",
+                            "description": "净值日期 yyyy-mm-dd"
+                          },
+                          "unit_nav": {
+                            "type": "string",
+                            "description": "当日正式单位净值"
+                          },
+                          "accumulated_nav": {
+                            "type": "string",
+                            "description": "当日累计净值（用于分红/拆分口径核验）"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
