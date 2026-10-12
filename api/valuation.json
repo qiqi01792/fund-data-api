@@ -1,9 +1,9 @@
 {
   "schema": "fund_valuation/v1",
   "readonly": true,
-  "generated_at": "2026-10-11 21:38:38",
+  "generated_at": "2026-10-12 18:28:30",
   "as_of_nav_date": "2026-10-09",
-  "rules_version": "V6.2",
+  "rules_version": "V6.3",
   "module": "V6.2 双分位 + 估值价值确认层（第三维：估值价值确认）",
   "data_source": "蛋卷指数估值接口（PE/PB/PE 历史分位/PB 历史分位/ROE/股息率），由 05_更新程序/fetch_valuation.py 抓取写入 02_基金状态台账/fund_valuation.csv",
   "field_note": "dividend_yield_percentile（股息率历史分位）当前数据源不提供，留空待登记，不得编造",
