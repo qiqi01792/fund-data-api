@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "2.2.0",
-    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（评级与补仓金额、累计止盈比例、三维估值决策）、定投启停状态与策略规则 V6.2（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息（止盈卖出金额需结合本地基准仓位计算）。输出规范：任何基金一律同时给出 6 位代码与中文全称，不得只报代码。规则对外只有一个总版本号 V6.2（V5.7/V5.8/V6.1 已归档为章节，勿引用旧版本号）。"
+    "version": "2.3.0",
+    "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（评级与补仓金额、累计止盈比例、三维估值决策）、定投启停状态与策略规则 V6.3（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息（止盈卖出金额需结合本地基准仓位计算）。输出规范：任何基金一律同时给出 6 位代码与中文全称，不得只报代码。规则对外只有一个总版本号 V6.3（V5.7/V5.8/V6.1 已归档为章节，勿引用旧版本号）。"
   },
   "servers": [
     {
@@ -14,8 +14,8 @@
     "/api/signals.json": {
       "get": {
         "operationId": "getDailySignals",
-        "summary": "获取每日操作信号（V6.2：方向 + 评级补仓金额 + 累计止盈 + 三维估值决策）",
-        "description": "每日收盘后按总规则 V6.2 计算 21 只基金次日信号：止盈候选（≥75% 启动累计止盈，按累计目标补差额）、补仓候选（须先过三关：历史位置<35%、近6月<50%、估值≥7分，未过金额置0）、持有观察；含评级、资金池分配、定投启停与 V6.2 三维评分（历史40%+近6月30%+估值30%）及状态。所有基金均给代码+中文名。",
+        "summary": "获取每日操作信号（V6.3：方向 + 评级补仓金额 + 累计止盈 + 三维估值决策）",
+        "description": "每日收盘后按总规则 V6.3 计算 21 只基金次日信号：止盈候选（≥75% 启动累计止盈，按累计目标补差额）、补仓候选（须先过三关：历史位置<35%、近6月<50%、估值≥7分，未过金额置0）、持有观察；含评级、资金池分配、定投启停与 V6.2 三维评分（历史40%+近6月30%+估值30%）及状态。所有基金均给代码+中文名。",
         "responses": {
           "200": {
             "description": "每日操作方向信号 JSON",
@@ -42,7 +42,7 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "所用规则总版本号（唯一，当前 V6.2）；V5.7/V5.8/V6.1 已归档为章节，勿引用旧版本号"
+                      "description": "所用规则总版本号（唯一，当前 V6.3）；V5.7/V5.8/V6.1 已归档为章节，勿引用旧版本号"
                     },
                     "version_note": {
                       "type": "string",
@@ -72,6 +72,10 @@
                       "type": "string",
                       "description": "范围说明：金额按 V5.8 规则链计算，评级为初评待确认，下单须用户确认"
                     },
+                    "public_channel_boundary": {
+                      "type": "string",
+                      "description": "2026-10-12 C2 公开通道边界：只输出结论不输出账户金额；已移除补仓金额与月池已用/剩余金额，保留档位、资格、原因与是否超预算结论"
+                    },
                     "basis": {
                       "type": "string",
                       "description": "历史位置的计算口径公式"
@@ -98,11 +102,11 @@
                     },
                     "monthly_budget": {
                       "type": "object",
-                      "description": "V5.8 月度补仓资金池：{month, total_budget:2000, used_recorded, remaining_before_today, allocated_today, remaining_after_today}"
+                      "description": "V5.8 月度补仓资金池：{month, total_budget:2000, candidate_count, blocked_by_budget_count, budget_sufficient}。2026-10-12 C2 起公开通道不含已用/剩余/当日分配金额（属个人交易记录）"
                     },
                     "add_allocation": {
                       "type": "array",
-                      "description": "V5.8 资金池分配结果（按 评级>分位>近期跌幅>组合缺口 排序，含 computed_amount/allocated_amount）",
+                      "description": "V5.8 资金池分配结果（按 评级>分位>近期跌幅>组合缺口 排序）；2026-10-12 C2 起公开通道不含 computed_amount/allocated_amount 金额字段",
                       "items": {
                         "type": "object"
                       }
@@ -252,25 +256,13 @@
                             "type": "string",
                             "description": "V5.8 补仓权限：允许正常补仓 / 减半 / 暂停 / 禁止"
                           },
-                          "add_base_amount": {
-                            "type": "number",
-                            "description": "V5.8 基础补仓金额（元，按分位档：50/100/200/400/600/800；50%以上为 0）"
-                          },
                           "add_base_tier": {
                             "type": "string",
-                            "description": "V5.8 基础金额对应的分位档名称"
-                          },
-                          "add_final_amount": {
-                            "type": "number",
-                            "description": "V5.8 修正后补仓金额（基础×评级×反弹×连跌），未分配资金池前的计算值"
+                            "description": "V5.8 基础金额对应的分位档名称（档位属公开信息，金额不公开）"
                           },
                           "add_amount_note": {
                             "type": "string",
-                            "description": "金额计算链说明（各修正因子与依据）"
-                          },
-                          "add_allocated_amount": {
-                            "type": "number",
-                            "description": "V5.8 资金池分配后的实际建议金额（仅进入分配序列的 A/B 级补仓候选有值）"
+                            "description": "金额计算链的定性说明（各修正因子与依据）；2026-10-12 C2 起公开通道不含具体金额，金额见本地清单与私有通道"
                           },
                           "add_priority_rank": {
                             "type": "integer",
@@ -448,7 +440,7 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "规则总版本号（唯一，当前 V6.2）"
+                      "description": "规则总版本号（唯一，当前 V6.3）"
                     },
                     "module": {
                       "type": "string",
@@ -492,8 +484,8 @@
     "/api/rules.json": {
       "get": {
         "operationId": "getRules",
-        "summary": "获取基金管理系统策略规则（V6.2 正本，唯一版本）",
-        "description": "返回策略规则核心阈值（定投开关/补仓金额与评级体系/累计止盈阶梯与公式/V6.2 三维估值决策与三关过滤/连续下跌复检/复检评分分流）、当前定投计划、待确认参数清单、版本演进表（version_history）与当前生效规则全文 full_text。重要：系统只有一个总版本号 V6.2，V5.7/V5.8/V6.1 已归档为章节，禁止引用旧版本号；full_text 是四份正本合并后的完整当前规则，每次会话开始应先调用本接口并通读 full_text。",
+        "summary": "获取基金管理系统策略规则（V6.3 正本，唯一版本）",
+        "description": "返回策略规则核心阈值（定投开关/补仓金额与评级体系/累计止盈阶梯与公式/V6.2 三维估值决策与三关过滤/连续下跌复检/复检评分分流）、当前定投计划、待确认参数清单、版本演进表（version_history）与当前生效规则全文 full_text。重要：系统只有一个总版本号 V6.3，V5.7/V5.8/V6.1 已归档为章节，禁止引用旧版本号；full_text 是四份正本合并后的完整当前规则，每次会话开始应先调用本接口并通读 full_text。",
         "responses": {
           "200": {
             "description": "策略规则 JSON（含全文）",
@@ -516,7 +508,7 @@
                     },
                     "rules_version": {
                       "type": "string",
-                      "description": "规则总版本号（唯一，当前 V6.2）。系统只有一个版本号，由 WorkBuddy 统一发号；V5.7/V5.8/V6.1 已归档为章节，请勿引用旧版本号"
+                      "description": "规则总版本号（唯一，当前 V6.3）。系统只有一个版本号，由 WorkBuddy 统一发号；V5.7/V5.8/V6.1 已归档为章节，请勿引用旧版本号"
                     },
                     "version_note": {
                       "type": "string",
