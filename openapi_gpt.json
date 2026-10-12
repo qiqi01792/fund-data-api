@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://fund-data-api.app.workbuddy.host"
+      "url": "https://raw.githubusercontent.com/qiqi01792/fund-data-api/main"
     }
   ],
   "paths": {
