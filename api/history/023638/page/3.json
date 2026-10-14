@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-10-11 15:49:14",
+  "generated_at": "2026-10-14 23:04:13",
   "fund_code": "023638",
   "fund_name": "国泰A股电网设备ETF联接A",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 3,
   "page_size": 150,
   "page_count": 3,
-  "total_records": 373,
-  "record_count": 73,
+  "total_records": 376,
+  "record_count": 76,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/023638/page/2.json",
   "query_start_date": "2025-03-24",
-  "query_end_date": "2026-10-09",
+  "query_end_date": "2026-10-14",
   "page_start_date": "2026-06-23",
-  "page_end_date": "2026-10-09",
+  "page_end_date": "2026-10-14",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -385,6 +385,21 @@
       "nav_date": "2026-10-09",
       "unit_nav": "1.5772",
       "accumulated_nav": "1.5772"
+    },
+    {
+      "nav_date": "2026-10-12",
+      "unit_nav": "1.5528",
+      "accumulated_nav": "1.5528"
+    },
+    {
+      "nav_date": "2026-10-13",
+      "unit_nav": "1.5450",
+      "accumulated_nav": "1.5450"
+    },
+    {
+      "nav_date": "2026-10-14",
+      "unit_nav": "1.5127",
+      "accumulated_nav": "1.5127"
     }
   ]
 }
