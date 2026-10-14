@@ -1,34 +1,16 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-10-12 19:41:06",
-  "as_of_nav_date": "2026-10-09",
+  "generated_at": "2026-10-14 23:04:13",
+  "as_of_nav_date": "2026-10-14",
   "fund_code": "017481",
   "fund_name": "博时中证全指电力公用事业ETF联接A",
   "nav_type": "official",
   "nav_scope": "near_1y",
-  "window_start": "2025-10-09",
-  "window_end": "2026-10-09",
+  "window_start": "2025-10-14",
+  "window_end": "2026-10-14",
   "count": 243,
   "nav_series": [
-    {
-      "fund_code": "017481",
-      "fund_name": "博时中证全指电力公用事业ETF联接A",
-      "nav_date": "2025-10-09",
-      "unit_nav": "1.1575"
-    },
-    {
-      "fund_code": "017481",
-      "fund_name": "博时中证全指电力公用事业ETF联接A",
-      "nav_date": "2025-10-10",
-      "unit_nav": "1.1651"
-    },
-    {
-      "fund_code": "017481",
-      "fund_name": "博时中证全指电力公用事业ETF联接A",
-      "nav_date": "2025-10-13",
-      "unit_nav": "1.1603"
-    },
     {
       "fund_code": "017481",
       "fund_name": "博时中证全指电力公用事业ETF联接A",
@@ -1468,6 +1450,24 @@
       "fund_name": "博时中证全指电力公用事业ETF联接A",
       "nav_date": "2026-10-09",
       "unit_nav": "1.1809"
+    },
+    {
+      "fund_code": "017481",
+      "fund_name": "博时中证全指电力公用事业ETF联接A",
+      "nav_date": "2026-10-12",
+      "unit_nav": "1.1784"
+    },
+    {
+      "fund_code": "017481",
+      "fund_name": "博时中证全指电力公用事业ETF联接A",
+      "nav_date": "2026-10-13",
+      "unit_nav": "1.1711"
+    },
+    {
+      "fund_code": "017481",
+      "fund_name": "博时中证全指电力公用事业ETF联接A",
+      "nav_date": "2026-10-14",
+      "unit_nav": "1.1871"
     }
   ]
 }
