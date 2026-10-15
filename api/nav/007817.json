@@ -1,22 +1,16 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-10-15 18:56:55",
-  "as_of_nav_date": "2026-10-14",
+  "generated_at": "2026-10-15 20:36:43",
+  "as_of_nav_date": "2026-10-15",
   "fund_code": "007817",
   "fund_name": "国泰中证全指通信设备ETF联接A",
   "nav_type": "official",
   "nav_scope": "near_1y",
-  "window_start": "2025-10-14",
-  "window_end": "2026-10-14",
+  "window_start": "2025-10-15",
+  "window_end": "2026-10-15",
   "count": 243,
   "nav_series": [
-    {
-      "fund_code": "007817",
-      "fund_name": "国泰中证全指通信设备ETF联接A",
-      "nav_date": "2025-10-14",
-      "unit_nav": "2.3300"
-    },
     {
       "fund_code": "007817",
       "fund_name": "国泰中证全指通信设备ETF联接A",
@@ -1468,6 +1462,12 @@
       "fund_name": "国泰中证全指通信设备ETF联接A",
       "nav_date": "2026-10-14",
       "unit_nav": "3.1533"
+    },
+    {
+      "fund_code": "007817",
+      "fund_name": "国泰中证全指通信设备ETF联接A",
+      "nav_date": "2026-10-15",
+      "unit_nav": "3.0067"
     }
   ]
 }
