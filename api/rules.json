@@ -1,7 +1,7 @@
 {
   "schema": "fund_rules/v2",
   "readonly": true,
-  "generated_at": "2026-10-15 20:36:43",
+  "generated_at": "2026-10-15 23:13:19",
   "rules_version": "V6.3",
   "version_note": "系统只有一个总版本号，由 WorkBuddy 统一发号（当前 V6.3）；V5.7/V5.8/V6.1/V6.2 已归档为章节，对外不再单列版本号，禁止引用旧版本号。历史演进见 version_history。",
   "version_history": [
@@ -470,7 +470,7 @@
   "full_text_pages": {
     "schema": "rules_fulltext_index/v1",
     "readonly": true,
-    "generated_at": "2026-10-15 20:36:43",
+    "generated_at": "2026-10-15 23:13:19",
     "rules_version": "V6.3",
     "total_pages": 3,
     "total_chars": 43806,
