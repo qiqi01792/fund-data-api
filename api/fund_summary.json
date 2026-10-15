@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-summary/v1",
   "readonly": true,
-  "generated_at": "2026-10-15 20:36:43",
+  "generated_at": "2026-10-15 23:13:19",
   "snapshot_date": "2026-10-15",
   "as_of_nav_date": "2026-10-15",
   "has_new_nav_on_snapshot_date": true,
@@ -102,7 +102,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "004433",
@@ -143,7 +143,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "005984",
@@ -173,8 +173,8 @@
       "historical_position": "0.8060",
       "six_month_position": "0.0000",
       "sip_status": "paused_confirmed",
-      "sip_status_note": "已于 2026-10-11 在蚂蚁财富执行暂停（触发70%停止线（86.9%）后暂停定投）；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认",
-      "sip_actual_since": "2026-10-11",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-11 触发70%停止线（86.9%）暂停；2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 60 元／每周四（均线模式）执行，暂停期间不扣款））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认",
+      "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "60",
       "sip_mode": "均线模式",
       "sip_cycle": "每周四",
@@ -184,7 +184,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "006224",
@@ -214,8 +214,8 @@
       "historical_position": "0.8459",
       "six_month_position": "0.1962",
       "sip_status": "paused_confirmed",
-      "sip_status_note": "已于 2026-10-11 在蚂蚁财富执行暂停（触发70%停止线（83.5%）后暂停定投）；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认",
-      "sip_actual_since": "2026-10-11",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-11 触发70%停止线（83.5%）暂停；2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 50 元／每周四（普通定投）执行，暂停期间不扣款））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认",
+      "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "50",
       "sip_mode": "普通定投",
       "sip_cycle": "每周四",
@@ -225,7 +225,7 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "待复核",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "006259",
@@ -266,7 +266,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "007301",
@@ -295,9 +295,9 @@
       "history_count": 1775,
       "historical_position": "0.4918",
       "six_month_position": "0.0691",
-      "sip_status": "investing",
-      "sip_status_note": "历史位置 49.2% < 65%：定投中（每周四扣款）",
-      "sip_actual_since": "",
+      "sip_status": "paused_confirmed",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 50 元／每周四（涨跌幅模式）执行，暂停期间不扣款）；本次新增登记（此前无实际设置记录，系统按历史位置判定为 investing））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认。当前位置 49.2% 已低于 65% 恢复线，进入待复核区",
+      "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "50",
       "sip_mode": "涨跌幅模式",
       "sip_cycle": "每周四",
@@ -307,7 +307,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "007345",
@@ -348,7 +348,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "007817",
@@ -389,7 +389,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "010056",
@@ -430,7 +430,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "017481",
@@ -459,9 +459,9 @@
       "history_count": 894,
       "historical_position": "0.4940",
       "six_month_position": "0.1528",
-      "sip_status": "investing",
-      "sip_status_note": "历史位置 49.4% < 65%：定投中（每周四扣款）",
-      "sip_actual_since": "",
+      "sip_status": "paused_confirmed",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 50 元／每周四（涨跌幅模式）执行，暂停期间不扣款）；本次新增登记（此前无实际设置记录，系统按历史位置判定为 investing））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认。当前位置 49.4% 已低于 65% 恢复线，进入待复核区",
+      "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "50",
       "sip_mode": "涨跌幅模式",
       "sip_cycle": "每周四",
@@ -471,7 +471,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "待复核",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "017854",
@@ -512,7 +512,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "017999",
@@ -542,8 +542,8 @@
       "historical_position": "0.6462",
       "six_month_position": "0.2845",
       "sip_status": "paused_confirmed",
-      "sip_status_note": "已于 2026-10-11 在蚂蚁财富执行暂停（缓冲观察区（69.8%）用户主动一并暂停）；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认。当前位置 64.6% 已低于 65% 恢复线，进入待复核区",
-      "sip_actual_since": "2026-10-11",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-11 缓冲观察区（69.8%）用户主动一并暂停；2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 50 元／每周四（均线模式）执行，暂停期间不扣款））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认。当前位置 64.6% 已低于 65% 恢复线，进入待复核区",
+      "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "50",
       "sip_mode": "均线模式",
       "sip_cycle": "每周四",
@@ -553,7 +553,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "018125",
@@ -594,7 +594,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "019869",
@@ -635,7 +635,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "020670",
@@ -664,9 +664,9 @@
       "history_count": 648,
       "historical_position": "0.5099",
       "six_month_position": "0.1085",
-      "sip_status": "investing",
-      "sip_status_note": "历史位置 51.0% < 65%：定投中（每周四扣款）",
-      "sip_actual_since": "",
+      "sip_status": "paused_confirmed",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 80 元／每周四（均线模式）执行，暂停期间不扣款）；本次新增登记（此前无实际设置记录，系统按历史位置判定为 investing））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认。当前位置 51.0% 已低于 65% 恢复线，进入待复核区",
+      "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "80",
       "sip_mode": "均线模式",
       "sip_cycle": "每周四",
@@ -676,7 +676,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "022274",
@@ -706,8 +706,8 @@
       "historical_position": "0.7106",
       "six_month_position": "0.6292",
       "sip_status": "paused_confirmed",
-      "sip_status_note": "已于 2026-10-11 在蚂蚁财富执行暂停（触发70%停止线（71.3%）后暂停定投）；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认",
-      "sip_actual_since": "2026-10-11",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-11 触发70%停止线（71.3%）暂停；2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 30 元／每周四（涨跌幅模式）执行，暂停期间不扣款））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认",
+      "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "30",
       "sip_mode": "涨跌幅模式",
       "sip_cycle": "每周四",
@@ -717,7 +717,7 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "023638",
@@ -746,9 +746,9 @@
       "history_count": 377,
       "historical_position": "0.4289",
       "six_month_position": "0.0000",
-      "sip_status": "investing",
-      "sip_status_note": "历史位置 42.9% < 65%：定投中（每周四扣款）",
-      "sip_actual_since": "",
+      "sip_status": "paused_confirmed",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 50 元／每周四（均线模式）执行，暂停期间不扣款）；本次新增登记（此前无实际设置记录，系统按历史位置判定为 investing））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认。当前位置 42.9% 已低于 65% 恢复线，进入待复核区",
+      "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "50",
       "sip_mode": "均线模式",
       "sip_cycle": "每周四",
@@ -758,7 +758,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "024412",
@@ -799,7 +799,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "025491",
@@ -840,7 +840,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "100032",
@@ -881,7 +881,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     },
     {
       "fund_code": "270042",
@@ -922,10 +922,30 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-15 20:31:35"
+      "update_time": "2026-10-15 23:11:19"
     }
   ],
   "check_log": [
+    {
+      "check_time": "2026-10-15 23:11:19",
+      "fund_code": "006224",
+      "fund_name": "中银中债3-5年期农发行债券指数A",
+      "check_type": "净值缺失",
+      "nav_date": "2018-10-12",
+      "severity": "中",
+      "status": "待复核",
+      "detail": "与上一净值日 2018-09-28 相隔 14 天（阈值 12），疑有净值缺失"
+    },
+    {
+      "check_time": "2026-10-15 23:11:19",
+      "fund_code": "017481",
+      "fund_name": "博时中证全指电力公用事业ETF联接A",
+      "check_type": "净值缺失",
+      "nav_date": "2023-02-03",
+      "severity": "中",
+      "status": "待复核",
+      "detail": "与上一净值日 2023-01-20 相隔 14 天（阈值 12），疑有净值缺失"
+    },
     {
       "check_time": "2026-10-15 20:31:35",
       "fund_code": "006224",
