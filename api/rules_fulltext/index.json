@@ -1,32 +1,32 @@
 {
   "schema": "rules_fulltext_index/v1",
   "readonly": true,
-  "generated_at": "2026-10-14 23:04:13",
+  "generated_at": "2026-10-15 18:56:55",
   "rules_version": "V6.3",
   "total_pages": 3,
-  "total_chars": 41009,
+  "total_chars": 43806,
   "source": "WorkBuddy 本地正本：06_策略规则/基金管理系统总规则_V6.3.md（合并定稿，唯一来源）+ 版本说明.md",
   "pages": [
     {
       "page": 1,
       "chapter": "全文头部（版本表与说明）",
-      "chars": 18087,
+      "chars": 18129,
       "start_char": 0,
-      "end_char": 18087
+      "end_char": 18129
     },
     {
       "page": 2,
       "chapter": "全文头部（版本表与说明）",
-      "chars": 16518,
-      "start_char": 18088,
-      "end_char": 34606
+      "chars": 16838,
+      "start_char": 18130,
+      "end_char": 34968
     },
     {
       "page": 3,
       "chapter": "章节间衔接部分",
-      "chars": 6402,
-      "start_char": 34607,
-      "end_char": 41009
+      "chars": 8837,
+      "start_char": 34969,
+      "end_char": 43806
     }
   ],
   "chapters": [
@@ -62,8 +62,8 @@
       "version": "V6.3",
       "chapter": "第七~八章 止盈模块统一执行版 + 止盈决策强制流程（2026-10-12 新增）",
       "located": true,
-      "start_char": 18181,
-      "end_char": 31275
+      "start_char": 20665,
+      "end_char": 33759
     }
   ],
   "read_order": "按 page 1..total_pages 顺序读取、将各页 content 用空行直接相连即为 V6.3 完整规则全文（与本地正本一字不差）；仅做日常决策可只读 /api/rules_core.json。"
