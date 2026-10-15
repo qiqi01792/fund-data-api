@@ -1,7 +1,7 @@
 {
   "schema": "fund_daily_signals/v4",
   "readonly": true,
-  "generated_at": "2026-10-15 23:13:19",
+  "generated_at": "2026-10-15 23:59:03",
   "as_of_nav_date": "2026-10-15",
   "rules_version": "V6.3",
   "daily_command": "按基金管理系统复盘",
