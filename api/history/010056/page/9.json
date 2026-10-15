@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-10-14 23:04:13",
+  "generated_at": "2026-10-15 20:36:43",
   "fund_code": "010056",
   "fund_name": "平安瑞兴1年持有期混合A",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 9,
   "page_size": 150,
   "page_count": 9,
-  "total_records": 1255,
-  "record_count": 55,
+  "total_records": 1256,
+  "record_count": 56,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/010056/page/8.json",
   "query_start_date": "2020-11-04",
-  "query_end_date": "2026-10-14",
+  "query_end_date": "2026-10-15",
   "page_start_date": "2026-07-22",
-  "page_end_date": "2026-10-14",
+  "page_end_date": "2026-10-15",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -295,6 +295,11 @@
       "nav_date": "2026-10-14",
       "unit_nav": "1.4061",
       "accumulated_nav": "1.4061"
+    },
+    {
+      "nav_date": "2026-10-15",
+      "unit_nav": "1.4047",
+      "accumulated_nav": "1.4047"
     }
   ]
 }
