@@ -214,11 +214,11 @@
                           },
                           "next_up": {
                             "type": "object",
-                            "description": "向上最近的下一个操作档位：{at_pct, distance_pp, effect}。阶梯为正本附则 A2 的每日信号阶梯：补仓方向档 5%→10%→20%→35%→50%（**方向信号，不产生金额**；金额见六档金额表）、定投启停 65%/70%、累计止盈（V6.1，75% 起）；处最高档时为 null"
+                            "description": "向上最近的下一个操作档位：{at_pct, distance_pp, effect}。阶梯为正本附则 A2 的每日信号阶梯：补仓方向档（**方向信号，不产生金额**；金额见六档金额表）、定投启停、累计止盈（V6.1，75% 起）；处最高档时为 null"
                           },
                           "next_down": {
                             "type": "object",
-                            "description": "向下最近的下一个操作档位：{at_pct, distance_pp, effect}。阶梯同上（反向）：累计止盈 75% 起、定投 70%/65%、补仓方向档 50%→35%→20%→10%→5%（**方向信号，不产生金额**）；处最低档时为 null"
+                            "description": "向下最近的下一个操作档位：{at_pct, distance_pp, effect}。阶梯同上（反向）：累计止盈（V6.1，75% 起）、定投启停、补仓方向档（**方向信号，不产生金额**）；处最低档时为 null"
                           },
                           "sip_status": {
                             "type": "string",
