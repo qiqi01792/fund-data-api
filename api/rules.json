@@ -1,7 +1,7 @@
 {
   "schema": "fund_rules/v2",
   "readonly": true,
-  "generated_at": "2026-10-14 23:04:13",
+  "generated_at": "2026-10-15 18:56:55",
   "rules_version": "V6.3",
   "version_note": "系统只有一个总版本号，由 WorkBuddy 统一发号（当前 V6.3）；V5.7/V5.8/V6.1/V6.2 已归档为章节，对外不再单列版本号，禁止引用旧版本号。历史演进见 version_history。",
   "version_history": [
@@ -364,7 +364,6 @@
     "估值评分计算公式（初版：10 − (0.6×PE历史分位 + 0.4×PB历史分位)×10 + 股息率修正，见 V6.2 附则 A3，待确认）",
     "V6.2 状态阈值 8.0（重点补仓）与 5.5（暂停补仓）待确认",
     "第二关阈值 50%（V6.2）与 V5.8 附则 A 的 60%（完全不补）如何合并：当前按 50%~60% 价值观察仓、≥60% 完全不补处理，待确认",
-    "40%~50% 轻微低估档被第一关（<35%）过滤后是否仍保留小额补仓（当前一律不补）",
     "估值近似参考（proxy 级）是否允许用于实际补仓决策（当前允许但降置信度）",
     "股息率历史分位数据源（当前数据源只给股息率当前值，该字段留空待登记）",
     "基金评级初评确认（21 只基金的风险控制维度由数据自动计算，其余四维为 WorkBuddy 初评，待用户逐只确认或修正 fund_ratings.csv）",
@@ -439,7 +438,7 @@
       }
     ],
     "three_gates": {
-      "gate1": "历史位置 < 35%",
+      "gate1": "历史位置 < 50%",
       "gate2": "近 6 个月位置 < 50%（≥60% 时按 V5.8 附则 A 完全不补）",
       "gate3": "估值评分 ≥ 7 分（估值缺失视为不通过）"
     },
@@ -470,32 +469,32 @@
   "full_text_pages": {
     "schema": "rules_fulltext_index/v1",
     "readonly": true,
-    "generated_at": "2026-10-14 23:04:13",
+    "generated_at": "2026-10-15 18:56:55",
     "rules_version": "V6.3",
     "total_pages": 3,
-    "total_chars": 41009,
+    "total_chars": 43806,
     "source": "WorkBuddy 本地正本：06_策略规则/基金管理系统总规则_V6.3.md（合并定稿，唯一来源）+ 版本说明.md",
     "pages": [
       {
         "page": 1,
         "chapter": "全文头部（版本表与说明）",
-        "chars": 18087,
+        "chars": 18129,
         "start_char": 0,
-        "end_char": 18087
+        "end_char": 18129
       },
       {
         "page": 2,
         "chapter": "全文头部（版本表与说明）",
-        "chars": 16518,
-        "start_char": 18088,
-        "end_char": 34606
+        "chars": 16838,
+        "start_char": 18130,
+        "end_char": 34968
       },
       {
         "page": 3,
         "chapter": "章节间衔接部分",
-        "chars": 6402,
-        "start_char": 34607,
-        "end_char": 41009
+        "chars": 8837,
+        "start_char": 34969,
+        "end_char": 43806
       }
     ],
     "chapters": [
@@ -531,8 +530,8 @@
         "version": "V6.3",
         "chapter": "第七~八章 止盈模块统一执行版 + 止盈决策强制流程（2026-10-12 新增）",
         "located": true,
-        "start_char": 18181,
-        "end_char": 31275
+        "start_char": 20665,
+        "end_char": 33759
       }
     ],
     "read_order": "按 page 1..total_pages 顺序读取、将各页 content 用空行直接相连即为 V6.3 完整规则全文（与本地正本一字不差）；仅做日常决策可只读 /api/rules_core.json。",
