@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-10-14 23:04:13",
+  "generated_at": "2026-10-15 20:36:43",
   "fund_code": "004433",
   "fund_name": "南方有色金属ETF联接C",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 15,
   "page_size": 150,
   "page_count": 15,
-  "total_records": 2199,
-  "record_count": 99,
+  "total_records": 2200,
+  "record_count": 100,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/004433/page/14.json",
   "query_start_date": "2017-09-08",
-  "query_end_date": "2026-10-14",
+  "query_end_date": "2026-10-15",
   "page_start_date": "2026-05-20",
-  "page_end_date": "2026-10-14",
+  "page_end_date": "2026-10-15",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -515,6 +515,11 @@
       "nav_date": "2026-10-14",
       "unit_nav": "1.5008",
       "accumulated_nav": "1.6038"
+    },
+    {
+      "nav_date": "2026-10-15",
+      "unit_nav": "1.4498",
+      "accumulated_nav": "1.5528"
     }
   ]
 }
