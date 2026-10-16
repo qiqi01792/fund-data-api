@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-10-15 20:36:43",
+  "generated_at": "2026-10-16 23:13:05",
   "fund_code": "025491",
   "fund_name": "平安中证卫星产业指数C",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 2,
   "page_size": 150,
   "page_count": 2,
-  "total_records": 243,
-  "record_count": 93,
+  "total_records": 244,
+  "record_count": 94,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/025491/page/1.json",
   "query_start_date": "2025-09-23",
-  "query_end_date": "2026-10-15",
+  "query_end_date": "2026-10-16",
   "page_start_date": "2026-05-29",
-  "page_end_date": "2026-10-15",
+  "page_end_date": "2026-10-16",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -485,6 +485,11 @@
       "nav_date": "2026-10-15",
       "unit_nav": "0.7756",
       "accumulated_nav": "0.7756"
+    },
+    {
+      "nav_date": "2026-10-16",
+      "unit_nav": "0.7965",
+      "accumulated_nav": "0.7965"
     }
   ]
 }
