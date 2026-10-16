@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-10-15 20:36:43",
+  "generated_at": "2026-10-16 23:13:05",
   "fund_code": "024412",
   "fund_name": "华夏上证科创板人工智能ETF联接C",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 2,
   "page_size": 150,
   "page_count": 2,
-  "total_records": 226,
-  "record_count": 76,
+  "total_records": 227,
+  "record_count": 77,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/024412/page/1.json",
   "query_start_date": "2025-09-23",
-  "query_end_date": "2026-10-15",
+  "query_end_date": "2026-10-16",
   "page_start_date": "2026-06-24",
-  "page_end_date": "2026-10-15",
+  "page_end_date": "2026-10-16",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -400,6 +400,11 @@
       "nav_date": "2026-10-15",
       "unit_nav": "0.8332",
       "accumulated_nav": "0.8332"
+    },
+    {
+      "nav_date": "2026-10-16",
+      "unit_nav": "0.8401",
+      "accumulated_nav": "0.8401"
     }
   ]
 }
