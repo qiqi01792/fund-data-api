@@ -1,22 +1,16 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-10-15 23:59:03",
-  "as_of_nav_date": "2026-10-15",
+  "generated_at": "2026-10-16 23:13:05",
+  "as_of_nav_date": "2026-10-16",
   "fund_code": "006259",
   "fund_name": "汇添富红利增长混合A",
   "nav_type": "official",
   "nav_scope": "near_1y",
-  "window_start": "2025-10-15",
-  "window_end": "2026-10-15",
+  "window_start": "2025-10-16",
+  "window_end": "2026-10-16",
   "count": 243,
   "nav_series": [
-    {
-      "fund_code": "006259",
-      "fund_name": "汇添富红利增长混合A",
-      "nav_date": "2025-10-15",
-      "unit_nav": "1.7957"
-    },
     {
       "fund_code": "006259",
       "fund_name": "汇添富红利增长混合A",
@@ -1468,6 +1462,12 @@
       "fund_name": "汇添富红利增长混合A",
       "nav_date": "2026-10-15",
       "unit_nav": "1.8632"
+    },
+    {
+      "fund_code": "006259",
+      "fund_name": "汇添富红利增长混合A",
+      "nav_date": "2026-10-16",
+      "unit_nav": "1.8689"
     }
   ]
 }
