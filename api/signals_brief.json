@@ -1,8 +1,8 @@
 {
   "schema": "fund_daily_signals/v4",
   "readonly": true,
-  "generated_at": "2026-10-16 23:13:05",
-  "as_of_nav_date": "2026-10-16",
+  "generated_at": "2026-10-19 19:46:36",
+  "as_of_nav_date": "2026-10-19",
   "rules_version": "V6.3",
   "daily_command": "按基金管理系统复盘",
   "signal_counts": {
@@ -13,7 +13,7 @@
     "take_profit_with_new_sell": 3,
     "take_profit_already_satisfied": 1,
     "blocked_by_six_month_check": 0,
-    "blocked_by_valuation_gate": 8
+    "blocked_by_valuation_gate": 9
   },
   "sip_counts": {
     "paused_manual": 13,
@@ -67,24 +67,6 @@
   "forbidden_add_list": [],
   "priority_actions": [
     {
-      "fund_code": "270042",
-      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
-      "signal": "take_profit",
-      "signal_label": "止盈候选",
-      "signal_tier": "累计止盈 92%~95% 档：累计目标 75%",
-      "historical_position_pct": 94.9,
-      "confidence": "high",
-      "sip_status": "paused_manual",
-      "rating": "A",
-      "quality_score": 9.0,
-      "tp_status": "止盈阶段",
-      "tp_cumulative_target_pct": 75.0,
-      "tp_new_sell_pct_of_base": 0.0,
-      "tp_exec_status": "verification_required",
-      "tp_base_registered": true,
-      "tp_pending_reason": null
-    },
-    {
       "fund_code": "010056",
       "fund_name": "平安瑞兴1年持有期混合A",
       "signal": "take_profit",
@@ -99,6 +81,24 @@
       "tp_cumulative_target_pct": 75.0,
       "tp_new_sell_pct_of_base": 75.0,
       "tp_exec_status": "triggered_pending_decision",
+      "tp_base_registered": true,
+      "tp_pending_reason": null
+    },
+    {
+      "fund_code": "270042",
+      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
+      "signal": "take_profit",
+      "signal_label": "止盈候选",
+      "signal_tier": "累计止盈 92%~95% 档：累计目标 75%",
+      "historical_position_pct": 92.17,
+      "confidence": "high",
+      "sip_status": "paused_manual",
+      "rating": "A",
+      "quality_score": 9.0,
+      "tp_status": "止盈阶段",
+      "tp_cumulative_target_pct": 75.0,
+      "tp_new_sell_pct_of_base": 0.0,
+      "tp_exec_status": "verification_required",
       "tp_base_registered": true,
       "tp_pending_reason": null
     },
@@ -181,7 +181,31 @@
         "reason": "历史位置 65.00% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "match_level": "na",
         "benchmark_index_name": "",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "not_applicable",
+        "valuation_data_status": "na",
+        "valuation_data_quality": "",
+        "valuation_execution_usable": "no",
+        "valuation_dimensions_available": "",
+        "valuation_data_time": "",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": null,
+        "basis": "not_applicable",
+        "confidence": null,
+        "conclusion": "不适用股票估值体系；暂无专属评估模型（仅位置维度可参考）",
+        "remaining_gap": "无需补齐——不是数据缺失，而是估值方法对该资产类型不适用；该资产类型的专属评估模型（债券久期/信用利差、固收+股债比与回撤、商品实际利率）尚未建立，属独立立项范围",
+        "dimensions_used": [],
+        "usable_for_add_position": false,
+        "signal_type": "not_applicable",
+        "asset_class": "商品（黄金 ETF 联接）",
+        "available_signals": [
+          "历史位置分位",
+          "近 6 个月位置分位"
+        ]
       }
     },
     {
@@ -196,7 +220,7 @@
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.29，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 48.32%（正常区域，5 分）+ 近 6 个月位置 1.77%（近期低位，8.0 分）+ 估值 待确认（仅 PE 口径，缺 PB）（- 分）→ 综合评分 6.29，判定「观察」。估值数据缺失，第三关未通过：不得仅凭历史位置低就补仓",
+      "signal_reason": "V6.2 三维决策：历史位置 48.32%（正常区域，5 分）+ 近 6 个月位置 1.77%（近期低位，8.0 分）+ 估值 待确认（仅 PE 口径，缺 PB）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 8.6 反而 ≥ 7 分（结论：明显偏便宜），但执行口径缺维度、第三关仍不通过，补齐后才能定案",
       "confidence": "low",
       "consecutive_fall_days": 0,
       "rebound_from_recent_low_pct": 0.79,
@@ -220,10 +244,32 @@
       "valuation": {
         "valuation_status": "待确认（仅 PE 口径，缺 PB）",
         "valuation_score": null,
-        "reason": "估值数据缺失，第三关未通过：不得仅凭历史位置低就补仓",
+        "reason": "估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 8.6 反而 ≥ 7 分（结论：明显偏便宜），但执行口径缺维度、第三关仍不通过，补齐后才能定案",
         "match_level": "exact",
         "benchmark_index_name": "中证申万有色金属指数",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "data_unavailable",
+        "valuation_data_status": "partial",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe",
+        "valuation_data_time": "2026-10-15 15:00",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": 8.6,
+        "basis": "degraded_pe_only",
+        "confidence": "Medium",
+        "conclusion": "明显偏便宜",
+        "remaining_gap": "缺 PB 历史分位、股息率（当前数据源不提供；补齐后才能执行口径计分）",
+        "dimensions_used": [
+          "pe"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "single_dimension",
+        "conclusion_qualified": "明显偏便宜 —— 仅为单维度信号（缺 PB），且属强周期行业（有色金属）：低 PE 可能来自盈利高点，不构成完整估值结论，不得单独认定为『明显低估』"
       }
     },
     {
@@ -266,7 +312,31 @@
         "reason": "历史位置 80.41% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "match_level": "na",
         "benchmark_index_name": "",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "not_applicable",
+        "valuation_data_status": "na",
+        "valuation_data_quality": "",
+        "valuation_execution_usable": "no",
+        "valuation_dimensions_available": "",
+        "valuation_data_time": "",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": null,
+        "basis": "not_applicable",
+        "confidence": null,
+        "conclusion": "不适用股票估值体系；暂无专属评估模型（仅位置维度可参考）",
+        "remaining_gap": "无需补齐——不是数据缺失，而是估值方法对该资产类型不适用；该资产类型的专属评估模型（债券久期/信用利差、固收+股债比与回撤、商品实际利率）尚未建立，属独立立项范围",
+        "dimensions_used": [],
+        "usable_for_add_position": false,
+        "signal_type": "not_applicable",
+        "asset_class": "混合型（细分类型待确认）",
+        "available_signals": [
+          "历史位置分位",
+          "近 6 个月位置分位"
+        ]
       }
     },
     {
@@ -309,33 +379,57 @@
         "reason": "历史位置 85.09% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "match_level": "na",
         "benchmark_index_name": "",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "not_applicable",
+        "valuation_data_status": "na",
+        "valuation_data_quality": "",
+        "valuation_execution_usable": "no",
+        "valuation_dimensions_available": "",
+        "valuation_data_time": "",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": null,
+        "basis": "not_applicable",
+        "confidence": null,
+        "conclusion": "不适用股票估值体系；暂无专属评估模型（仅位置维度可参考）",
+        "remaining_gap": "无需补齐——不是数据缺失，而是估值方法对该资产类型不适用；该资产类型的专属评估模型（债券久期/信用利差、固收+股债比与回撤、商品实际利率）尚未建立，属独立立项范围",
+        "dimensions_used": [],
+        "usable_for_add_position": false,
+        "signal_type": "not_applicable",
+        "asset_class": "债券（政金债指数·中债 3-5 年农发行）",
+        "available_signals": [
+          "历史位置分位",
+          "近 6 个月位置分位"
+        ]
       }
     },
     {
       "fund_code": "006259",
       "fund_name": "汇添富红利增长混合A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.8689",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.8759",
       "data_status": "正常",
-      "historical_position_pct": 71.8,
-      "six_month_position_pct": 55.93,
+      "historical_position_pct": 72.37,
+      "six_month_position_pct": 59.63,
       "sip_status": "paused_manual",
       "signal": "hold",
       "signal_label": "持有观察",
       "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 71.80% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_reason": "成立以来历史位置 72.37% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "high",
       "consecutive_fall_days": 0,
-      "rebound_from_recent_low_pct": 0.64,
+      "rebound_from_recent_low_pct": 1.02,
       "next_up": {
         "at_pct": 75.0,
-        "distance_pp": 3.2,
+        "distance_pp": 2.63,
         "effect": "进入累计止盈模式（≥75% 起）"
       },
       "next_down": {
         "at_pct": 70.0,
-        "distance_pp": 1.8,
+        "distance_pp": 2.37,
         "effect": "退出定投停止线（已确认暂停的仍不自动恢复）"
       },
       "take_profit": {
@@ -348,10 +442,33 @@
       "valuation": {
         "valuation_status": "偏高",
         "valuation_score": 3.0,
-        "reason": "历史位置 71.80% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "reason": "历史位置 72.37% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "match_level": "proxy",
         "benchmark_index_name": "中证红利",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "主动红利风格基金，非跟踪指数，用中证红利(SH000922)作主题参考",
+        "proxy_confidence": "Medium"
+      },
+      "research": {
+        "research_score": 3.0,
+        "basis": "full",
+        "confidence": "Medium",
+        "conclusion": "偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
@@ -393,33 +510,56 @@
         "reason": "长期低位但估值评分 3.8 < 7：估值偏贵或基本面变化，不补仓",
         "match_level": "proxy",
         "benchmark_index_name": "中证电子",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "半导体设备属电子大类，用中证电子(CSI930652)近似",
+        "proxy_confidence": "Medium"
+      },
+      "research": {
+        "research_score": 3.8,
+        "basis": "full",
+        "confidence": "Medium",
+        "conclusion": "偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
       "fund_code": "007345",
       "fund_name": "富国科技创新灵活配置混合",
-      "nav_date": "2026-10-16",
-      "latest_nav": "2.1421",
+      "nav_date": "2026-10-19",
+      "latest_nav": "2.1305",
       "data_status": "正常",
-      "historical_position_pct": 63.36,
-      "six_month_position_pct": 0.36,
+      "historical_position_pct": 62.72,
+      "six_month_position_pct": 0.0,
       "sip_status": "paused_manual",
       "signal": "hold",
       "signal_label": "持有观察",
       "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 63.36% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_reason": "成立以来历史位置 62.72% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "high",
-      "consecutive_fall_days": 0,
-      "rebound_from_recent_low_pct": 0.11,
+      "consecutive_fall_days": 1,
+      "rebound_from_recent_low_pct": 0.0,
       "next_up": {
         "at_pct": 65.0,
-        "distance_pp": 1.64,
+        "distance_pp": 2.28,
         "effect": "进入65%~70%定投缓冲带（恢复须复核，不自动恢复）"
       },
       "next_down": {
         "at_pct": 50.0,
-        "distance_pp": 13.36,
+        "distance_pp": 12.72,
         "effect": "进入补仓区（35%~50% 方向档）"
       },
       "take_profit": {
@@ -435,7 +575,30 @@
         "reason": "未进入补仓分层，正常持有",
         "match_level": "proxy",
         "benchmark_index_name": "科技龙头",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "主动科技创新，宽主题参考（科技龙头 CSI931087）",
+        "proxy_confidence": "Low"
+      },
+      "research": {
+        "research_score": 4.7,
+        "basis": "full",
+        "confidence": "Low",
+        "conclusion": "中性偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
@@ -477,7 +640,30 @@
         "reason": "未进入补仓分层，正常持有",
         "match_level": "proxy",
         "benchmark_index_name": "5G通讯",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "通信设备与 5G 通讯主题(CSI931079)近似",
+        "proxy_confidence": "Medium"
+      },
+      "research": {
+        "research_score": 3.4,
+        "basis": "full",
+        "confidence": "Medium",
+        "conclusion": "偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
@@ -520,7 +706,31 @@
         "reason": "历史位置 94.13% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "match_level": "na",
         "benchmark_index_name": "",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "not_applicable",
+        "valuation_data_status": "na",
+        "valuation_data_quality": "",
+        "valuation_execution_usable": "no",
+        "valuation_dimensions_available": "",
+        "valuation_data_time": "",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": null,
+        "basis": "not_applicable",
+        "confidence": null,
+        "conclusion": "不适用股票估值体系；暂无专属评估模型（仅位置维度可参考）",
+        "remaining_gap": "无需补齐——不是数据缺失，而是估值方法对该资产类型不适用；该资产类型的专属评估模型（债券久期/信用利差、固收+股债比与回撤、商品实际利率）尚未建立，属独立立项范围",
+        "dimensions_used": [],
+        "usable_for_add_position": false,
+        "signal_type": "not_applicable",
+        "asset_class": "混合型·1 年持有期（细分类型待确认）",
+        "available_signals": [
+          "历史位置分位",
+          "近 6 个月位置分位"
+        ]
       }
     },
     {
@@ -535,7 +745,7 @@
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.29，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 49.31%（正常区域，5 分）+ 近 6 个月位置 15.12%（近期低位，8.0 分）+ 估值 待确认（仅 PE 口径，缺 PB）（- 分）→ 综合评分 6.29，判定「观察」。估值数据缺失，第三关未通过：不得仅凭历史位置低就补仓",
+      "signal_reason": "V6.2 三维决策：历史位置 49.31%（正常区域，5 分）+ 近 6 个月位置 15.12%（近期低位，8.0 分）+ 估值 待确认（仅 PE 口径，缺 PB）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.9 亦 < 7 分（结论：偏贵）",
       "confidence": "high",
       "consecutive_fall_days": 2,
       "rebound_from_recent_low_pct": 1.57,
@@ -559,36 +769,58 @@
       "valuation": {
         "valuation_status": "待确认（仅 PE 口径，缺 PB）",
         "valuation_score": null,
-        "reason": "估值数据缺失，第三关未通过：不得仅凭历史位置低就补仓",
+        "reason": "估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.9 亦 < 7 分（结论：偏贵）",
         "match_level": "exact",
         "benchmark_index_name": "中证全指电力公用事业指数",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "data_unavailable",
+        "valuation_data_status": "partial",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe",
+        "valuation_data_time": "2026-10-15 15:00",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": 3.9,
+        "basis": "degraded_pe_only",
+        "confidence": "Medium",
+        "conclusion": "偏贵",
+        "remaining_gap": "缺 PB 历史分位、股息率（当前数据源不提供；补齐后才能执行口径计分）",
+        "dimensions_used": [
+          "pe"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "single_dimension",
+        "conclusion_qualified": "偏贵 —— 仅为单维度信号（缺 PB 历史分位），未含净资产端交叉验证，不构成完整估值结论"
       }
     },
     {
       "fund_code": "017854",
       "fund_name": "易方达云计算联接C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.3392",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.3558",
       "data_status": "正常",
-      "historical_position_pct": 55.18,
-      "six_month_position_pct": 0.0,
+      "historical_position_pct": 56.56,
+      "six_month_position_pct": 3.34,
       "sip_status": "paused_manual",
       "signal": "hold",
       "signal_label": "持有观察",
       "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 55.18% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_reason": "成立以来历史位置 56.56% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "high",
-      "consecutive_fall_days": 5,
-      "rebound_from_recent_low_pct": 0.0,
+      "consecutive_fall_days": 0,
+      "rebound_from_recent_low_pct": 1.24,
       "next_up": {
         "at_pct": 65.0,
-        "distance_pp": 9.82,
+        "distance_pp": 8.44,
         "effect": "进入65%~70%定投缓冲带（恢复须复核，不自动恢复）"
       },
       "next_down": {
         "at_pct": 50.0,
-        "distance_pp": 5.18,
+        "distance_pp": 6.56,
         "effect": "进入补仓区（35%~50% 方向档）"
       },
       "take_profit": {
@@ -604,33 +836,55 @@
         "reason": "未进入补仓分层，正常持有",
         "match_level": "exact",
         "benchmark_index_name": "中证云计算与大数据主题指数",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "data_unavailable",
+        "valuation_data_status": "partial",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe",
+        "valuation_data_time": "2026-10-15 15:00",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": 6.2,
+        "basis": "degraded_pe_only",
+        "confidence": "Medium",
+        "conclusion": "中性偏便宜",
+        "remaining_gap": "缺 PB 历史分位、股息率（当前数据源不提供；补齐后才能执行口径计分）",
+        "dimensions_used": [
+          "pe"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "single_dimension",
+        "conclusion_qualified": "中性偏便宜 —— 仅为单维度信号（缺 PB 历史分位），未含净资产端交叉验证，不构成完整估值结论"
       }
     },
     {
       "fund_code": "017999",
       "fund_name": "中欧融恒平衡混合C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.3704",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.3756",
       "data_status": "正常",
-      "historical_position_pct": 66.2,
-      "six_month_position_pct": 33.91,
+      "historical_position_pct": 66.96,
+      "six_month_position_pct": 36.53,
       "sip_status": "paused_confirmed",
       "signal": "hold",
       "signal_label": "持有观察",
       "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 66.20% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_reason": "成立以来历史位置 66.96% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "high",
       "consecutive_fall_days": 0,
-      "rebound_from_recent_low_pct": 0.79,
+      "rebound_from_recent_low_pct": 1.18,
       "next_up": {
         "at_pct": 70.0,
-        "distance_pp": 3.8,
+        "distance_pp": 3.04,
         "effect": "触发定投停止线（已确认暂停的不变）"
       },
       "next_down": {
         "at_pct": 65.0,
-        "distance_pp": 1.2,
+        "distance_pp": 1.96,
         "effect": "进入恢复待复核区（恢复定投须复核+用户确认）"
       },
       "take_profit": {
@@ -643,10 +897,33 @@
       "valuation": {
         "valuation_status": "合理",
         "valuation_score": 5.5,
-        "reason": "历史位置 66.20% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "reason": "历史位置 66.96% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "match_level": "proxy",
         "benchmark_index_name": "沪深300",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "主动平衡混合，用沪深300(SH000300)宽基参考",
+        "proxy_confidence": "Low"
+      },
+      "research": {
+        "research_score": 5.5,
+        "basis": "full",
+        "confidence": "Low",
+        "conclusion": "中性偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
@@ -661,7 +938,7 @@
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.29，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 41.37%（正常区域，5 分）+ 近 6 个月位置 0.34%（近期低位，8.0 分）+ 估值 待确认（近似指数，非跟踪标的）（- 分）→ 综合评分 6.29，判定「观察」。估值数据缺失，第三关未通过：不得仅凭历史位置低就补仓",
+      "signal_reason": "V6.2 三维决策：历史位置 41.37%（正常区域，5 分）+ 近 6 个月位置 0.34%（近期低位，8.0 分）+ 估值 待确认（近似指数，非跟踪标的）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.4 亦 < 7 分（结论：偏贵）",
       "confidence": "high",
       "consecutive_fall_days": 0,
       "rebound_from_recent_low_pct": 0.24,
@@ -685,36 +962,58 @@
       "valuation": {
         "valuation_status": "待确认（近似指数，非跟踪标的）",
         "valuation_score": null,
-        "reason": "估值数据缺失，第三关未通过：不得仅凭历史位置低就补仓",
+        "reason": "估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.4 亦 < 7 分（结论：偏贵）",
         "match_level": "proxy",
         "benchmark_index_name": "中证智能制造主题指数",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "data_unavailable",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Low",
+        "valuation_execution_usable": "no",
+        "valuation_dimensions_available": "pe",
+        "valuation_data_time": "2026-10-15 15:00",
+        "valuation_proxy_basis": "主动混合无跟踪标的；业绩基准含中证智能制造主题指数×60%，仅作主题参考",
+        "proxy_confidence": "Low"
+      },
+      "research": {
+        "research_score": 3.4,
+        "basis": "degraded_pe_only",
+        "confidence": "Low",
+        "conclusion": "偏贵",
+        "remaining_gap": "缺 PB 历史分位、股息率（当前数据源不提供；补齐后才能执行口径计分）",
+        "dimensions_used": [
+          "pe"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "single_dimension",
+        "conclusion_qualified": "偏贵 —— 仅为单维度信号（缺 PB 历史分位），未含净资产端交叉验证，不构成完整估值结论"
       }
     },
     {
       "fund_code": "019869",
       "fund_name": "华夏云计算与大数据ETF联接C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.3930",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.4096",
       "data_status": "正常",
-      "historical_position_pct": 54.24,
-      "six_month_position_pct": 0.0,
+      "historical_position_pct": 55.59,
+      "six_month_position_pct": 3.2,
       "sip_status": "paused_manual",
       "signal": "hold",
       "signal_label": "持有观察",
       "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 54.24% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_reason": "成立以来历史位置 55.59% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "high",
-      "consecutive_fall_days": 5,
-      "rebound_from_recent_low_pct": 0.0,
+      "consecutive_fall_days": 0,
+      "rebound_from_recent_low_pct": 1.19,
       "next_up": {
         "at_pct": 65.0,
-        "distance_pp": 10.76,
+        "distance_pp": 9.41,
         "effect": "进入65%~70%定投缓冲带（恢复须复核，不自动恢复）"
       },
       "next_down": {
         "at_pct": 50.0,
-        "distance_pp": 4.24,
+        "distance_pp": 5.59,
         "effect": "进入补仓区（35%~50% 方向档）"
       },
       "take_profit": {
@@ -730,34 +1029,56 @@
         "reason": "未进入补仓分层，正常持有",
         "match_level": "exact",
         "benchmark_index_name": "中证云计算与大数据主题指数",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "data_unavailable",
+        "valuation_data_status": "partial",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe",
+        "valuation_data_time": "2026-10-15 15:00",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": 6.2,
+        "basis": "degraded_pe_only",
+        "confidence": "Medium",
+        "conclusion": "中性偏便宜",
+        "remaining_gap": "缺 PB 历史分位、股息率（当前数据源不提供；补齐后才能执行口径计分）",
+        "dimensions_used": [
+          "pe"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "single_dimension",
+        "conclusion_qualified": "中性偏便宜 —— 仅为单维度信号（缺 PB 历史分位），未含净资产端交叉验证，不构成完整估值结论"
       }
     },
     {
       "fund_code": "020670",
       "fund_name": "易方达上证科创板芯片ETF联接A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "2.9304",
+      "nav_date": "2026-10-19",
+      "latest_nav": "2.8545",
       "data_status": "正常",
-      "historical_position_pct": 51.03,
-      "six_month_position_pct": 9.71,
+      "historical_position_pct": 49.1,
+      "six_month_position_pct": 4.44,
       "sip_status": "paused_confirmed",
       "signal": "hold",
-      "signal_label": "持有观察",
-      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 51.03% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_label": "不补仓（估值偏贵或未确认）",
+      "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 5.21，状态「暂停补仓」",
+      "signal_reason": "V6.2 三维决策：历史位置 49.10%（正常区域，5 分）+ 近 6 个月位置 4.44%（近期低位，8.0 分）+ 估值 偏高（2.7 分）→ 综合评分 5.21，判定「暂停补仓」。长期低位但估值评分 2.7 < 7：估值偏贵或基本面变化，不补仓",
       "confidence": "high",
-      "consecutive_fall_days": 0,
-      "rebound_from_recent_low_pct": 0.05,
+      "consecutive_fall_days": 1,
+      "rebound_from_recent_low_pct": 0.0,
       "next_up": {
-        "at_pct": 65.0,
-        "distance_pp": 13.97,
-        "effect": "进入65%~70%定投缓冲带（恢复须复核，不自动恢复）"
+        "at_pct": 50.0,
+        "distance_pp": 0.9,
+        "effect": "退出主动补仓区（≥50% 不补仓）"
       },
       "next_down": {
-        "at_pct": 50.0,
-        "distance_pp": 1.03,
-        "effect": "进入补仓区（35%~50% 方向档）"
+        "at_pct": 35.0,
+        "distance_pp": 14.1,
+        "effect": "进入更深补仓档（20%~35%）"
       },
       "take_profit": {
         "tp_status": "未启动",
@@ -769,10 +1090,33 @@
       "valuation": {
         "valuation_status": "偏高",
         "valuation_score": 2.7,
-        "reason": "未进入补仓分层，正常持有",
+        "reason": "长期低位但估值评分 2.7 < 7：估值偏贵或基本面变化，不补仓",
         "match_level": "proxy",
         "benchmark_index_name": "科创50",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "科创板芯片属科创板，用科创50(SH000688)近似",
+        "proxy_confidence": "Medium"
+      },
+      "research": {
+        "research_score": 2.7,
+        "basis": "full",
+        "confidence": "Medium",
+        "conclusion": "偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
@@ -814,7 +1158,30 @@
         "reason": "历史位置 70.08% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "match_level": "proxy",
         "benchmark_index_name": "恒生指数",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-15 15:00",
+        "valuation_proxy_basis": "港股红利无对应指数，用恒生指数(HKHSI)宽基参考",
+        "proxy_confidence": "Low"
+      },
+      "research": {
+        "research_score": 4.5,
+        "basis": "full",
+        "confidence": "Low",
+        "conclusion": "中性偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
@@ -829,7 +1196,7 @@
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.29，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 44.03%（正常区域，5 分）+ 近 6 个月位置 1.99%（近期低位，8.0 分）+ 估值 待确认（近似指数，非跟踪标的）（- 分）→ 综合评分 6.29，判定「观察」。估值数据缺失，第三关未通过：不得仅凭历史位置低就补仓",
+      "signal_reason": "V6.2 三维决策：历史位置 44.03%（正常区域，5 分）+ 近 6 个月位置 1.99%（近期低位，8.0 分）+ 估值 待确认（近似指数，非跟踪标的）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 2.7 亦 < 7 分（结论：偏贵）",
       "confidence": "high",
       "consecutive_fall_days": 0,
       "rebound_from_recent_low_pct": 1.08,
@@ -853,10 +1220,32 @@
       "valuation": {
         "valuation_status": "待确认（近似指数，非跟踪标的）",
         "valuation_score": null,
-        "reason": "估值数据缺失，第三关未通过：不得仅凭历史位置低就补仓",
+        "reason": "估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 2.7 亦 < 7 分（结论：偏贵）",
         "match_level": "proxy",
         "benchmark_index_name": "中证电网设备主题指数",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": true,
+        "valuation_missing_reason": "data_unavailable",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe",
+        "valuation_data_time": "2026-10-15 15:00",
+        "valuation_proxy_basis": "真实跟踪恒生A股电网设备指数(HSCAUPG)，无可用公开估值源；以中证电网设备主题(931994)近似",
+        "proxy_confidence": "Low"
+      },
+      "research": {
+        "research_score": 2.7,
+        "basis": "degraded_pe_only",
+        "confidence": "Low",
+        "conclusion": "偏贵",
+        "remaining_gap": "缺 PB 历史分位、股息率（当前数据源不提供；补齐后才能执行口径计分）",
+        "dimensions_used": [
+          "pe"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "single_dimension",
+        "conclusion_qualified": "偏贵 —— 仅为单维度信号（缺 PB 历史分位），未含净资产端交叉验证，不构成完整估值结论"
       }
     },
     {
@@ -894,28 +1283,51 @@
         "reason": "长期低位但估值评分 2.7 < 7：估值偏贵或基本面变化，不补仓",
         "match_level": "proxy",
         "benchmark_index_name": "科创50",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "科创板人工智能属科创板，用科创50(SH000688)近似",
+        "proxy_confidence": "Medium"
+      },
+      "research": {
+        "research_score": 2.7,
+        "basis": "full",
+        "confidence": "Medium",
+        "conclusion": "偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
       "fund_code": "025491",
       "fund_name": "平安中证卫星产业指数C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "0.7965",
+      "nav_date": "2026-10-19",
+      "latest_nav": "0.8052",
       "data_status": "正常",
-      "historical_position_pct": 2.58,
-      "six_month_position_pct": 3.6,
+      "historical_position_pct": 3.66,
+      "six_month_position_pct": 5.09,
       "sip_status": "paused_manual",
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 8.01，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 2.58%（极低区域，9 分）+ 近 6 个月位置 3.60%（近期低位，8.0 分）+ 估值 合理（6.7 分）→ 综合评分 8.01，判定「观察」。长期低位但估值评分 6.7 < 7：估值偏贵或基本面变化，不补仓",
+      "signal_reason": "V6.2 三维决策：历史位置 3.66%（极低区域，9 分）+ 近 6 个月位置 5.09%（近期低位，8.0 分）+ 估值 合理（6.7 分）→ 综合评分 8.01，判定「观察」。长期低位但估值评分 6.7 < 7：估值偏贵或基本面变化，不补仓",
       "confidence": "high",
       "consecutive_fall_days": 0,
-      "rebound_from_recent_low_pct": 2.69,
+      "rebound_from_recent_low_pct": 3.82,
       "next_up": {
         "at_pct": 5.0,
-        "distance_pp": 2.42,
+        "distance_pp": 1.34,
         "effect": "脱离深跌特别档（<5%），转入5%~10%档"
       },
       "next_down": null,
@@ -932,7 +1344,30 @@
         "reason": "长期低位但估值评分 6.7 < 7：估值偏贵或基本面变化，不补仓",
         "match_level": "proxy",
         "benchmark_index_name": "中证军工",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "proxy",
+        "valuation_data_quality": "Medium",
+        "valuation_execution_usable": "limited",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "卫星产业与军工交叉，用中证军工(SZ399967)主题近似",
+        "proxy_confidence": "Medium"
+      },
+      "research": {
+        "research_score": 6.7,
+        "basis": "full",
+        "confidence": "Medium",
+        "conclusion": "中性偏便宜",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
@@ -974,33 +1409,56 @@
         "reason": "长期低位但近 6 个月位置 59.17% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓",
         "match_level": "exact",
         "benchmark_index_name": "中证红利",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "available",
+        "valuation_data_quality": "High",
+        "valuation_execution_usable": "yes",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-16 15:00",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": 3.0,
+        "basis": "full",
+        "confidence": "High",
+        "conclusion": "偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     },
     {
       "fund_code": "270042",
       "fund_name": "广发纳斯达克100ETF联接(QDII)A",
-      "nav_date": "2026-10-15",
-      "latest_nav": "8.2009",
+      "nav_date": "2026-10-16",
+      "latest_nav": "7.9912",
       "data_status": "正常",
-      "historical_position_pct": 94.9,
-      "six_month_position_pct": 67.19,
+      "historical_position_pct": 92.17,
+      "six_month_position_pct": 47.93,
       "sip_status": "paused_manual",
       "signal": "take_profit",
       "signal_label": "止盈候选",
       "signal_tier": "累计止盈 92%~95% 档：累计目标 75%",
-      "signal_reason": "成立以来历史位置 94.90% 已启动累计止盈（V6.1）：累计目标 75%，本次新增卖出占**止盈启动基准仓位** 0.00%（折算当前剩余持仓 0.00%）；卖出资金默认进入 006224 利润锁定池。本次不新增卖出：已完成比例已达/超过当前累计目标 75.00%，按 V6.1 七不重复卖",
+      "signal_reason": "成立以来历史位置 92.17% 已启动累计止盈（V6.1）：累计目标 75%，本次新增卖出占**止盈启动基准仓位** 0.00%（折算当前剩余持仓 0.00%）；卖出资金默认进入 006224 利润锁定池。本次不新增卖出：已完成比例已达/超过当前累计目标 75.00%，按 V6.1 七不重复卖",
       "confidence": "high",
-      "consecutive_fall_days": 4,
-      "rebound_from_recent_low_pct": 2.7,
+      "consecutive_fall_days": 5,
+      "rebound_from_recent_low_pct": 0.07,
       "next_up": {
         "at_pct": 95.0,
-        "distance_pp": 0.1,
+        "distance_pp": 2.83,
         "effect": "进入累计止盈第五档"
       },
       "next_down": {
         "at_pct": 92.0,
-        "distance_pp": 2.9,
+        "distance_pp": 0.17,
         "effect": "回落至累计止盈第三档"
       },
       "take_profit": {
@@ -1014,12 +1472,36 @@
       "valuation": {
         "valuation_status": "偏高",
         "valuation_score": 3.9,
-        "reason": "历史位置 94.90% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "reason": "历史位置 92.17% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "match_level": "exact",
         "benchmark_index_name": "纳指100",
-        "gates_all_passed": false
+        "gates_all_passed": false,
+        "valuation_missing": false,
+        "valuation_missing_reason": "",
+        "valuation_data_status": "available",
+        "valuation_data_quality": "High",
+        "valuation_execution_usable": "yes",
+        "valuation_dimensions_available": "pe,pb,dividend_yield",
+        "valuation_data_time": "2026-10-15 15:00",
+        "valuation_proxy_basis": "",
+        "proxy_confidence": ""
+      },
+      "research": {
+        "research_score": 3.9,
+        "basis": "full",
+        "confidence": "High",
+        "conclusion": "偏贵",
+        "remaining_gap": "计分维度齐全（PE/PB 历史分位 + 股息率数值）；股息率历史分位当前数据源不提供（A3 不做分位修正，不影响算分）",
+        "dimensions_used": [
+          "pe",
+          "pb",
+          "dividend_yield"
+        ],
+        "usable_for_add_position": false,
+        "signal_type": "complete"
       }
     }
   ],
+  "research_layer_note": "research.research_score 为研究口径估值（数据不完整时按 A3『按已有维度归一化』原式降级算分），只回答『贵不贵』；能不能补仓仍只看 valuation.gates_all_passed 与 valuation.valuation_score。研究评分 ≠ 补仓资格（V6.3 六）。valuation_missing_reason=not_applicable 表示该资产类型（债券/固收+/商品）不适用股票估值体系，不是缺数据、无需等待补齐。★research.signal_type 必须据以区分结论强度：complete=完整估值结论（PE+PB 齐全）；single_dimension=单维度估值信号（缺 PB，只反映盈利端），**不得称为完整估值结论、不得单独作为『明显低估/高估』的依据**；not_applicable=不适用股票估值体系；unscored=无历史分位无法算分。强周期行业（如有色金属）在缺 PB 时，低 PE 分位可能是盈利高点导致 PE 被动压缩而非便宜，不得据此认定低估。",
   "brief_note": "本文件为 /api/signals.json 的精简版，供 ChatGPT 日常调用（响应体积约为完整版 1/4）。字段含义与完整版一致；金额类字段公开通道一律不输出，止盈只给比例。"
 }
