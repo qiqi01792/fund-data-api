@@ -1,9 +1,9 @@
 {
   "schema": "fund-readonly-summary/v1",
   "readonly": true,
-  "generated_at": "2026-10-16 23:13:05",
-  "snapshot_date": "2026-10-16",
-  "as_of_nav_date": "2026-10-16",
+  "generated_at": "2026-10-19 19:46:36",
+  "snapshot_date": "2026-10-19",
+  "as_of_nav_date": "2026-10-19",
   "has_new_nav_on_snapshot_date": true,
   "fund_count": 21,
   "nav_scope": "near_1y",
@@ -102,7 +102,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "004433",
@@ -143,7 +143,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "005984",
@@ -184,7 +184,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "006224",
@@ -225,13 +225,13 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "006259",
       "fund_name": "汇添富红利增长混合A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.8689",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.8759",
       "nav_type": "official",
       "historical_high": "2.2144",
       "historical_high_date": "2021-02-10",
@@ -240,8 +240,8 @@
       "previous_high_nav": "2.2144",
       "previous_high_nav_date": "2021-02-10",
       "is_new_high": "false",
-      "six_month_start": "2026-04-16",
-      "six_month_end": "2026-10-16",
+      "six_month_start": "2026-04-19",
+      "six_month_end": "2026-10-19",
       "six_month_high": "1.9522",
       "six_month_high_date": "2026-04-29",
       "six_month_low": "1.7632",
@@ -250,10 +250,10 @@
       "recent_low_date": "2026-09-29",
       "recent_low_window_days": 20,
       "history_start_date": "2019-04-26",
-      "history_end_date": "2026-10-16",
-      "history_count": 1790,
-      "historical_position": "0.7180",
-      "six_month_position": "0.5593",
+      "history_end_date": "2026-10-19",
+      "history_count": 1791,
+      "historical_position": "0.7237",
+      "six_month_position": "0.5963",
       "sip_status": "paused_manual",
       "sip_status_note": "人工暂停定投，不自动恢复；恢复须按 65%/70% 主规则 + 质量/回撤/行业/重复度综合判断",
       "sip_actual_since": "",
@@ -266,7 +266,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "007301",
@@ -307,13 +307,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "007345",
       "fund_name": "富国科技创新灵活配置混合",
-      "nav_date": "2026-10-16",
-      "latest_nav": "2.1421",
+      "nav_date": "2026-10-19",
+      "latest_nav": "2.1305",
       "nav_type": "official",
       "historical_high": "2.8078",
       "historical_high_date": "2026-06-25",
@@ -322,20 +322,20 @@
       "previous_high_nav": "2.8078",
       "previous_high_nav_date": "2026-06-25",
       "is_new_high": "false",
-      "six_month_start": "2026-04-16",
-      "six_month_end": "2026-10-16",
+      "six_month_start": "2026-04-19",
+      "six_month_end": "2026-10-19",
       "six_month_high": "2.8078",
       "six_month_high_date": "2026-06-25",
-      "six_month_low": "2.1397",
-      "six_month_low_date": "2026-10-15",
-      "recent_low": "2.1397",
-      "recent_low_date": "2026-10-15",
+      "six_month_low": "2.1305",
+      "six_month_low_date": "2026-10-19",
+      "recent_low": "2.1305",
+      "recent_low_date": "2026-10-19",
       "recent_low_window_days": 20,
       "history_start_date": "2019-05-06",
-      "history_end_date": "2026-10-16",
-      "history_count": 1762,
-      "historical_position": "0.6336",
-      "six_month_position": "0.0036",
+      "history_end_date": "2026-10-19",
+      "history_count": 1763,
+      "historical_position": "0.6272",
+      "six_month_position": "0.0000",
       "sip_status": "paused_manual",
       "sip_status_note": "人工暂停定投，不自动恢复；恢复须按 65%/70% 主规则 + 质量/回撤/行业/重复度综合判断",
       "sip_actual_since": "",
@@ -348,7 +348,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "007817",
@@ -389,7 +389,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "010056",
@@ -430,7 +430,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "017481",
@@ -471,13 +471,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "017854",
       "fund_name": "易方达云计算联接C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.3392",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.3558",
       "nav_type": "official",
       "historical_high": "1.8769",
       "historical_high_date": "2026-01-14",
@@ -486,8 +486,8 @@
       "previous_high_nav": "1.8769",
       "previous_high_nav_date": "2026-01-14",
       "is_new_high": "false",
-      "six_month_start": "2026-04-16",
-      "six_month_end": "2026-10-16",
+      "six_month_start": "2026-04-19",
+      "six_month_end": "2026-10-19",
       "six_month_high": "1.8357",
       "six_month_high_date": "2026-05-13",
       "six_month_low": "1.3392",
@@ -496,10 +496,10 @@
       "recent_low_date": "2026-10-16",
       "recent_low_window_days": 20,
       "history_start_date": "2023-03-15",
-      "history_end_date": "2026-10-16",
-      "history_count": 870,
-      "historical_position": "0.5518",
-      "six_month_position": "0.0000",
+      "history_end_date": "2026-10-19",
+      "history_count": 871,
+      "historical_position": "0.5656",
+      "six_month_position": "0.0334",
       "sip_status": "paused_manual",
       "sip_status_note": "人工暂停定投，不自动恢复；恢复须按 65%/70% 主规则 + 质量/回撤/行业/重复度综合判断",
       "sip_actual_since": "",
@@ -512,13 +512,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "017999",
       "fund_name": "中欧融恒平衡混合C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.3704",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.3756",
       "nav_type": "official",
       "historical_high": "1.6020",
       "historical_high_date": "2026-02-25",
@@ -527,8 +527,8 @@
       "previous_high_nav": "1.6020",
       "previous_high_nav_date": "2026-02-25",
       "is_new_high": "false",
-      "six_month_start": "2026-04-16",
-      "six_month_end": "2026-10-16",
+      "six_month_start": "2026-04-19",
+      "six_month_end": "2026-10-19",
       "six_month_high": "1.5012",
       "six_month_high_date": "2026-05-07",
       "six_month_low": "1.3033",
@@ -537,10 +537,10 @@
       "recent_low_date": "2026-10-15",
       "recent_low_window_days": 20,
       "history_start_date": "2023-03-21",
-      "history_end_date": "2026-10-16",
-      "history_count": 822,
-      "historical_position": "0.6620",
-      "six_month_position": "0.3391",
+      "history_end_date": "2026-10-19",
+      "history_count": 823,
+      "historical_position": "0.6696",
+      "six_month_position": "0.3653",
       "sip_status": "paused_confirmed",
       "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-11 缓冲观察区（69.8%）用户主动一并暂停；2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 50 元／每周四（均线模式）执行，暂停期间不扣款））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认",
       "sip_actual_since": "2026-10-15",
@@ -553,7 +553,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "018125",
@@ -594,13 +594,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "019869",
       "fund_name": "华夏云计算与大数据ETF联接C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.3930",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.4096",
       "nav_type": "official",
       "historical_high": "1.9554",
       "historical_high_date": "2026-01-14",
@@ -609,8 +609,8 @@
       "previous_high_nav": "1.9554",
       "previous_high_nav_date": "2026-01-14",
       "is_new_high": "false",
-      "six_month_start": "2026-04-16",
-      "six_month_end": "2026-10-16",
+      "six_month_start": "2026-04-19",
+      "six_month_end": "2026-10-19",
       "six_month_high": "1.9112",
       "six_month_high_date": "2026-05-13",
       "six_month_low": "1.3930",
@@ -619,10 +619,10 @@
       "recent_low_date": "2026-10-16",
       "recent_low_window_days": 20,
       "history_start_date": "2023-11-14",
-      "history_end_date": "2026-10-16",
-      "history_count": 702,
-      "historical_position": "0.5424",
-      "six_month_position": "0.0000",
+      "history_end_date": "2026-10-19",
+      "history_count": 703,
+      "historical_position": "0.5559",
+      "six_month_position": "0.0320",
       "sip_status": "paused_manual",
       "sip_status_note": "人工暂停定投，不自动恢复；恢复须按 65%/70% 主规则 + 质量/回撤/行业/重复度综合判断",
       "sip_actual_since": "",
@@ -635,13 +635,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "020670",
       "fund_name": "易方达上证科创板芯片ETF联接A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "2.9304",
+      "nav_date": "2026-10-19",
+      "latest_nav": "2.8545",
       "nav_type": "official",
       "historical_high": "4.8552",
       "historical_high_date": "2026-06-30",
@@ -650,22 +650,22 @@
       "previous_high_nav": "4.8552",
       "previous_high_nav_date": "2026-06-30",
       "is_new_high": "false",
-      "six_month_start": "2026-04-16",
-      "six_month_end": "2026-10-16",
+      "six_month_start": "2026-04-19",
+      "six_month_end": "2026-10-19",
       "six_month_high": "4.8552",
       "six_month_high_date": "2026-06-30",
-      "six_month_low": "2.7234",
-      "six_month_low_date": "2026-04-16",
-      "recent_low": "2.9289",
-      "recent_low_date": "2026-10-15",
+      "six_month_low": "2.7615",
+      "six_month_low_date": "2026-04-21",
+      "recent_low": "2.8545",
+      "recent_low_date": "2026-10-19",
       "recent_low_window_days": 20,
       "history_start_date": "2024-01-31",
-      "history_end_date": "2026-10-16",
-      "history_count": 649,
-      "historical_position": "0.5103",
-      "six_month_position": "0.0971",
+      "history_end_date": "2026-10-19",
+      "history_count": 650,
+      "historical_position": "0.4910",
+      "six_month_position": "0.0444",
       "sip_status": "paused_confirmed",
-      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 80 元／每周四（均线模式）执行，暂停期间不扣款）；本次新增登记（此前无实际设置记录，系统按历史位置判定为 investing））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认。当前位置 51.0% 已低于 65% 恢复线，进入待复核区",
+      "sip_status_note": "已于 2026-10-15 在蚂蚁财富执行暂停（2026-10-15 用户确认已在蚂蚁财富暂停全部定投计划（仅暂停、计划保留：恢复后仍按原金额 80 元／每周四（均线模式）执行，暂停期间不扣款）；本次新增登记（此前无实际设置记录，系统按历史位置判定为 investing））；恢复须位置 <65% 且按 V5.7 复核质量/逻辑/风险后由用户确认。当前位置 49.1% 已低于 65% 恢复线，进入待复核区",
       "sip_actual_since": "2026-10-15",
       "sip_weekly_amount": "80",
       "sip_mode": "均线模式",
@@ -676,7 +676,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "022274",
@@ -717,7 +717,7 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "023638",
@@ -758,7 +758,7 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "024412",
@@ -799,13 +799,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "025491",
       "fund_name": "平安中证卫星产业指数C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "0.7965",
+      "nav_date": "2026-10-19",
+      "latest_nav": "0.8052",
       "nav_type": "official",
       "historical_high": "1.5848",
       "historical_high_date": "2026-01-12",
@@ -814,8 +814,8 @@
       "previous_high_nav": "1.5848",
       "previous_high_nav_date": "2026-01-12",
       "is_new_high": "false",
-      "six_month_start": "2026-04-16",
-      "six_month_end": "2026-10-16",
+      "six_month_start": "2026-04-19",
+      "six_month_end": "2026-10-19",
       "six_month_high": "1.3569",
       "six_month_high_date": "2026-05-11",
       "six_month_low": "0.7756",
@@ -824,10 +824,10 @@
       "recent_low_date": "2026-10-15",
       "recent_low_window_days": 20,
       "history_start_date": "2025-09-23",
-      "history_end_date": "2026-10-16",
-      "history_count": 244,
-      "historical_position": "0.0258",
-      "six_month_position": "0.0360",
+      "history_end_date": "2026-10-19",
+      "history_count": 245,
+      "historical_position": "0.0366",
+      "six_month_position": "0.0509",
       "sip_status": "paused_manual",
       "sip_status_note": "人工暂停定投，不自动恢复；恢复须按 65%/70% 主规则 + 质量/回撤/行业/重复度综合判断",
       "sip_actual_since": "",
@@ -840,7 +840,7 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "100032",
@@ -881,13 +881,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     },
     {
       "fund_code": "270042",
       "fund_name": "广发纳斯达克100ETF联接(QDII)A",
-      "nav_date": "2026-10-15",
-      "latest_nav": "8.2009",
+      "nav_date": "2026-10-16",
+      "latest_nav": "7.9912",
       "nav_type": "official",
       "historical_high": "8.5927",
       "historical_high_date": "2026-06-02",
@@ -896,20 +896,20 @@
       "previous_high_nav": "8.5927",
       "previous_high_nav_date": "2026-06-02",
       "is_new_high": "false",
-      "six_month_start": "2026-04-15",
-      "six_month_end": "2026-10-15",
+      "six_month_start": "2026-04-16",
+      "six_month_end": "2026-10-16",
       "six_month_high": "8.5927",
       "six_month_high_date": "2026-06-02",
-      "six_month_low": "7.3986",
-      "six_month_low_date": "2026-04-15",
+      "six_month_low": "7.4376",
+      "six_month_low_date": "2026-04-16",
       "recent_low": "7.9853",
       "recent_low_date": "2026-09-16",
       "recent_low_window_days": 20,
       "history_start_date": "2012-08-15",
-      "history_end_date": "2026-10-15",
-      "history_count": 3410,
-      "historical_position": "0.9490",
-      "six_month_position": "0.6719",
+      "history_end_date": "2026-10-16",
+      "history_count": 3411,
+      "historical_position": "0.9217",
+      "six_month_position": "0.4793",
       "sip_status": "paused_manual",
       "sip_status_note": "人工暂停定投，不自动恢复；恢复须按 65%/70% 主规则 + 质量/回撤/行业/重复度综合判断",
       "sip_actual_since": "",
@@ -922,7 +922,7 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-10-16 23:11:05"
+      "update_time": "2026-10-19 19:44:05"
     }
   ],
   "check_log": [
