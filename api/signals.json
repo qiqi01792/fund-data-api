@@ -1,7 +1,7 @@
 {
   "schema": "fund_daily_signals/v4",
   "readonly": true,
-  "generated_at": "2026-10-19 19:46:36",
+  "generated_at": "2026-10-19 23:13:27",
   "as_of_nav_date": "2026-10-19",
   "rules_version": "V6.3",
   "daily_command": "按基金管理系统复盘",
@@ -18,15 +18,27 @@
     "unknown": 0,
     "take_profit_with_new_sell": 3,
     "take_profit_already_satisfied": 1,
-    "blocked_by_six_month_check": 0,
-    "blocked_by_valuation_gate": 9
+    "blocked_by_six_month_check": 1,
+    "blocked_by_valuation_gate": 8
   },
   "sip_counts": {
     "paused_manual": 13,
     "paused_confirmed": 8
   },
   "caliber_conflicts_count": 4,
-  "add_blocked_by_six_month": [],
+  "add_blocked_by_six_month": [
+    {
+      "fund_code": "100032",
+      "fund_name": "富国中证红利指数增强A",
+      "historical_position_pct": 5.71,
+      "six_month_position_pct": 65.0,
+      "block_at_pct": 60.0,
+      "rating": "B",
+      "quality_score": 7.0,
+      "add_base_tier": "5%~10% 极端区域",
+      "reason": "历史分位 5.71% 处于5%~10%（大额补仓候选区，必须先做基金质量与风险复检），但近 6 个月分位 65.00% ≥ 60%：近期处于相对高位，历史低位失真，按 V5.8 附则 A 不补仓"
+    }
+  ],
   "take_profit_module_v61": {
     "rules_version": "V6.1",
     "basis": "历史位置分位 =（当前净值－历史最低净值）÷（历史最高净值－历史最低净值）×100%；使用成立以来最高/最低正式单位净值，禁止用近 6 个月位置或盘中估值代替",
@@ -105,7 +117,7 @@
       {
         "fund_code": "005984",
         "fund_name": "兴业聚华混合A",
-        "historical_position_pct": 80.41,
+        "historical_position_pct": 81.25,
         "tier": "80%~85%",
         "cumulative_target_pct": 20.0,
         "new_sell_pct_of_base": 20.0,
@@ -119,7 +131,7 @@
       {
         "fund_code": "006224",
         "fund_name": "中银中债3-5年期农发行债券指数A",
-        "historical_position_pct": 85.09,
+        "historical_position_pct": 85.38,
         "tier": "85%~90%",
         "cumulative_target_pct": 35.0,
         "new_sell_pct_of_base": 35.0,
@@ -133,7 +145,7 @@
       {
         "fund_code": "010056",
         "fund_name": "平安瑞兴1年持有期混合A",
-        "historical_position_pct": 94.13,
+        "historical_position_pct": 94.24,
         "tier": "92%~95%",
         "cumulative_target_pct": 75.0,
         "new_sell_pct_of_base": 75.0,
@@ -173,8 +185,8 @@
       "proxy": 11
     },
     "status_counts": {
-      "正常持有": 12,
-      "观察": 8,
+      "正常持有": 13,
+      "观察": 7,
       "暂停补仓": 1
     },
     "blocked_by_gate": [
@@ -185,8 +197,8 @@
           "C"
         ],
         "status": "观察",
-        "historical_position_pct": 48.32,
-        "six_month_position_pct": 1.77,
+        "historical_position_pct": 48.37,
+        "six_month_position_pct": 1.91,
         "valuation_status": "待确认（仅 PE 口径，缺 PB）",
         "valuation_score": null,
         "composite_score": 6.29,
@@ -199,26 +211,12 @@
           "C"
         ],
         "status": "观察",
-        "historical_position_pct": 48.89,
-        "six_month_position_pct": 4.88,
+        "historical_position_pct": 47.55,
+        "six_month_position_pct": 1.3,
         "valuation_status": "偏高",
         "valuation_score": 3.8,
         "composite_score": 5.54,
         "reason": "长期低位但估值评分 3.8 < 7：估值偏贵或基本面变化，不补仓"
-      },
-      {
-        "fund_code": "017481",
-        "fund_name": "博时中证全指电力公用事业ETF联接A",
-        "cases": [
-          "C"
-        ],
-        "status": "观察",
-        "historical_position_pct": 49.31,
-        "six_month_position_pct": 15.12,
-        "valuation_status": "待确认（仅 PE 口径，缺 PB）",
-        "valuation_score": null,
-        "composite_score": 6.29,
-        "reason": "估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.9 亦 < 7 分（结论：偏贵）"
       },
       {
         "fund_code": "018125",
@@ -227,8 +225,8 @@
           "C"
         ],
         "status": "观察",
-        "historical_position_pct": 41.37,
-        "six_month_position_pct": 0.34,
+        "historical_position_pct": 46.95,
+        "six_month_position_pct": 10.9,
         "valuation_status": "待确认（近似指数，非跟踪标的）",
         "valuation_score": null,
         "composite_score": 6.29,
@@ -255,8 +253,8 @@
           "C"
         ],
         "status": "观察",
-        "historical_position_pct": 44.03,
-        "six_month_position_pct": 1.99,
+        "historical_position_pct": 46.39,
+        "six_month_position_pct": 6.12,
         "valuation_status": "待确认（近似指数，非跟踪标的）",
         "valuation_score": null,
         "composite_score": 6.29,
@@ -269,8 +267,8 @@
           "C"
         ],
         "status": "观察",
-        "historical_position_pct": 1.49,
-        "six_month_position_pct": 1.49,
+        "historical_position_pct": 2.33,
+        "six_month_position_pct": 2.33,
         "valuation_status": "偏高",
         "valuation_score": 2.7,
         "composite_score": 6.81,
@@ -298,20 +296,20 @@
           "C"
         ],
         "status": "观察",
-        "historical_position_pct": 5.26,
-        "six_month_position_pct": 59.17,
+        "historical_position_pct": 5.71,
+        "six_month_position_pct": 65.0,
         "valuation_status": "偏高",
         "valuation_score": 3.0,
         "composite_score": 5.7,
-        "reason": "长期低位但近 6 个月位置 59.17% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓"
+        "reason": "长期低位但近 6 个月位置 65.00% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓"
       }
     ],
     "case_study_fund": {
       "fund_code": "100032",
       "fund_name": "富国中证红利指数增强A",
-      "historical_position_pct": 5.26,
+      "historical_position_pct": 5.71,
       "historical_zone": "极低区域",
-      "six_month_position_pct": 59.17,
+      "six_month_position_pct": 65.0,
       "six_month_zone": "近期偏高",
       "valuation_status": "偏高",
       "valuation_score": 3.0,
@@ -348,7 +346,7 @@
       "signal": "take_profit",
       "signal_label": "止盈候选",
       "signal_tier": "累计止盈 92%~95% 档：累计目标 75%",
-      "historical_position_pct": 94.13,
+      "historical_position_pct": 94.24,
       "confidence": "high",
       "sip_status": "paused_manual",
       "rating": "B",
@@ -384,7 +382,7 @@
       "signal": "take_profit",
       "signal_label": "止盈候选",
       "signal_tier": "累计止盈 85%~90% 档：累计目标 35%",
-      "historical_position_pct": 85.09,
+      "historical_position_pct": 85.38,
       "confidence": "low",
       "sip_status": "paused_confirmed",
       "rating": "A",
@@ -402,7 +400,7 @@
       "signal": "take_profit",
       "signal_label": "止盈候选",
       "signal_tier": "累计止盈 80%~85% 档：累计目标 20%",
-      "historical_position_pct": 80.41,
+      "historical_position_pct": 81.25,
       "confidence": "high",
       "sip_status": "paused_confirmed",
       "rating": "B",
@@ -419,33 +417,33 @@
     {
       "fund_code": "004433",
       "fund_name": "南方有色金属ETF联接C",
-      "unit_nav_position_pct": 48.32,
-      "accumulated_nav_position_pct": 53.41,
+      "unit_nav_position_pct": 48.37,
+      "accumulated_nav_position_pct": 53.46,
       "divergence_pp": -5.09,
       "note": "口径分歧显著，操作前必须以累计净值口径人工复核"
     },
     {
       "fund_code": "006224",
       "fund_name": "中银中债3-5年期农发行债券指数A",
-      "unit_nav_position_pct": 85.09,
+      "unit_nav_position_pct": 85.38,
       "accumulated_nav_position_pct": 100.0,
-      "divergence_pp": -14.91,
+      "divergence_pp": -14.62,
       "note": "口径分歧显著，操作前必须以累计净值口径人工复核"
     },
     {
       "fund_code": "022274",
       "fund_name": "国泰港股红利ETF联接A",
-      "unit_nav_position_pct": 70.08,
-      "accumulated_nav_position_pct": 79.12,
+      "unit_nav_position_pct": 70.02,
+      "accumulated_nav_position_pct": 79.06,
       "divergence_pp": -9.04,
       "note": "口径分歧显著，操作前必须以累计净值口径人工复核"
     },
     {
       "fund_code": "100032",
       "fund_name": "富国中证红利指数增强A",
-      "unit_nav_position_pct": 5.26,
-      "accumulated_nav_position_pct": 96.81,
-      "divergence_pp": -91.55,
+      "unit_nav_position_pct": 5.71,
+      "accumulated_nav_position_pct": 97.12,
+      "divergence_pp": -91.41,
       "note": "口径分歧显著，操作前必须以累计净值口径人工复核"
     }
   ],
@@ -453,11 +451,11 @@
     {
       "fund_code": "000218",
       "fund_name": "国泰黄金ETF联接A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "3.2493",
-      "historical_position": "0.6500",
-      "historical_position_pct": 65.0,
-      "six_month_position": "0.1595",
+      "nav_date": "2026-10-19",
+      "latest_nav": "3.2472",
+      "historical_position": "0.6494",
+      "historical_position_pct": 64.94,
+      "six_month_position": "0.1601",
       "sip_status": "paused_manual",
       "data_status": "正常",
       "fund_type": "商品/指数",
@@ -486,12 +484,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 15.95,
+      "six_month_position_pct": 16.01,
       "valuation_v62": {
-        "historical_position_pct": 65.0,
-        "historical_zone": "偏高区域",
-        "historical_score": 3.0,
-        "six_month_position_pct": 15.95,
+        "historical_position_pct": 64.94,
+        "historical_zone": "正常区域",
+        "historical_score": 5.0,
+        "six_month_position_pct": 16.01,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "不适用",
@@ -503,12 +501,12 @@
           "gate1_historical_low": {
             "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 65.0
+            "actual_pct": 64.94
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 15.95
+            "actual_pct": 16.01
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -518,49 +516,47 @@
           }
         },
         "gates_all_passed": false,
-        "cases": [
-          "D"
-        ],
-        "composite_score": 5.14,
+        "cases": [],
+        "composite_score": 6.29,
         "status": "正常持有",
-        "reason": "历史位置 65.00% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "reason": "未进入补仓分层，正常持有",
         "valuation_detail_endpoint": "/api/valuation.json"
       },
-      "consecutive_fall_days": 0,
-      "recent_1m_return_pct": -5.49,
-      "rebound_from_recent_low_pct": 1.02,
+      "consecutive_fall_days": 1,
+      "recent_1m_return_pct": -4.19,
+      "rebound_from_recent_low_pct": 0.95,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
       "caliber_check": {
-        "unit_nav_position_pct": 65.0,
-        "accumulated_nav_position_pct": 65.0,
+        "unit_nav_position_pct": 64.94,
+        "accumulated_nav_position_pct": 64.94,
         "divergence_pp": 0.0
       },
       "signal": "hold",
       "signal_label": "持有观察",
       "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 65.00% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_reason": "成立以来历史位置 64.94% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
-        "at_pct": 70.0,
-        "distance_pp": 5.0,
-        "effect": "触发定投停止线（已确认暂停的不变）"
+        "at_pct": 65.0,
+        "distance_pp": 0.06,
+        "effect": "进入65%~70%定投缓冲带（恢复须复核，不自动恢复）"
       },
       "next_down": {
-        "at_pct": 65.0,
-        "distance_pp": 0.0,
-        "effect": "进入恢复待复核区（恢复定投须复核+用户确认）"
+        "at_pct": 50.0,
+        "distance_pp": 14.94,
+        "effect": "进入补仓区（35%~50% 方向档）"
       }
     },
     {
       "fund_code": "004433",
       "fund_name": "南方有色金属ETF联接C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.4612",
-      "historical_position": "0.4832",
-      "historical_position_pct": 48.32,
-      "six_month_position": "0.0177",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.4621",
+      "historical_position": "0.4837",
+      "historical_position_pct": 48.37,
+      "six_month_position": "0.0191",
       "sip_status": "paused_manual",
       "data_status": "正常",
       "fund_type": "指数",
@@ -589,12 +585,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 1.77,
+      "six_month_position_pct": 1.91,
       "valuation_v62": {
-        "historical_position_pct": 48.32,
+        "historical_position_pct": 48.37,
         "historical_zone": "正常区域",
         "historical_score": 5.0,
-        "six_month_position_pct": 1.77,
+        "six_month_position_pct": 1.91,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "待确认（仅 PE 口径，缺 PB）",
@@ -606,12 +602,12 @@
           "gate1_historical_low": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 48.32
+            "actual_pct": 48.37
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 1.77
+            "actual_pct": 1.91
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -630,40 +626,40 @@
         "valuation_detail_endpoint": "/api/valuation.json"
       },
       "consecutive_fall_days": 0,
-      "recent_1m_return_pct": -15.78,
-      "rebound_from_recent_low_pct": 0.79,
+      "recent_1m_return_pct": -12.24,
+      "rebound_from_recent_low_pct": 0.85,
       "recent_low_window_days": 20,
       "add_base_tier": "40%~50% 轻微低估",
       "caliber_check": {
-        "unit_nav_position_pct": 48.32,
-        "accumulated_nav_position_pct": 53.41,
+        "unit_nav_position_pct": 48.37,
+        "accumulated_nav_position_pct": 53.46,
         "divergence_pp": -5.09
       },
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.29，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 48.32%（正常区域，5 分）+ 近 6 个月位置 1.77%（近期低位，8.0 分）+ 估值 待确认（仅 PE 口径，缺 PB）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 8.6 反而 ≥ 7 分（结论：明显偏便宜），但执行口径缺维度、第三关仍不通过，补齐后才能定案",
+      "signal_reason": "V6.2 三维决策：历史位置 48.37%（正常区域，5 分）+ 近 6 个月位置 1.91%（近期低位，8.0 分）+ 估值 待确认（仅 PE 口径，缺 PB）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 8.6 反而 ≥ 7 分（结论：明显偏便宜），但执行口径缺维度、第三关仍不通过，补齐后才能定案",
       "confidence": "low",
-      "confidence_note": "单位净值口径位置 48.32% 与累计净值口径 53.41% 相差 -5.1 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
+      "confidence_note": "单位净值口径位置 48.37% 与累计净值口径 53.46% 相差 -5.1 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
       "next_up": {
         "at_pct": 50.0,
-        "distance_pp": 1.68,
+        "distance_pp": 1.63,
         "effect": "退出主动补仓区（≥50% 不补仓）"
       },
       "next_down": {
         "at_pct": 35.0,
-        "distance_pp": 13.32,
+        "distance_pp": 13.37,
         "effect": "进入更深补仓档（20%~35%）"
       }
     },
     {
       "fund_code": "005984",
       "fund_name": "兴业聚华混合A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.6370",
-      "historical_position": "0.8041",
-      "historical_position_pct": 80.41,
-      "six_month_position": "0.0000",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.6437",
+      "historical_position": "0.8125",
+      "historical_position_pct": 81.25,
+      "six_month_position": "0.0432",
       "sip_status": "paused_confirmed",
       "data_status": "正常",
       "fund_type": "混合(固收+)",
@@ -695,12 +691,12 @@
         "action": "本次应卖出：基准仓位的 20.00%（折算当前剩余持仓的 20.00%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 0.0,
+      "six_month_position_pct": 4.32,
       "valuation_v62": {
-        "historical_position_pct": 80.41,
+        "historical_position_pct": 81.25,
         "historical_zone": "高位区域",
         "historical_score": 1.0,
-        "six_month_position_pct": 0.0,
+        "six_month_position_pct": 4.32,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "不适用",
@@ -712,12 +708,12 @@
           "gate1_historical_low": {
             "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 80.41
+            "actual_pct": 81.25
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 0.0
+            "actual_pct": 4.32
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -732,44 +728,44 @@
         ],
         "composite_score": 4.0,
         "status": "正常持有",
-        "reason": "历史位置 80.41% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "reason": "历史位置 81.25% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "valuation_detail_endpoint": "/api/valuation.json"
       },
-      "consecutive_fall_days": 5,
-      "recent_1m_return_pct": -4.64,
-      "rebound_from_recent_low_pct": 0.0,
+      "consecutive_fall_days": 0,
+      "recent_1m_return_pct": -3.91,
+      "rebound_from_recent_low_pct": 0.41,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
       "caliber_check": {
-        "unit_nav_position_pct": 80.41,
-        "accumulated_nav_position_pct": 82.04,
-        "divergence_pp": -1.63
+        "unit_nav_position_pct": 81.25,
+        "accumulated_nav_position_pct": 82.82,
+        "divergence_pp": -1.57
       },
       "signal": "take_profit",
       "signal_label": "止盈候选",
       "signal_tier": "累计止盈 80%~85% 档：累计目标 20%",
-      "signal_reason": "成立以来历史位置 80.41% 已启动累计止盈（V6.1）：累计目标 20%，本次新增卖出占**止盈启动基准仓位** 20.00%（折算当前剩余持仓 20.00%）；卖出资金默认进入 006224 利润锁定池。卖出金额 = 基准仓位 × 20.00% － 已卖金额，须登记基准仓位后计算",
+      "signal_reason": "成立以来历史位置 81.25% 已启动累计止盈（V6.1）：累计目标 20%，本次新增卖出占**止盈启动基准仓位** 20.00%（折算当前剩余持仓 20.00%）；卖出资金默认进入 006224 利润锁定池。卖出金额 = 基准仓位 × 20.00% － 已卖金额，须登记基准仓位后计算",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
         "at_pct": 85.0,
-        "distance_pp": 4.59,
+        "distance_pp": 3.75,
         "effect": "进入累计止盈第二档"
       },
       "next_down": {
         "at_pct": 75.0,
-        "distance_pp": 5.41,
+        "distance_pp": 6.25,
         "effect": "退出累计止盈模式"
       }
     },
     {
       "fund_code": "006224",
       "fund_name": "中银中债3-5年期农发行债券指数A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.1176",
-      "historical_position": "0.8509",
-      "historical_position_pct": 85.09,
-      "six_month_position": "0.2226",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.1180",
+      "historical_position": "0.8538",
+      "historical_position_pct": 85.38,
+      "six_month_position": "0.2377",
       "sip_status": "paused_confirmed",
       "data_status": "正常",
       "fund_type": "债券",
@@ -801,12 +797,12 @@
         "action": "本次应卖出：基准仓位的 35.00%（折算当前剩余持仓的 35.00%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 22.26,
+      "six_month_position_pct": 23.77,
       "valuation_v62": {
-        "historical_position_pct": 85.09,
+        "historical_position_pct": 85.38,
         "historical_zone": "高位区域",
         "historical_score": 1.0,
-        "six_month_position_pct": 22.26,
+        "six_month_position_pct": 23.77,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "不适用",
@@ -818,12 +814,12 @@
           "gate1_historical_low": {
             "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 85.09
+            "actual_pct": 85.38
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 22.26
+            "actual_pct": 23.77
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -838,33 +834,33 @@
         ],
         "composite_score": 4.0,
         "status": "正常持有",
-        "reason": "历史位置 85.09% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "reason": "历史位置 85.38% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "valuation_detail_endpoint": "/api/valuation.json"
       },
       "consecutive_fall_days": 0,
-      "recent_1m_return_pct": 0.41,
-      "rebound_from_recent_low_pct": 0.42,
+      "recent_1m_return_pct": 0.46,
+      "rebound_from_recent_low_pct": 0.45,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
       "caliber_check": {
-        "unit_nav_position_pct": 85.09,
+        "unit_nav_position_pct": 85.38,
         "accumulated_nav_position_pct": 100.0,
-        "divergence_pp": -14.91
+        "divergence_pp": -14.62
       },
       "signal": "take_profit",
       "signal_label": "止盈候选",
       "signal_tier": "累计止盈 85%~90% 档：累计目标 35%",
-      "signal_reason": "成立以来历史位置 85.09% 已启动累计止盈（V6.1）：累计目标 35%，本次新增卖出占**止盈启动基准仓位** 35.00%（折算当前剩余持仓 35.00%）；卖出资金默认进入 006224 利润锁定池。卖出金额 = 基准仓位 × 35.00% － 已卖金额，须登记基准仓位后计算",
+      "signal_reason": "成立以来历史位置 85.38% 已启动累计止盈（V6.1）：累计目标 35%，本次新增卖出占**止盈启动基准仓位** 35.00%（折算当前剩余持仓 35.00%）；卖出资金默认进入 006224 利润锁定池。卖出金额 = 基准仓位 × 35.00% － 已卖金额，须登记基准仓位后计算",
       "confidence": "low",
-      "confidence_note": "单位净值口径位置 85.09% 与累计净值口径 100.00% 相差 -14.9 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
+      "confidence_note": "单位净值口径位置 85.38% 与累计净值口径 100.00% 相差 -14.6 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
       "next_up": {
         "at_pct": 90.0,
-        "distance_pp": 4.91,
+        "distance_pp": 4.62,
         "effect": "进入累计止盈第三档"
       },
       "next_down": {
         "at_pct": 85.0,
-        "distance_pp": 0.09,
+        "distance_pp": 0.38,
         "effect": "回落至累计止盈第一档"
       }
     },
@@ -973,11 +969,11 @@
     {
       "fund_code": "007301",
       "fund_name": "国联安中证全指半导体产品与设备ETF联接C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "3.2231",
-      "historical_position": "0.4889",
-      "historical_position_pct": 48.89,
-      "six_month_position": "0.0488",
+      "nav_date": "2026-10-19",
+      "latest_nav": "3.1622",
+      "historical_position": "0.4755",
+      "historical_position_pct": 47.55,
+      "six_month_position": "0.0130",
       "sip_status": "paused_confirmed",
       "data_status": "正常",
       "fund_type": "指数",
@@ -1006,12 +1002,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 4.88,
+      "six_month_position_pct": 1.3,
       "valuation_v62": {
-        "historical_position_pct": 48.89,
+        "historical_position_pct": 47.55,
         "historical_zone": "正常区域",
         "historical_score": 5.0,
-        "six_month_position_pct": 4.88,
+        "six_month_position_pct": 1.3,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "偏高",
@@ -1023,12 +1019,12 @@
           "gate1_historical_low": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 48.89
+            "actual_pct": 47.55
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 4.88
+            "actual_pct": 1.3
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -1045,30 +1041,30 @@
         "reason": "长期低位但估值评分 3.8 < 7：估值偏贵或基本面变化，不补仓",
         "valuation_detail_endpoint": "/api/valuation.json"
       },
-      "consecutive_fall_days": 8,
-      "recent_1m_return_pct": -13.37,
+      "consecutive_fall_days": 9,
+      "recent_1m_return_pct": -13.76,
       "rebound_from_recent_low_pct": 0.0,
       "recent_low_window_days": 20,
       "add_base_tier": "40%~50% 轻微低估",
       "caliber_check": {
-        "unit_nav_position_pct": 48.89,
-        "accumulated_nav_position_pct": 48.89,
-        "divergence_pp": 0.0
+        "unit_nav_position_pct": 47.55,
+        "accumulated_nav_position_pct": 47.55,
+        "divergence_pp": -0.0
       },
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 5.54，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 48.89%（正常区域，5 分）+ 近 6 个月位置 4.88%（近期低位，8.0 分）+ 估值 偏高（3.8 分）→ 综合评分 5.54，判定「观察」。长期低位但估值评分 3.8 < 7：估值偏贵或基本面变化，不补仓",
+      "signal_reason": "V6.2 三维决策：历史位置 47.55%（正常区域，5 分）+ 近 6 个月位置 1.30%（近期低位，8.0 分）+ 估值 偏高（3.8 分）→ 综合评分 5.54，判定「观察」。长期低位但估值评分 3.8 < 7：估值偏贵或基本面变化，不补仓",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
         "at_pct": 50.0,
-        "distance_pp": 1.11,
+        "distance_pp": 2.45,
         "effect": "退出主动补仓区（≥50% 不补仓）"
       },
       "next_down": {
         "at_pct": 35.0,
-        "distance_pp": 13.89,
+        "distance_pp": 12.55,
         "effect": "进入更深补仓档（20%~35%）"
       }
     },
@@ -1175,11 +1171,11 @@
     {
       "fund_code": "007817",
       "fund_name": "国泰中证全指通信设备ETF联接A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "3.0099",
-      "historical_position": "0.5099",
-      "historical_position_pct": 50.99,
-      "six_month_position": "0.0015",
+      "nav_date": "2026-10-19",
+      "latest_nav": "3.0214",
+      "historical_position": "0.5124",
+      "historical_position_pct": 51.24,
+      "six_month_position": "0.0067",
       "sip_status": "paused_manual",
       "data_status": "正常",
       "fund_type": "指数",
@@ -1208,12 +1204,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 0.15,
+      "six_month_position_pct": 0.67,
       "valuation_v62": {
-        "historical_position_pct": 50.99,
+        "historical_position_pct": 51.24,
         "historical_zone": "正常区域",
         "historical_score": 5.0,
-        "six_month_position_pct": 0.15,
+        "six_month_position_pct": 0.67,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "偏高",
@@ -1225,12 +1221,12 @@
           "gate1_historical_low": {
             "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 50.99
+            "actual_pct": 51.24
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 0.15
+            "actual_pct": 0.67
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -1246,40 +1242,40 @@
         "valuation_detail_endpoint": "/api/valuation.json"
       },
       "consecutive_fall_days": 0,
-      "recent_1m_return_pct": -21.1,
-      "rebound_from_recent_low_pct": 0.11,
+      "recent_1m_return_pct": -21.35,
+      "rebound_from_recent_low_pct": 0.49,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
       "caliber_check": {
-        "unit_nav_position_pct": 50.99,
-        "accumulated_nav_position_pct": 50.99,
-        "divergence_pp": 0.0
+        "unit_nav_position_pct": 51.24,
+        "accumulated_nav_position_pct": 51.24,
+        "divergence_pp": -0.0
       },
       "signal": "hold",
       "signal_label": "持有观察",
       "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 50.99% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_reason": "成立以来历史位置 51.24% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
         "at_pct": 65.0,
-        "distance_pp": 14.01,
+        "distance_pp": 13.76,
         "effect": "进入65%~70%定投缓冲带（恢复须复核，不自动恢复）"
       },
       "next_down": {
         "at_pct": 50.0,
-        "distance_pp": 0.99,
+        "distance_pp": 1.24,
         "effect": "进入补仓区（35%~50% 方向档）"
       }
     },
     {
       "fund_code": "010056",
       "fund_name": "平安瑞兴1年持有期混合A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.4050",
-      "historical_position": "0.9413",
-      "historical_position_pct": 94.13,
-      "six_month_position": "0.2305",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.4055",
+      "historical_position": "0.9424",
+      "historical_position_pct": 94.24,
+      "six_month_position": "0.2198",
       "sip_status": "paused_manual",
       "data_status": "正常",
       "fund_type": "债券(持有期)",
@@ -1311,12 +1307,12 @@
         "action": "本次应卖出：基准仓位的 75.00%（折算当前剩余持仓的 75.00%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 23.05,
+      "six_month_position_pct": 21.98,
       "valuation_v62": {
-        "historical_position_pct": 94.13,
+        "historical_position_pct": 94.24,
         "historical_zone": "高位区域",
         "historical_score": 1.0,
-        "six_month_position_pct": 23.05,
+        "six_month_position_pct": 21.98,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "不适用",
@@ -1328,12 +1324,12 @@
           "gate1_historical_low": {
             "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 94.13
+            "actual_pct": 94.24
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 23.05
+            "actual_pct": 21.98
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -1348,44 +1344,44 @@
         ],
         "composite_score": 4.0,
         "status": "正常持有",
-        "reason": "历史位置 94.13% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "reason": "历史位置 94.24% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "valuation_detail_endpoint": "/api/valuation.json"
       },
       "consecutive_fall_days": 0,
-      "recent_1m_return_pct": 0.09,
-      "rebound_from_recent_low_pct": 0.18,
+      "recent_1m_return_pct": 0.18,
+      "rebound_from_recent_low_pct": 0.21,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
       "caliber_check": {
-        "unit_nav_position_pct": 94.13,
-        "accumulated_nav_position_pct": 94.13,
+        "unit_nav_position_pct": 94.24,
+        "accumulated_nav_position_pct": 94.24,
         "divergence_pp": 0.0
       },
       "signal": "take_profit",
       "signal_label": "止盈候选",
       "signal_tier": "累计止盈 92%~95% 档：累计目标 75%",
-      "signal_reason": "成立以来历史位置 94.13% 已启动累计止盈（V6.1）：累计目标 75%，本次新增卖出占**止盈启动基准仓位** 75.00%（折算当前剩余持仓 75.00%）；卖出资金默认进入 006224 利润锁定池。卖出金额 = 基准仓位 × 75.00% － 已卖金额，须登记基准仓位后计算",
+      "signal_reason": "成立以来历史位置 94.24% 已启动累计止盈（V6.1）：累计目标 75%，本次新增卖出占**止盈启动基准仓位** 75.00%（折算当前剩余持仓 75.00%）；卖出资金默认进入 006224 利润锁定池。卖出金额 = 基准仓位 × 75.00% － 已卖金额，须登记基准仓位后计算",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
         "at_pct": 95.0,
-        "distance_pp": 0.87,
+        "distance_pp": 0.76,
         "effect": "进入累计止盈第五档"
       },
       "next_down": {
         "at_pct": 92.0,
-        "distance_pp": 2.13,
+        "distance_pp": 2.24,
         "effect": "回落至累计止盈第三档"
       }
     },
     {
       "fund_code": "017481",
       "fund_name": "博时中证全指电力公用事业ETF联接A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.1684",
-      "historical_position": "0.4931",
-      "historical_position_pct": 49.31,
-      "six_month_position": "0.1512",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.1780",
+      "historical_position": "0.5156",
+      "historical_position_pct": 51.56,
+      "six_month_position": "0.1888",
       "sip_status": "paused_confirmed",
       "data_status": "正常",
       "fund_type": "指数",
@@ -1414,12 +1410,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 15.12,
+      "six_month_position_pct": 18.88,
       "valuation_v62": {
-        "historical_position_pct": 49.31,
+        "historical_position_pct": 51.56,
         "historical_zone": "正常区域",
         "historical_score": 5.0,
-        "six_month_position_pct": 15.12,
+        "six_month_position_pct": 18.88,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "待确认（仅 PE 口径，缺 PB）",
@@ -1429,14 +1425,14 @@
         "valuation_missing": true,
         "gates": {
           "gate1_historical_low": {
-            "pass": true,
+            "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 49.31
+            "actual_pct": 51.56
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 15.12
+            "actual_pct": 18.88
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -1446,39 +1442,37 @@
           }
         },
         "gates_all_passed": false,
-        "cases": [
-          "C"
-        ],
+        "cases": [],
         "composite_score": 6.29,
-        "status": "观察",
-        "reason": "估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.9 亦 < 7 分（结论：偏贵）",
+        "status": "正常持有",
+        "reason": "未进入补仓分层，正常持有",
         "valuation_detail_endpoint": "/api/valuation.json"
       },
-      "consecutive_fall_days": 2,
-      "recent_1m_return_pct": -1.4,
-      "rebound_from_recent_low_pct": 1.57,
+      "consecutive_fall_days": 0,
+      "recent_1m_return_pct": -0.36,
+      "rebound_from_recent_low_pct": 2.41,
       "recent_low_window_days": 20,
-      "add_base_tier": "40%~50% 轻微低估",
+      "add_base_tier": "50%以上 正常",
       "caliber_check": {
-        "unit_nav_position_pct": 49.31,
-        "accumulated_nav_position_pct": 49.31,
+        "unit_nav_position_pct": 51.56,
+        "accumulated_nav_position_pct": 51.56,
         "divergence_pp": 0.0
       },
       "signal": "hold",
-      "signal_label": "不补仓（估值偏贵或未确认）",
-      "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.29，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 49.31%（正常区域，5 分）+ 近 6 个月位置 15.12%（近期低位，8.0 分）+ 估值 待确认（仅 PE 口径，缺 PB）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.9 亦 < 7 分（结论：偏贵）",
+      "signal_label": "持有观察",
+      "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
+      "signal_reason": "成立以来历史位置 51.56% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
-        "at_pct": 50.0,
-        "distance_pp": 0.69,
-        "effect": "退出主动补仓区（≥50% 不补仓）"
+        "at_pct": 65.0,
+        "distance_pp": 13.44,
+        "effect": "进入65%~70%定投缓冲带（恢复须复核，不自动恢复）"
       },
       "next_down": {
-        "at_pct": 35.0,
-        "distance_pp": 14.31,
-        "effect": "进入更深补仓档（20%~35%）"
+        "at_pct": 50.0,
+        "distance_pp": 1.56,
+        "effect": "进入补仓区（35%~50% 方向档）"
       }
     },
     {
@@ -1687,11 +1681,11 @@
     {
       "fund_code": "018125",
       "fund_name": "永赢先进制造智选混合C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.5686",
-      "historical_position": "0.4137",
-      "historical_position_pct": 41.37,
-      "six_month_position": "0.0034",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.6865",
+      "historical_position": "0.4695",
+      "historical_position_pct": 46.95,
+      "six_month_position": "0.1090",
       "sip_status": "paused_manual",
       "data_status": "正常",
       "fund_type": "混合(主动)",
@@ -1720,12 +1714,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 0.34,
+      "six_month_position_pct": 10.9,
       "valuation_v62": {
-        "historical_position_pct": 41.37,
+        "historical_position_pct": 46.95,
         "historical_zone": "正常区域",
         "historical_score": 5.0,
-        "six_month_position_pct": 0.34,
+        "six_month_position_pct": 10.9,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "待确认（近似指数，非跟踪标的）",
@@ -1737,12 +1731,12 @@
           "gate1_historical_low": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 41.37
+            "actual_pct": 46.95
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 0.34
+            "actual_pct": 10.9
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -1761,29 +1755,29 @@
         "valuation_detail_endpoint": "/api/valuation.json"
       },
       "consecutive_fall_days": 0,
-      "recent_1m_return_pct": -13.91,
-      "rebound_from_recent_low_pct": 0.24,
+      "recent_1m_return_pct": -5.28,
+      "rebound_from_recent_low_pct": 7.78,
       "recent_low_window_days": 20,
       "add_base_tier": "40%~50% 轻微低估",
       "caliber_check": {
-        "unit_nav_position_pct": 41.37,
-        "accumulated_nav_position_pct": 41.37,
-        "divergence_pp": 0.0
+        "unit_nav_position_pct": 46.95,
+        "accumulated_nav_position_pct": 46.95,
+        "divergence_pp": -0.0
       },
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.29，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 41.37%（正常区域，5 分）+ 近 6 个月位置 0.34%（近期低位，8.0 分）+ 估值 待确认（近似指数，非跟踪标的）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.4 亦 < 7 分（结论：偏贵）",
+      "signal_reason": "V6.2 三维决策：历史位置 46.95%（正常区域，5 分）+ 近 6 个月位置 10.90%（近期低位，8.0 分）+ 估值 待确认（近似指数，非跟踪标的）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.4 亦 < 7 分（结论：偏贵）",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
         "at_pct": 50.0,
-        "distance_pp": 8.63,
+        "distance_pp": 3.05,
         "effect": "退出主动补仓区（≥50% 不补仓）"
       },
       "next_down": {
         "at_pct": 35.0,
-        "distance_pp": 6.37,
+        "distance_pp": 11.95,
         "effect": "进入更深补仓档（20%~35%）"
       }
     },
@@ -1993,11 +1987,11 @@
     {
       "fund_code": "022274",
       "fund_name": "国泰港股红利ETF联接A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.1518",
-      "historical_position": "0.7008",
-      "historical_position_pct": 70.08,
-      "six_month_position": "0.6099",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.1516",
+      "historical_position": "0.7002",
+      "historical_position_pct": 70.02,
+      "six_month_position": "0.6087",
       "sip_status": "paused_confirmed",
       "data_status": "正常",
       "fund_type": "指数",
@@ -2026,12 +2020,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 60.99,
+      "six_month_position_pct": 60.87,
       "valuation_v62": {
-        "historical_position_pct": 70.08,
+        "historical_position_pct": 70.02,
         "historical_zone": "偏高区域",
         "historical_score": 3.0,
-        "six_month_position_pct": 60.99,
+        "six_month_position_pct": 60.87,
         "six_month_zone": "近期偏高",
         "six_month_score": 4.0,
         "valuation_status": "偏高",
@@ -2043,12 +2037,12 @@
           "gate1_historical_low": {
             "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 70.08
+            "actual_pct": 70.02
           },
           "gate2_six_month_not_high": {
             "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 60.99
+            "actual_pct": 60.87
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -2062,44 +2056,44 @@
         ],
         "composite_score": 3.75,
         "status": "正常持有",
-        "reason": "历史位置 70.08% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+        "reason": "历史位置 70.02% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
         "valuation_detail_endpoint": "/api/valuation.json"
       },
-      "consecutive_fall_days": 3,
-      "recent_1m_return_pct": -2.41,
-      "rebound_from_recent_low_pct": 0.66,
+      "consecutive_fall_days": 4,
+      "recent_1m_return_pct": -1.9,
+      "rebound_from_recent_low_pct": 0.65,
       "recent_low_window_days": 20,
       "add_base_tier": "50%以上 正常",
       "caliber_check": {
-        "unit_nav_position_pct": 70.08,
-        "accumulated_nav_position_pct": 79.12,
+        "unit_nav_position_pct": 70.02,
+        "accumulated_nav_position_pct": 79.06,
         "divergence_pp": -9.04
       },
       "signal": "hold",
       "signal_label": "持有观察",
       "signal_tier": "历史位置 50%~75%（不主动补仓，也未触及 75% 止盈线）",
-      "signal_reason": "成立以来历史位置 70.08% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
+      "signal_reason": "成立以来历史位置 70.02% 位于中间带：按 V5.7 不主动补仓，也未触发 75% 止盈档，维持现有定投状态",
       "confidence": "low",
-      "confidence_note": "单位净值口径位置 70.08% 与累计净值口径 79.12% 相差 -9.0 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
+      "confidence_note": "单位净值口径位置 70.02% 与累计净值口径 79.06% 相差 -9.0 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
       "next_up": {
         "at_pct": 75.0,
-        "distance_pp": 4.92,
+        "distance_pp": 4.98,
         "effect": "进入累计止盈模式（≥75% 起）"
       },
       "next_down": {
         "at_pct": 70.0,
-        "distance_pp": 0.08,
+        "distance_pp": 0.02,
         "effect": "退出定投停止线（已确认暂停的仍不自动恢复）"
       }
     },
     {
       "fund_code": "023638",
       "fund_name": "国泰A股电网设备ETF联接A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "1.4919",
-      "historical_position": "0.4403",
-      "historical_position_pct": 44.03,
-      "six_month_position": "0.0199",
+      "nav_date": "2026-10-19",
+      "latest_nav": "1.5248",
+      "historical_position": "0.4639",
+      "historical_position_pct": 46.39,
+      "six_month_position": "0.0612",
       "sip_status": "paused_confirmed",
       "data_status": "正常",
       "fund_type": "指数",
@@ -2128,12 +2122,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 1.99,
+      "six_month_position_pct": 6.12,
       "valuation_v62": {
-        "historical_position_pct": 44.03,
+        "historical_position_pct": 46.39,
         "historical_zone": "正常区域",
         "historical_score": 5.0,
-        "six_month_position_pct": 1.99,
+        "six_month_position_pct": 6.12,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "待确认（近似指数，非跟踪标的）",
@@ -2145,12 +2139,12 @@
           "gate1_historical_low": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 44.03
+            "actual_pct": 46.39
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 1.99
+            "actual_pct": 6.12
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -2169,40 +2163,40 @@
         "valuation_detail_endpoint": "/api/valuation.json"
       },
       "consecutive_fall_days": 0,
-      "recent_1m_return_pct": -12.07,
-      "rebound_from_recent_low_pct": 1.08,
+      "recent_1m_return_pct": -10.14,
+      "rebound_from_recent_low_pct": 3.31,
       "recent_low_window_days": 20,
       "add_base_tier": "40%~50% 轻微低估",
       "caliber_check": {
-        "unit_nav_position_pct": 44.03,
-        "accumulated_nav_position_pct": 44.03,
-        "divergence_pp": -0.0
+        "unit_nav_position_pct": 46.39,
+        "accumulated_nav_position_pct": 46.39,
+        "divergence_pp": 0.0
       },
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.29，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 44.03%（正常区域，5 分）+ 近 6 个月位置 1.99%（近期低位，8.0 分）+ 估值 待确认（近似指数，非跟踪标的）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 2.7 亦 < 7 分（结论：偏贵）",
+      "signal_reason": "V6.2 三维决策：历史位置 46.39%（正常区域，5 分）+ 近 6 个月位置 6.12%（近期低位，8.0 分）+ 估值 待确认（近似指数，非跟踪标的）（- 分）→ 综合评分 6.29，判定「观察」。估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 2.7 亦 < 7 分（结论：偏贵）",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
         "at_pct": 50.0,
-        "distance_pp": 5.97,
+        "distance_pp": 3.61,
         "effect": "退出主动补仓区（≥50% 不补仓）"
       },
       "next_down": {
         "at_pct": 35.0,
-        "distance_pp": 9.03,
+        "distance_pp": 11.39,
         "effect": "进入更深补仓档（20%~35%）"
       }
     },
     {
       "fund_code": "024412",
       "fund_name": "华夏上证科创板人工智能ETF联接C",
-      "nav_date": "2026-10-16",
-      "latest_nav": "0.8401",
-      "historical_position": "0.0149",
-      "historical_position_pct": 1.49,
-      "six_month_position": "0.0149",
+      "nav_date": "2026-10-19",
+      "latest_nav": "0.8440",
+      "historical_position": "0.0233",
+      "historical_position_pct": 2.33,
+      "six_month_position": "0.0233",
       "sip_status": "paused_manual",
       "data_status": "正常",
       "fund_type": "指数",
@@ -2231,12 +2225,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 1.49,
+      "six_month_position_pct": 2.33,
       "valuation_v62": {
-        "historical_position_pct": 1.49,
+        "historical_position_pct": 2.33,
         "historical_zone": "极低区域",
         "historical_score": 9.0,
-        "six_month_position_pct": 1.49,
+        "six_month_position_pct": 2.33,
         "six_month_zone": "近期低位",
         "six_month_score": 8.0,
         "valuation_status": "偏高",
@@ -2248,12 +2242,12 @@
           "gate1_historical_low": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 1.49
+            "actual_pct": 2.33
           },
           "gate2_six_month_not_high": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 1.49
+            "actual_pct": 2.33
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -2271,24 +2265,24 @@
         "valuation_detail_endpoint": "/api/valuation.json"
       },
       "consecutive_fall_days": 0,
-      "recent_1m_return_pct": -11.08,
-      "rebound_from_recent_low_pct": 0.83,
+      "recent_1m_return_pct": -9.6,
+      "rebound_from_recent_low_pct": 1.3,
       "recent_low_window_days": 20,
       "add_base_tier": "＜5% 历史机会",
       "caliber_check": {
-        "unit_nav_position_pct": 1.49,
-        "accumulated_nav_position_pct": 1.49,
+        "unit_nav_position_pct": 2.33,
+        "accumulated_nav_position_pct": 2.33,
         "divergence_pp": 0.0
       },
       "signal": "hold",
       "signal_label": "不补仓（估值偏贵或未确认）",
       "signal_tier": "V6.2 三关过滤未通过（C）：综合评分 6.81，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 1.49%（极低区域，9 分）+ 近 6 个月位置 1.49%（近期低位，8.0 分）+ 估值 偏高（2.7 分）→ 综合评分 6.81，判定「观察」。长期低位但估值评分 2.7 < 7：估值偏贵或基本面变化，不补仓",
+      "signal_reason": "V6.2 三维决策：历史位置 2.33%（极低区域，9 分）+ 近 6 个月位置 2.33%（近期低位，8.0 分）+ 估值 偏高（2.7 分）→ 综合评分 6.81，判定「观察」。长期低位但估值评分 2.7 < 7：估值偏贵或基本面变化，不补仓",
       "confidence": "high",
       "confidence_note": "",
       "next_up": {
         "at_pct": 5.0,
-        "distance_pp": 3.51,
+        "distance_pp": 2.67,
         "effect": "脱离深跌特别档（<5%），转入5%~10%档"
       },
       "next_down": null
@@ -2394,11 +2388,11 @@
     {
       "fund_code": "100032",
       "fund_name": "富国中证红利指数增强A",
-      "nav_date": "2026-10-16",
-      "latest_nav": "0.9650",
-      "historical_position": "0.0526",
-      "historical_position_pct": 5.26,
-      "six_month_position": "0.5917",
+      "nav_date": "2026-10-19",
+      "latest_nav": "0.9720",
+      "historical_position": "0.0571",
+      "historical_position_pct": 5.71,
+      "six_month_position": "0.6500",
       "sip_status": "paused_manual",
       "data_status": "正常",
       "fund_type": "指数增强",
@@ -2427,12 +2421,12 @@
         "action": "不启动止盈（历史位置 < 75%）"
       },
       "is_new_high": false,
-      "six_month_position_pct": 59.17,
+      "six_month_position_pct": 65.0,
       "valuation_v62": {
-        "historical_position_pct": 5.26,
+        "historical_position_pct": 5.71,
         "historical_zone": "极低区域",
         "historical_score": 9.0,
-        "six_month_position_pct": 59.17,
+        "six_month_position_pct": 65.0,
         "six_month_zone": "近期偏高",
         "six_month_score": 4.0,
         "valuation_status": "偏高",
@@ -2444,12 +2438,12 @@
           "gate1_historical_low": {
             "pass": true,
             "threshold_pct": 50.0,
-            "actual_pct": 5.26
+            "actual_pct": 5.71
           },
           "gate2_six_month_not_high": {
             "pass": false,
             "threshold_pct": 50.0,
-            "actual_pct": 59.17
+            "actual_pct": 65.0
           },
           "gate3_valuation_ok": {
             "pass": false,
@@ -2464,33 +2458,33 @@
         ],
         "composite_score": 5.7,
         "status": "观察",
-        "reason": "长期低位但近 6 个月位置 59.17% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓",
+        "reason": "长期低位但近 6 个月位置 65.00% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓",
         "valuation_detail_endpoint": "/api/valuation.json"
       },
       "consecutive_fall_days": 0,
-      "recent_1m_return_pct": -2.33,
-      "rebound_from_recent_low_pct": 1.47,
+      "recent_1m_return_pct": -0.1,
+      "rebound_from_recent_low_pct": 2.21,
       "recent_low_window_days": 20,
       "add_base_tier": "5%~10% 极端区域",
       "caliber_check": {
-        "unit_nav_position_pct": 5.26,
-        "accumulated_nav_position_pct": 96.81,
-        "divergence_pp": -91.55
+        "unit_nav_position_pct": 5.71,
+        "accumulated_nav_position_pct": 97.12,
+        "divergence_pp": -91.41
       },
       "signal": "hold",
-      "signal_label": "价值观察仓（禁止大额补仓）",
+      "signal_label": "持有观察（双分位校验拦截）",
       "signal_tier": "V6.2 三关过滤未通过（B+C）：综合评分 5.7，状态「观察」",
-      "signal_reason": "V6.2 三维决策：历史位置 5.26%（极低区域，9 分）+ 近 6 个月位置 59.17%（近期偏高，4.0 分）+ 估值 偏高（3.0 分）→ 综合评分 5.7，判定「观察」。长期低位但近 6 个月位置 59.17% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓",
+      "signal_reason": "V6.2 三维决策：历史位置 5.71%（极低区域，9 分）+ 近 6 个月位置 65.00%（近期偏高，4.0 分）+ 估值 偏高（3.0 分）→ 综合评分 5.7，判定「观察」。长期低位但近 6 个月位置 65.00% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓",
       "confidence": "low",
-      "confidence_note": "单位净值口径位置 5.26% 与累计净值口径 96.81% 相差 -91.5 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
+      "confidence_note": "单位净值口径位置 5.71% 与累计净值口径 97.12% 相差 -91.4 个百分点：该基金分红/折算较多，单位净值口径位置存在系统性失真，不得仅凭本信号做补仓或止盈决策，须先用累计净值口径复核",
       "next_up": {
         "at_pct": 10.0,
-        "distance_pp": 4.74,
+        "distance_pp": 4.29,
         "effect": "脱离大额补仓候选区，转入10%~20%档"
       },
       "next_down": {
         "at_pct": 5.0,
-        "distance_pp": 0.26,
+        "distance_pp": 0.71,
         "effect": "进入深跌特别档（<5% 极端超跌区，须最严格复核）"
       }
     },
