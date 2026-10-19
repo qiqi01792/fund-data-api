@@ -1,7 +1,7 @@
 {
   "schema": "fund_valuation/v1",
   "readonly": true,
-  "generated_at": "2026-10-19 19:46:36",
+  "generated_at": "2026-10-19 23:13:27",
   "as_of_nav_date": "2026-10-19",
   "rules_version": "V6.3",
   "module": "V6.2 双分位 + 估值价值确认层（第三维：估值价值确认）",
@@ -51,10 +51,10 @@
       "fund_type": "商品/指数",
       "industry": "黄金",
       "rating": "B",
-      "historical_position_pct": 65.0,
-      "historical_zone": "偏高区域",
-      "historical_score": 3.0,
-      "six_month_position_pct": 15.95,
+      "historical_position_pct": 64.94,
+      "historical_zone": "正常区域",
+      "historical_score": 5.0,
+      "six_month_position_pct": 16.01,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "不适用",
@@ -125,13 +125,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 65.0,
+          "actual_pct": 64.94,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 15.95,
+          "actual_pct": 16.01,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -143,12 +143,10 @@
         }
       },
       "gates_all_passed": false,
-      "cases": [
-        "D"
-      ],
-      "composite_score": 5.14,
+      "cases": [],
+      "composite_score": 6.29,
       "status": "正常持有",
-      "reason": "历史位置 65.00% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "未进入补仓分层，正常持有",
       "valuation_note": "黄金/商品：V5.9 第三节规定不适用股票估值体系"
     },
     {
@@ -157,10 +155,10 @@
       "fund_type": "指数",
       "industry": "有色金属(周期)",
       "rating": "C",
-      "historical_position_pct": 48.32,
+      "historical_position_pct": 48.37,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 1.77,
+      "six_month_position_pct": 1.91,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（仅 PE 口径，缺 PB）",
@@ -220,13 +218,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 48.32,
+          "actual_pct": 48.37,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 1.77,
+          "actual_pct": 1.91,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -252,10 +250,10 @@
       "fund_type": "混合(固收+)",
       "industry": "稳健固收+",
       "rating": "B",
-      "historical_position_pct": 80.41,
+      "historical_position_pct": 81.25,
       "historical_zone": "高位区域",
       "historical_score": 1.0,
-      "six_month_position_pct": 0.0,
+      "six_month_position_pct": 4.32,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "不适用",
@@ -325,13 +323,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 80.41,
+          "actual_pct": 81.25,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 0.0,
+          "actual_pct": 4.32,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -348,7 +346,7 @@
       ],
       "composite_score": 4.0,
       "status": "正常持有",
-      "reason": "历史位置 80.41% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "历史位置 81.25% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
       "valuation_note": "固收+主动混合：不适用股票估值体系"
     },
     {
@@ -357,10 +355,10 @@
       "fund_type": "债券",
       "industry": "利率债",
       "rating": "A",
-      "historical_position_pct": 85.09,
+      "historical_position_pct": 85.38,
       "historical_zone": "高位区域",
       "historical_score": 1.0,
-      "six_month_position_pct": 22.26,
+      "six_month_position_pct": 23.77,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "不适用",
@@ -431,13 +429,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 85.09,
+          "actual_pct": 85.38,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 22.26,
+          "actual_pct": 23.77,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -454,7 +452,7 @@
       ],
       "composite_score": 4.0,
       "status": "正常持有",
-      "reason": "历史位置 85.09% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "历史位置 85.38% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
       "valuation_note": "债券基金：不适用股票估值体系"
     },
     {
@@ -561,10 +559,10 @@
       "fund_type": "指数",
       "industry": "半导体设备",
       "rating": "C",
-      "historical_position_pct": 48.89,
+      "historical_position_pct": 47.55,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 4.88,
+      "six_month_position_pct": 1.3,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "偏高",
@@ -628,13 +626,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 48.89,
+          "actual_pct": 47.55,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 4.88,
+          "actual_pct": 1.3,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -755,10 +753,10 @@
       "fund_type": "指数",
       "industry": "通信设备",
       "rating": "B",
-      "historical_position_pct": 50.99,
+      "historical_position_pct": 51.24,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 0.15,
+      "six_month_position_pct": 0.67,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "偏高",
@@ -822,13 +820,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 50.99,
+          "actual_pct": 51.24,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 0.15,
+          "actual_pct": 0.67,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -851,10 +849,10 @@
       "fund_type": "债券(持有期)",
       "industry": "稳健固收+",
       "rating": "B",
-      "historical_position_pct": 94.13,
+      "historical_position_pct": 94.24,
       "historical_zone": "高位区域",
       "historical_score": 1.0,
-      "six_month_position_pct": 23.05,
+      "six_month_position_pct": 21.98,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "不适用",
@@ -924,13 +922,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 94.13,
+          "actual_pct": 94.24,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 23.05,
+          "actual_pct": 21.98,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -947,7 +945,7 @@
       ],
       "composite_score": 4.0,
       "status": "正常持有",
-      "reason": "历史位置 94.13% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "历史位置 94.24% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
       "valuation_note": "债券持有期产品：不适用股票估值体系"
     },
     {
@@ -956,10 +954,10 @@
       "fund_type": "指数",
       "industry": "电力公用事业",
       "rating": "B",
-      "historical_position_pct": 49.31,
+      "historical_position_pct": 51.56,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 15.12,
+      "six_month_position_pct": 18.88,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（仅 PE 口径，缺 PB）",
@@ -1014,15 +1012,15 @@
       },
       "gates": {
         "gate1_historical_low": {
-          "pass": true,
+          "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 49.31,
+          "actual_pct": 51.56,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 15.12,
+          "actual_pct": 18.88,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1034,12 +1032,10 @@
         }
       },
       "gates_all_passed": false,
-      "cases": [
-        "C"
-      ],
+      "cases": [],
       "composite_score": 6.29,
-      "status": "观察",
-      "reason": "估值数据不完整（缺 PB 维度），执行口径评分缺失 ⇒ 第三关不通过；研究口径降级评分 3.9 亦 < 7 分（结论：偏贵）",
+      "status": "正常持有",
+      "reason": "未进入补仓分层，正常持有",
       "valuation_note": "基金业绩基准『中证全指电力公用事业指数收益率×95%』；官网确认 H30199 全称一致；中证指数官网(csindex)｜PE历史自算分位(近10年)；PE 取中证官方最新（20261015，PE=19.5000）；分位按该指数近 10 年 PE 历史自算（窗口样本 2569 个交易日，全历史 3373 个，起 20130628）；该源不提供 PB 与股息率 ⇒ 留空待登记；按安全原则不写 valuation_score（A3 公式 / A5 阈值待用户确认，且缺 PB 维度、分位口径与蛋卷不可比）"
     },
     {
@@ -1236,10 +1232,10 @@
       "fund_type": "混合(主动)",
       "industry": "高端制造",
       "rating": "B",
-      "historical_position_pct": 41.37,
+      "historical_position_pct": 46.95,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 0.34,
+      "six_month_position_pct": 10.9,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（近似指数，非跟踪标的）",
@@ -1302,13 +1298,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 41.37,
+          "actual_pct": 46.95,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 0.34,
+          "actual_pct": 10.9,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1522,10 +1518,10 @@
       "fund_type": "指数",
       "industry": "港股红利",
       "rating": "A",
-      "historical_position_pct": 70.08,
+      "historical_position_pct": 70.02,
       "historical_zone": "偏高区域",
       "historical_score": 3.0,
-      "six_month_position_pct": 60.99,
+      "six_month_position_pct": 60.87,
       "six_month_zone": "近期偏高",
       "six_month_score": 4.0,
       "valuation_status": "偏高",
@@ -1589,13 +1585,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 70.08,
+          "actual_pct": 70.02,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 60.99,
+          "actual_pct": 60.87,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1611,7 +1607,7 @@
       ],
       "composite_score": 3.75,
       "status": "正常持有",
-      "reason": "历史位置 70.08% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "历史位置 70.02% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
       "valuation_note": "港股红利，数据源无港股通高股息指数，用港股宽基参考；基础分 4.5 = 10 − (0.6×PE分位53.4% + 0.4×PB分位58.3%)×10（按已有维度归一化）；红利类股息率 3.39% 修正 +0.0"
     },
     {
@@ -1620,10 +1616,10 @@
       "fund_type": "指数",
       "industry": "电网设备",
       "rating": "B",
-      "historical_position_pct": 44.03,
+      "historical_position_pct": 46.39,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 1.99,
+      "six_month_position_pct": 6.12,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（近似指数，非跟踪标的）",
@@ -1686,13 +1682,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 44.03,
+          "actual_pct": 46.39,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 1.99,
+          "actual_pct": 6.12,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1718,10 +1714,10 @@
       "fund_type": "指数",
       "industry": "科创板人工智能",
       "rating": "C",
-      "historical_position_pct": 1.49,
+      "historical_position_pct": 2.33,
       "historical_zone": "极低区域",
       "historical_score": 9.0,
-      "six_month_position_pct": 1.49,
+      "six_month_position_pct": 2.33,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "偏高",
@@ -1785,13 +1781,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 1.49,
+          "actual_pct": 2.33,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 1.49,
+          "actual_pct": 2.33,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1914,10 +1910,10 @@
       "fund_type": "指数增强",
       "industry": "中证红利",
       "rating": "B",
-      "historical_position_pct": 5.26,
+      "historical_position_pct": 5.71,
       "historical_zone": "极低区域",
       "historical_score": 9.0,
-      "six_month_position_pct": 59.17,
+      "six_month_position_pct": 65.0,
       "six_month_zone": "近期偏高",
       "six_month_score": 4.0,
       "valuation_status": "偏高",
@@ -1975,13 +1971,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 5.26,
+          "actual_pct": 5.71,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 59.17,
+          "actual_pct": 65.0,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1998,7 +1994,7 @@
       ],
       "composite_score": 5.7,
       "status": "观察",
-      "reason": "长期低位但近 6 个月位置 59.17% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓",
+      "reason": "长期低位但近 6 个月位置 65.00% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.0 < 7：估值偏贵或基本面变化，不补仓",
       "valuation_note": "基金明确跟踪中证红利指数；基础分 2.5 = 10 − (0.6×PE分位86.1% + 0.4×PB分位58.6%)×10（按已有维度归一化）；红利类股息率 4.14% 修正 +0.5"
     },
     {
