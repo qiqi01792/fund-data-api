@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-10-16 23:13:05",
+  "generated_at": "2026-10-19 23:13:27",
   "fund_code": "017481",
   "fund_name": "博时中证全指电力公用事业ETF联接A",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 6,
   "page_size": 150,
   "page_count": 6,
-  "total_records": 895,
-  "record_count": 145,
+  "total_records": 896,
+  "record_count": 146,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/017481/page/5.json",
   "query_start_date": "2023-01-06",
-  "query_end_date": "2026-10-16",
+  "query_end_date": "2026-10-19",
   "page_start_date": "2026-03-13",
-  "page_end_date": "2026-10-16",
+  "page_end_date": "2026-10-19",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -745,6 +745,11 @@
       "nav_date": "2026-10-16",
       "unit_nav": "1.1684",
       "accumulated_nav": "1.1684"
+    },
+    {
+      "nav_date": "2026-10-19",
+      "unit_nav": "1.1780",
+      "accumulated_nav": "1.1780"
     }
   ]
 }
