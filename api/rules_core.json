@@ -1,7 +1,7 @@
 {
   "schema": "fund_rules/v2",
   "readonly": true,
-  "generated_at": "2026-10-16 23:13:05",
+  "generated_at": "2026-10-19 19:46:36",
   "rules_version": "V6.3",
   "version_note": "系统只有一个总版本号，由 WorkBuddy 统一发号（当前 V6.3）；V5.7/V5.8/V6.1/V6.2 已归档为章节，对外不再单列版本号，禁止引用旧版本号。历史演进见 version_history。",
   "daily_command": "按基金管理系统复盘",
@@ -420,8 +420,25 @@
     "match_levels": {
       "exact": "基金明确跟踪该指数，参与评分",
       "proxy": "主题近似或宽基参考，非基金实际跟踪指数，参与评分但置信度降低",
-      "na": "债券/固收+/商品，不适用股票估值体系，不参与评分",
+      "na": "债券/固收+/商品 ⇒ 该资产类型不适用股票估值体系（非数据缺失）：不产出估值评分、不进入估值维度，按历史位置与基金质量条件独立评估",
       "pending": "数据源无对应指数，待人工登记，估值缺失 → 第三关不通过"
+    },
+    "research_vs_add_position": {
+      "principle": "估值数据不完整，不得直接终止基金研究。必须先检查数据来源、完整度及适用的降级评估路径；完成能够完成的估值与基金质量分析，明确说明剩余缺口，再独立检查 V6.3 正式条件。不得将研究评分直接等同于补仓资格，也不得仅因数据缺失而将基金无限期搁置。",
+      "two_tracks": {
+        "research": "研究轨：产出可完成的估值结论与基金质量分析，明确剩余缺口；不影响、也不产生补仓资格",
+        "execution": "执行轨：补仓资格仍由三关独立判定（历史位置 <50%、近 6 个月位置 <50%、估值评分 ≥7.0）"
+      },
+      "degradation_paths": {
+        "full": "PE+PB 历史分位齐全 ⇒ A3 完整公式",
+        "degraded_pe_only": "仅 PE 历史分位 ⇒ A3 原式按已有维度归一化（0.6 归一为 1.0），仅用于研究结论，标注置信度降低",
+        "degraded_pb_only": "仅 PB 历史分位 ⇒ 同上（0.4 归一为 1.0）",
+        "not_applicable": "债券/固收+/商品 ⇒ 该资产类型不适用股票估值体系，不产出评分、无缺口需补，按位置与质量条件独立评估"
+      },
+      "gate3_scope": "第三关只决定『是否允许补仓』，不决定『是否继续研究与跟踪』；第三关不通过 ≠ 研究终止。",
+      "must_state_remaining_gap": "给出任何降级结论时，必须同时列明剩余缺口（缺哪个维度、是否可补齐、由谁补），不得含糊。",
+      "forbidden": "不得把研究评分写成补仓依据；不得因估值缺失而停止研究或无限期搁置；不得为凑出结论而编造缺失维度数值。",
+      "research_score_field": "对外接口 /api/valuation.json 中 funds[].research_layer（research_score / basis / confidence / conclusion / remaining_gap）"
     },
     "principle": "禁止看到历史位置低就自动补仓；避免买在历史低位却买在短期高点"
   },
@@ -433,7 +450,7 @@
   "full_text_pages": {
     "schema": "rules_fulltext_index/v1",
     "readonly": true,
-    "generated_at": "2026-10-16 23:13:05",
+    "generated_at": "2026-10-19 19:46:36",
     "rules_version": "V6.3",
     "total_pages": 3,
     "total_chars": 43806,
