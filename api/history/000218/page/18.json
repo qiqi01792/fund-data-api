@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-10-16 23:13:05",
+  "generated_at": "2026-10-19 23:13:27",
   "fund_code": "000218",
   "fund_name": "国泰黄金ETF联接A",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 18,
   "page_size": 150,
   "page_count": 18,
-  "total_records": 2559,
-  "record_count": 9,
+  "total_records": 2560,
+  "record_count": 10,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/000218/page/17.json",
   "query_start_date": "2016-04-13",
-  "query_end_date": "2026-10-16",
+  "query_end_date": "2026-10-19",
   "page_start_date": "2026-09-29",
-  "page_end_date": "2026-10-16",
+  "page_end_date": "2026-10-19",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -65,6 +65,11 @@
       "nav_date": "2026-10-16",
       "unit_nav": "3.2493",
       "accumulated_nav": "3.2493"
+    },
+    {
+      "nav_date": "2026-10-19",
+      "unit_nav": "3.2472",
+      "accumulated_nav": "3.2472"
     }
   ]
 }
