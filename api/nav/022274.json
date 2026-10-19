@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-10-19 19:46:36",
+  "generated_at": "2026-10-19 23:13:27",
   "as_of_nav_date": "2026-10-19",
   "fund_code": "022274",
   "fund_name": "国泰港股红利ETF联接A",
@@ -9,7 +9,7 @@
   "nav_scope": "near_1y",
   "window_start": "2025-10-19",
   "window_end": "2026-10-19",
-  "count": 241,
+  "count": 242,
   "nav_series": [
     {
       "fund_code": "022274",
@@ -1456,6 +1456,12 @@
       "fund_name": "国泰港股红利ETF联接A",
       "nav_date": "2026-10-16",
       "unit_nav": "1.1518"
+    },
+    {
+      "fund_code": "022274",
+      "fund_name": "国泰港股红利ETF联接A",
+      "nav_date": "2026-10-19",
+      "unit_nav": "1.1516"
     }
   ]
 }
