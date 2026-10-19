@@ -1,28 +1,16 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-10-16 23:13:05",
-  "as_of_nav_date": "2026-10-16",
+  "generated_at": "2026-10-19 19:46:36",
+  "as_of_nav_date": "2026-10-19",
   "fund_code": "007345",
   "fund_name": "富国科技创新灵活配置混合",
   "nav_type": "official",
   "nav_scope": "near_1y",
-  "window_start": "2025-10-16",
-  "window_end": "2026-10-16",
-  "count": 243,
+  "window_start": "2025-10-19",
+  "window_end": "2026-10-19",
+  "count": 242,
   "nav_series": [
-    {
-      "fund_code": "007345",
-      "fund_name": "富国科技创新灵活配置混合",
-      "nav_date": "2025-10-16",
-      "unit_nav": "1.8111"
-    },
-    {
-      "fund_code": "007345",
-      "fund_name": "富国科技创新灵活配置混合",
-      "nav_date": "2025-10-17",
-      "unit_nav": "1.7717"
-    },
     {
       "fund_code": "007345",
       "fund_name": "富国科技创新灵活配置混合",
@@ -1468,6 +1456,12 @@
       "fund_name": "富国科技创新灵活配置混合",
       "nav_date": "2026-10-16",
       "unit_nav": "2.1421"
+    },
+    {
+      "fund_code": "007345",
+      "fund_name": "富国科技创新灵活配置混合",
+      "nav_date": "2026-10-19",
+      "unit_nav": "2.1305"
     }
   ]
 }
