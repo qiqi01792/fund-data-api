@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-10-16 23:13:05",
+  "generated_at": "2026-10-19 23:13:27",
   "fund_code": "018125",
   "fund_name": "永赢先进制造智选混合C",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 6,
   "page_size": 150,
   "page_count": 6,
-  "total_records": 831,
-  "record_count": 81,
+  "total_records": 832,
+  "record_count": 82,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/018125/page/5.json",
   "query_start_date": "2023-05-04",
-  "query_end_date": "2026-10-16",
+  "query_end_date": "2026-10-19",
   "page_start_date": "2026-06-17",
-  "page_end_date": "2026-10-16",
+  "page_end_date": "2026-10-19",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -425,6 +425,11 @@
       "nav_date": "2026-10-16",
       "unit_nav": "1.5686",
       "accumulated_nav": "1.5686"
+    },
+    {
+      "nav_date": "2026-10-19",
+      "unit_nav": "1.6865",
+      "accumulated_nav": "1.6865"
     }
   ]
 }
