@@ -413,7 +413,7 @@
       "get": {
         "operationId": "getFundValuations",
         "summary": "获取 21 只基金估值明细（V6.2 第三维：估值价值确认）",
-        "description": "返回每只基金的估值状态、PE、PB、股息率、PE 历史分位、PB 历史分位、估值评分（0~10）、基准指数与匹配质量（exact 精确跟踪 / proxy 近似参考 / na 不适用 / pending 待登记），以及三维评分（历史位置 40% + 近 6 个月位置 30% + 估值 30%）、三关过滤结果与状态判定。债券/固收+/商品基金按规则不适用股票估值体系（na），数据源无对应指数的基金为 pending（估值缺失，第三关不通过）。股息率历史分位暂无数据源，留空待登记。所有基金均同时给出代码与中文名称。",
+        "description": "返回每只基金的估值状态、PE、PB、股息率、PE 历史分位、PB 历史分位、估值评分（0~10）、基准指数与匹配质量（exact 精确跟踪 / proxy 近似参考 / na 不适用 / pending 待登记），以及三维评分（历史位置 40% + 近 6 个月位置 30% + 估值 30%）、三关过滤结果与状态判定。债券/商品/混合型基金按规则不适用股票估值体系（na），数据源无对应指数的基金为 pending（估值缺失，第三关不通过）。股息率历史分位暂无数据源，留空待登记。所有基金均同时给出代码与中文名称。",
         "responses": {
           "200": {
             "description": "基金估值明细 JSON",
@@ -1066,8 +1066,9 @@
     "/api/fund_nav_series.json": {
       "get": {
         "operationId": "getFundNavSeriesAll",
-        "summary": "获取全部基金汇总数据及近 1 年每日净值序列",
-        "description": "在汇总数据基础上附加 nav_series（近 1 年全部基金逐日正式单位净值）。注意：文件体积约 0.8MB，可能超出部分客户端的响应长度限制，单基金查询请改用 getFundNavSeriesByCode。",
+        "summary": "[已弃用] 获取全部基金汇总数据及近 1 年每日净值序列",
+        "deprecated": true,
+        "description": "已弃用：合并序列约 0.62MB，必然超出 ChatGPT Actions 单响应 100,000 字符上限，任何客户端都不应整体拉取。请改用 getFundNavSeriesByCode（单只约 25,000 字符）或 getFundHistoryPage 分页读取。文件本身仍发布以兼容既有引用的浏览器直连场景。",
         "responses": {
           "200": {
             "description": "JSON 汇总数据 + 近 1 年净值序列",
