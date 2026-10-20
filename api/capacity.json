@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-10-20 19:58:43",
+  "generated_at": "2026-10-20 22:44:14",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,8 +19,8 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 76789,
-    "chars": 54043,
+    "bytes": 76787,
+    "chars": 54041,
     "bytes_pct": 78.9,
     "chars_pct": 54.0,
     "status": "ok"
@@ -28,10 +28,10 @@
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 621594,
-      "chars": 511410,
-      "bytes_pct": 639.0,
-      "chars_pct": 511.4,
+      "bytes": 621867,
+      "chars": 511979,
+      "bytes_pct": 639.3,
+      "chars_pct": 512.0,
       "status": "exempt"
     },
     {
@@ -44,34 +44,34 @@
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 76789,
-      "chars": 54043,
+      "bytes": 76787,
+      "chars": 54041,
       "bytes_pct": 78.9,
       "chars_pct": 54.0,
       "status": "ok"
     },
     {
       "rel": "api/signals.json",
-      "bytes": 74793,
-      "chars": 58600,
-      "bytes_pct": 76.9,
-      "chars_pct": 58.6,
+      "bytes": 74887,
+      "chars": 58654,
+      "bytes_pct": 77.0,
+      "chars_pct": 58.7,
       "status": "ok"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 52925,
-      "chars": 52019,
+      "bytes": 52924,
+      "chars": 52018,
       "bytes_pct": 54.4,
       "chars_pct": 52.0,
       "status": "ok"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 52577,
-      "chars": 38811,
-      "bytes_pct": 54.0,
-      "chars_pct": 38.8,
+      "bytes": 52672,
+      "chars": 38864,
+      "bytes_pct": 54.1,
+      "chars_pct": 38.9,
       "status": "ok"
     },
     {
@@ -100,19 +100,19 @@
     },
     {
       "rel": "api/fund_summary.json",
-      "bytes": 34524,
-      "chars": 27632,
-      "bytes_pct": 35.5,
-      "chars_pct": 27.6,
+      "bytes": 33635,
+      "chars": 27245,
+      "bytes_pct": 34.6,
+      "chars_pct": 27.2,
       "status": "ok"
     },
     {
       "rel": "api/nav/{fund_code}.json",
       "files": 21,
-      "bytes": 33493,
-      "chars": 25231,
-      "bytes_pct": 34.4,
-      "chars_pct": 25.2,
+      "bytes": 33630,
+      "chars": 25334,
+      "bytes_pct": 34.6,
+      "chars_pct": 25.3,
       "status": "ok"
     },
     {
@@ -141,7 +141,7 @@
     },
     {
       "rel": "api/history/{fund_code}/page/{page}.json",
-      "files": 232,
+      "files": 233,
       "bytes": 11704,
       "chars": 11616,
       "bytes_pct": 12.0,
