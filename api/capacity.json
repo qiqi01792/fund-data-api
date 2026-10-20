@@ -1,0 +1,160 @@
+{
+  "schema": "api_capacity/v1",
+  "generated_at": "2026-10-20 19:58:43",
+  "policy": {
+    "hard_chars": 100000,
+    "hard_bytes": 97280,
+    "watch_ratio": 0.8,
+    "chars_source": "OpenAI GPT Actions production notes: payloads < 100,000 chars (查阅 2026-10-20)",
+    "bytes_source": "2026-10-12 实测 signals.json 103,071B 触发 ClientResponseError；本项目设 95KiB 护栏",
+    "serialization": "compact(separators(',',':')) + ensure_ascii=False",
+    "gate_semantics": "over=硬失败阻断发布；watch=预警；exempt=显式豁免且记入清单"
+  },
+  "counts": {
+    "endpoints": 16,
+    "schema": 2,
+    "over": 0,
+    "watch": 0,
+    "exempt": 1
+  },
+  "worst_endpoint": {
+    "rel": "api/valuation.json",
+    "bytes": 76789,
+    "chars": 54043,
+    "bytes_pct": 78.9,
+    "chars_pct": 54.0,
+    "status": "ok"
+  },
+  "endpoints": [
+    {
+      "rel": "api/fund_nav_series.json",
+      "bytes": 621594,
+      "chars": 511410,
+      "bytes_pct": 639.0,
+      "chars_pct": 511.4,
+      "status": "exempt"
+    },
+    {
+      "rel": "openapi.json",
+      "bytes": 84500,
+      "chars": 71078,
+      "bytes_pct": 86.9,
+      "chars_pct": 71.1,
+      "status": "schema"
+    },
+    {
+      "rel": "api/valuation.json",
+      "bytes": 76789,
+      "chars": 54043,
+      "bytes_pct": 78.9,
+      "chars_pct": 54.0,
+      "status": "ok"
+    },
+    {
+      "rel": "api/signals.json",
+      "bytes": 74793,
+      "chars": 58600,
+      "bytes_pct": 76.9,
+      "chars_pct": 58.6,
+      "status": "ok"
+    },
+    {
+      "rel": "api/performance.json",
+      "bytes": 52925,
+      "chars": 52019,
+      "bytes_pct": 54.4,
+      "chars_pct": 52.0,
+      "status": "ok"
+    },
+    {
+      "rel": "api/signals_brief.json",
+      "bytes": 52577,
+      "chars": 38811,
+      "bytes_pct": 54.0,
+      "chars_pct": 38.8,
+      "status": "ok"
+    },
+    {
+      "rel": "openapi_gpt.json",
+      "bytes": 42639,
+      "chars": 36485,
+      "bytes_pct": 43.8,
+      "chars_pct": 36.5,
+      "status": "schema"
+    },
+    {
+      "rel": "api/rules_fulltext/page/1.json",
+      "bytes": 40952,
+      "chars": 19062,
+      "bytes_pct": 42.1,
+      "chars_pct": 19.1,
+      "status": "ok"
+    },
+    {
+      "rel": "api/rules_fulltext/page/2.json",
+      "bytes": 40913,
+      "chars": 17748,
+      "bytes_pct": 42.1,
+      "chars_pct": 17.7,
+      "status": "ok"
+    },
+    {
+      "rel": "api/fund_summary.json",
+      "bytes": 34524,
+      "chars": 27632,
+      "bytes_pct": 35.5,
+      "chars_pct": 27.6,
+      "status": "ok"
+    },
+    {
+      "rel": "api/nav/{fund_code}.json",
+      "files": 21,
+      "bytes": 33493,
+      "chars": 25231,
+      "bytes_pct": 34.4,
+      "chars_pct": 25.2,
+      "status": "ok"
+    },
+    {
+      "rel": "api/rules.json",
+      "bytes": 20787,
+      "chars": 12215,
+      "bytes_pct": 21.4,
+      "chars_pct": 12.2,
+      "status": "ok"
+    },
+    {
+      "rel": "api/rules_fulltext/page/3.json",
+      "bytes": 19972,
+      "chars": 9247,
+      "bytes_pct": 20.5,
+      "chars_pct": 9.2,
+      "status": "ok"
+    },
+    {
+      "rel": "api/rules_core.json",
+      "bytes": 18846,
+      "chars": 11072,
+      "bytes_pct": 19.4,
+      "chars_pct": 11.1,
+      "status": "ok"
+    },
+    {
+      "rel": "api/history/{fund_code}/page/{page}.json",
+      "files": 232,
+      "bytes": 11704,
+      "chars": 11616,
+      "bytes_pct": 12.0,
+      "chars_pct": 11.6,
+      "status": "ok"
+    },
+    {
+      "rel": "api/rules_fulltext/index.json",
+      "bytes": 1605,
+      "chars": 1163,
+      "bytes_pct": 1.6,
+      "chars_pct": 1.2,
+      "status": "ok"
+    }
+  ]
+}
