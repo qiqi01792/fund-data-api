@@ -272,7 +272,7 @@
       "get": {
         "operationId": "getDailySignalsBrief",
         "summary": "获取每日操作信号精简版（ChatGPT 日常首选入口，约为完整版 1/4 体积）",
-        "description": "返回与 getDailySignals 相同的 21 只基金次日信号，但剥离长文案：每只基金保留代码+中文名、最新净值与净值日、历史位置%/近6月位置%、信号方向与档位、信号原因、置信度、连跌天数、止盈状态（档位/累计目标/执行状态/动作建议/基准登记）、估值结论（状态/评分/理由/三关总结果）、定投启停；顶层保留信号统计、月度资金池结论、优先动作、口径分歧清单与公开通道边界说明。金额类字段公开通道一律不输出，止盈只给比例。完整版（含全部字段）请用 getDailySignals。",
+        "description": "返回与 getDailySignals 相同的 21 只基金次日信号，但剥离长文案：每只基金保留代码+中文名、最新净值与净值日、历史位置%/近6月位置%、信号方向与档位、信号原因、置信度、连跌天数、止盈状态（档位/累计目标/执行状态/动作建议/基准登记/本次卖出比例 new_sell_pct_of_base 与 new_sell_pct_of_remaining/口径冲突标记 caliber_conflict_pp/已成交比例待核验标记 sold_unverified）、估值结论（状态/评分/理由/三关总结果）、定投启停；顶层保留信号统计、月度资金池结论、优先动作、口径分歧清单与公开通道边界说明。金额类字段公开通道一律不输出，止盈只给比例。止盈比例若为 null 且伴随 caliber_conflict_pp，表示单位净值与累计净值口径分歧已达阈值、当前比例不可执行（须人工复核），不表示无需止盈；若为 null 且伴随 sold_unverified（missing/invalid/out_of_range），表示台账累计已成交比例无法核实，同样须先核实再重算，不得视为无需卖出。完整版（含全部字段）请用 getDailySignals。",
         "responses": {
           "200": {
             "description": "每日操作信号精简版 JSON",
