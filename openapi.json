@@ -294,7 +294,7 @@
                           },
                           "take_profit_v61": {
                             "type": "object",
-                            "description": "V6.1 累计止盈模块（只含比例，不含任何持仓金额）：tp_status 止盈状态 / tier 档位 / cumulative_target_pct 累计止盈目标 / cumulative_sold_pct 累计已卖 / remaining_target_pct 卖出后剩余仓位 / new_sell_pct_of_base 本次新增卖出占基准仓位 / new_sell_pct_of_remaining 折算为当前剩余持仓卖出比例 / is_new_high / exec_style 执行风格 / base_position_registered 基准仓位是否已登记 / action 本次动作 / note 说明"
+                            "description": "V6.1 累计止盈模块（只含比例，不含任何持仓金额）：tp_status 止盈状态（止盈阶段 / 周期内回落 / 未启动 / 无法判断；「周期内回落」= 台账已建立止盈周期但历史位置回落到 75% 以下，非本周期结束，不得重置已完成比例，见 V6.3 四-1、五-6） / tier 档位 / cumulative_target_pct 累计止盈目标（台账累计目标无法读取时为 null，不得当作 0%、不得据此重置周期） / remaining_target_pct 卖出后剩余仓位 / new_sell_pct_of_base 本次新增卖出占基准仓位 / new_sell_pct_of_remaining 折算为当前剩余持仓卖出比例 / caliber_conflict_pp 仅当单位与累计口径分歧 ≥5pp 且处于止盈阶段时出现，表示按 V6.3 A4 已降级为不输出确定比例（此时 new_sell_pct_of_base 为 null，含义是待复核，null 不代表 0%、也不代表无需止盈） / sold_unverified 仅当台账累计已成交比例不可核实时出现，取值 missing（空值或缺列）/ invalid（非数字）/ out_of_range（<0 或 >100）；出现时 new_sell_pct_of_base 与 new_sell_pct_of_remaining 必为 null，表示「待核验」而非「无需卖出」，须先核实真实已成交比例（含待确认订单成交结果）再重算 / is_new_high / exec_style 执行风格 / base_position_registered 基准仓位是否已登记 / action 本次动作 / note 说明。注：已完成的累计卖出比例属持仓信息，按 C2 公开通道约定不对外输出，本对象**不含** cumulative_sold_pct 字段"
                           }
                         }
                       }
@@ -727,7 +727,7 @@
       "get": {
         "operationId": "getDailySignalsBrief",
         "summary": "获取每日操作信号精简版（ChatGPT 日常首选入口，约为完整版 1/4 体积）",
-        "description": "返回与 getDailySignals 相同的 21 只基金次日信号，但剥离长文案：每只基金保留代码+中文名、最新净值与净值日、历史位置%/近6月位置%、信号方向与档位、信号原因、置信度、连跌天数、止盈状态（档位/累计目标/执行状态/动作建议/基准登记）、估值结论（状态/评分/理由/三关总结果）、定投启停；顶层保留信号统计、月度资金池结论、优先动作、口径分歧清单与公开通道边界说明。金额类字段公开通道一律不输出，止盈只给比例。完整版（含全部字段）请用 getDailySignals。",
+        "description": "返回与 getDailySignals 相同的 21 只基金次日信号，但剥离长文案：每只基金保留代码+中文名、最新净值与净值日、历史位置%/近6月位置%、信号方向与档位、信号原因、置信度、连跌天数、止盈状态（档位/累计目标/执行状态/动作建议/基准登记/本次卖出比例 new_sell_pct_of_base 与 new_sell_pct_of_remaining/口径冲突标记 caliber_conflict_pp/已成交比例待核验标记 sold_unverified）、估值结论（状态/评分/理由/三关总结果）、定投启停；顶层保留信号统计、月度资金池结论、优先动作、口径分歧清单与公开通道边界说明。金额类字段公开通道一律不输出，止盈只给比例。止盈比例若为 null 且伴随 caliber_conflict_pp，表示单位净值与累计净值口径分歧已达阈值、当前比例不可执行（须人工复核），不表示无需止盈；若为 null 且伴随 sold_unverified（missing/invalid/out_of_range），表示台账累计已成交比例无法核实，同样须先核实再重算，不得视为无需卖出。完整版（含全部字段）请用 getDailySignals。",
         "responses": {
           "200": {
             "description": "每日操作信号精简版 JSON",
