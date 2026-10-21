@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-10-21 23:34:33",
+  "generated_at": "2026-10-21 23:56:09",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -52,18 +52,18 @@
     },
     {
       "rel": "api/signals.json",
-      "bytes": 74882,
-      "chars": 58435,
-      "bytes_pct": 77.0,
+      "bytes": 74968,
+      "chars": 58390,
+      "bytes_pct": 77.1,
       "chars_pct": 58.4,
       "status": "ok"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 54849,
-      "chars": 40589,
-      "bytes_pct": 56.4,
-      "chars_pct": 40.6,
+      "bytes": 55344,
+      "chars": 40863,
+      "bytes_pct": 56.9,
+      "chars_pct": 40.9,
       "status": "ok"
     },
     {
