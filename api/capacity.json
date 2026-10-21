@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-10-20 22:44:14",
+  "generated_at": "2026-10-21 23:34:33",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,67 +19,67 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 76787,
-    "chars": 54041,
+    "bytes": 76769,
+    "chars": 54051,
     "bytes_pct": 78.9,
-    "chars_pct": 54.0,
+    "chars_pct": 54.1,
     "status": "ok"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 621867,
-      "chars": 511979,
-      "bytes_pct": 639.3,
-      "chars_pct": 512.0,
+      "bytes": 622171,
+      "chars": 512201,
+      "bytes_pct": 639.6,
+      "chars_pct": 512.2,
       "status": "exempt"
     },
     {
       "rel": "openapi.json",
-      "bytes": 84500,
-      "chars": 71078,
-      "bytes_pct": 86.9,
-      "chars_pct": 71.1,
+      "bytes": 86081,
+      "chars": 71863,
+      "bytes_pct": 88.5,
+      "chars_pct": 71.9,
       "status": "schema"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 76787,
-      "chars": 54041,
+      "bytes": 76769,
+      "chars": 54051,
       "bytes_pct": 78.9,
-      "chars_pct": 54.0,
+      "chars_pct": 54.1,
       "status": "ok"
     },
     {
       "rel": "api/signals.json",
-      "bytes": 74887,
-      "chars": 58654,
+      "bytes": 74882,
+      "chars": 58435,
       "bytes_pct": 77.0,
-      "chars_pct": 58.7,
+      "chars_pct": 58.4,
+      "status": "ok"
+    },
+    {
+      "rel": "api/signals_brief.json",
+      "bytes": 54849,
+      "chars": 40589,
+      "bytes_pct": 56.4,
+      "chars_pct": 40.6,
       "status": "ok"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 52924,
-      "chars": 52018,
+      "bytes": 52922,
+      "chars": 52016,
       "bytes_pct": 54.4,
       "chars_pct": 52.0,
       "status": "ok"
     },
     {
-      "rel": "api/signals_brief.json",
-      "bytes": 52672,
-      "chars": 38864,
-      "bytes_pct": 54.1,
-      "chars_pct": 38.9,
-      "status": "ok"
-    },
-    {
       "rel": "openapi_gpt.json",
-      "bytes": 42639,
-      "chars": 36485,
-      "bytes_pct": 43.8,
-      "chars_pct": 36.5,
+      "bytes": 43162,
+      "chars": 36768,
+      "bytes_pct": 44.4,
+      "chars_pct": 36.8,
       "status": "schema"
     },
     {
@@ -100,10 +100,10 @@
     },
     {
       "rel": "api/fund_summary.json",
-      "bytes": 33635,
-      "chars": 27245,
+      "bytes": 33701,
+      "chars": 27275,
       "bytes_pct": 34.6,
-      "chars_pct": 27.2,
+      "chars_pct": 27.3,
       "status": "ok"
     },
     {
@@ -117,10 +117,10 @@
     },
     {
       "rel": "api/rules.json",
-      "bytes": 20787,
-      "chars": 12215,
-      "bytes_pct": 21.4,
-      "chars_pct": 12.2,
+      "bytes": 21097,
+      "chars": 12363,
+      "bytes_pct": 21.7,
+      "chars_pct": 12.4,
       "status": "ok"
     },
     {
@@ -133,10 +133,10 @@
     },
     {
       "rel": "api/rules_core.json",
-      "bytes": 18846,
-      "chars": 11072,
-      "bytes_pct": 19.4,
-      "chars_pct": 11.1,
+      "bytes": 19156,
+      "chars": 11220,
+      "bytes_pct": 19.7,
+      "chars_pct": 11.2,
       "status": "ok"
     },
     {
