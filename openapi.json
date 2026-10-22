@@ -86,11 +86,11 @@
                     },
                     "signal_counts": {
                       "type": "object",
-                      "description": "信号数量统计：止盈候选/补仓候选/持有/无法判断"
+                      "description": "信号数量统计：止盈候选/补仓候选/持有/无法判断。★2026-10-22 起止盈阶段可完整分解为 take_profit_with_new_sell + take_profit_already_satisfied + take_profit_caliber_conflict + take_profit_exec_not_released + take_profit_pending_confirmation + take_profit_verification_required，六项之和 = take_profit_candidate；already_satisfied 只含「执行状态已放行且差额为 0」的真正已达标，不含在途/待核验/未放行"
                     },
                     "sip_counts": {
                       "type": "object",
-                      "description": "定投状态数量统计"
+                      "description": "定投状态数量统计，固定六键（缺省 0）：investing / buffer_watch / paused_by_rule / paused_confirmed / paused_manual / unknown，六项之和 = 基金总数。★investing 仅表示事实上在投，若某基金带 sip_rule_deviation=true 则为用户主动偏离规则"
                     },
                     "caliber_conflicts_count": {
                       "type": "integer",
@@ -223,6 +223,22 @@
                           "sip_status": {
                             "type": "string",
                             "description": "定投启停状态，含义同 getFundSummary 的 sip_status"
+                          },
+                          "sip_status_note": {
+                            "type": "string",
+                            "description": "定投判定说明全文。★用户已恢复定投但位置仍≥70%停止线时，此处明文标注「主动偏离 V6.3、须复核、每月复检」——sip_status=investing 只反映真实执行状态，不代表规则认可继续定投"
+                          },
+                          "sip_actual_since": {
+                            "type": "string",
+                            "description": "用户在蚂蚁财富实际执行暂停或恢复的日期（paused_confirmed / 主动偏离情形；否则为空）"
+                          },
+                          "sip_rule_deviation": {
+                            "type": "boolean",
+                            "description": "条件输出（缺省即 false）：true=用户已恢复定投但位置仍≥70%停止线，属主动偏离 V6.3 3.1"
+                          },
+                          "sip_rule_deviation_pp": {
+                            "type": "number",
+                            "description": "条件输出：偏离超出 70% 停止线的百分点；未偏离时不出现该键"
                           },
                           "data_status": {
                             "type": "string",
@@ -961,15 +977,23 @@
                           },
                           "sip_status": {
                             "type": "string",
-                            "description": "定投启停状态：investing 定投中 / paused_by_rule 触发70%停止线(未确认执行) / paused_confirmed 用户已在蚂蚁财富执行暂停 / buffer_watch 缓冲观察 / paused_manual 人工暂停 / unknown 分位缺失"
+                            "description": "定投启停状态：investing 定投中 / paused_by_rule 触发70%停止线(未确认执行) / paused_confirmed 用户已在蚂蚁财富执行暂停 / buffer_watch 缓冲观察 / paused_manual 人工暂停 / unknown 分位缺失。★investing 仅表示事实上在投，若 sip_rule_deviation=true 则为用户主动偏离规则，不代表规则认可"
                           },
                           "sip_status_note": {
                             "type": "string",
-                            "description": "定投状态判定说明（含触发分位与处置建议）"
+                            "description": "定投状态判定说明（含触发分位与处置建议）。主动偏离规则时明文标注「已恢复定投但位置≥70%停止线，须复核、每月复检」"
                           },
                           "sip_actual_since": {
                             "type": "string",
-                            "description": "用户实际执行暂停的日期（仅 paused_confirmed）"
+                            "description": "用户实际执行暂停或恢复的日期（paused_confirmed / 主动偏离情形）"
+                          },
+                          "sip_rule_deviation": {
+                            "type": "boolean",
+                            "description": "条件输出（缺省即 false）：true=用户已恢复定投但位置仍≥70%停止线，属主动偏离 V6.3 3.1；此时 sip_status=investing 只反映真实执行状态，不代表规则认可继续定投"
+                          },
+                          "sip_rule_deviation_pp": {
+                            "type": "number",
+                            "description": "条件输出：偏离超出 70% 停止线的百分点；未偏离时该键不出现"
                           },
                           "sip_weekly_amount": {
                             "type": "string",
@@ -1254,15 +1278,23 @@
                           },
                           "sip_status": {
                             "type": "string",
-                            "description": "定投启停状态：investing 定投中 / paused_by_rule 触发70%停止线(未确认执行) / paused_confirmed 用户已在蚂蚁财富执行暂停 / buffer_watch 缓冲观察 / paused_manual 人工暂停 / unknown 分位缺失"
+                            "description": "定投启停状态：investing 定投中 / paused_by_rule 触发70%停止线(未确认执行) / paused_confirmed 用户已在蚂蚁财富执行暂停 / buffer_watch 缓冲观察 / paused_manual 人工暂停 / unknown 分位缺失。★investing 仅表示事实上在投，若 sip_rule_deviation=true 则为用户主动偏离规则，不代表规则认可"
                           },
                           "sip_status_note": {
                             "type": "string",
-                            "description": "定投状态判定说明（含触发分位与处置建议）"
+                            "description": "定投状态判定说明（含触发分位与处置建议）。主动偏离规则时明文标注「已恢复定投但位置≥70%停止线，须复核、每月复检」"
                           },
                           "sip_actual_since": {
                             "type": "string",
-                            "description": "用户实际执行暂停的日期（仅 paused_confirmed）"
+                            "description": "用户实际执行暂停或恢复的日期（paused_confirmed / 主动偏离情形）"
+                          },
+                          "sip_rule_deviation": {
+                            "type": "boolean",
+                            "description": "条件输出（缺省即 false）：true=用户已恢复定投但位置仍≥70%停止线，属主动偏离 V6.3 3.1；此时 sip_status=investing 只反映真实执行状态，不代表规则认可继续定投"
+                          },
+                          "sip_rule_deviation_pp": {
+                            "type": "number",
+                            "description": "条件输出：偏离超出 70% 停止线的百分点；未偏离时该键不出现"
                           },
                           "sip_weekly_amount": {
                             "type": "string",
