@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-10-22 10:18:04",
+  "generated_at": "2026-10-22 23:35:43",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -14,23 +14,23 @@
     "endpoints": 16,
     "schema": 2,
     "over": 0,
-    "watch": 0,
+    "watch": 1,
     "exempt": 1
   },
   "worst_endpoint": {
     "rel": "api/signals.json",
-    "bytes": 77572,
-    "chars": 59922,
-    "bytes_pct": 79.7,
-    "chars_pct": 59.9,
-    "status": "ok"
+    "bytes": 78216,
+    "chars": 60450,
+    "bytes_pct": 80.4,
+    "chars_pct": 60.5,
+    "status": "watch"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 623005,
-      "chars": 512619,
-      "bytes_pct": 640.4,
+      "bytes": 622799,
+      "chars": 512617,
+      "bytes_pct": 640.2,
       "chars_pct": 512.6,
       "status": "exempt"
     },
@@ -44,32 +44,32 @@
     },
     {
       "rel": "api/signals.json",
-      "bytes": 77572,
-      "chars": 59922,
-      "bytes_pct": 79.7,
-      "chars_pct": 59.9,
-      "status": "ok"
+      "bytes": 78216,
+      "chars": 60450,
+      "bytes_pct": 80.4,
+      "chars_pct": 60.5,
+      "status": "watch"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 76752,
-      "chars": 54034,
-      "bytes_pct": 78.9,
+      "bytes": 76693,
+      "chars": 54025,
+      "bytes_pct": 78.8,
       "chars_pct": 54.0,
       "status": "ok"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 57365,
-      "chars": 41812,
-      "bytes_pct": 59.0,
-      "chars_pct": 41.8,
+      "bytes": 58154,
+      "chars": 42417,
+      "bytes_pct": 59.8,
+      "chars_pct": 42.4,
       "status": "ok"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 52922,
-      "chars": 52016,
+      "bytes": 52907,
+      "chars": 52001,
       "bytes_pct": 54.4,
       "chars_pct": 52.0,
       "status": "ok"
@@ -100,10 +100,10 @@
     },
     {
       "rel": "api/fund_summary.json",
-      "bytes": 34535,
-      "chars": 27693,
-      "bytes_pct": 35.5,
-      "chars_pct": 27.7,
+      "bytes": 34091,
+      "chars": 27499,
+      "bytes_pct": 35.0,
+      "chars_pct": 27.5,
       "status": "ok"
     },
     {
