@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-10-21 23:56:09",
+  "generated_at": "2026-10-22 10:18:04",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -18,52 +18,52 @@
     "exempt": 1
   },
   "worst_endpoint": {
-    "rel": "api/valuation.json",
-    "bytes": 76769,
-    "chars": 54051,
-    "bytes_pct": 78.9,
-    "chars_pct": 54.1,
+    "rel": "api/signals.json",
+    "bytes": 77572,
+    "chars": 59922,
+    "bytes_pct": 79.7,
+    "chars_pct": 59.9,
     "status": "ok"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 622171,
-      "chars": 512201,
-      "bytes_pct": 639.6,
-      "chars_pct": 512.2,
+      "bytes": 623005,
+      "chars": 512619,
+      "bytes_pct": 640.4,
+      "chars_pct": 512.6,
       "status": "exempt"
     },
     {
       "rel": "openapi.json",
-      "bytes": 86081,
-      "chars": 71863,
-      "bytes_pct": 88.5,
-      "chars_pct": 71.9,
+      "bytes": 89779,
+      "chars": 74433,
+      "bytes_pct": 92.3,
+      "chars_pct": 74.4,
       "status": "schema"
     },
     {
-      "rel": "api/valuation.json",
-      "bytes": 76769,
-      "chars": 54051,
-      "bytes_pct": 78.9,
-      "chars_pct": 54.1,
+      "rel": "api/signals.json",
+      "bytes": 77572,
+      "chars": 59922,
+      "bytes_pct": 79.7,
+      "chars_pct": 59.9,
       "status": "ok"
     },
     {
-      "rel": "api/signals.json",
-      "bytes": 74968,
-      "chars": 58390,
-      "bytes_pct": 77.1,
-      "chars_pct": 58.4,
+      "rel": "api/valuation.json",
+      "bytes": 76752,
+      "chars": 54034,
+      "bytes_pct": 78.9,
+      "chars_pct": 54.0,
       "status": "ok"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 55344,
-      "chars": 40863,
-      "bytes_pct": 56.9,
-      "chars_pct": 40.9,
+      "bytes": 57365,
+      "chars": 41812,
+      "bytes_pct": 59.0,
+      "chars_pct": 41.8,
       "status": "ok"
     },
     {
@@ -76,10 +76,10 @@
     },
     {
       "rel": "openapi_gpt.json",
-      "bytes": 43162,
-      "chars": 36768,
-      "bytes_pct": 44.4,
-      "chars_pct": 36.8,
+      "bytes": 44060,
+      "chars": 37358,
+      "bytes_pct": 45.3,
+      "chars_pct": 37.4,
       "status": "schema"
     },
     {
@@ -100,10 +100,10 @@
     },
     {
       "rel": "api/fund_summary.json",
-      "bytes": 33701,
-      "chars": 27275,
-      "bytes_pct": 34.6,
-      "chars_pct": 27.3,
+      "bytes": 34535,
+      "chars": 27693,
+      "bytes_pct": 35.5,
+      "chars_pct": 27.7,
       "status": "ok"
     },
     {
