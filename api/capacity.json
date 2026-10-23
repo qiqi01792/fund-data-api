@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-10-22 23:35:43",
+  "generated_at": "2026-10-23 22:44:37",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,57 +19,57 @@
   },
   "worst_endpoint": {
     "rel": "api/signals.json",
-    "bytes": 78216,
-    "chars": 60450,
-    "bytes_pct": 80.4,
-    "chars_pct": 60.5,
+    "bytes": 78361,
+    "chars": 60931,
+    "bytes_pct": 80.6,
+    "chars_pct": 60.9,
     "status": "watch"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 622799,
-      "chars": 512617,
-      "bytes_pct": 640.2,
-      "chars_pct": 512.6,
+      "bytes": 622924,
+      "chars": 512716,
+      "bytes_pct": 640.3,
+      "chars_pct": 512.7,
       "status": "exempt"
     },
     {
       "rel": "openapi.json",
-      "bytes": 89779,
-      "chars": 74433,
-      "bytes_pct": 92.3,
-      "chars_pct": 74.4,
+      "bytes": 90649,
+      "chars": 74911,
+      "bytes_pct": 93.2,
+      "chars_pct": 74.9,
       "status": "schema"
     },
     {
       "rel": "api/signals.json",
-      "bytes": 78216,
-      "chars": 60450,
-      "bytes_pct": 80.4,
-      "chars_pct": 60.5,
+      "bytes": 78361,
+      "chars": 60931,
+      "bytes_pct": 80.6,
+      "chars_pct": 60.9,
       "status": "watch"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 76693,
-      "chars": 54025,
+      "bytes": 76644,
+      "chars": 54000,
       "bytes_pct": 78.8,
       "chars_pct": 54.0,
       "status": "ok"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 58154,
-      "chars": 42417,
-      "bytes_pct": 59.8,
-      "chars_pct": 42.4,
+      "bytes": 57138,
+      "chars": 41715,
+      "bytes_pct": 58.7,
+      "chars_pct": 41.7,
       "status": "ok"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 52907,
-      "chars": 52001,
+      "bytes": 52917,
+      "chars": 52011,
       "bytes_pct": 54.4,
       "chars_pct": 52.0,
       "status": "ok"
@@ -92,10 +92,18 @@
     },
     {
       "rel": "api/rules_fulltext/page/2.json",
-      "bytes": 40913,
-      "chars": 17748,
-      "bytes_pct": 42.1,
-      "chars_pct": 17.7,
+      "bytes": 40766,
+      "chars": 18207,
+      "bytes_pct": 41.9,
+      "chars_pct": 18.2,
+      "status": "ok"
+    },
+    {
+      "rel": "api/rules_fulltext/page/3.json",
+      "bytes": 35011,
+      "chars": 15608,
+      "bytes_pct": 36.0,
+      "chars_pct": 15.6,
       "status": "ok"
     },
     {
@@ -117,26 +125,18 @@
     },
     {
       "rel": "api/rules.json",
-      "bytes": 21097,
-      "chars": 12363,
-      "bytes_pct": 21.7,
+      "bytes": 21173,
+      "chars": 12403,
+      "bytes_pct": 21.8,
       "chars_pct": 12.4,
       "status": "ok"
     },
     {
-      "rel": "api/rules_fulltext/page/3.json",
-      "bytes": 19972,
-      "chars": 9247,
-      "bytes_pct": 20.5,
-      "chars_pct": 9.2,
-      "status": "ok"
-    },
-    {
       "rel": "api/rules_core.json",
-      "bytes": 19156,
-      "chars": 11220,
-      "bytes_pct": 19.7,
-      "chars_pct": 11.2,
+      "bytes": 19232,
+      "chars": 11260,
+      "bytes_pct": 19.8,
+      "chars_pct": 11.3,
       "status": "ok"
     },
     {
@@ -150,9 +150,9 @@
     },
     {
       "rel": "api/rules_fulltext/index.json",
-      "bytes": 1605,
-      "chars": 1163,
-      "bytes_pct": 1.6,
+      "bytes": 1681,
+      "chars": 1203,
+      "bytes_pct": 1.7,
       "chars_pct": 1.2,
       "status": "ok"
     }
