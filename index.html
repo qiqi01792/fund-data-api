@@ -30,7 +30,7 @@ th{background:#f7f8fa;font-weight:500}
 <tr><td><code>/api/performance.json</code></td><td>21 只基金<b>多窗口业绩指标</b>（1m/3m/6m/1y/3y/5y/10y/成立以来 收益率、最大回撤、年化波动率）</td></tr>
 <tr><td><code>/api/signals.json</code></td><td><b>每日操作信号</b>（评级 A/B/C/D、补仓档位与资格判定、2000 元资金池结论、禁止补仓列表 + <b>V6.1 累计止盈</b> + <b>V6.2 三维估值决策：历史位置/近6月位置/估值三关过滤与综合评分</b> + 定投启停 + 口径分歧警示）<br><span style="color:#b26a00">2026-10-12 C2：公开通道不输出账户相关金额（补仓金额、月池已用/剩余均已移除），只给结论；同日起瘦身以适配客户端响应上限，ChatGPT 请优先用 /api/signals_brief.json</span></td></tr>
 <tr><td><code>/api/signals_brief.json</code></td><td>每日操作信号<b>精简版</b>（保留全部决策字段，剥离长文案；ChatGPT Actions 日常入口）</td></tr>
-<tr><td><code>/openapi.json</code></td><td>ChatGPT 自定义 GPT Action 描述文件（版本 2.4.0，<b>全部 13 个端点</b>）</td></tr>
+<tr><td><code>/openapi.json</code></td><td>ChatGPT 自定义 GPT Action 描述文件（版本 2.5.0，<b>全部 13 个端点</b>）</td></tr>
 <tr><td><code>/openapi_gpt.json</code></td><td><b>ChatGPT 专用精简 schema</b>（只含 9 个安全端点，已物理移除约 839KB 的 getFundNavSeriesAll 与约 94KB 的 getDailySignals；<b>推荐 GPT Action 导入本文件</b>）</td></tr>
 </table>
 <h2>数据范围与限制</h2>
