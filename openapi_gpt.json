@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口（ChatGPT 专用精简版）",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "description": "本文件是 ChatGPT 专用精简 schema，只暴露 9 个安全端点；完整版（13 个端点，含全部接口）见 /openapi.json，供网页版与其他消费者使用。已从本文件物理移除的端点：getFundNavSeriesAll（响应约 839KB，必超单响应上限）、getDailySignals（约 94KB，贴线）、getRules（与 rules_core/分页重复）、getFundValuations（估值结论已在 getDailySignalsBrief 内）。【建议调用顺序】①每次会话开始：getRulesCore（约 20KB，核心阈值与待确认参数）→ getDailySignalsBrief（约 41KB，21 只基金次日信号与档位）；②需要规则原文：getRulesFullTextIndex → 按 total_pages 逐页 getRulesFullTextPage（正文一字不差）；③需要净值/分位：getFundSummary；④需要成立以来历史：getFundHistoryIndex → getFundHistoryPage；⑤需要近 1 年序列：getFundNavSeriesByCode；⑥需要多窗口业绩：getFundPerformance。【硬约束】本接口只读，不含任何持仓金额/份额/成本；止盈只给比例，卖出金额须结合私有持仓接口。任何基金一律同时给出 6 位代码与中文全称。规则只有一个总版本号 V6.3。"
   },
   "servers": [
