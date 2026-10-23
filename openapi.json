@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "基金数据只读接口",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "description": "21 只公募基金的公开行情数据、多窗口业绩指标、每日操作信号（评级与补仓金额、累计止盈比例、三维估值决策）、定投启停状态与策略规则 V6.3（只读）。仅含正式单位净值及其衍生指标，不含任何持仓信息（止盈卖出金额需结合本地基准仓位计算）。输出规范：任何基金一律同时给出 6 位代码与中文全称，不得只报代码。规则对外只有一个总版本号 V6.3（V5.7/V5.8/V6.1 已归档为章节，勿引用旧版本号）。"
   },
   "servers": [
@@ -310,7 +310,7 @@
                           },
                           "take_profit_v61": {
                             "type": "object",
-                            "description": "V6.1 累计止盈模块（只含比例，不含任何持仓金额）：tp_status 止盈状态（止盈阶段 / 周期内回落 / 未启动 / 无法判断；「周期内回落」= 台账已建立止盈周期但历史位置回落到 75% 以下，非本周期结束，不得重置已完成比例，见 V6.3 四-1、五-6） / tier 档位 / cumulative_target_pct 累计止盈目标（台账累计目标无法读取时为 null，不得当作 0%、不得据此重置周期） / remaining_target_pct 卖出后剩余仓位 / new_sell_pct_of_base 本次新增卖出占基准仓位 / new_sell_pct_of_remaining 折算为当前剩余持仓卖出比例 / caliber_conflict_pp 仅当单位与累计口径分歧 ≥5pp 且处于止盈阶段时出现，表示按 V6.3 A4 已降级为不输出确定比例（此时 new_sell_pct_of_base 为 null，含义是待复核，null 不代表 0%、也不代表无需止盈） / sold_unverified 仅当台账累计已成交比例不可核实时出现，取值 missing（空值或缺列）/ invalid（非数字）/ out_of_range（<0 或 >100）；出现时 new_sell_pct_of_base 与 new_sell_pct_of_remaining 必为 null，表示「待核验」而非「无需卖出」，须先核实真实已成交比例（含待确认订单成交结果）再重算 / is_new_high / exec_style 执行风格 / base_position_registered 基准仓位是否已登记 / action 本次动作 / note 说明。注：已完成的累计卖出比例属持仓信息，按 C2 公开通道约定不对外输出，本对象**不含** cumulative_sold_pct 字段"
+                            "description": "V6.1 累计止盈模块（只含比例，不含任何持仓金额）：tp_status 止盈状态（止盈阶段 / 周期内回落 / 未启动 / 无法判断；「周期内回落」= 台账已建立止盈周期但历史位置回落到 75% 以下，非本周期结束，不得重置已完成比例，见 V6.3 四-1、五-6） / tier 档位 / cumulative_target_pct 累计止盈目标（台账累计目标无法读取时为 null，不得当作 0%、不得据此重置周期） / remaining_target_pct 卖出后剩余仓位 / new_sell_pct_of_base 本次新增卖出占基准仓位 / new_sell_pct_of_remaining 折算为当前剩余持仓卖出比例 / caliber_conflict_pp 仅当单位与累计口径分歧 ≥5pp 且处于止盈阶段时出现，表示按 V6.3 A4 已降级为不输出确定比例（此时 new_sell_pct_of_base 为 null，含义是待复核，null 不代表 0%、也不代表无需止盈） / sold_unverified 仅当台账累计已成交比例不可核实时出现，取值 missing（空值或缺列）/ invalid（非数字）/ out_of_range（<0 或 >100）；出现时 new_sell_pct_of_base 与 new_sell_pct_of_remaining 必为 null，表示「待核验」而非「无需卖出」，须先核实真实已成交比例（含待确认订单成交结果）再重算 / is_new_high / exec_style 执行风格 / base_position_registered 基准仓位是否已登记 / action 本次动作 / note 说明。注：已完成的累计卖出比例属持仓信息，按 C2 公开通道约定不对外输出，本对象**不含** cumulative_sold_pct 字段 / 【2026-10-23 K-7 新增两字段，V6.3 A1.9】today_tier_target_pct 今日按当日有效净值位置实时计算的档位目标（百分点 0~100：位置 <75% 为 0；75~80 为 10；80~85 为 20；85~90 为 35；90~92 为 50；92~95 为 75；95~100 含位置恰为 100 为 95；确认创新高为 100）。**回答「今天该卖多少」只能读这个字段**；registered_target_pct 台账登记的历史目标（百分点，仅作历史参考，与 tp_start_date 同为准，不得当作今日应卖目标）；cumulative_target_pct 为兼容字段：止盈阶段等于今日目标，周期内回落分支返回台账历史保留值。新代码优先读 today_tier_target_pct；若两者不一致，一律以 today_tier_target_pct 为今日口径，并以 registered_target_pct / cumulative_target_pct 为历史口径，两者并列展示、不得互相替代"
                           }
                         }
                       }
