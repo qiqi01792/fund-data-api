@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-10-28 09:46:23",
+  "generated_at": "2026-10-28 22:43:59",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,19 +19,19 @@
   },
   "worst_endpoint": {
     "rel": "api/signals.json",
-    "bytes": 79413,
-    "chars": 61623,
-    "bytes_pct": 81.6,
-    "chars_pct": 61.6,
+    "bytes": 79839,
+    "chars": 61827,
+    "bytes_pct": 82.1,
+    "chars_pct": 61.8,
     "status": "watch"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 622980,
-      "chars": 512786,
-      "bytes_pct": 640.4,
-      "chars_pct": 512.8,
+      "bytes": 623104,
+      "chars": 512884,
+      "bytes_pct": 640.5,
+      "chars_pct": 512.9,
       "status": "exempt"
     },
     {
@@ -44,32 +44,32 @@
     },
     {
       "rel": "api/signals.json",
-      "bytes": 79413,
-      "chars": 61623,
-      "bytes_pct": 81.6,
-      "chars_pct": 61.6,
+      "bytes": 79839,
+      "chars": 61827,
+      "bytes_pct": 82.1,
+      "chars_pct": 61.8,
       "status": "watch"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 76962,
-      "chars": 54146,
-      "bytes_pct": 79.1,
+      "bytes": 76889,
+      "chars": 54123,
+      "bytes_pct": 79.0,
       "chars_pct": 54.1,
       "status": "ok"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 58142,
-      "chars": 42401,
-      "bytes_pct": 59.8,
-      "chars_pct": 42.4,
+      "bytes": 58453,
+      "chars": 42536,
+      "bytes_pct": 60.1,
+      "chars_pct": 42.5,
       "status": "ok"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 52947,
-      "chars": 52041,
+      "bytes": 52919,
+      "chars": 52013,
       "bytes_pct": 54.4,
       "chars_pct": 52.0,
       "status": "ok"
@@ -108,8 +108,8 @@
     },
     {
       "rel": "api/fund_summary.json",
-      "bytes": 34022,
-      "chars": 27470,
+      "bytes": 34021,
+      "chars": 27469,
       "bytes_pct": 35.0,
       "chars_pct": 27.5,
       "status": "ok"
