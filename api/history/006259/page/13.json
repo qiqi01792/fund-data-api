@@ -1,1 +1,40 @@
-{"schema":"fund-readonly-history-page/v1","readonly":true,"generated_at":"2026-11-03 22:23:16","fund_code":"006259","fund_name":"汇添富红利增长混合A","nav_type":"official","history_scope":"full_since_inception","page":13,"page_size":150,"page_count":13,"total_records":1802,"record_count":2,"has_next":false,"next_page_url":"","prev_page_url":"/api/history/006259/page/12.json","query_start_date":"2019-04-26","query_end_date":"2026-11-03","page_start_date":"2026-11-02","page_end_date":"2026-11-03","records_order":"ascending_by_nav_date","date_filter_note":"静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤","records":[{"nav_date":"2026-11-02","unit_nav":"1.8551","accumulated_nav":"1.8551"},{"nav_date":"2026-11-03","unit_nav":"1.8640","accumulated_nav":"1.8640"}]}
+{
+  "schema": "fund-readonly-history-page/v1",
+  "readonly": true,
+  "generated_at": "2026-11-04 22:25:03",
+  "fund_code": "006259",
+  "fund_name": "汇添富红利增长混合A",
+  "nav_type": "official",
+  "history_scope": "full_since_inception",
+  "page": 13,
+  "page_size": 150,
+  "page_count": 13,
+  "total_records": 1803,
+  "record_count": 3,
+  "has_next": false,
+  "next_page_url": "",
+  "prev_page_url": "/api/history/006259/page/12.json",
+  "query_start_date": "2019-04-26",
+  "query_end_date": "2026-11-04",
+  "page_start_date": "2026-11-02",
+  "page_end_date": "2026-11-04",
+  "records_order": "ascending_by_nav_date",
+  "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
+  "records": [
+    {
+      "nav_date": "2026-11-02",
+      "unit_nav": "1.8551",
+      "accumulated_nav": "1.8551"
+    },
+    {
+      "nav_date": "2026-11-03",
+      "unit_nav": "1.8640",
+      "accumulated_nav": "1.8640"
+    },
+    {
+      "nav_date": "2026-11-04",
+      "unit_nav": "1.8624",
+      "accumulated_nav": "1.8624"
+    }
+  ]
+}
