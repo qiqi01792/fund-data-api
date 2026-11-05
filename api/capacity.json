@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-11-04 22:25:04",
+  "generated_at": "2026-11-05 23:00:00",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,27 +19,27 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 96021,
-    "chars": 73045,
-    "bytes_pct": 98.7,
-    "chars_pct": 73.0,
+    "bytes": 96092,
+    "chars": 73094,
+    "bytes_pct": 98.8,
+    "chars_pct": 73.1,
     "status": "watch"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 836986,
-      "chars": 729412,
-      "bytes_pct": 860.4,
-      "chars_pct": 729.4,
+      "bytes": 837153,
+      "chars": 729553,
+      "bytes_pct": 860.6,
+      "chars_pct": 729.6,
       "status": "exempt"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 96021,
-      "chars": 73045,
-      "bytes_pct": 98.7,
-      "chars_pct": 73.0,
+      "bytes": 96092,
+      "chars": 73094,
+      "bytes_pct": 98.8,
+      "chars_pct": 73.1,
       "status": "watch"
     },
     {
@@ -52,26 +52,26 @@
     },
     {
       "rel": "api/signals.json",
-      "bytes": 80020,
-      "chars": 68352,
-      "bytes_pct": 82.3,
-      "chars_pct": 68.4,
+      "bytes": 79942,
+      "chars": 68261,
+      "bytes_pct": 82.2,
+      "chars_pct": 68.3,
       "status": "watch"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 77964,
-      "chars": 77058,
+      "bytes": 77925,
+      "chars": 77019,
       "bytes_pct": 80.1,
-      "chars_pct": 77.1,
+      "chars_pct": 77.0,
       "status": "watch"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 55015,
-      "chars": 44604,
-      "bytes_pct": 56.6,
-      "chars_pct": 44.6,
+      "bytes": 55345,
+      "chars": 44851,
+      "bytes_pct": 56.9,
+      "chars_pct": 44.9,
       "status": "ok"
     },
     {
