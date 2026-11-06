@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-11-04 22:25:03",
+  "generated_at": "2026-11-06 22:24:37",
   "fund_code": "270042",
   "fund_name": "广发纳斯达克100ETF联接(QDII)A",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 23,
   "page_size": 150,
   "page_count": 23,
-  "total_records": 3423,
-  "record_count": 123,
+  "total_records": 3425,
+  "record_count": 125,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/270042/page/22.json",
   "query_start_date": "2012-08-15",
-  "query_end_date": "2026-11-03",
+  "query_end_date": "2026-11-05",
   "page_start_date": "2026-05-06",
-  "page_end_date": "2026-11-03",
+  "page_end_date": "2026-11-05",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -635,6 +635,16 @@
       "nav_date": "2026-11-03",
       "unit_nav": "7.6982",
       "accumulated_nav": "7.9682"
+    },
+    {
+      "nav_date": "2026-11-04",
+      "unit_nav": "7.7714",
+      "accumulated_nav": "8.0414"
+    },
+    {
+      "nav_date": "2026-11-05",
+      "unit_nav": "7.2728",
+      "accumulated_nav": "7.5428"
     }
   ]
 }
