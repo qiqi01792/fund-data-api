@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-11-04 22:25:03",
+  "generated_at": "2026-11-06 22:24:37",
   "fund_code": "017854",
   "fund_name": "易方达云计算联接C",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 6,
   "page_size": 150,
   "page_count": 6,
-  "total_records": 883,
-  "record_count": 133,
+  "total_records": 885,
+  "record_count": 135,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/017854/page/5.json",
   "query_start_date": "2023-03-15",
-  "query_end_date": "2026-11-04",
+  "query_end_date": "2026-11-06",
   "page_start_date": "2026-04-20",
-  "page_end_date": "2026-11-04",
+  "page_end_date": "2026-11-06",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -685,6 +685,16 @@
       "nav_date": "2026-11-04",
       "unit_nav": "1.3322",
       "accumulated_nav": "1.3322"
+    },
+    {
+      "nav_date": "2026-11-05",
+      "unit_nav": "1.3732",
+      "accumulated_nav": "1.3732"
+    },
+    {
+      "nav_date": "2026-11-06",
+      "unit_nav": "1.3383",
+      "accumulated_nav": "1.3383"
     }
   ]
 }
