@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-11-04 22:25:03",
+  "generated_at": "2026-11-06 22:24:37",
   "fund_code": "007345",
   "fund_name": "富国科技创新灵活配置混合",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 12,
   "page_size": 150,
   "page_count": 12,
-  "total_records": 1775,
-  "record_count": 125,
+  "total_records": 1777,
+  "record_count": 127,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/007345/page/11.json",
   "query_start_date": "2019-05-06",
-  "query_end_date": "2026-11-04",
+  "query_end_date": "2026-11-06",
   "page_start_date": "2026-04-30",
-  "page_end_date": "2026-11-04",
+  "page_end_date": "2026-11-06",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -645,6 +645,16 @@
       "nav_date": "2026-11-04",
       "unit_nav": "2.0849",
       "accumulated_nav": "2.0849"
+    },
+    {
+      "nav_date": "2026-11-05",
+      "unit_nav": "2.1029",
+      "accumulated_nav": "2.1029"
+    },
+    {
+      "nav_date": "2026-11-06",
+      "unit_nav": "2.0809",
+      "accumulated_nav": "2.0809"
     }
   ]
 }
