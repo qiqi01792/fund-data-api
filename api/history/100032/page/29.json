@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-11-04 22:25:03",
+  "generated_at": "2026-11-06 22:24:37",
   "fund_code": "100032",
   "fund_name": "富国中证红利指数增强A",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 29,
   "page_size": 150,
   "page_count": 29,
-  "total_records": 4335,
-  "record_count": 135,
+  "total_records": 4337,
+  "record_count": 137,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/100032/page/28.json",
   "query_start_date": "2008-12-26",
-  "query_end_date": "2026-11-04",
+  "query_end_date": "2026-11-06",
   "page_start_date": "2026-04-16",
-  "page_end_date": "2026-11-04",
+  "page_end_date": "2026-11-06",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -695,6 +695,16 @@
       "nav_date": "2026-11-04",
       "unit_nav": "0.9700",
       "accumulated_nav": "3.2830"
+    },
+    {
+      "nav_date": "2026-11-05",
+      "unit_nav": "0.9610",
+      "accumulated_nav": "3.2730"
+    },
+    {
+      "nav_date": "2026-11-06",
+      "unit_nav": "0.9630",
+      "accumulated_nav": "3.2750"
     }
   ]
 }
