@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-11-06 22:24:38",
+  "generated_at": "2026-11-10 10:20:10",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,26 +19,26 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 95888,
-    "chars": 73006,
-    "bytes_pct": 98.6,
+    "bytes": 95848,
+    "chars": 72958,
+    "bytes_pct": 98.5,
     "chars_pct": 73.0,
     "status": "watch"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 837320,
-      "chars": 729694,
-      "bytes_pct": 860.7,
-      "chars_pct": 729.7,
+      "bytes": 834175,
+      "chars": 726951,
+      "bytes_pct": 857.5,
+      "chars_pct": 727.0,
       "status": "exempt"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 95888,
-      "chars": 73006,
-      "bytes_pct": 98.6,
+      "bytes": 95848,
+      "chars": 72958,
+      "bytes_pct": 98.5,
       "chars_pct": 73.0,
       "status": "watch"
     },
@@ -52,24 +52,24 @@
     },
     {
       "rel": "api/signals.json",
-      "bytes": 79191,
-      "chars": 67776,
-      "bytes_pct": 81.4,
-      "chars_pct": 67.8,
+      "bytes": 79586,
+      "chars": 68059,
+      "bytes_pct": 81.8,
+      "chars_pct": 68.1,
       "status": "watch"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 77939,
-      "chars": 77033,
+      "bytes": 77965,
+      "chars": 77059,
       "bytes_pct": 80.1,
-      "chars_pct": 77.0,
+      "chars_pct": 77.1,
       "status": "watch"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 55676,
-      "chars": 45230,
+      "bytes": 55658,
+      "chars": 45158,
       "bytes_pct": 57.2,
       "chars_pct": 45.2,
       "status": "ok"
@@ -77,10 +77,10 @@
     {
       "rel": "api/nav/{fund_code}.json",
       "files": 21,
-      "bytes": 43889,
-      "chars": 35593,
-      "bytes_pct": 45.1,
-      "chars_pct": 35.6,
+      "bytes": 43710,
+      "chars": 35448,
+      "bytes_pct": 44.9,
+      "chars_pct": 35.4,
       "status": "ok"
     },
     {
@@ -117,8 +117,8 @@
     },
     {
       "rel": "api/fund_summary.json",
-      "bytes": 33516,
-      "chars": 29714,
+      "bytes": 33517,
+      "chars": 29715,
       "bytes_pct": 34.5,
       "chars_pct": 29.7,
       "status": "ok"
