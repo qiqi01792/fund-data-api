@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-11-12 10:34:42",
+  "generated_at": "2026-11-13 10:25:22",
   "fund_code": "019869",
   "fund_name": "华夏云计算与大数据ETF联接C",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 5,
   "page_size": 150,
   "page_count": 5,
-  "total_records": 720,
-  "record_count": 120,
+  "total_records": 721,
+  "record_count": 121,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/019869/page/4.json",
   "query_start_date": "2023-11-14",
-  "query_end_date": "2026-11-11",
+  "query_end_date": "2026-11-12",
   "page_start_date": "2026-05-19",
-  "page_end_date": "2026-11-11",
+  "page_end_date": "2026-11-12",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -620,6 +620,11 @@
       "nav_date": "2026-11-11",
       "unit_nav": "1.4147",
       "accumulated_nav": "1.4147"
+    },
+    {
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.3884",
+      "accumulated_nav": "1.3884"
     }
   ]
 }
