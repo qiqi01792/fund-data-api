@@ -1,8 +1,8 @@
 {
   "schema": "fund_valuation/v1",
   "readonly": true,
-  "generated_at": "2026-11-12 10:34:42",
-  "as_of_nav_date": "2026-11-11",
+  "generated_at": "2026-11-13 10:25:22",
+  "as_of_nav_date": "2026-11-12",
   "rules_version": "V6.3",
   "module": "V6.2 双分位 + 估值价值确认层（第三维：估值价值确认）",
   "data_source": "蛋卷指数估值接口（PE/PB/PE 历史分位/PB 历史分位/ROE/股息率），由 05_更新程序/fetch_valuation.py 抓取写入 02_基金状态台账/fund_valuation.csv",
@@ -51,10 +51,10 @@
       "fund_type": "商品/指数",
       "industry": "黄金",
       "rating": "B",
-      "historical_position_pct": 62.03,
+      "historical_position_pct": 59.84,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 18.5,
+      "six_month_position_pct": 7.76,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "不适用",
@@ -125,13 +125,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 62.03,
+          "actual_pct": 59.84,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 18.5,
+          "actual_pct": 7.76,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -155,10 +155,10 @@
       "fund_type": "指数",
       "industry": "有色金属(周期)",
       "rating": "C",
-      "historical_position_pct": 44.8,
+      "historical_position_pct": 42.7,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 8.08,
+      "six_month_position_pct": 2.91,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（仅 PE 口径，缺 PB）",
@@ -218,13 +218,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 44.8,
+          "actual_pct": 42.7,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 8.08,
+          "actual_pct": 2.91,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -250,10 +250,10 @@
       "fund_type": "混合(固收+)",
       "industry": "稳健固收+",
       "rating": "B",
-      "historical_position_pct": 88.18,
+      "historical_position_pct": 86.83,
       "historical_zone": "高位区域",
       "historical_score": 1.0,
-      "six_month_position_pct": 42.15,
+      "six_month_position_pct": 35.54,
       "six_month_zone": "正常",
       "six_month_score": 6.0,
       "valuation_status": "不适用",
@@ -323,13 +323,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 88.18,
+          "actual_pct": 86.83,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 42.15,
+          "actual_pct": 35.54,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -346,7 +346,7 @@
       ],
       "composite_score": 3.14,
       "status": "正常持有",
-      "reason": "历史位置 88.18% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "历史位置 86.83% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
       "valuation_note": "固收+主动混合：不适用股票估值体系"
     },
     {
@@ -355,10 +355,10 @@
       "fund_type": "债券",
       "industry": "利率债",
       "rating": "A",
-      "historical_position_pct": 87.63,
+      "historical_position_pct": 86.98,
       "historical_zone": "高位区域",
       "historical_score": 1.0,
-      "six_month_position_pct": 35.47,
+      "six_month_position_pct": 32.08,
       "six_month_zone": "正常",
       "six_month_score": 6.0,
       "valuation_status": "不适用",
@@ -429,13 +429,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 87.63,
+          "actual_pct": 86.98,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 35.47,
+          "actual_pct": 32.08,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -452,7 +452,7 @@
       ],
       "composite_score": 3.14,
       "status": "正常持有",
-      "reason": "历史位置 87.63% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "历史位置 86.98% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
       "valuation_note": "债券基金：不适用股票估值体系"
     },
     {
@@ -461,24 +461,24 @@
       "fund_type": "混合(主动)",
       "industry": "红利",
       "rating": "B",
-      "historical_position_pct": 70.43,
+      "historical_position_pct": 69.92,
       "historical_zone": "偏高区域",
       "historical_score": 3.0,
-      "six_month_position_pct": 49.53,
+      "six_month_position_pct": 46.07,
       "six_month_zone": "正常",
       "six_month_score": 6.0,
       "valuation_status": "偏高",
-      "valuation_score": 3.2,
+      "valuation_score": 3.1,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "SH000922",
       "benchmark_index_name": "中证红利",
       "match_level": "proxy",
-      "pe": 8.952,
-      "pb": 0.8699,
-      "dividend_yield": 0.0457,
-      "pe_percentile": 0.85,
-      "pb_percentile": 0.554,
+      "pe": 8.9918,
+      "pb": 0.8737,
+      "dividend_yield": 0.0455,
+      "pe_percentile": 0.854,
+      "pb_percentile": 0.5628,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -486,7 +486,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -497,7 +497,7 @@
       "proxy_confidence": "Medium",
       "data_refresh_changed_result": "true",
       "research_layer": {
-        "research_score": 3.2,
+        "research_score": 3.1,
         "basis": "full",
         "dimensions_used": [
           "pe",
@@ -528,19 +528,19 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 70.43,
+          "actual_pct": 69.92,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 49.53,
+          "actual_pct": 46.07,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
           "pass": false,
           "threshold_score": 7.0,
-          "actual_score": 3.2,
+          "actual_score": 3.1,
           "label": "第三关：估值评分 ≥ 7 分"
         }
       },
@@ -548,10 +548,10 @@
       "cases": [
         "D"
       ],
-      "composite_score": 3.96,
+      "composite_score": 3.93,
       "status": "正常持有",
-      "reason": "历史位置 70.43% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
-      "valuation_note": "主动红利风格基金，非跟踪指数，仅作主题参考；基础分 2.7 = 10 − (0.6×PE分位85.0% + 0.4×PB分位55.4%)×10（按已有维度归一化）；红利类股息率 4.57% 修正 +0.5"
+      "reason": "历史位置 69.92% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "valuation_note": "主动红利风格基金，非跟踪指数，仅作主题参考；基础分 2.6 = 10 − (0.6×PE分位85.4% + 0.4×PB分位56.3%)×10（按已有维度归一化）；红利类股息率 4.55% 修正 +0.5"
     },
     {
       "fund_code": "007301",
@@ -559,24 +559,24 @@
       "fund_type": "指数",
       "industry": "半导体设备",
       "rating": "C",
-      "historical_position_pct": 46.6,
+      "historical_position_pct": 47.07,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 13.65,
+      "six_month_position_pct": 14.4,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "合理",
       "valuation_score": 5.6,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "CSI930652",
       "benchmark_index_name": "中证电子",
       "match_level": "proxy",
-      "pe": 36.0928,
-      "pb": 4.7251,
-      "dividend_yield": 0.0078,
+      "pe": 36.0334,
+      "pb": 4.7174,
+      "dividend_yield": 0.0079,
       "pe_percentile": 0.2128,
-      "pb_percentile": 0.7736,
+      "pb_percentile": 0.7712,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -584,7 +584,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -593,7 +593,7 @@
       "selection_reason": "单一来源，无第二可比来源；按 tier_2 采信",
       "valuation_proxy_basis": "半导体设备属电子大类，用中证电子(CSI930652)近似",
       "proxy_confidence": "Medium",
-      "data_refresh_changed_result": "true",
+      "data_refresh_changed_result": "",
       "research_layer": {
         "research_score": 5.6,
         "basis": "full",
@@ -626,13 +626,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 46.6,
+          "actual_pct": 47.07,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 13.65,
+          "actual_pct": 14.4,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -649,7 +649,7 @@
       "composite_score": 6.08,
       "status": "观察",
       "reason": "长期低位但估值评分 5.6 < 7：估值偏贵或基本面变化，不补仓",
-      "valuation_note": "半导体设备属电子大类，主题近似；基础分 5.6 = 10 − (0.6×PE分位21.3% + 0.4×PB分位77.4%)×10（按已有维度归一化）"
+      "valuation_note": "半导体设备属电子大类，主题近似；基础分 5.6 = 10 − (0.6×PE分位21.3% + 0.4×PB分位77.1%)×10（按已有维度归一化）"
     },
     {
       "fund_code": "007345",
@@ -657,24 +657,24 @@
       "fund_type": "混合(主动)",
       "industry": "科技创新",
       "rating": "C",
-      "historical_position_pct": 61.44,
+      "historical_position_pct": 59.86,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 10.39,
+      "six_month_position_pct": 6.72,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "合理",
       "valuation_score": 7.8,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "CSI931087",
       "benchmark_index_name": "科技龙头",
       "match_level": "proxy",
-      "pe": 30.0203,
-      "pb": 5.176,
-      "dividend_yield": 0.0079,
-      "pe_percentile": 0.0684,
-      "pb_percentile": 0.4599,
+      "pe": 29.7499,
+      "pb": 5.1294,
+      "dividend_yield": 0.008,
+      "pe_percentile": 0.0646,
+      "pb_percentile": 0.4489,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -682,7 +682,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -691,7 +691,7 @@
       "selection_reason": "单一来源，无第二可比来源；按 tier_2 采信",
       "valuation_proxy_basis": "主动科技创新，宽主题参考（科技龙头 CSI931087）",
       "proxy_confidence": "Low",
-      "data_refresh_changed_result": "true",
+      "data_refresh_changed_result": "",
       "research_layer": {
         "research_score": 7.8,
         "basis": "full",
@@ -724,13 +724,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 61.44,
+          "actual_pct": 59.86,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 10.39,
+          "actual_pct": 6.72,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -745,7 +745,7 @@
       "composite_score": 6.74,
       "status": "正常持有",
       "reason": "未进入补仓分层，正常持有",
-      "valuation_note": "主动科技创新，宽主题参考；基础分 7.8 = 10 − (0.6×PE分位6.8% + 0.4×PB分位46.0%)×10（按已有维度归一化）"
+      "valuation_note": "主动科技创新，宽主题参考；基础分 7.8 = 10 − (0.6×PE分位6.5% + 0.4×PB分位44.9%)×10（按已有维度归一化）"
     },
     {
       "fund_code": "007817",
@@ -753,24 +753,24 @@
       "fund_type": "指数",
       "industry": "通信设备",
       "rating": "B",
-      "historical_position_pct": 43.19,
+      "historical_position_pct": 41.49,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 10.45,
+      "six_month_position_pct": 7.77,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "合理",
-      "valuation_score": 6.5,
+      "valuation_score": 6.8,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "CSI931079",
       "benchmark_index_name": "5G通讯",
       "match_level": "proxy",
-      "pe": 26.9579,
-      "pb": 4.3631,
-      "dividend_yield": 0.0092,
-      "pe_percentile": 0.1668,
-      "pb_percentile": 0.6204,
+      "pe": 26.2382,
+      "pb": 4.2466,
+      "dividend_yield": 0.0094,
+      "pe_percentile": 0.1329,
+      "pb_percentile": 0.6014,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -778,7 +778,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -789,7 +789,7 @@
       "proxy_confidence": "Medium",
       "data_refresh_changed_result": "true",
       "research_layer": {
-        "research_score": 6.5,
+        "research_score": 6.8,
         "basis": "full",
         "dimensions_used": [
           "pe",
@@ -820,19 +820,19 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 43.19,
+          "actual_pct": 41.49,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 10.45,
+          "actual_pct": 7.77,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
           "pass": false,
           "threshold_score": 7.0,
-          "actual_score": 6.5,
+          "actual_score": 6.8,
           "label": "第三关：估值评分 ≥ 7 分"
         }
       },
@@ -840,10 +840,10 @@
       "cases": [
         "C"
       ],
-      "composite_score": 6.35,
+      "composite_score": 6.44,
       "status": "观察",
-      "reason": "长期低位但估值评分 6.5 < 7：估值偏贵或基本面变化，不补仓",
-      "valuation_note": "通信设备与 5G 通讯主题近似；基础分 6.5 = 10 − (0.6×PE分位16.7% + 0.4×PB分位62.0%)×10（按已有维度归一化）"
+      "reason": "长期低位但估值评分 6.8 < 7：估值偏贵或基本面变化，不补仓",
+      "valuation_note": "通信设备与 5G 通讯主题近似；基础分 6.8 = 10 − (0.6×PE分位13.3% + 0.4×PB分位60.1%)×10（按已有维度归一化）"
     },
     {
       "fund_code": "010056",
@@ -851,10 +851,10 @@
       "fund_type": "债券(持有期)",
       "industry": "稳健固收+",
       "rating": "B",
-      "historical_position_pct": 93.6,
+      "historical_position_pct": 93.07,
       "historical_zone": "高位区域",
       "historical_score": 1.0,
-      "six_month_position_pct": 6.67,
+      "six_month_position_pct": 0.0,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "不适用",
@@ -924,13 +924,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 93.6,
+          "actual_pct": 93.07,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 6.67,
+          "actual_pct": 0.0,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -947,7 +947,7 @@
       ],
       "composite_score": 4.0,
       "status": "正常持有",
-      "reason": "历史位置 93.60% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "历史位置 93.07% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
       "valuation_note": "债券持有期产品：不适用股票估值体系"
     },
     {
@@ -956,10 +956,10 @@
       "fund_type": "指数",
       "industry": "电力公用事业",
       "rating": "B",
-      "historical_position_pct": 47.37,
+      "historical_position_pct": 46.83,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 11.87,
+      "six_month_position_pct": 10.97,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（仅 PE 口径，缺 PB）",
@@ -1016,13 +1016,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 47.37,
+          "actual_pct": 46.83,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 11.87,
+          "actual_pct": 10.97,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1048,10 +1048,10 @@
       "fund_type": "指数",
       "industry": "云计算",
       "rating": "C",
-      "historical_position_pct": 56.97,
+      "historical_position_pct": 54.85,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 18.1,
+      "six_month_position_pct": 13.72,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（仅 PE 口径，缺 PB）",
@@ -1108,13 +1108,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 56.97,
+          "actual_pct": 54.85,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 18.1,
+          "actual_pct": 13.72,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1138,24 +1138,24 @@
       "fund_type": "混合",
       "industry": "平衡配置",
       "rating": "B",
-      "historical_position_pct": 63.15,
+      "historical_position_pct": 60.0,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 23.45,
+      "six_month_position_pct": 12.64,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "合理",
-      "valuation_score": 5.2,
+      "valuation_score": 5.4,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "SH000300",
       "benchmark_index_name": "沪深300",
       "match_level": "proxy",
-      "pe": 13.4477,
-      "pb": 1.335,
-      "dividend_yield": 0.03,
-      "pe_percentile": 0.6616,
-      "pb_percentile": 0.1964,
+      "pe": 13.3968,
+      "pb": 1.3299,
+      "dividend_yield": 0.0301,
+      "pe_percentile": 0.6492,
+      "pb_percentile": 0.1848,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -1163,7 +1163,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -1172,9 +1172,9 @@
       "selection_reason": "单一来源，无第二可比来源；按 tier_2 采信",
       "valuation_proxy_basis": "主动平衡混合，用沪深300(SH000300)宽基参考",
       "proxy_confidence": "Low",
-      "data_refresh_changed_result": "",
+      "data_refresh_changed_result": "true",
       "research_layer": {
-        "research_score": 5.2,
+        "research_score": 5.4,
         "basis": "full",
         "dimensions_used": [
           "pe",
@@ -1205,28 +1205,28 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 63.15,
+          "actual_pct": 60.0,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 23.45,
+          "actual_pct": 12.64,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
           "pass": false,
           "threshold_score": 7.0,
-          "actual_score": 5.2,
+          "actual_score": 5.4,
           "label": "第三关：估值评分 ≥ 7 分"
         }
       },
       "gates_all_passed": false,
       "cases": [],
-      "composite_score": 5.96,
+      "composite_score": 6.02,
       "status": "正常持有",
       "reason": "未进入补仓分层，正常持有",
-      "valuation_note": "主动平衡混合，用宽基作参考；基础分 5.2 = 10 − (0.6×PE分位66.2% + 0.4×PB分位19.6%)×10（按已有维度归一化）"
+      "valuation_note": "主动平衡混合，用宽基作参考；基础分 5.4 = 10 − (0.6×PE分位64.9% + 0.4×PB分位18.5%)×10（按已有维度归一化）"
     },
     {
       "fund_code": "018125",
@@ -1234,12 +1234,12 @@
       "fund_type": "混合(主动)",
       "industry": "高端制造",
       "rating": "B",
-      "historical_position_pct": 70.88,
+      "historical_position_pct": 65.91,
       "historical_zone": "偏高区域",
       "historical_score": 3.0,
-      "six_month_position_pct": 56.16,
-      "six_month_zone": "近期偏高",
-      "six_month_score": 4.0,
+      "six_month_position_pct": 46.77,
+      "six_month_zone": "正常",
+      "six_month_score": 6.0,
       "valuation_status": "待确认（近似指数，非跟踪标的）",
       "valuation_score": null,
       "valuation_source": "中证指数官网(csindex)｜PE历史自算分位(近10年)",
@@ -1300,13 +1300,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 70.88,
+          "actual_pct": 65.91,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
-          "pass": false,
+          "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 56.16,
+          "actual_pct": 46.77,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1321,9 +1321,9 @@
       "cases": [
         "D"
       ],
-      "composite_score": 3.43,
+      "composite_score": 4.29,
       "status": "正常持有",
-      "reason": "历史位置 70.88% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "reason": "历史位置 65.91% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
       "valuation_note": "主动混合基金，无跟踪标的；业绩基准含『中证智能制造主题指数×60%』，仅作主题参考；中证指数官网(csindex)｜PE历史自算分位(近10年)；PE 取中证官方最新（20261111，PE=32.7300）；分位按该指数近 10 年 PE 历史自算（窗口样本 2569 个交易日，全历史 2655 个，起 20160705）；该源不提供 PB 与股息率 ⇒ 留空待登记；按安全原则不写 valuation_score（A3 公式 / A5 阈值待用户确认，且缺 PB 维度、分位口径与蛋卷不可比）"
     },
     {
@@ -1332,10 +1332,10 @@
       "fund_type": "指数",
       "industry": "云计算与大数据",
       "rating": "C",
-      "historical_position_pct": 56.0,
+      "historical_position_pct": 53.86,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 17.78,
+      "six_month_position_pct": 13.43,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（仅 PE 口径，缺 PB）",
@@ -1392,13 +1392,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 56.0,
+          "actual_pct": 53.86,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 17.78,
+          "actual_pct": 13.43,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1422,24 +1422,24 @@
       "fund_type": "指数",
       "industry": "科创板芯片",
       "rating": "C",
-      "historical_position_pct": 47.23,
+      "historical_position_pct": 48.13,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 15.75,
+      "six_month_position_pct": 17.19,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "偏高",
-      "valuation_score": 2.9,
+      "valuation_score": 2.8,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "SH000688",
       "benchmark_index_name": "科创50",
       "match_level": "proxy",
-      "pe": 95.4261,
-      "pb": 6.2949,
+      "pe": 97.22,
+      "pb": 6.4138,
       "dividend_yield": 0.0028,
-      "pe_percentile": 0.7559,
-      "pb_percentile": 0.6416,
+      "pe_percentile": 0.7584,
+      "pb_percentile": 0.6707,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -1447,7 +1447,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -1458,7 +1458,7 @@
       "proxy_confidence": "Medium",
       "data_refresh_changed_result": "true",
       "research_layer": {
-        "research_score": 2.9,
+        "research_score": 2.8,
         "basis": "full",
         "dimensions_used": [
           "pe",
@@ -1489,19 +1489,19 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 47.23,
+          "actual_pct": 48.13,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 15.75,
+          "actual_pct": 17.19,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
           "pass": false,
           "threshold_score": 7.0,
-          "actual_score": 2.9,
+          "actual_score": 2.8,
           "label": "第三关：估值评分 ≥ 7 分"
         }
       },
@@ -1509,10 +1509,10 @@
       "cases": [
         "C"
       ],
-      "composite_score": 5.27,
+      "composite_score": 5.24,
       "status": "暂停补仓",
-      "reason": "长期低位但估值评分 2.9 < 7：估值偏贵或基本面变化，不补仓",
-      "valuation_note": "科创板芯片属科创板，用科创50 近似；基础分 2.9 = 10 − (0.6×PE分位75.6% + 0.4×PB分位64.2%)×10（按已有维度归一化）"
+      "reason": "长期低位但估值评分 2.8 < 7：估值偏贵或基本面变化，不补仓",
+      "valuation_note": "科创板芯片属科创板，用科创50 近似；基础分 2.8 = 10 − (0.6×PE分位75.8% + 0.4×PB分位67.1%)×10（按已有维度归一化）"
     },
     {
       "fund_code": "022274",
@@ -1520,24 +1520,24 @@
       "fund_type": "指数",
       "industry": "港股红利",
       "rating": "A",
-      "historical_position_pct": 68.25,
+      "historical_position_pct": 65.62,
       "historical_zone": "偏高区域",
       "historical_score": 3.0,
-      "six_month_position_pct": 60.18,
+      "six_month_position_pct": 54.74,
       "six_month_zone": "近期偏高",
       "six_month_score": 4.0,
       "valuation_status": "偏高",
-      "valuation_score": 4.3,
+      "valuation_score": 4.6,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "HKHSI",
       "benchmark_index_name": "恒生指数",
       "match_level": "proxy",
-      "pe": 11.0979,
-      "pb": 1.1096,
-      "dividend_yield": 0.0336,
-      "pe_percentile": 0.5976,
-      "pb_percentile": 0.5304,
+      "pe": 10.9564,
+      "pb": 1.0966,
+      "dividend_yield": 0.0341,
+      "pe_percentile": 0.5808,
+      "pb_percentile": 0.4908,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -1545,7 +1545,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -1556,7 +1556,7 @@
       "proxy_confidence": "Low",
       "data_refresh_changed_result": "true",
       "research_layer": {
-        "research_score": 4.3,
+        "research_score": 4.6,
         "basis": "full",
         "dimensions_used": [
           "pe",
@@ -1587,19 +1587,19 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 68.25,
+          "actual_pct": 65.62,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 60.18,
+          "actual_pct": 54.74,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
           "pass": false,
           "threshold_score": 7.0,
-          "actual_score": 4.3,
+          "actual_score": 4.6,
           "label": "第三关：估值评分 ≥ 7 分"
         }
       },
@@ -1607,10 +1607,10 @@
       "cases": [
         "D"
       ],
-      "composite_score": 3.69,
+      "composite_score": 3.78,
       "status": "正常持有",
-      "reason": "历史位置 68.25% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
-      "valuation_note": "港股红利，数据源无港股通高股息指数，用港股宽基参考；基础分 4.3 = 10 − (0.6×PE分位59.8% + 0.4×PB分位53.0%)×10（按已有维度归一化）；红利类股息率 3.36% 修正 +0.0"
+      "reason": "历史位置 65.62% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "valuation_note": "港股红利，数据源无港股通高股息指数，用港股宽基参考；基础分 4.6 = 10 − (0.6×PE分位58.1% + 0.4×PB分位49.1%)×10（按已有维度归一化）；红利类股息率 3.41% 修正 +0.0"
     },
     {
       "fund_code": "023638",
@@ -1618,10 +1618,10 @@
       "fund_type": "指数",
       "industry": "电网设备",
       "rating": "B",
-      "historical_position_pct": 42.21,
+      "historical_position_pct": 40.51,
       "historical_zone": "正常区域",
       "historical_score": 5.0,
-      "six_month_position_pct": 9.57,
+      "six_month_position_pct": 6.93,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "待确认（近似指数，非跟踪标的）",
@@ -1684,13 +1684,13 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 42.21,
+          "actual_pct": 40.51,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 9.57,
+          "actual_pct": 6.93,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -1716,24 +1716,24 @@
       "fund_type": "指数",
       "industry": "科创板人工智能",
       "rating": "C",
-      "historical_position_pct": 21.52,
-      "historical_zone": "偏低区域",
-      "historical_score": 7.0,
-      "six_month_position_pct": 21.52,
+      "historical_position_pct": 19.17,
+      "historical_zone": "极低区域",
+      "historical_score": 9.0,
+      "six_month_position_pct": 19.17,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "偏高",
-      "valuation_score": 2.9,
+      "valuation_score": 2.8,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "SH000688",
       "benchmark_index_name": "科创50",
       "match_level": "proxy",
-      "pe": 95.4261,
-      "pb": 6.2949,
+      "pe": 97.22,
+      "pb": 6.4138,
       "dividend_yield": 0.0028,
-      "pe_percentile": 0.7559,
-      "pb_percentile": 0.6416,
+      "pe_percentile": 0.7584,
+      "pb_percentile": 0.6707,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -1741,7 +1741,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -1752,7 +1752,7 @@
       "proxy_confidence": "Medium",
       "data_refresh_changed_result": "true",
       "research_layer": {
-        "research_score": 2.9,
+        "research_score": 2.8,
         "basis": "full",
         "dimensions_used": [
           "pe",
@@ -1783,19 +1783,19 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 21.52,
+          "actual_pct": 19.17,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 21.52,
+          "actual_pct": 19.17,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
           "pass": false,
           "threshold_score": 7.0,
-          "actual_score": 2.9,
+          "actual_score": 2.8,
           "label": "第三关：估值评分 ≥ 7 分"
         }
       },
@@ -1803,10 +1803,10 @@
       "cases": [
         "C"
       ],
-      "composite_score": 6.07,
+      "composite_score": 6.84,
       "status": "观察",
-      "reason": "长期低位但估值评分 2.9 < 7：估值偏贵或基本面变化，不补仓",
-      "valuation_note": "科创板人工智能属科创板，用科创50 近似；基础分 2.9 = 10 − (0.6×PE分位75.6% + 0.4×PB分位64.2%)×10（按已有维度归一化）"
+      "reason": "长期低位但估值评分 2.8 < 7：估值偏贵或基本面变化，不补仓",
+      "valuation_note": "科创板人工智能属科创板，用科创50 近似；基础分 2.8 = 10 − (0.6×PE分位75.8% + 0.4×PB分位67.1%)×10（按已有维度归一化）"
     },
     {
       "fund_code": "025491",
@@ -1814,24 +1814,24 @@
       "fund_type": "指数",
       "industry": "卫星产业",
       "rating": "C",
-      "historical_position_pct": 8.43,
+      "historical_position_pct": 6.28,
       "historical_zone": "极低区域",
       "historical_score": 9.0,
-      "six_month_position_pct": 11.61,
+      "six_month_position_pct": 9.0,
       "six_month_zone": "近期低位",
       "six_month_score": 8.0,
       "valuation_status": "合理",
-      "valuation_score": 6.9,
+      "valuation_score": 7.0,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "SZ399967",
       "benchmark_index_name": "中证军工",
       "match_level": "proxy",
-      "pe": 55.9163,
-      "pb": 3.002,
-      "dividend_yield": 0.0076,
-      "pe_percentile": 0.244,
-      "pb_percentile": 0.3992,
+      "pe": 55.7368,
+      "pb": 2.9923,
+      "dividend_yield": 0.0077,
+      "pe_percentile": 0.2356,
+      "pb_percentile": 0.3928,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -1839,7 +1839,7 @@
       "valuation_data_status": "proxy",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "Medium",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "limited",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -1850,7 +1850,7 @@
       "proxy_confidence": "Medium",
       "data_refresh_changed_result": "true",
       "research_layer": {
-        "research_score": 6.9,
+        "research_score": 7.0,
         "basis": "full",
         "dimensions_used": [
           "pe",
@@ -1881,30 +1881,30 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 8.43,
+          "actual_pct": 6.28,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 11.61,
+          "actual_pct": 9.0,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
-          "pass": false,
+          "pass": true,
           "threshold_score": 7.0,
-          "actual_score": 6.9,
+          "actual_score": 7.0,
           "label": "第三关：估值评分 ≥ 7 分"
         }
       },
-      "gates_all_passed": false,
+      "gates_all_passed": true,
       "cases": [
-        "C"
+        "A"
       ],
-      "composite_score": 8.07,
-      "status": "观察",
-      "reason": "长期低位但估值评分 6.9 < 7：估值偏贵或基本面变化，不补仓",
-      "valuation_note": "卫星产业与军工交叉，主题近似；基础分 6.9 = 10 − (0.6×PE分位24.4% + 0.4×PB分位39.9%)×10（按已有维度归一化）"
+      "composite_score": 8.1,
+      "status": "重点补仓",
+      "reason": "三关全过（历史 6.28% < 50%、近 6 月 9.00% < 50%、估值 7.0 ≥ 7），综合评分 8.10",
+      "valuation_note": "卫星产业与军工交叉，主题近似；基础分 7.0 = 10 − (0.6×PE分位23.6% + 0.4×PB分位39.3%)×10（按已有维度归一化）"
     },
     {
       "fund_code": "100032",
@@ -1912,24 +1912,24 @@
       "fund_type": "指数增强",
       "industry": "中证红利",
       "rating": "B",
-      "historical_position_pct": 4.94,
+      "historical_position_pct": 4.55,
       "historical_zone": "极低区域",
       "historical_score": 9.0,
-      "six_month_position_pct": 61.68,
+      "six_month_position_pct": 57.69,
       "six_month_zone": "近期偏高",
       "six_month_score": 4.0,
       "valuation_status": "偏高",
-      "valuation_score": 3.2,
+      "valuation_score": 3.1,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "SH000922",
       "benchmark_index_name": "中证红利",
       "match_level": "exact",
-      "pe": 8.952,
-      "pb": 0.8699,
-      "dividend_yield": 0.0457,
-      "pe_percentile": 0.85,
-      "pb_percentile": 0.554,
+      "pe": 8.9918,
+      "pb": 0.8737,
+      "dividend_yield": 0.0455,
+      "pe_percentile": 0.854,
+      "pb_percentile": 0.5628,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -1937,7 +1937,7 @@
       "valuation_data_status": "available",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "High",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "yes",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -1948,7 +1948,7 @@
       "proxy_confidence": "",
       "data_refresh_changed_result": "true",
       "research_layer": {
-        "research_score": 3.2,
+        "research_score": 3.1,
         "basis": "full",
         "dimensions_used": [
           "pe",
@@ -1973,19 +1973,19 @@
         "gate1_historical_low": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 4.94,
+          "actual_pct": 4.55,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 61.68,
+          "actual_pct": 57.69,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
           "pass": false,
           "threshold_score": 7.0,
-          "actual_score": 3.2,
+          "actual_score": 3.1,
           "label": "第三关：估值评分 ≥ 7 分"
         }
       },
@@ -1994,10 +1994,10 @@
         "B",
         "C"
       ],
-      "composite_score": 5.76,
+      "composite_score": 5.73,
       "status": "观察",
-      "reason": "长期低位但近 6 个月位置 61.68% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.2 < 7：估值偏贵或基本面变化，不补仓",
-      "valuation_note": "基金明确跟踪中证红利指数；基础分 2.7 = 10 − (0.6×PE分位85.0% + 0.4×PB分位55.4%)×10（按已有维度归一化）；红利类股息率 4.57% 修正 +0.5"
+      "reason": "长期低位但近 6 个月位置 57.69% ≥ 50%：近期已反弹，禁止直接大额补仓，转价值观察仓；长期低位但估值评分 3.1 < 7：估值偏贵或基本面变化，不补仓",
+      "valuation_note": "基金明确跟踪中证红利指数；基础分 2.6 = 10 − (0.6×PE分位85.4% + 0.4×PB分位56.3%)×10（按已有维度归一化）；红利类股息率 4.55% 修正 +0.5"
     },
     {
       "fund_code": "270042",
@@ -2005,24 +2005,24 @@
       "fund_type": "QDII指数",
       "industry": "美股科技(纳指100)",
       "rating": "A",
-      "historical_position_pct": 86.78,
+      "historical_position_pct": 89.1,
       "historical_zone": "高位区域",
       "historical_score": 1.0,
-      "six_month_position_pct": 23.08,
-      "six_month_zone": "近期低位",
-      "six_month_score": 8.0,
+      "six_month_position_pct": 36.59,
+      "six_month_zone": "正常",
+      "six_month_score": 6.0,
       "valuation_status": "合理",
       "valuation_score": 6.0,
       "valuation_source": "蛋卷指数估值(danjuanfunds)",
-      "valuation_date": "11-11",
+      "valuation_date": "11-12",
       "benchmark_index_code": "NDX",
       "benchmark_index_name": "纳指100",
       "match_level": "exact",
-      "pe": 27.2261,
-      "pb": 8.3275,
-      "dividend_yield": 0.0045,
-      "pe_percentile": 0.2596,
-      "pb_percentile": 0.6144,
+      "pe": 27.1704,
+      "pb": 8.3179,
+      "dividend_yield": 0.0046,
+      "pe_percentile": 0.2544,
+      "pb_percentile": 0.612,
       "dividend_yield_percentile": null,
       "valuation_missing": false,
       "valuation_missing_reason": "",
@@ -2030,7 +2030,7 @@
       "valuation_data_status": "available",
       "valuation_dimensions_available": "pe,pb,dividend_yield",
       "valuation_data_quality": "High",
-      "valuation_data_time": "2026-11-11 15:00",
+      "valuation_data_time": "2026-11-12 15:00",
       "valuation_execution_usable": "yes",
       "source_1": "蛋卷指数估值(danjuanfunds)",
       "source_2": "",
@@ -2039,7 +2039,7 @@
       "selection_reason": "单一来源，无第二可比来源；按 tier_2 采信",
       "valuation_proxy_basis": "",
       "proxy_confidence": "",
-      "data_refresh_changed_result": "true",
+      "data_refresh_changed_result": "",
       "research_layer": {
         "research_score": 6.0,
         "basis": "full",
@@ -2066,13 +2066,13 @@
         "gate1_historical_low": {
           "pass": false,
           "threshold_pct": 50.0,
-          "actual_pct": 86.78,
+          "actual_pct": 89.1,
           "label": "第一关：历史位置 < 50%"
         },
         "gate2_six_month_not_high": {
           "pass": true,
           "threshold_pct": 50.0,
-          "actual_pct": 23.08,
+          "actual_pct": 36.59,
           "label": "第二关：近 6 个月位置 < 50%"
         },
         "gate3_valuation_ok": {
@@ -2086,10 +2086,10 @@
       "cases": [
         "D"
       ],
-      "composite_score": 4.6,
+      "composite_score": 4.0,
       "status": "正常持有",
-      "reason": "历史位置 86.78% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
-      "valuation_note": "基金明确跟踪纳斯达克100；基础分 6.0 = 10 − (0.6×PE分位26.0% + 0.4×PB分位61.4%)×10（按已有维度归一化）"
+      "reason": "历史位置 89.10% 属长期高位：即使近期下跌也不简单补仓，防价值陷阱",
+      "valuation_note": "基金明确跟踪纳斯达克100；基础分 6.0 = 10 − (0.6×PE分位25.4% + 0.4×PB分位61.2%)×10（按已有维度归一化）"
     }
   ]
 }
