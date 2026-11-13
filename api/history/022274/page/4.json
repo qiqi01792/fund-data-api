@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-11-12 10:34:42",
+  "generated_at": "2026-11-13 10:25:22",
   "fund_code": "022274",
   "fund_name": "国泰港股红利ETF联接A",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 4,
   "page_size": 150,
   "page_count": 4,
-  "total_records": 506,
-  "record_count": 56,
+  "total_records": 507,
+  "record_count": 57,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/022274/page/3.json",
   "query_start_date": "2024-10-09",
-  "query_end_date": "2026-11-11",
+  "query_end_date": "2026-11-12",
   "page_start_date": "2026-08-18",
-  "page_end_date": "2026-11-11",
+  "page_end_date": "2026-11-12",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -300,6 +300,11 @@
       "nav_date": "2026-11-11",
       "unit_nav": "1.1456",
       "accumulated_nav": "1.1853"
+    },
+    {
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.1367",
+      "accumulated_nav": "1.1764"
     }
   ]
 }
