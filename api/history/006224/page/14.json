@@ -1,7 +1,7 @@
 {
   "schema": "fund-readonly-history-page/v1",
   "readonly": true,
-  "generated_at": "2026-11-12 10:34:42",
+  "generated_at": "2026-11-13 10:25:22",
   "fund_code": "006224",
   "fund_name": "中银中债3-5年期农发行债券指数A",
   "nav_type": "official",
@@ -9,15 +9,15 @@
   "page": 14,
   "page_size": 150,
   "page_count": 14,
-  "total_records": 1967,
-  "record_count": 17,
+  "total_records": 1968,
+  "record_count": 18,
   "has_next": false,
   "next_page_url": "",
   "prev_page_url": "/api/history/006224/page/13.json",
   "query_start_date": "2018-09-19",
-  "query_end_date": "2026-11-11",
+  "query_end_date": "2026-11-12",
   "page_start_date": "2026-10-20",
-  "page_end_date": "2026-11-11",
+  "page_end_date": "2026-11-12",
   "records_order": "ascending_by_nav_date",
   "date_filter_note": "静态托管不支持服务端日期过滤；start_date/end_date 请由调用方在客户端按 nav_date 过滤",
   "records": [
@@ -105,6 +105,11 @@
       "nav_date": "2026-11-11",
       "unit_nav": "1.1211",
       "accumulated_nav": "1.3070"
+    },
+    {
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.1202",
+      "accumulated_nav": "1.3061"
     }
   ]
 }
