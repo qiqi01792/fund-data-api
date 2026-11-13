@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-11-12 10:34:43",
+  "generated_at": "2026-11-13 10:25:23",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,8 +19,8 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 96003,
-    "chars": 73027,
+    "bytes": 96002,
+    "chars": 73038,
     "bytes_pct": 98.7,
     "chars_pct": 73.0,
     "status": "watch"
@@ -28,16 +28,16 @@
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 837655,
-      "chars": 729977,
-      "bytes_pct": 861.1,
-      "chars_pct": 730.0,
+      "bytes": 837822,
+      "chars": 730118,
+      "bytes_pct": 861.2,
+      "chars_pct": 730.1,
       "status": "exempt"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 96003,
-      "chars": 73027,
+      "bytes": 96002,
+      "chars": 73038,
       "bytes_pct": 98.7,
       "chars_pct": 73.0,
       "status": "watch"
@@ -52,26 +52,26 @@
     },
     {
       "rel": "api/signals.json",
-      "bytes": 79823,
-      "chars": 68209,
-      "bytes_pct": 82.1,
-      "chars_pct": 68.2,
+      "bytes": 79616,
+      "chars": 68038,
+      "bytes_pct": 81.8,
+      "chars_pct": 68.0,
       "status": "watch"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 77952,
-      "chars": 77046,
+      "bytes": 77938,
+      "chars": 77032,
       "bytes_pct": 80.1,
       "chars_pct": 77.0,
       "status": "watch"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 54839,
-      "chars": 44484,
-      "bytes_pct": 56.4,
-      "chars_pct": 44.5,
+      "bytes": 55074,
+      "chars": 44683,
+      "bytes_pct": 56.6,
+      "chars_pct": 44.7,
       "status": "ok"
     },
     {
