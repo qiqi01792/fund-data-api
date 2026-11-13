@@ -1,9 +1,9 @@
 {
   "schema": "fund-readonly-summary-with-series/v1",
   "readonly": true,
-  "generated_at": "2026-11-12 10:34:42",
-  "snapshot_date": "2026-11-12",
-  "as_of_nav_date": "2026-11-11",
+  "generated_at": "2026-11-13 10:25:22",
+  "snapshot_date": "2026-11-13",
+  "as_of_nav_date": "2026-11-12",
   "has_new_nav_on_snapshot_date": false,
   "fund_count": 21,
   "nav_scope": "near_1y",
@@ -62,8 +62,8 @@
     {
       "fund_code": "000218",
       "fund_name": "国泰黄金ETF联接A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "3.1456",
+      "nav_date": "2026-11-12",
+      "latest_nav": "3.0692",
       "nav_type": "official",
       "historical_high": "4.4715",
       "historical_high_date": "2026-01-29",
@@ -72,8 +72,8 @@
       "previous_high_nav": "4.4715",
       "previous_high_nav_date": "2026-01-29",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "3.7254",
       "six_month_high_date": "2026-05-13",
       "six_month_low": "3.0140",
@@ -82,10 +82,10 @@
       "recent_low_date": "2026-11-02",
       "recent_low_window_days": 20,
       "history_start_date": "2016-04-13",
-      "history_end_date": "2026-11-11",
-      "history_count": 2577,
-      "historical_position": "0.6203",
-      "six_month_position": "0.1850",
+      "history_end_date": "2026-11-12",
+      "history_count": 2578,
+      "historical_position": "0.5984",
+      "six_month_position": "0.0776",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "商品/指数",
@@ -94,13 +94,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "004433",
       "fund_name": "南方有色金属ETF联接C",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.3956",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.3564",
       "nav_type": "official",
       "historical_high": "2.4256",
       "historical_high_date": "2026-01-29",
@@ -109,8 +109,8 @@
       "previous_high_nav": "2.4256",
       "previous_high_nav_date": "2026-01-29",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "2.0932",
       "six_month_high_date": "2026-05-13",
       "six_month_low": "1.3343",
@@ -119,10 +119,10 @@
       "recent_low_date": "2026-11-02",
       "recent_low_window_days": 20,
       "history_start_date": "2017-09-08",
-      "history_end_date": "2026-11-11",
-      "history_count": 2219,
-      "historical_position": "0.4480",
-      "six_month_position": "0.0808",
+      "history_end_date": "2026-11-12",
+      "history_count": 2220,
+      "historical_position": "0.4270",
+      "six_month_position": "0.0291",
       "sip_mode": "涨跌幅模式",
       "sip_cycle": "每周四",
       "fund_type": "指数",
@@ -131,13 +131,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "005984",
       "fund_name": "兴业聚华混合A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.6986",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.6879",
       "nav_type": "official",
       "historical_high": "1.7922",
       "historical_high_date": "2026-05-13",
@@ -146,8 +146,8 @@
       "previous_high_nav": "1.7922",
       "previous_high_nav_date": "2026-05-13",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.7922",
       "six_month_high_date": "2026-05-13",
       "six_month_low": "1.6304",
@@ -156,10 +156,10 @@
       "recent_low_date": "2026-10-30",
       "recent_low_window_days": 20,
       "history_start_date": "2020-03-20",
-      "history_end_date": "2026-11-11",
-      "history_count": 1586,
-      "historical_position": "0.8818",
-      "six_month_position": "0.4215",
+      "history_end_date": "2026-11-12",
+      "history_count": 1587,
+      "historical_position": "0.8683",
+      "six_month_position": "0.3554",
       "sip_mode": "均线模式",
       "sip_cycle": "每周四",
       "fund_type": "混合(固收+)",
@@ -168,13 +168,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "006224",
       "fund_name": "中银中债3-5年期农发行债券指数A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.1211",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.1202",
       "nav_type": "official",
       "historical_high": "1.1382",
       "historical_high_date": "2026-08-17",
@@ -183,20 +183,20 @@
       "previous_high_nav": "1.1382",
       "previous_high_nav_date": "2026-08-17",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.1382",
       "six_month_high_date": "2026-08-17",
       "six_month_low": "1.1117",
       "six_month_low_date": "2026-08-27",
-      "recent_low": "1.1169",
-      "recent_low_date": "2026-10-15",
+      "recent_low": "1.1176",
+      "recent_low_date": "2026-10-16",
       "recent_low_window_days": 20,
       "history_start_date": "2018-09-19",
-      "history_end_date": "2026-11-11",
-      "history_count": 1967,
-      "historical_position": "0.8763",
-      "six_month_position": "0.3547",
+      "history_end_date": "2026-11-12",
+      "history_count": 1968,
+      "historical_position": "0.8698",
+      "six_month_position": "0.3208",
       "sip_mode": "普通定投",
       "sip_cycle": "每周四",
       "fund_type": "债券",
@@ -205,13 +205,13 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "006259",
       "fund_name": "汇添富红利增长混合A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.8521",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.8459",
       "nav_type": "official",
       "historical_high": "2.2144",
       "historical_high_date": "2021-02-10",
@@ -220,8 +220,8 @@
       "previous_high_nav": "2.2144",
       "previous_high_nav_date": "2021-02-10",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.9427",
       "six_month_high_date": "2026-08-31",
       "six_month_low": "1.7632",
@@ -230,10 +230,10 @@
       "recent_low_date": "2026-10-22",
       "recent_low_window_days": 20,
       "history_start_date": "2019-04-26",
-      "history_end_date": "2026-11-11",
-      "history_count": 1808,
-      "historical_position": "0.7043",
-      "six_month_position": "0.4953",
+      "history_end_date": "2026-11-12",
+      "history_count": 1809,
+      "historical_position": "0.6992",
+      "six_month_position": "0.4607",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "混合(主动)",
@@ -242,13 +242,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "007301",
       "fund_name": "国联安中证全指半导体产品与设备ETF联接C",
-      "nav_date": "2026-11-11",
-      "latest_nav": "3.1188",
+      "nav_date": "2026-11-12",
+      "latest_nav": "3.1400",
       "nav_type": "official",
       "historical_high": "5.5579",
       "historical_high_date": "2026-06-30",
@@ -257,8 +257,8 @@
       "previous_high_nav": "5.5579",
       "previous_high_nav_date": "2026-06-30",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "5.5579",
       "six_month_high_date": "2026-06-30",
       "six_month_low": "2.7332",
@@ -267,10 +267,10 @@
       "recent_low_date": "2026-11-03",
       "recent_low_window_days": 20,
       "history_start_date": "2019-06-26",
-      "history_end_date": "2026-11-11",
-      "history_count": 1794,
-      "historical_position": "0.4660",
-      "six_month_position": "0.1365",
+      "history_end_date": "2026-11-12",
+      "history_count": 1795,
+      "historical_position": "0.4707",
+      "six_month_position": "0.1440",
       "sip_mode": "涨跌幅模式",
       "sip_cycle": "每周四",
       "fund_type": "指数",
@@ -279,13 +279,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "007345",
       "fund_name": "富国科技创新灵活配置混合",
-      "nav_date": "2026-11-11",
-      "latest_nav": "2.1072",
+      "nav_date": "2026-11-12",
+      "latest_nav": "2.0785",
       "nav_type": "official",
       "historical_high": "2.8078",
       "historical_high_date": "2026-06-25",
@@ -294,8 +294,8 @@
       "previous_high_nav": "2.8078",
       "previous_high_nav_date": "2026-06-25",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "2.8078",
       "six_month_high_date": "2026-06-25",
       "six_month_low": "2.0260",
@@ -304,10 +304,10 @@
       "recent_low_date": "2026-11-03",
       "recent_low_window_days": 20,
       "history_start_date": "2019-05-06",
-      "history_end_date": "2026-11-11",
-      "history_count": 1780,
-      "historical_position": "0.6144",
-      "six_month_position": "0.1039",
+      "history_end_date": "2026-11-12",
+      "history_count": 1781,
+      "historical_position": "0.5986",
+      "six_month_position": "0.0672",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "混合(主动)",
@@ -316,13 +316,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "007817",
       "fund_name": "国泰中证全指通信设备ETF联接A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "2.6623",
+      "nav_date": "2026-11-12",
+      "latest_nav": "2.5867",
       "nav_type": "official",
       "historical_high": "5.1945",
       "historical_high_date": "2026-06-25",
@@ -331,8 +331,8 @@
       "previous_high_nav": "5.1945",
       "previous_high_nav_date": "2026-06-25",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "5.1945",
       "six_month_high_date": "2026-06-25",
       "six_month_low": "2.3669",
@@ -341,10 +341,10 @@
       "recent_low_date": "2026-11-03",
       "recent_low_window_days": 20,
       "history_start_date": "2019-09-03",
-      "history_end_date": "2026-11-11",
-      "history_count": 1743,
-      "historical_position": "0.4319",
-      "six_month_position": "0.1045",
+      "history_end_date": "2026-11-12",
+      "history_count": 1744,
+      "historical_position": "0.4149",
+      "six_month_position": "0.0777",
       "sip_mode": "涨跌幅模式",
       "sip_cycle": "每周四",
       "fund_type": "指数",
@@ -353,13 +353,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "010056",
       "fund_name": "平安瑞兴1年持有期混合A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.4027",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.4004",
       "nav_type": "official",
       "historical_high": "1.4307",
       "historical_high_date": "2026-06-22",
@@ -368,20 +368,20 @@
       "previous_high_nav": "1.4307",
       "previous_high_nav_date": "2026-06-22",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.4307",
       "six_month_high_date": "2026-06-22",
-      "six_month_low": "1.4007",
-      "six_month_low_date": "2026-07-24",
-      "recent_low": "1.4018",
-      "recent_low_date": "2026-11-02",
+      "six_month_low": "1.4004",
+      "six_month_low_date": "2026-11-12",
+      "recent_low": "1.4004",
+      "recent_low_date": "2026-11-12",
       "recent_low_window_days": 20,
       "history_start_date": "2020-11-04",
-      "history_end_date": "2026-11-11",
-      "history_count": 1275,
-      "historical_position": "0.9360",
-      "six_month_position": "0.0667",
+      "history_end_date": "2026-11-12",
+      "history_count": 1276,
+      "historical_position": "0.9307",
+      "six_month_position": "0.0000",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "债券(持有期)",
@@ -390,13 +390,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "017481",
       "fund_name": "博时中证全指电力公用事业ETF联接A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.1601",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.1578",
       "nav_type": "official",
       "historical_high": "1.3851",
       "historical_high_date": "2026-06-01",
@@ -405,8 +405,8 @@
       "previous_high_nav": "1.3851",
       "previous_high_nav_date": "2026-06-01",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.3851",
       "six_month_high_date": "2026-06-01",
       "six_month_low": "1.1298",
@@ -415,10 +415,10 @@
       "recent_low_date": "2026-10-27",
       "recent_low_window_days": 20,
       "history_start_date": "2023-01-06",
-      "history_end_date": "2026-11-11",
-      "history_count": 913,
-      "historical_position": "0.4737",
-      "six_month_position": "0.1187",
+      "history_end_date": "2026-11-12",
+      "history_count": 914,
+      "historical_position": "0.4683",
+      "six_month_position": "0.1097",
       "sip_mode": "涨跌幅模式",
       "sip_cycle": "每周四",
       "fund_type": "指数",
@@ -427,13 +427,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "017854",
       "fund_name": "易方达云计算联接C",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.3607",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.3353",
       "nav_type": "official",
       "historical_high": "1.8769",
       "historical_high_date": "2026-01-14",
@@ -442,8 +442,8 @@
       "previous_high_nav": "1.8769",
       "previous_high_nav_date": "2026-01-14",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.8357",
       "six_month_high_date": "2026-05-13",
       "six_month_low": "1.2557",
@@ -452,10 +452,10 @@
       "recent_low_date": "2026-10-30",
       "recent_low_window_days": 20,
       "history_start_date": "2023-03-15",
-      "history_end_date": "2026-11-11",
-      "history_count": 888,
-      "historical_position": "0.5697",
-      "six_month_position": "0.1810",
+      "history_end_date": "2026-11-12",
+      "history_count": 889,
+      "historical_position": "0.5485",
+      "six_month_position": "0.1372",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "指数",
@@ -464,13 +464,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "017999",
       "fund_name": "中欧融恒平衡混合C",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.3495",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.3279",
       "nav_type": "official",
       "historical_high": "1.6020",
       "historical_high_date": "2026-02-25",
@@ -479,20 +479,20 @@
       "previous_high_nav": "1.6020",
       "previous_high_nav_date": "2026-02-25",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
-      "six_month_high": "1.5003",
-      "six_month_high_date": "2026-05-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
+      "six_month_high": "1.4979",
+      "six_month_high_date": "2026-05-12",
       "six_month_low": "1.3033",
       "six_month_low_date": "2026-06-30",
       "recent_low": "1.3235",
       "recent_low_date": "2026-10-30",
       "recent_low_window_days": 20,
       "history_start_date": "2023-03-21",
-      "history_end_date": "2026-11-11",
-      "history_count": 840,
-      "historical_position": "0.6315",
-      "six_month_position": "0.2345",
+      "history_end_date": "2026-11-12",
+      "history_count": 841,
+      "historical_position": "0.6000",
+      "six_month_position": "0.1264",
       "sip_mode": "均线模式",
       "sip_cycle": "每周四",
       "fund_type": "混合",
@@ -501,13 +501,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "018125",
       "fund_name": "永赢先进制造智选混合C",
-      "nav_date": "2026-11-11",
-      "latest_nav": "2.1918",
+      "nav_date": "2026-11-12",
+      "latest_nav": "2.0870",
       "nav_type": "official",
       "historical_high": "2.8069",
       "historical_high_date": "2026-01-19",
@@ -516,20 +516,20 @@
       "previous_high_nav": "2.8069",
       "previous_high_nav_date": "2026-01-19",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "2.6813",
       "six_month_high_date": "2026-05-22",
       "six_month_low": "1.5648",
       "six_month_low_date": "2026-10-15",
-      "recent_low": "1.5648",
-      "recent_low_date": "2026-10-15",
+      "recent_low": "1.5686",
+      "recent_low_date": "2026-10-16",
       "recent_low_window_days": 20,
       "history_start_date": "2023-05-04",
-      "history_end_date": "2026-11-11",
-      "history_count": 849,
-      "historical_position": "0.7088",
-      "six_month_position": "0.5616",
+      "history_end_date": "2026-11-12",
+      "history_count": 850,
+      "historical_position": "0.6591",
+      "six_month_position": "0.4677",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "混合(主动)",
@@ -538,13 +538,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "019869",
       "fund_name": "华夏云计算与大数据ETF联接C",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.4147",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.3884",
       "nav_type": "official",
       "historical_high": "1.9554",
       "historical_high_date": "2026-01-14",
@@ -553,8 +553,8 @@
       "previous_high_nav": "1.9554",
       "previous_high_nav_date": "2026-01-14",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.9112",
       "six_month_high_date": "2026-05-13",
       "six_month_low": "1.3073",
@@ -563,10 +563,10 @@
       "recent_low_date": "2026-10-30",
       "recent_low_window_days": 20,
       "history_start_date": "2023-11-14",
-      "history_end_date": "2026-11-11",
-      "history_count": 720,
-      "historical_position": "0.5600",
-      "six_month_position": "0.1778",
+      "history_end_date": "2026-11-12",
+      "history_count": 721,
+      "historical_position": "0.5386",
+      "six_month_position": "0.1343",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "指数",
@@ -575,13 +575,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "020670",
       "fund_name": "易方达上证科创板芯片ETF联接A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "2.7812",
+      "nav_date": "2026-11-12",
+      "latest_nav": "2.8165",
       "nav_type": "official",
       "historical_high": "4.8552",
       "historical_high_date": "2026-06-30",
@@ -590,8 +590,8 @@
       "previous_high_nav": "4.8552",
       "previous_high_nav_date": "2026-06-30",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "4.8552",
       "six_month_high_date": "2026-06-30",
       "six_month_low": "2.3934",
@@ -600,10 +600,10 @@
       "recent_low_date": "2026-11-03",
       "recent_low_window_days": 20,
       "history_start_date": "2024-01-31",
-      "history_end_date": "2026-11-11",
-      "history_count": 667,
-      "historical_position": "0.4723",
-      "six_month_position": "0.1575",
+      "history_end_date": "2026-11-12",
+      "history_count": 668,
+      "historical_position": "0.4813",
+      "six_month_position": "0.1719",
       "sip_mode": "均线模式",
       "sip_cycle": "每周四",
       "fund_type": "指数",
@@ -612,13 +612,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "022274",
       "fund_name": "国泰港股红利ETF联接A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.1456",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.1367",
       "nav_type": "official",
       "historical_high": "1.2531",
       "historical_high_date": "2025-11-12",
@@ -627,8 +627,8 @@
       "previous_high_nav": "1.2531",
       "previous_high_nav_date": "2025-11-12",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.2107",
       "six_month_high_date": "2026-05-12",
       "six_month_low": "1.0472",
@@ -637,10 +637,10 @@
       "recent_low_date": "2026-10-23",
       "recent_low_window_days": 20,
       "history_start_date": "2024-10-09",
-      "history_end_date": "2026-11-11",
-      "history_count": 506,
-      "historical_position": "0.6825",
-      "six_month_position": "0.6018",
+      "history_end_date": "2026-11-12",
+      "history_count": 507,
+      "historical_position": "0.6562",
+      "six_month_position": "0.5474",
       "sip_mode": "涨跌幅模式",
       "sip_cycle": "每周四",
       "fund_type": "指数",
@@ -649,13 +649,13 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "023638",
       "fund_name": "国泰A股电网设备ETF联接A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "1.4664",
+      "nav_date": "2026-11-12",
+      "latest_nav": "1.4428",
       "nav_type": "official",
       "historical_high": "2.2731",
       "historical_high_date": "2026-06-22",
@@ -664,8 +664,8 @@
       "previous_high_nav": "2.2731",
       "previous_high_nav_date": "2026-06-22",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "2.2731",
       "six_month_high_date": "2026-06-22",
       "six_month_low": "1.3810",
@@ -674,10 +674,10 @@
       "recent_low_date": "2026-10-30",
       "recent_low_window_days": 20,
       "history_start_date": "2025-03-24",
-      "history_end_date": "2026-11-11",
-      "history_count": 396,
-      "historical_position": "0.4221",
-      "six_month_position": "0.0957",
+      "history_end_date": "2026-11-12",
+      "history_count": 397,
+      "historical_position": "0.4051",
+      "six_month_position": "0.0693",
       "sip_mode": "均线模式",
       "sip_cycle": "每周四",
       "fund_type": "指数",
@@ -686,13 +686,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "024412",
       "fund_name": "华夏上证科创板人工智能ETF联接C",
-      "nav_date": "2026-11-11",
-      "latest_nav": "0.9071",
+      "nav_date": "2026-11-12",
+      "latest_nav": "0.8954",
       "nav_type": "official",
       "historical_high": "1.2977",
       "historical_high_date": "2026-06-30",
@@ -701,8 +701,8 @@
       "previous_high_nav": "1.2977",
       "previous_high_nav_date": "2026-06-30",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
       "six_month_high": "1.2977",
       "six_month_high_date": "2026-06-30",
       "six_month_low": "0.8000",
@@ -711,10 +711,10 @@
       "recent_low_date": "2026-11-03",
       "recent_low_window_days": 20,
       "history_start_date": "2025-09-23",
-      "history_end_date": "2026-11-11",
-      "history_count": 245,
-      "historical_position": "0.2152",
-      "six_month_position": "0.2152",
+      "history_end_date": "2026-11-12",
+      "history_count": 246,
+      "historical_position": "0.1917",
+      "six_month_position": "0.1917",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "指数",
@@ -723,13 +723,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "025491",
       "fund_name": "平安中证卫星产业指数C",
-      "nav_date": "2026-11-11",
-      "latest_nav": "0.8224",
+      "nav_date": "2026-11-12",
+      "latest_nav": "0.8045",
       "nav_type": "official",
       "historical_high": "1.5848",
       "historical_high_date": "2026-01-12",
@@ -738,20 +738,20 @@
       "previous_high_nav": "1.5848",
       "previous_high_nav_date": "2026-01-12",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
-      "six_month_high": "1.3569",
-      "six_month_high_date": "2026-05-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
+      "six_month_high": "1.3334",
+      "six_month_high_date": "2026-05-13",
       "six_month_low": "0.7522",
       "six_month_low_date": "2026-11-03",
       "recent_low": "0.7522",
       "recent_low_date": "2026-11-03",
       "recent_low_window_days": 20,
       "history_start_date": "2025-09-23",
-      "history_end_date": "2026-11-11",
-      "history_count": 262,
-      "historical_position": "0.0843",
-      "six_month_position": "0.1161",
+      "history_end_date": "2026-11-12",
+      "history_count": 263,
+      "historical_position": "0.0628",
+      "six_month_position": "0.0900",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "指数",
@@ -760,13 +760,13 @@
       "rating": "C",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "100032",
       "fund_name": "富国中证红利指数增强A",
-      "nav_date": "2026-11-11",
-      "latest_nav": "0.9600",
+      "nav_date": "2026-11-12",
+      "latest_nav": "0.9540",
       "nav_type": "official",
       "historical_high": "2.4240",
       "historical_high_date": "2015-06-12",
@@ -775,20 +775,20 @@
       "previous_high_nav": "2.4240",
       "previous_high_nav_date": "2015-06-12",
       "is_new_high": "false",
-      "six_month_start": "2026-05-11",
-      "six_month_end": "2026-11-11",
-      "six_month_high": "1.0010",
-      "six_month_high_date": "2026-05-11",
+      "six_month_start": "2026-05-12",
+      "six_month_end": "2026-11-12",
+      "six_month_high": "0.9980",
+      "six_month_high_date": "2026-05-12",
       "six_month_low": "0.8940",
       "six_month_low_date": "2026-06-30",
       "recent_low": "0.9380",
       "recent_low_date": "2026-10-22",
       "recent_low_window_days": 20,
       "history_start_date": "2008-12-26",
-      "history_end_date": "2026-11-11",
-      "history_count": 4340,
-      "historical_position": "0.0494",
-      "six_month_position": "0.6168",
+      "history_end_date": "2026-11-12",
+      "history_count": 4341,
+      "historical_position": "0.0455",
+      "six_month_position": "0.5769",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "指数增强",
@@ -797,13 +797,13 @@
       "rating": "B",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     },
     {
       "fund_code": "270042",
       "fund_name": "广发纳斯达克100ETF联接(QDII)A",
-      "nav_date": "2026-11-10",
-      "latest_nav": "7.5774",
+      "nav_date": "2026-11-11",
+      "latest_nav": "7.7558",
       "nav_type": "official",
       "historical_high": "8.5927",
       "historical_high_date": "2026-06-02",
@@ -812,8 +812,8 @@
       "previous_high_nav": "8.5927",
       "previous_high_nav_date": "2026-06-02",
       "is_new_high": "false",
-      "six_month_start": "2026-05-10",
-      "six_month_end": "2026-11-10",
+      "six_month_start": "2026-05-11",
+      "six_month_end": "2026-11-11",
       "six_month_high": "8.5927",
       "six_month_high_date": "2026-06-02",
       "six_month_low": "7.2728",
@@ -822,10 +822,10 @@
       "recent_low_date": "2026-11-05",
       "recent_low_window_days": 20,
       "history_start_date": "2012-08-15",
-      "history_end_date": "2026-11-10",
-      "history_count": 3428,
-      "historical_position": "0.8678",
-      "six_month_position": "0.2308",
+      "history_end_date": "2026-11-11",
+      "history_count": 3429,
+      "historical_position": "0.8910",
+      "six_month_position": "0.3659",
       "sip_mode": "",
       "sip_cycle": "",
       "fund_type": "QDII指数",
@@ -834,7 +834,7 @@
       "rating": "A",
       "rating_status": "初评待用户确认",
       "data_status": "正常",
-      "update_time": "2026-11-12 10:32:16"
+      "update_time": "2026-11-13 10:23:09"
     }
   ],
   "check_log": [
@@ -870,16 +870,10 @@
     }
   ],
   "series_scope": "近 1 年（生成参数 series_days，默认 365 天）内的每日正式单位净值",
-  "series_window_start": "2025-11-11",
-  "series_window_end": "2026-11-11",
-  "series_count": 5096,
+  "series_window_start": "2025-11-12",
+  "series_window_end": "2026-11-12",
+  "series_count": 5097,
   "nav_series": [
-    {
-      "fund_code": "000218",
-      "fund_name": "国泰黄金ETF联接A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "3.4222"
-    },
     {
       "fund_code": "000218",
       "fund_name": "国泰黄金ETF联接A",
@@ -2333,10 +2327,10 @@
       "unit_nav": "3.1456"
     },
     {
-      "fund_code": "004433",
-      "fund_name": "南方有色金属ETF联接C",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.6700"
+      "fund_code": "000218",
+      "fund_name": "国泰黄金ETF联接A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "3.0692"
     },
     {
       "fund_code": "004433",
@@ -3791,10 +3785,10 @@
       "unit_nav": "1.3956"
     },
     {
-      "fund_code": "005984",
-      "fund_name": "兴业聚华混合A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.6156"
+      "fund_code": "004433",
+      "fund_name": "南方有色金属ETF联接C",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.3564"
     },
     {
       "fund_code": "005984",
@@ -5249,10 +5243,10 @@
       "unit_nav": "1.6986"
     },
     {
-      "fund_code": "006224",
-      "fund_name": "中银中债3-5年期农发行债券指数A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.1152"
+      "fund_code": "005984",
+      "fund_name": "兴业聚华混合A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.6879"
     },
     {
       "fund_code": "006224",
@@ -6707,10 +6701,10 @@
       "unit_nav": "1.1211"
     },
     {
-      "fund_code": "006259",
-      "fund_name": "汇添富红利增长混合A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.8626"
+      "fund_code": "006224",
+      "fund_name": "中银中债3-5年期农发行债券指数A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.1202"
     },
     {
       "fund_code": "006259",
@@ -8165,10 +8159,10 @@
       "unit_nav": "1.8521"
     },
     {
-      "fund_code": "007301",
-      "fund_name": "国联安中证全指半导体产品与设备ETF联接C",
-      "nav_date": "2025-11-11",
-      "unit_nav": "2.7582"
+      "fund_code": "006259",
+      "fund_name": "汇添富红利增长混合A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.8459"
     },
     {
       "fund_code": "007301",
@@ -9623,10 +9617,10 @@
       "unit_nav": "3.1188"
     },
     {
-      "fund_code": "007345",
-      "fund_name": "富国科技创新灵活配置混合",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.8410"
+      "fund_code": "007301",
+      "fund_name": "国联安中证全指半导体产品与设备ETF联接C",
+      "nav_date": "2026-11-12",
+      "unit_nav": "3.1400"
     },
     {
       "fund_code": "007345",
@@ -11081,10 +11075,10 @@
       "unit_nav": "2.1072"
     },
     {
-      "fund_code": "007817",
-      "fund_name": "国泰中证全指通信设备ETF联接A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "2.4960"
+      "fund_code": "007345",
+      "fund_name": "富国科技创新灵活配置混合",
+      "nav_date": "2026-11-12",
+      "unit_nav": "2.0785"
     },
     {
       "fund_code": "007817",
@@ -12539,10 +12533,10 @@
       "unit_nav": "2.6623"
     },
     {
-      "fund_code": "010056",
-      "fund_name": "平安瑞兴1年持有期混合A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.3851"
+      "fund_code": "007817",
+      "fund_name": "国泰中证全指通信设备ETF联接A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "2.5867"
     },
     {
       "fund_code": "010056",
@@ -13997,10 +13991,10 @@
       "unit_nav": "1.4027"
     },
     {
-      "fund_code": "017481",
-      "fund_name": "博时中证全指电力公用事业ETF联接A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.2034"
+      "fund_code": "010056",
+      "fund_name": "平安瑞兴1年持有期混合A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.4004"
     },
     {
       "fund_code": "017481",
@@ -15455,10 +15449,10 @@
       "unit_nav": "1.1601"
     },
     {
-      "fund_code": "017854",
-      "fund_name": "易方达云计算联接C",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.4812"
+      "fund_code": "017481",
+      "fund_name": "博时中证全指电力公用事业ETF联接A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.1578"
     },
     {
       "fund_code": "017854",
@@ -16913,10 +16907,10 @@
       "unit_nav": "1.3607"
     },
     {
-      "fund_code": "017999",
-      "fund_name": "中欧融恒平衡混合C",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.5497"
+      "fund_code": "017854",
+      "fund_name": "易方达云计算联接C",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.3353"
     },
     {
       "fund_code": "017999",
@@ -18371,10 +18365,10 @@
       "unit_nav": "1.3495"
     },
     {
-      "fund_code": "018125",
-      "fund_name": "永赢先进制造智选混合C",
-      "nav_date": "2025-11-11",
-      "unit_nav": "2.1422"
+      "fund_code": "017999",
+      "fund_name": "中欧融恒平衡混合C",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.3279"
     },
     {
       "fund_code": "018125",
@@ -19829,10 +19823,10 @@
       "unit_nav": "2.1918"
     },
     {
-      "fund_code": "019869",
-      "fund_name": "华夏云计算与大数据ETF联接C",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.5403"
+      "fund_code": "018125",
+      "fund_name": "永赢先进制造智选混合C",
+      "nav_date": "2026-11-12",
+      "unit_nav": "2.0870"
     },
     {
       "fund_code": "019869",
@@ -21287,10 +21281,10 @@
       "unit_nav": "1.4147"
     },
     {
-      "fund_code": "020670",
-      "fund_name": "易方达上证科创板芯片ETF联接A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "2.3459"
+      "fund_code": "019869",
+      "fund_name": "华夏云计算与大数据ETF联接C",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.3884"
     },
     {
       "fund_code": "020670",
@@ -22745,10 +22739,10 @@
       "unit_nav": "2.7812"
     },
     {
-      "fund_code": "022274",
-      "fund_name": "国泰港股红利ETF联接A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.2394"
+      "fund_code": "020670",
+      "fund_name": "易方达上证科创板芯片ETF联接A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "2.8165"
     },
     {
       "fund_code": "022274",
@@ -24203,10 +24197,10 @@
       "unit_nav": "1.1456"
     },
     {
-      "fund_code": "023638",
-      "fund_name": "国泰A股电网设备ETF联接A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.5868"
+      "fund_code": "022274",
+      "fund_name": "国泰港股红利ETF联接A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.1367"
     },
     {
       "fund_code": "023638",
@@ -25661,6 +25655,12 @@
       "unit_nav": "1.4664"
     },
     {
+      "fund_code": "023638",
+      "fund_name": "国泰A股电网设备ETF联接A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "1.4428"
+    },
+    {
       "fund_code": "024412",
       "fund_name": "华夏上证科创板人工智能ETF联接C",
       "nav_date": "2025-11-14",
@@ -27083,10 +27083,10 @@
       "unit_nav": "0.9071"
     },
     {
-      "fund_code": "025491",
-      "fund_name": "平安中证卫星产业指数C",
-      "nav_date": "2025-11-11",
-      "unit_nav": "0.9780"
+      "fund_code": "024412",
+      "fund_name": "华夏上证科创板人工智能ETF联接C",
+      "nav_date": "2026-11-12",
+      "unit_nav": "0.8954"
     },
     {
       "fund_code": "025491",
@@ -28541,10 +28541,10 @@
       "unit_nav": "0.8224"
     },
     {
-      "fund_code": "100032",
-      "fund_name": "富国中证红利指数增强A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "1.0640"
+      "fund_code": "025491",
+      "fund_name": "平安中证卫星产业指数C",
+      "nav_date": "2026-11-12",
+      "unit_nav": "0.8045"
     },
     {
       "fund_code": "100032",
@@ -29999,10 +29999,10 @@
       "unit_nav": "0.9600"
     },
     {
-      "fund_code": "270042",
-      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
-      "nav_date": "2025-11-11",
-      "unit_nav": "7.4488"
+      "fund_code": "100032",
+      "fund_name": "富国中证红利指数增强A",
+      "nav_date": "2026-11-12",
+      "unit_nav": "0.9540"
     },
     {
       "fund_code": "270042",
@@ -31449,6 +31449,12 @@
       "fund_name": "广发纳斯达克100ETF联接(QDII)A",
       "nav_date": "2026-11-10",
       "unit_nav": "7.5774"
+    },
+    {
+      "fund_code": "270042",
+      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
+      "nav_date": "2026-11-11",
+      "unit_nav": "7.7558"
     }
   ]
 }
