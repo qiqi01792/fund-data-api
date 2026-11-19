@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-11-18 10:20:34",
+  "generated_at": "2026-11-19 10:21:33",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,35 +19,27 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 96451,
-    "chars": 73217,
-    "bytes_pct": 99.1,
-    "chars_pct": 73.2,
+    "bytes": 95821,
+    "chars": 72947,
+    "bytes_pct": 98.5,
+    "chars_pct": 72.9,
     "status": "watch"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 838156,
-      "chars": 730400,
-      "bytes_pct": 861.6,
-      "chars_pct": 730.4,
+      "bytes": 838323,
+      "chars": 730541,
+      "bytes_pct": 861.8,
+      "chars_pct": 730.5,
       "status": "exempt"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 96451,
-      "chars": 73217,
-      "bytes_pct": 99.1,
-      "chars_pct": 73.2,
-      "status": "watch"
-    },
-    {
-      "rel": "api/signals.json",
-      "bytes": 82083,
-      "chars": 69613,
-      "bytes_pct": 84.4,
-      "chars_pct": 69.6,
+      "bytes": 95821,
+      "chars": 72947,
+      "bytes_pct": 98.5,
+      "chars_pct": 72.9,
       "status": "watch"
     },
     {
@@ -59,19 +51,27 @@
       "status": "schema"
     },
     {
+      "rel": "api/signals.json",
+      "bytes": 79544,
+      "chars": 68001,
+      "bytes_pct": 81.8,
+      "chars_pct": 68.0,
+      "status": "watch"
+    },
+    {
       "rel": "api/performance.json",
-      "bytes": 77960,
-      "chars": 77054,
+      "bytes": 77952,
+      "chars": 77046,
       "bytes_pct": 80.1,
-      "chars_pct": 77.1,
+      "chars_pct": 77.0,
       "status": "watch"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 56576,
-      "chars": 45675,
-      "bytes_pct": 58.2,
-      "chars_pct": 45.7,
+      "bytes": 56053,
+      "chars": 45509,
+      "bytes_pct": 57.6,
+      "chars_pct": 45.5,
       "status": "ok"
     },
     {
