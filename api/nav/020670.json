@@ -1,22 +1,16 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-11-19 10:21:32",
-  "as_of_nav_date": "2026-11-18",
+  "generated_at": "2026-11-20 10:25:11",
+  "as_of_nav_date": "2026-11-19",
   "fund_code": "020670",
   "fund_name": "易方达上证科创板芯片ETF联接A",
   "nav_type": "official",
   "nav_scope": "near_1y",
-  "window_start": "2025-11-18",
-  "window_end": "2026-11-18",
+  "window_start": "2025-11-19",
+  "window_end": "2026-11-19",
   "count": 243,
   "nav_series": [
-    {
-      "fund_code": "020670",
-      "fund_name": "易方达上证科创板芯片ETF联接A",
-      "nav_date": "2025-11-18",
-      "unit_nav": "2.3197"
-    },
     {
       "fund_code": "020670",
       "fund_name": "易方达上证科创板芯片ETF联接A",
@@ -1468,6 +1462,12 @@
       "fund_name": "易方达上证科创板芯片ETF联接A",
       "nav_date": "2026-11-18",
       "unit_nav": "2.6480"
+    },
+    {
+      "fund_code": "020670",
+      "fund_name": "易方达上证科创板芯片ETF联接A",
+      "nav_date": "2026-11-19",
+      "unit_nav": "2.6827"
     }
   ]
 }
