@@ -1,34 +1,16 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-11-20 10:25:11",
-  "as_of_nav_date": "2026-11-19",
+  "generated_at": "2026-11-24 10:47:15",
+  "as_of_nav_date": "2026-11-23",
   "fund_code": "270042",
   "fund_name": "广发纳斯达克100ETF联接(QDII)A",
   "nav_type": "official",
   "nav_scope": "near_1y",
-  "window_start": "2025-11-19",
-  "window_end": "2026-11-19",
-  "count": 242,
+  "window_start": "2025-11-23",
+  "window_end": "2026-11-23",
+  "count": 241,
   "nav_series": [
-    {
-      "fund_code": "270042",
-      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
-      "nav_date": "2025-11-19",
-      "unit_nav": "7.1901"
-    },
-    {
-      "fund_code": "270042",
-      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
-      "nav_date": "2025-11-20",
-      "unit_nav": "7.0228"
-    },
-    {
-      "fund_code": "270042",
-      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
-      "nav_date": "2025-11-21",
-      "unit_nav": "7.0751"
-    },
     {
       "fund_code": "270042",
       "fund_name": "广发纳斯达克100ETF联接(QDII)A",
@@ -1462,6 +1444,18 @@
       "fund_name": "广发纳斯达克100ETF联接(QDII)A",
       "nav_date": "2026-11-18",
       "unit_nav": "7.4000"
+    },
+    {
+      "fund_code": "270042",
+      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
+      "nav_date": "2026-11-19",
+      "unit_nav": "7.2387"
+    },
+    {
+      "fund_code": "270042",
+      "fund_name": "广发纳斯达克100ETF联接(QDII)A",
+      "nav_date": "2026-11-20",
+      "unit_nav": "6.8377"
     }
   ]
 }
