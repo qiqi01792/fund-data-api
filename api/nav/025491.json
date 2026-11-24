@@ -1,34 +1,16 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-11-20 10:25:11",
-  "as_of_nav_date": "2026-11-19",
+  "generated_at": "2026-11-24 10:47:15",
+  "as_of_nav_date": "2026-11-23",
   "fund_code": "025491",
   "fund_name": "平安中证卫星产业指数C",
   "nav_type": "official",
   "nav_scope": "near_1y",
-  "window_start": "2025-11-19",
-  "window_end": "2026-11-19",
-  "count": 243,
+  "window_start": "2025-11-23",
+  "window_end": "2026-11-23",
+  "count": 242,
   "nav_series": [
-    {
-      "fund_code": "025491",
-      "fund_name": "平安中证卫星产业指数C",
-      "nav_date": "2025-11-19",
-      "unit_nav": "0.9566"
-    },
-    {
-      "fund_code": "025491",
-      "fund_name": "平安中证卫星产业指数C",
-      "nav_date": "2025-11-20",
-      "unit_nav": "0.9526"
-    },
-    {
-      "fund_code": "025491",
-      "fund_name": "平安中证卫星产业指数C",
-      "nav_date": "2025-11-21",
-      "unit_nav": "0.9265"
-    },
     {
       "fund_code": "025491",
       "fund_name": "平安中证卫星产业指数C",
@@ -1468,6 +1450,18 @@
       "fund_name": "平安中证卫星产业指数C",
       "nav_date": "2026-11-19",
       "unit_nav": "0.7105"
+    },
+    {
+      "fund_code": "025491",
+      "fund_name": "平安中证卫星产业指数C",
+      "nav_date": "2026-11-20",
+      "unit_nav": "0.6722"
+    },
+    {
+      "fund_code": "025491",
+      "fund_name": "平安中证卫星产业指数C",
+      "nav_date": "2026-11-23",
+      "unit_nav": "0.6902"
     }
   ]
 }
