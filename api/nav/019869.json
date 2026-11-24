@@ -1,34 +1,16 @@
 {
   "schema": "fund-readonly-nav-series/v1",
   "readonly": true,
-  "generated_at": "2026-11-20 10:25:11",
-  "as_of_nav_date": "2026-11-19",
+  "generated_at": "2026-11-24 10:47:15",
+  "as_of_nav_date": "2026-11-23",
   "fund_code": "019869",
   "fund_name": "华夏云计算与大数据ETF联接C",
   "nav_type": "official",
   "nav_scope": "near_1y",
-  "window_start": "2025-11-19",
-  "window_end": "2026-11-19",
-  "count": 243,
+  "window_start": "2025-11-23",
+  "window_end": "2026-11-23",
+  "count": 242,
   "nav_series": [
-    {
-      "fund_code": "019869",
-      "fund_name": "华夏云计算与大数据ETF联接C",
-      "nav_date": "2025-11-19",
-      "unit_nav": "1.5434"
-    },
-    {
-      "fund_code": "019869",
-      "fund_name": "华夏云计算与大数据ETF联接C",
-      "nav_date": "2025-11-20",
-      "unit_nav": "1.5373"
-    },
-    {
-      "fund_code": "019869",
-      "fund_name": "华夏云计算与大数据ETF联接C",
-      "nav_date": "2025-11-21",
-      "unit_nav": "1.4823"
-    },
     {
       "fund_code": "019869",
       "fund_name": "华夏云计算与大数据ETF联接C",
@@ -1468,6 +1450,18 @@
       "fund_name": "华夏云计算与大数据ETF联接C",
       "nav_date": "2026-11-19",
       "unit_nav": "1.2954"
+    },
+    {
+      "fund_code": "019869",
+      "fund_name": "华夏云计算与大数据ETF联接C",
+      "nav_date": "2026-11-20",
+      "unit_nav": "1.2326"
+    },
+    {
+      "fund_code": "019869",
+      "fund_name": "华夏云计算与大数据ETF联接C",
+      "nav_date": "2026-11-23",
+      "unit_nav": "1.2592"
     }
   ]
 }
