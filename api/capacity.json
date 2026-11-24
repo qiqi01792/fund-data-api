@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-11-20 10:25:11",
+  "generated_at": "2026-11-24 10:47:15",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,35 +19,27 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 96340,
-    "chars": 73150,
-    "bytes_pct": 99.0,
+    "bytes": 96365,
+    "chars": 73177,
+    "bytes_pct": 99.1,
     "chars_pct": 73.2,
     "status": "watch"
   },
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 838490,
-      "chars": 730682,
-      "bytes_pct": 861.9,
-      "chars_pct": 730.7,
+      "bytes": 835344,
+      "chars": 727938,
+      "bytes_pct": 858.7,
+      "chars_pct": 727.9,
       "status": "exempt"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 96340,
-      "chars": 73150,
-      "bytes_pct": 99.0,
+      "bytes": 96365,
+      "chars": 73177,
+      "bytes_pct": 99.1,
       "chars_pct": 73.2,
-      "status": "watch"
-    },
-    {
-      "rel": "api/signals.json",
-      "bytes": 82046,
-      "chars": 69617,
-      "bytes_pct": 84.3,
-      "chars_pct": 69.6,
       "status": "watch"
     },
     {
@@ -59,28 +51,36 @@
       "status": "schema"
     },
     {
+      "rel": "api/signals.json",
+      "bytes": 81399,
+      "chars": 69160,
+      "bytes_pct": 83.7,
+      "chars_pct": 69.2,
+      "status": "watch"
+    },
+    {
       "rel": "api/performance.json",
-      "bytes": 77935,
-      "chars": 77029,
+      "bytes": 77963,
+      "chars": 77057,
       "bytes_pct": 80.1,
-      "chars_pct": 77.0,
+      "chars_pct": 77.1,
       "status": "watch"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 56591,
-      "chars": 45709,
-      "bytes_pct": 58.2,
-      "chars_pct": 45.7,
+      "bytes": 55931,
+      "chars": 45233,
+      "bytes_pct": 57.5,
+      "chars_pct": 45.2,
       "status": "ok"
     },
     {
       "rel": "api/nav/{fund_code}.json",
       "files": 21,
-      "bytes": 43889,
-      "chars": 35593,
-      "bytes_pct": 45.1,
-      "chars_pct": 35.6,
+      "bytes": 43710,
+      "chars": 35448,
+      "bytes_pct": 44.9,
+      "chars_pct": 35.4,
       "status": "ok"
     },
     {
@@ -141,7 +141,7 @@
     },
     {
       "rel": "api/history/{fund_code}/page/{page}.json",
-      "files": 235,
+      "files": 236,
       "bytes": 16897,
       "chars": 16809,
       "bytes_pct": 17.4,
