@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-11-24 10:47:15",
+  "generated_at": "2026-11-25 10:18:35",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,8 +19,8 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 96365,
-    "chars": 73177,
+    "bytes": 96356,
+    "chars": 73176,
     "bytes_pct": 99.1,
     "chars_pct": 73.2,
     "status": "watch"
@@ -28,16 +28,16 @@
   "endpoints": [
     {
       "rel": "api/fund_nav_series.json",
-      "bytes": 835344,
-      "chars": 727938,
-      "bytes_pct": 858.7,
-      "chars_pct": 727.9,
+      "bytes": 838657,
+      "chars": 730823,
+      "bytes_pct": 862.1,
+      "chars_pct": 730.8,
       "status": "exempt"
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 96365,
-      "chars": 73177,
+      "bytes": 96356,
+      "chars": 73176,
       "bytes_pct": 99.1,
       "chars_pct": 73.2,
       "status": "watch"
@@ -52,35 +52,35 @@
     },
     {
       "rel": "api/signals.json",
-      "bytes": 81399,
-      "chars": 69160,
-      "bytes_pct": 83.7,
-      "chars_pct": 69.2,
+      "bytes": 81543,
+      "chars": 69272,
+      "bytes_pct": 83.8,
+      "chars_pct": 69.3,
       "status": "watch"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 77963,
-      "chars": 77057,
-      "bytes_pct": 80.1,
+      "bytes": 77978,
+      "chars": 77072,
+      "bytes_pct": 80.2,
       "chars_pct": 77.1,
       "status": "watch"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 55931,
-      "chars": 45233,
-      "bytes_pct": 57.5,
-      "chars_pct": 45.2,
+      "bytes": 56079,
+      "chars": 45339,
+      "bytes_pct": 57.6,
+      "chars_pct": 45.3,
       "status": "ok"
     },
     {
       "rel": "api/nav/{fund_code}.json",
       "files": 21,
-      "bytes": 43710,
-      "chars": 35448,
-      "bytes_pct": 44.9,
-      "chars_pct": 35.4,
+      "bytes": 43889,
+      "chars": 35593,
+      "bytes_pct": 45.1,
+      "chars_pct": 35.6,
       "status": "ok"
     },
     {
