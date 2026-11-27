@@ -1,6 +1,6 @@
 {
   "schema": "api_capacity/v1",
-  "generated_at": "2026-11-26 10:19:29",
+  "generated_at": "2026-11-27 10:27:11",
   "policy": {
     "hard_chars": 100000,
     "hard_bytes": 97280,
@@ -19,10 +19,10 @@
   },
   "worst_endpoint": {
     "rel": "api/valuation.json",
-    "bytes": 96213,
-    "chars": 73093,
-    "bytes_pct": 98.9,
-    "chars_pct": 73.1,
+    "bytes": 96344,
+    "chars": 73156,
+    "bytes_pct": 99.0,
+    "chars_pct": 73.2,
     "status": "watch"
   },
   "endpoints": [
@@ -36,10 +36,10 @@
     },
     {
       "rel": "api/valuation.json",
-      "bytes": 96213,
-      "chars": 73093,
-      "bytes_pct": 98.9,
-      "chars_pct": 73.1,
+      "bytes": 96344,
+      "chars": 73156,
+      "bytes_pct": 99.0,
+      "chars_pct": 73.2,
       "status": "watch"
     },
     {
@@ -52,25 +52,25 @@
     },
     {
       "rel": "api/signals.json",
-      "bytes": 81103,
-      "chars": 68990,
-      "bytes_pct": 83.4,
-      "chars_pct": 69.0,
+      "bytes": 81386,
+      "chars": 69143,
+      "bytes_pct": 83.7,
+      "chars_pct": 69.1,
       "status": "watch"
     },
     {
       "rel": "api/performance.json",
-      "bytes": 77993,
-      "chars": 77087,
-      "bytes_pct": 80.2,
-      "chars_pct": 77.1,
+      "bytes": 77945,
+      "chars": 77039,
+      "bytes_pct": 80.1,
+      "chars_pct": 77.0,
       "status": "watch"
     },
     {
       "rel": "api/signals_brief.json",
-      "bytes": 55820,
-      "chars": 45176,
-      "bytes_pct": 57.4,
+      "bytes": 55931,
+      "chars": 45229,
+      "bytes_pct": 57.5,
       "chars_pct": 45.2,
       "status": "ok"
     },
@@ -141,7 +141,7 @@
     },
     {
       "rel": "api/history/{fund_code}/page/{page}.json",
-      "files": 236,
+      "files": 237,
       "bytes": 16897,
       "chars": 16809,
       "bytes_pct": 17.4,
